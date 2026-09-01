@@ -1,0 +1,21 @@
+<section class="section pricing-section" id="tarifs">
+  <div class="container">
+    <div class="section-head pricing-head">
+      <div><span class="eyebrow">Repères budgétaires</span><h2>Des points d’entrée lisibles, sans enfermer le projet.</h2></div>
+      <p>Les montants dépendent du périmètre, de l’urgence, de la durée et du niveau de responsabilité.</p>
+    </div>
+    <div class="pricing-grid">
+    {% for offer in site.data.pricing %}
+      <article class="price-card {{ offer.theme }}">
+        <span class="price-kicker">{{ offer.title }}</span>
+        <div class="price"><strong>{{ offer.price }}</strong><small>{{ offer.suffix }}</small></div>
+        <p>{{ offer.detail }}</p>
+        <span class="price-use">{{ offer.use }}</span>
+      </article>
+    {% endfor %}
+    </div>
+    <div class="pricing-note">
+      <p>Les petits formats permettent de commencer sans gros engagement. Les missions longues, multi-équipes ou à forte responsabilité sont cadrées au devis.</p>
+    </div>
+  </div>
+</section>

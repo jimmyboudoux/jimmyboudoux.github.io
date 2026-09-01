@@ -1,0 +1,8 @@
+<section class="page-hero {{ page.theme }}">
+  <div class="container">
+    <span class="eyebrow">{{ page.eyebrow }}</span>
+    <h1>{{ page.hero }}</h1>
+    {% if page.intro %}<p class="lead">{{ page.intro }}</p>{% endif %}
+    {% if page.hero_cta %}<div class="actions"><a class="btn" href="{{ page.hero_cta_href | default: '/contact/' }}">{{ page.hero_cta }} →</a></div>{% endif %}
+  </div>
+</section>

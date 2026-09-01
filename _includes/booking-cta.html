@@ -1,0 +1,8 @@
+<section class="section section--tight">
+  <div class="container cta-box">
+    <h2>{{ include.title | default: 'Parlons de votre projet' }}</h2>
+    <p>{{ include.text | default: 'Vous avez un besoin en IA, automatisation, développement ou formation ? Réservez un échange de 20 minutes pour en discuter.' }}</p>
+    <div class="actions">{% include booking-link.html label=include.label class="btn" location=include.location %}</div>
+    {% if include.microcopy %}<p class="booking-microcopy">{{ include.microcopy }}</p>{% endif %}
+  </div>
+</section>

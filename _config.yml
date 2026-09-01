@@ -1,0 +1,18 @@
+title: Jimmy Boudoux
+description: Ingénieur IA, Data et logiciel à Poitiers. Conception, automatisation, modernisation et pilotage de systèmes utiles et durables.
+url: https://jboudoux.fr
+baseurl: ""
+lang: fr
+linkedin: https://fr.linkedin.com/in/jimmy-boudoux-4b065b3a
+github: https://github.com/jimmyboudoux
+booking_url: https://calendar.app.google/XDhYZfK6gfg258c4A
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
+  - vendor
+  - .bundle
+  - Gemfile
+  - Gemfile.lock
+  - notesprivate.md
+  - privatespecs

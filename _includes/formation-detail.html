@@ -1,0 +1,35 @@
+{% assign formation = site.data.formations[page.formation] %}
+<section class="formation-hero {{ formation.theme }}">
+  <div class="container narrow">
+    <a class="back-link" href="/formations/">← Toutes les formations</a>
+    <span class="eyebrow">Formation intra-entreprise</span>
+    <h1>{{ formation.title }}</h1>
+    <p class="lead">{{ formation.promise }}</p>
+    <div class="actions">
+      <a class="btn" href="/contact/">Demander un devis →</a>
+      <a class="btn btn--ghost" href="mailto:contact@jboudoux.fr?subject={{ formation.short_title | url_encode }}">Parler de votre équipe</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface"><div class="container formation-facts">
+  <article><span>Pour qui ?</span><strong>{{ formation.audience }}</strong></article>
+  <article><span>Format</span><strong>{{ formation.format_short }}</strong></article>
+  <article><span>Groupe conseillé</span><strong>{{ formation.capacity }}</strong></article>
+  <article><span>À partir de</span><strong>{{ formation.starting_price }}</strong></article>
+</div></section>
+
+<section class="section"><div class="container split formation-split">
+  <div class="sticky-intro"><span class="eyebrow">Objectifs</span><h2>Ce que votre équipe saura faire.</h2><p class="lead">{{ formation.summary }}</p></div>
+  <div class="card"><ul class="feature-list formation-objectives">{% for objective in formation.objectives %}<li>{{ objective }}</li>{% endfor %}</ul></div>
+</div></section>
+
+<section class="section section--soft"><div class="container"><div class="section-head"><span class="eyebrow">Programme</span><h2>Des repères, puis des décisions concrètes.</h2><p>Les exemples et cas pratiques sont ajustés au contexte de votre organisation, dans le respect de ses règles de confidentialité.</p></div><div class="programme-grid">{% for sequence in formation.programme %}<article class="programme-card"><h3>{{ sequence.title }}</h3><ul class="feature-list">{% for item in sequence.items %}<li>{{ item }}</li>{% endfor %}</ul></article>{% endfor %}</div></div></section>
+
+<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Modalités</span><h2>Un format adapté à votre contexte.</h2></div><div class="cards cards--3 formation-modalities"><article class="card"><h3>Formats</h3>{% for format in formation.formats %}<p><strong>{{ format.label }} · {{ format.duration }}</strong><br>{{ format.purpose }}</p>{% endfor %}</article><article class="card"><h3>Prérequis et moyens</h3><p><strong>Prérequis :</strong> {{ formation.prerequisites }}</p><p>{{ formation.resources }}</p></article><article class="card"><h3>Évaluation</h3><p>{{ formation.assessment }}</p></article></div></div></section>
+
+<section class="section section--surface"><div class="container"><div class="section-head"><span class="eyebrow">Tarifs indicatifs</span><h2>Un devis clair après cadrage.</h2><p>Tarifs intra-entreprise, incluant un cadrage léger, l’animation et les supports. Hors éventuels frais de déplacement, hébergement, location de salle, licences, matériel et adaptation importante.</p></div><div class="training-pricing" role="table" aria-label="Tarifs {{ formation.short_title }}"><div class="training-pricing__row training-pricing__head" role="row"><span role="columnheader">Format</span><span role="columnheader">Tarif</span></div>{% for price in formation.prices %}<div class="training-pricing__row" role="row"><strong role="cell" data-label="Format">{{ price.format }}</strong><span role="cell" data-label="Tarif">{{ price.price }}</span></div>{% endfor %}</div><p class="training-price-caption">Formation disponible en présentiel ou à distance. Les déplacements à proximité de Poitiers sont inclus. Pour les interventions plus éloignées, les éventuels frais de transport et d’hébergement sont précisés avant validation du devis.</p></div></section>
+
+<section class="section"><div class="container cards cards--3 formation-support"><article class="card"><h3>Lieu et adaptation</h3><p>Formation disponible en présentiel ou à distance, partout en France. Les cas et règles internes peuvent être intégrés après échange.</p></article><article class="card"><h3>Accessibilité</h3><p>Vous avez besoin d’un aménagement lié à une situation de handicap ? Signalez-le dès le premier échange afin que nous étudiions les adaptations possibles ou une orientation adaptée.</p><a class="card-link" href="mailto:contact@jboudoux.fr?subject=Besoin%20d%27accessibilit%C3%A9">Nous contacter →</a></article><article class="card"><h3>Délais d’accès</h3><p>{{ formation.access_delay }}</p></article></div></section>
+
+<section class="section section--tight"><div class="container cta-box"><h2>Discuter de cette formation</h2><p>Un échange de 20 minutes suffit pour vérifier si cette formation correspond à votre besoin.</p><div class="actions">{% include booking-link.html label="Discuter de cette formation" class="btn" location="training" %}<a class="btn btn--ghost" href="mailto:contact@jboudoux.fr">contact@jboudoux.fr</a></div></div></section>

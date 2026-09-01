@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'fr' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <meta name="author" content="Jimmy Boudoux">
+  <meta name="theme-color" content="#fbfaf7">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/og.png">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="Ingénierie & structure — IA, Data, Logiciel">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/og.png">
+  <meta name="twitter:image:alt" content="Ingénierie & structure — IA, Data, Logiciel">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "{{ site.url }}/#jimmy-boudoux",
+        "name": "Jimmy Boudoux",
+        "url": "{{ site.url }}/",
+        "image": "{{ site.url }}/assets/img/avatar.png",
+        "jobTitle": "Ingénieur IA, Data et logiciel",
+        "sameAs": ["{{ site.linkedin }}", "{{ site.github }}"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "{{ site.url }}/#professional-service",
+        "name": "Jimmy Boudoux",
+        "url": "{{ site.url }}/",
+        "image": "{{ site.url }}/assets/img/og.png",
+        "description": "{{ site.description }}",
+        "email": "contact@jboudoux.fr",
+        "founder": { "@id": "{{ site.url }}/#jimmy-boudoux" },
+        "areaServed": "France",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Poitiers",
+          "postalCode": "86000",
+          "addressCountry": "FR"
+        },
+        "sameAs": ["{{ site.linkedin }}", "{{ site.github }}"]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="{{ page.theme | default: 'theme-ai' }}">
+  {% include header.html %}
+  <main>{{ content }}</main>
+  {% include footer.html %}
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

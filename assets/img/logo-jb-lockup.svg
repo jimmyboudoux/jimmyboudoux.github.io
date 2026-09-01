@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 128" role="img" aria-labelledby="title">
+  <title id="title">Jimmy Boudoux — Ingénieur polyvalent</title>
+  <rect width="560" height="128" fill="none"/>
+  <text x="55" y="87"
+        text-anchor="middle"
+        fill="#102746"
+        font-family='"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif'
+        font-size="84"
+        font-weight="400"
+        letter-spacing="-6">jb</text>
+  <text x="126" y="58"
+        fill="#102746"
+        font-family='Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'
+        font-size="25"
+        font-weight="700">Jimmy Boudoux</text>
+  <text x="126" y="84"
+        fill="#667487"
+        font-family='Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'
+        font-size="17"
+        font-weight="560">Ingénieur polyvalent</text>
+</svg>

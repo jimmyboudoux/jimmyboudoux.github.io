@@ -1,0 +1,38 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local operational data
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.dump
+*.bak
+*.backup
+
+# Private working material
+secrets/
+private/
+credentials/
+
+# Local dependencies and OS files
+node_modules/
+.DS_Store
+Thumbs.db
+notesprivate.md
+privatespecs/
+test-*.txt

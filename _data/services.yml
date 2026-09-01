@@ -1,0 +1,37 @@
+- slug: ai-adoption
+  title: Adoption & transformation IA
+  short: Stratégie, cas d’usage, communauté, formation, gouvernance et conduite du
+    changement.
+  theme: theme-ai
+  icon: network
+  number: '01'
+- slug: ai-engineering
+  title: Ingénierie IA & automatisation
+  short: Assistants, agents, RAG, automatisations, APIs et architectures locales,
+    cloud ou hybrides.
+  keywords: AI Engineering · LLM · Agents · RAG
+  theme: theme-engineering
+  icon: gear
+  number: '02'
+- slug: software-rescue
+  title: Modernisation logicielle
+  short: Audit, stabilisation, tests, sécurité et modernisation progressive des applications
+    fragiles.
+  keywords: Software Rescue · Legacy · Tests · Sécurité
+  theme: theme-software
+  icon: code
+  number: '03'
+- slug: data-reporting
+  title: Data, Analytics & Reporting
+  short: Pipelines, qualité, modélisation, contrôles et reporting automatisé pour
+    des données exploitables.
+  theme: theme-data
+  icon: database
+  number: '04'
+- slug: ai-finops
+  title: AI FinOps & Rationalisation
+  short: Coûts IA, licences, APIs, outils redondants, choix technologiques et décisions
+    build vs buy.
+  theme: theme-finops
+  icon: chart
+  number: '05'

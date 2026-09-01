@@ -1,0 +1,19 @@
+<div class="cards expertise-grid">
+{% for service in site.data.services %}
+  <article class="card expertise-card {{ service.theme }}">
+    <span class="expertise-icon">{% include icon.html name=service.icon %}</span>
+    <h3>{{ service.title }}</h3>
+    {% if service.keywords %}<span class="expertise-keywords">{{ service.keywords }}</span>{% endif %}
+    <p>{{ service.short }}</p>
+    <a class="card-link" href="/{{ service.slug }}/">En savoir plus →</a>
+  </article>
+{% endfor %}
+{% if include.include_fractional %}
+  <article class="card expertise-card theme-fractional">
+    <span class="expertise-icon">{% include icon.html name="users" %}</span>
+    <h3>Direction Tech, Data & IA à temps partagé</h3>
+    <p>Fractional CTO / AI / Digital Lead selon le besoin : pilotage transversal et continuité.</p>
+    <a class="card-link" href="/fractional-lead/">Voir le format →</a>
+  </article>
+{% endif %}
+</div>
