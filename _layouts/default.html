@@ -44,12 +44,22 @@
         "@type": "ProfessionalService",
         "@id": "{{ site.url }}/#professional-service",
         "name": "Jimmy Boudoux",
+        "alternateName": "Boudoux Jimmy EI",
         "url": "{{ site.url }}/",
         "image": "{{ site.url }}/assets/img/og.png",
         "description": "{{ site.description }}",
         "email": "contact@jboudoux.fr",
         "founder": { "@id": "{{ site.url }}/#jimmy-boudoux" },
-        "areaServed": "France",
+        "areaServed": [
+          { "@type": "City", "name": "Poitiers" },
+          { "@type": "City", "name": "Châtellerault" },
+          { "@type": "City", "name": "Niort" },
+          { "@type": "City", "name": "La Rochelle" },
+          { "@type": "City", "name": "Tours" },
+          { "@type": "City", "name": "Angoulême" },
+          { "@type": "City", "name": "Bordeaux" },
+          { "@type": "Country", "name": "France" }
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Poitiers",
@@ -57,6 +67,14 @@
           "addressCountry": "FR"
         },
         "sameAs": ["{{ site.linkedin }}", "{{ site.github }}"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url }}/",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "{{ site.url }}/#professional-service" }
       }
     ]
   }

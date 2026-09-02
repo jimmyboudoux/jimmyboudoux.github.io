@@ -15,6 +15,8 @@ EXPECTED_PATHS = %w[
   /ai-finops/
   /fractional-lead/
   /formations/
+  /poitiers/
+  /grand-ouest/
   /about/
   /contact/
 ].freeze
@@ -58,6 +60,12 @@ paths = locations.map do |location|
   abort "Sitemap URL has no generated HTML page: #{location}" unless File.file?(output_file)
 
   html = File.read(output_file)
+  title = html[/<title>(.*?)<\/title>/mi, 1]&.strip
+  abort "Missing title in generated page: #{location}" if title.nil? || title.empty?
+  description = html[/<meta\s+name=[\"']description[\"']\s+content=[\"']([^\"']+)[\"']/i, 1]&.strip
+  abort "Missing meta description in generated page: #{location}" if description.nil? || description.empty?
+  h1_count = html.scan(/<h1(?:\s[^>]*)?>/i).size
+  abort "Expected exactly one H1 in #{location}, found #{h1_count}" unless h1_count == 1
   unless html.include?(%(<link rel="canonical" href="#{location}">))
     abort "Canonical URL mismatch for #{location}"
   end
