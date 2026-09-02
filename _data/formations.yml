@@ -12,7 +12,7 @@ ai-literacy:
   capacity: "4 à 12 participants"
   duration: "½ journée ou 1 journée"
   format_short: "3 h 30 ou 7 h · présentiel ou distanciel synchrone"
-  starting_price: "dès 650 € HT"
+  starting_price: "650 € HT"
   formats:
     - label: "Essentiel"
       duration: "3 h 30"
@@ -64,7 +64,7 @@ finops-ia:
   capacity: "4 à 10 participants"
   duration: "½ journée ou 1 journée"
   format_short: "3 h 30 ou 7 h · présentiel ou distanciel synchrone"
-  starting_price: "dès 900 € HT"
+  starting_price: "900 € HT"
   formats:
     - label: "Cadrage"
       duration: "3 h 30"
@@ -115,7 +115,7 @@ ia-locale:
   capacity: "4 à 10 participants"
   duration: "½ journée ou 1 journée"
   format_short: "3 h 30 ou 7 h · présentiel ou distanciel synchrone"
-  starting_price: "dès 1 000 € HT"
+  starting_price: "1 000 € HT"
   formats:
     - label: "Découverte"
       duration: "3 h 30"

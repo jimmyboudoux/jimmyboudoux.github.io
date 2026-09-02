@@ -20,6 +20,7 @@ EXPECTED_PATHS = %w[
   /about/
   /contact/
 ].freeze
+FORBIDDEN_PRICE_LABELS = ["À partir de dès", "dès dès", "À partir de à partir de"].freeze
 
 sitemap_path = File.expand_path(ARGV.fetch(0, "_site/sitemap.xml"))
 site_dir = File.dirname(sitemap_path)
@@ -38,6 +39,9 @@ locations = document.root.elements.to_a("url").filter_map do |entry|
 end
 abort "Sitemap contains no URLs" if locations.empty?
 abort "Sitemap contains duplicate URLs" unless locations.uniq.size == locations.size
+
+titles = {}
+descriptions = {}
 
 paths = locations.map do |location|
   begin
@@ -62,14 +66,24 @@ paths = locations.map do |location|
   html = File.read(output_file)
   title = html[/<title>(.*?)<\/title>/mi, 1]&.strip
   abort "Missing title in generated page: #{location}" if title.nil? || title.empty?
+  abort "Duplicate title in generated pages: #{title}" if titles.key?(title)
+  titles[title] = location
   description = html[/<meta\s+name=[\"']description[\"']\s+content=[\"']([^\"']+)[\"']/i, 1]&.strip
   abort "Missing meta description in generated page: #{location}" if description.nil? || description.empty?
+  abort "Duplicate meta description in generated pages: #{description}" if descriptions.key?(description)
+  descriptions[description] = location
   h1_count = html.scan(/<h1(?:\s[^>]*)?>/i).size
   abort "Expected exactly one H1 in #{location}, found #{h1_count}" unless h1_count == 1
   unless html.include?(%(<link rel="canonical" href="#{location}">))
     abort "Canonical URL mismatch for #{location}"
   end
   abort "A noindex page is present in the sitemap: #{location}" if html.match?(/<meta\s+name=["']robots["']\s+content=["'][^"']*\bnoindex\b/i)
+
+  if %w[/formations/ai-literacy/ /formations/finops-ia/ /formations/ia-locale/].include?(path)
+    FORBIDDEN_PRICE_LABELS.each do |label|
+      abort "Ambiguous price label in #{location}: #{label}" if html.include?(label)
+    end
+  end
 
   path
 end
