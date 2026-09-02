@@ -22,11 +22,29 @@ Chaque page `index.html` ne contient plus que son front matter et son contenu sp
 `.nojekyll` a été supprimé volontairement : GitHub Pages doit exécuter Jekyll pour résoudre les layouts/includes.
 
 ## Test local
-Si Jekyll est installé :
+Le sitemap est compilé automatiquement à chaque build à partir des pages HTML et des
+collections Jekyll publiées (posts, articles, ressources, études de cas, etc.). La
+commande suivante construit le site et vérifie le XML, les URLs canoniques, les
+doublons, les URLs techniques et la référence dans `robots.txt` :
+```bash
+bundle exec jekyll build && ruby script/validate_sitemap.rb
+```
+Cette même vérification est exécutée automatiquement par GitHub Actions à chaque
+push et pull request.
+
+Pour prévisualiser le site localement :
 ```bash
 bundle exec jekyll serve
 ```
-Sinon, le rendu complet (Liquid/includes) est surtout à valider via GitHub Pages. Un simple `python -m http.server` ne compile pas Jekyll.
+
+Un contenu qui ne doit pas être indexé doit avoir dans son front matter :
+```yml
+noindex: true
+sitemap: false
+```
+
+Ajoutez `last_modified_at` uniquement lorsqu'une date de modification réelle est
+connue. Les contenus de collections utilisent aussi leur `date` de publication.
 
 ## Déploiement
 Dézipper à la racine de `jimmyboudoux.github.io`, puis :
