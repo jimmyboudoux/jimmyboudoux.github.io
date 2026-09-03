@@ -1,0 +1,123 @@
+---
+layout: default
+title: "Diagnostic IA Entreprise | Évaluez votre maturité IA"
+description: "Faites gratuitement le point sur les usages IA de votre entreprise. Jimmy Boudoux analyse personnellement vos réponses et vous adresse ses premières recommandations sous 24h."
+theme: theme-ai
+extra_js:
+  - /assets/js/diagnostic.js
+---
+<script type="module"  src="/assets/vendor/altcha/altcha.min.js"> </script>
+<section class="diagnostic-hero" data-diagnostic-page>
+  <div class="container diagnostic-hero__grid">
+    <div>
+      <span class="eyebrow">Une première lecture, par un consultant</span>
+      <h1>Diagnostic IA Entreprise</h1>
+      <p class="lead">Une première évaluation personnalisée de la maturité IA de votre organisation.</p>
+      <p>Vous utilisez déjà ChatGPT, Copilot ou d’autres outils IA ? Vous vous demandez par où commencer, comment maîtriser vos coûts, vos usages, vos risques ou vos possibilités d’automatisation ?</p>
+      <p>Répondez à quelques questions. J’analyse personnellement votre situation et vous adresse mon retour sous 24 heures ouvrées.</p>
+      <div class="actions"><a class="btn" href="#questionnaire" data-diagnostic-start>Commencer le diagnostic</a></div>
+    </div>
+    <aside class="diagnostic-promise" aria-label="Caractéristiques du diagnostic">
+      <span>✓ Offert</span><span>✓ Environ 5 minutes</span><span>✓ Analyse humaine</span><span>✓ Sans engagement</span>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--tight diagnostic-intro">
+  <div class="container narrow">
+    <div class="section-head"><span class="eyebrow">Pourquoi réaliser un diagnostic IA ?</span><h2>Identifier les sujets qui méritent vraiment votre attention.</h2><p>Le diagnostic met en perspective vos usages, vos outils et vos enjeux. Il vous aide à distinguer les gains accessibles, les risques à traiter et les questions qui demandent un approfondissement.</p></div>
+  </div>
+</section>
+
+<section class="section section--surface" id="analyse">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Ce que j’analyse</span><h2>Cinq dimensions complémentaires.</h2></div>
+    <div class="diagnostic-dimensions">
+      <article class="card"><h3>Usages IA</h3><p>Adoption, outils, équipes concernées et cas d’usage.</p></article>
+      <article class="card"><h3>Automatisation</h3><p>Tâches répétitives, processus améliorables et potentiel de gain de temps.</p></article>
+      <article class="card"><h3>Gouvernance et sécurité</h3><p>Règles, données sensibles, formation et encadrement des usages.</p></article>
+      <article class="card"><h3>Coûts</h3><p>Licences, APIs, visibilité budgétaire et usage réel.</p></article>
+      <article class="card"><h3>Architecture et souveraineté</h3><p>Cloud, données, modèles externes et potentiel de solutions privées ou locales.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Comment fonctionne le diagnostic ?</span><h2>Trois étapes, avec une analyse humaine.</h2></div>
+    <div class="process diagnostic-process">
+      <article class="process-step"><h3>Vous décrivez votre situation</h3><p>Un questionnaire d’environ cinq minutes sur vos usages et vos priorités.</p></article>
+      <article class="process-step"><h3>J’analyse personnellement vos réponses</h3><p><strong>Il ne s’agit pas d’un score généré automatiquement.</strong></p></article>
+      <article class="process-step"><h3>Vous recevez mon retour</h3><p>Sous 24 heures ouvrées, je vous transmets votre première évaluation et les deux ou trois sujets que je traiterais en priorité.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container split">
+    <div><span class="eyebrow">Que vais-je recevoir ?</span><h2>Une première lecture directement exploitable.</h2></div>
+    <div><ul class="feature-list"><li>un Score IA global, relu et ajusté personnellement ;</li><li>une appréciation de la maturité actuelle ;</li><li>les principaux points forts et points de vigilance ;</li><li>deux ou trois priorités ;</li><li>une recommandation éventuelle d’approfondissement.</li></ul><p class="diagnostic-disclaimer">Le diagnostic constitue une première évaluation. Il ne remplace pas un audit complet nécessitant notamment entretiens, collecte de données, analyse détaillée et scénarios chiffrés.</p></div>
+  </div>
+</section>
+
+<section class="section diagnostic-form-section" id="questionnaire">
+  <div class="container diagnostic-form-shell">
+    <div class="diagnostic-form-heading"><span class="eyebrow">Votre diagnostic</span><h2>Faisons le point.</h2><p>Les réponses marquées d’un astérisque sont obligatoires. Votre brouillon reste dans cet onglet jusqu’à l’envoi.</p></div>
+    <form class="diagnostic-form" data-diagnostic-form data-api-endpoint="{{ site.diagnostic_api_url | default: 'https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics' }}" novalidate>
+      <div class="diagnostic-progress" aria-label="Progression du questionnaire">
+        <div class="diagnostic-progress__meta"><span data-step-label>Étape 1 sur 7</span><span data-step-title>Votre entreprise</span></div>
+        <div class="diagnostic-progress__track"><span data-progress-bar></span></div>
+      </div>
+      <div class="diagnostic-form-error" role="alert" aria-live="assertive" data-form-error hidden></div>
+      <altcha-widget
+        challenge="{{ site.diagnostic_api_url | default: 'https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics' }}/challenge"
+        display="invisible"
+        auto="off"
+        name="altcha">
+      </altcha-widget>
+      {% for step in site.data.diagnostic.steps %}
+      <fieldset class="diagnostic-step" data-step="{{ forloop.index }}"{% unless forloop.first %} hidden{% endunless %}>
+        <legend><span>{{ step.title }}</span><small>{{ step.intro }}</small></legend>
+        {% for question in step.questions %}
+        <div class="form-question" data-question="{{ question.name }}">
+          {% if question.type == 'radio' or question.type == 'checkbox' %}
+          <fieldset class="choice-fieldset"><legend>{{ question.label }}{% if question.required %} <span aria-hidden="true">*</span>{% endif %}</legend>
+            <div class="choice-grid{% if question.options.size > 7 %} choice-grid--compact{% endif %}">
+              {% for option in question.options %}<label class="choice"><input type="{{ question.type }}" name="{{ question.name }}" value="{{ option[0] }}"{% if question.required %} required{% endif %}><span>{{ option[1] }}</span></label>{% endfor %}
+            </div>
+          </fieldset>
+          {% elsif question.type == 'select' %}
+          <label for="{{ question.name }}">{{ question.label }}{% if question.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+          <select id="{{ question.name }}" name="{{ question.name }}"{% if question.required %} required{% endif %}><option value="">Sélectionnez une réponse</option>{% for option in question.options %}<option value="{{ option[0] }}">{{ option[1] }}</option>{% endfor %}</select>
+          {% elsif question.type == 'textarea' %}
+          <label for="{{ question.name }}">{{ question.label }}{% if question.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+          <textarea id="{{ question.name }}" name="{{ question.name }}"{% if question.required %} required{% endif %}{% if question.minlength %} minlength="{{ question.minlength }}"{% endif %}{% if question.maxlength %} maxlength="{{ question.maxlength }}"{% endif %} rows="7"></textarea>
+          {% endif %}
+          {% if question.help %}<p class="field-help">{{ question.help }}</p>{% endif %}
+          {% if question.other_field %}<div class="conditional-field" data-other-for="{{ question.name }}" hidden><label for="{{ question.other_field }}">Précisez</label><input id="{{ question.other_field }}" name="{{ question.other_field }}" type="text" maxlength="200" autocomplete="off"></div>{% endif %}
+          <p class="field-error" id="error-{{ question.name }}" aria-live="polite"></p>
+        </div>
+        {% endfor %}
+      </fieldset>
+      {% endfor %}
+
+      <fieldset class="diagnostic-step" data-step="7" hidden>
+        <legend><span>Votre diagnostic est prêt à être envoyé</span><small>Il me reste simplement à savoir où vous transmettre mon retour.</small></legend>
+        <div class="contact-fields">
+          <div class="form-question"><label for="first_name">Prénom *</label><input id="first_name" name="first_name" autocomplete="given-name" maxlength="100" required><p class="field-error" id="error-first_name" aria-live="polite"></p></div>
+          <div class="form-question"><label for="last_name">Nom *</label><input id="last_name" name="last_name" autocomplete="family-name" maxlength="100" required><p class="field-error" id="error-last_name" aria-live="polite"></p></div>
+          <div class="form-question"><label for="company">Entreprise *</label><input id="company" name="company" autocomplete="organization" maxlength="160" required><p class="field-error" id="error-company" aria-live="polite"></p></div>
+          <div class="form-question"><label for="email">Email professionnel *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" inputmode="email" required><p class="field-error" id="error-email" aria-live="polite"></p></div>
+          <div class="form-question"><label for="phone">Téléphone <span class="muted">(optionnel)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" inputmode="tel"><p class="field-error" id="error-phone" aria-live="polite"></p></div>
+        </div>
+        <div class="form-question"><fieldset class="choice-fieldset"><legend>Préférence de retour *</legend><div class="choice-grid"><label class="choice"><input type="radio" name="contact_preference" value="email" required><span>Par email</span></label><label class="choice"><input type="radio" name="contact_preference" value="phone" required><span>Par téléphone</span></label><label class="choice"><input type="radio" name="contact_preference" value="either" required><span>Email ou téléphone, peu importe</span></label></div></fieldset><p class="field-error" id="error-contact_preference" aria-live="polite"></p></div>
+        <div class="privacy-notice"><p>Les informations transmises sont utilisées pour analyser votre situation, générer votre diagnostic et vous contacter dans le cadre de cette demande. <a href="/politique-confidentialite/" target="_blank" rel="noopener">Consulter la politique de confidentialité</a>.</p><label class="newsletter-choice"><input type="checkbox" name="newsletter_opt_in" value="yes"><span>Je souhaite recevoir occasionnellement des contenus et informations sur l’IA, la Data et la transformation numérique.</span></label></div>
+        <div class="diagnostic-honeypot" aria-hidden="true"><label for="website">Votre site web</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      </fieldset>
+
+      <div class="diagnostic-nav"><button class="btn btn--ghost" type="button" data-previous hidden>← Précédent</button><button class="btn" type="button" data-next>Suivant →</button><button class="btn" type="submit" data-submit hidden>Envoyer mon diagnostic</button></div>
+    </form>
+  </div>
+</section>
+
+<section class="section section--tight"><div class="container cta-box"><h2>Prêt à faire le point ?</h2><p>Vous pouvez commencer le questionnaire maintenant, ou échanger directement si votre besoin est déjà précis.</p><div class="actions"><a class="btn" href="#questionnaire" data-diagnostic-start>Commencer mon diagnostic</a>{% include booking-link.html label="Réserver directement 20 minutes" class="btn btn--ghost" location="diagnostic" %}</div></div></section>

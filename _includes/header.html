@@ -7,7 +7,7 @@
     <button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-button>☰</button>
     <nav class="nav-links" aria-label="Navigation principale" data-menu>
       {% for item in site.data.navigation %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
-      {% include booking-link.html label="Prendre rendez-vous" class="nav-cta" location="header" %}
+      <a class="nav-cta" href="/diagnostic-ia/">Faire le diagnostic</a>
     </nav>
   </div>
 </header>

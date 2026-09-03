@@ -19,6 +19,8 @@ EXPECTED_PATHS = %w[
   /grand-ouest/
   /about/
   /contact/
+  /diagnostic-ia/
+  /politique-confidentialite/
 ].freeze
 FORBIDDEN_PRICE_LABELS = ["À partir de dès", "dès dès", "À partir de à partir de"].freeze
 

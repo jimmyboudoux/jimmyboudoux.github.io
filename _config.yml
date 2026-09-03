@@ -6,6 +6,7 @@ lang: fr
 linkedin: https://fr.linkedin.com/in/jimmy-boudoux-4b065b3a
 github: https://github.com/jimmyboudoux
 booking_url: https://calendar.app.google/XDhYZfK6gfg258c4A
+diagnostic_api_url: https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics
 markdown: kramdown
 permalink: pretty
 exclude:
@@ -16,3 +17,5 @@ exclude:
   - Gemfile.lock
   - notesprivate.md
   - privatespecs
+  - diagnostic-api
+  - ops

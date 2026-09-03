@@ -18,3 +18,9 @@ jobs:
           bundler-cache: true
       - run: bundle exec jekyll build
       - run: ruby script/validate_sitemap.rb
+      - run: ruby script/validate_diagnostic.rb
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm test
+        working-directory: worker

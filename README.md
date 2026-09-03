@@ -54,6 +54,53 @@ git commit -m "Refactor site with Jekyll and engineering identity"
 git push
 ```
 
+## Diagnostic IA Entreprise
+
+La page publique et le questionnaire du Diagnostic IA Entreprise sont intégrés au site Jekyll.
+
+### Composants publics
+
+- `/diagnostic-ia/` : page et questionnaire multi-étapes ;
+- `/diagnostic-ia/merci/` : page de confirmation `noindex` ;
+- `assets/js/diagnostic.js` : navigation, conservation temporaire du brouillon et envoi du formulaire ;
+- `assets/vendor/altcha/` : protection anti-robot ALTCHA auto-hébergée côté frontend.
+
+Les réponses complètes ne sont jamais envoyées à Umami. Le brouillon est conservé dans `sessionStorage` et supprimé après un envoi réussi.
+
+Le backend, l'administration, la base de données, les sauvegardes et les services de notification sont maintenus séparément dans une infrastructure privée et ne font pas partie de ce dépôt.
+
+### Développement local
+
+Terminal 1 :
+
+```bash
+bundle exec jekyll serve
+```
+
+Terminal 2 :
+
+```bash
+cd diagnostic-api
+npm ci
+cp .env.example .env
+# Remplacer les valeurs de secret de cet exemple uniquement pour le développement.
+npm run migrate
+npm start
+```
+
+Pour un test intégré local, surcharger `diagnostic_api_url` avec `http://127.0.0.1:3020/v1/diagnostics` dans un fichier de configuration Jekyll local non versionné et ajouter cette origine à `SITE_ORIGINS`.
+
+### Tests
+
+```bash
+bundle exec jekyll build
+ruby script/validate_sitemap.rb
+ruby script/validate_diagnostic.rb
+cd diagnostic-api && npm test
+```
+
+Les tests couvrent la validation, le honeypot, le rate limit, l’idempotence, le CORS, l’allowlist de Host (public/admin/localhost), Basic Auth, CSRF, les en-têtes de sécurité admin, l’isolation des réseaux Compose, la gateway à chemin/méthodes exacts, les scores manuels, SQLite sans score automatique, ntfy non bloquant et la persistance après réouverture.
+
 ## À vérifier avant publication définitive
 - tester `contact@jboudoux.fr`
 - confirmer les repères budgétaires publics

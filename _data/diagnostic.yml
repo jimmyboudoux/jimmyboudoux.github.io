@@ -1,0 +1,235 @@
+steps:
+  - title: Votre entreprise
+    intro: Quelques repères pour situer votre organisation.
+    questions:
+      - name: company_size
+        label: Combien de personnes travaillent dans votre entreprise ?
+        type: radio
+        required: true
+        options:
+          - ["1", "1"]
+          - ["2-10", "2 à 10"]
+          - ["11-50", "11 à 50"]
+          - ["51-200", "51 à 200"]
+          - ["201-500", "201 à 500"]
+          - ["500+", "Plus de 500"]
+      - name: industry
+        label: Quel est votre secteur d'activité ?
+        type: select
+        required: true
+        other_field: industry_other
+        options:
+          - [industry, Industrie]
+          - [services, Services]
+          - [digital, Informatique / numérique]
+          - [finance, Finance / assurance]
+          - [retail, Commerce]
+          - [health, Santé]
+          - [construction, Construction]
+          - [real_estate, Immobilier]
+          - [transport, Transport / logistique]
+          - [public, Secteur public]
+          - [education, Éducation / formation]
+          - [consulting, Conseil]
+          - [other, Autre]
+      - name: role
+        label: Quelle est votre fonction ?
+        type: select
+        required: true
+        options:
+          - [executive, Direction générale]
+          - [it, DSI / Direction informatique]
+          - [data_ai, Data / IA]
+          - [finance, Finance]
+          - [hr, RH]
+          - [operations, Opérations]
+          - [marketing_sales, Marketing / Commercial]
+          - [business_owner, Responsable métier]
+          - [consultant, Consultant]
+          - [other, Autre]
+  - title: Vos usages IA
+    intro: Les outils concernés et leur niveau d'adoption actuel.
+    questions:
+      - name: ai_usage_level
+        label: Votre entreprise utilise-t-elle déjà des outils d'intelligence artificielle générative ?
+        type: radio
+        required: true
+        options:
+          - [none, Non]
+          - [few_people, Quelques personnes]
+          - [several_teams, Plusieurs équipes]
+          - [rolling_out, Généralisation en cours]
+          - [widespread, "Oui, largement"]
+      - name: tools
+        label: Quels outils utilisez-vous aujourd'hui ?
+        type: checkbox
+        other_field: tools_other
+        options:
+          - [chatgpt, ChatGPT]
+          - [microsoft_copilot, Microsoft Copilot]
+          - [github_copilot, GitHub Copilot]
+          - [claude, Claude]
+          - [gemini, Gemini]
+          - [mistral, Mistral]
+          - [local_ai, IA locale / modèles hébergés en interne]
+          - [business_ai, Outils métiers intégrant de l'IA]
+          - [model_api, API de modèles IA]
+          - [other, Autres]
+          - [none, Aucun]
+      - name: paid_licenses
+        label: Environ combien de personnes disposent d'une licence IA payante ?
+        type: select
+        options:
+          - [none, Aucune]
+          - ["1-10", 1 à 10]
+          - ["11-50", 11 à 50]
+          - ["51-200", 51 à 200]
+          - ["200+", Plus de 200]
+          - [unknown, Je ne sais pas]
+      - name: use_cases
+        label: Pour quels usages utilisez-vous principalement l'IA ?
+        type: checkbox
+        options:
+          - [writing, Rédaction]
+          - [research, Recherche d'information]
+          - [document_analysis, Analyse de documents]
+          - [development, Programmation / développement]
+          - [customer_support, Support client]
+          - [marketing, Marketing]
+          - [sales, Commercial]
+          - [data_analysis, Analyse de données]
+          - [reporting, Reporting]
+          - [automation, Automatisation]
+          - [internal_search, Recherche dans les documents internes]
+          - [content_creation, Création de contenu]
+          - [other, Autre]
+  - title: Sécurité et gouvernance
+    intro: Les règles et pratiques qui encadrent les usages.
+    questions:
+      - name: confidential_data_usage
+        label: Des données internes ou confidentielles sont-elles utilisées avec ces outils IA ?
+        type: radio
+        options:
+          - [never, Jamais]
+          - [rarely, Rarement]
+          - [regularly, Régulièrement]
+          - [unknown, Je ne sais pas]
+      - name: ai_policy
+        label: Existe-t-il une politique ou des règles claires concernant l'utilisation de l'IA ?
+        type: radio
+        options:
+          - ["yes", "Oui"]
+          - [preparing, En préparation]
+          - [informal, Quelques règles informelles]
+          - ["no", "Non"]
+          - [unknown, Je ne sais pas]
+      - name: training_level
+        label: Les collaborateurs ont-ils été formés à l'utilisation de l'IA ?
+        type: radio
+        options:
+          - [widespread, "Oui, largement"]
+          - [some_teams, Certaines équipes]
+          - [few_people, Quelques personnes]
+          - [none, Non]
+      - name: data_rules
+        label: Les collaborateurs savent-ils clairement quelles données peuvent ou non être envoyées à une IA externe ?
+        type: radio
+        options:
+          - ["yes", "Oui"]
+          - [partially, Partiellement]
+          - ["no", "Non"]
+          - [unknown, Je ne sais pas]
+  - title: Coûts
+    intro: La visibilité actuelle sur les dépenses et l'utilisation réelle.
+    questions:
+      - name: cost_visibility
+        label: Connaissez-vous le coût annuel total de vos outils et services IA ?
+        type: radio
+        options:
+          - [precise, "Oui, précisément"]
+          - [approximate, Approximativement]
+          - ["no", "Non"]
+          - [no_significant_spend, Nous n'avons pas encore de dépenses significatives]
+      - name: license_usage_visibility
+        label: Savez-vous si les licences IA payées sont réellement utilisées ?
+        type: radio
+        options:
+          - ["yes", "Oui"]
+          - [partially, Partiellement]
+          - ["no", "Non"]
+          - [unknown, Je ne sais pas]
+          - [not_applicable, Non applicable]
+      - name: cost_evolution
+        label: Pensez-vous que vos dépenses liées à l'IA vont évoluer au cours des 12 prochains mois ?
+        type: radio
+        options:
+          - [increase_strongly, Augmenter fortement]
+          - [increase, Augmenter]
+          - [stable, Rester relativement stables]
+          - [decrease, Diminuer]
+          - [unknown, Je ne sais pas]
+  - title: Automatisation et architecture
+    intro: Les gains possibles et vos contraintes d'hébergement.
+    questions:
+      - name: automation_potential
+        label: Pensez-vous que certaines tâches répétitives pourraient être automatisées grâce à l'IA ?
+        type: radio
+        options:
+          - [many, "Oui, beaucoup"]
+          - [probably, Probablement]
+          - [some, Quelques-unes]
+          - [few, Peu]
+          - [unknown, Je ne sais pas lesquelles]
+      - name: data_hosting_concern
+        label: L'hébergement et la localisation de vos données sont-ils une préoccupation ?
+        type: radio
+        options:
+          - [critical, Critique]
+          - [important, Importante]
+          - [secondary, Secondaire]
+          - [not_really, Pas vraiment]
+          - [unknown, Je ne sais pas]
+      - name: private_ai_interest
+        label: Une solution IA privée, hébergée ou locale pourrait-elle vous intéresser ?
+        type: radio
+        options:
+          - [already_exploring, "Oui, nous étudions déjà le sujet"]
+          - [potentially, "Oui, potentiellement"]
+          - [if_economic, Seulement si elle est économiquement intéressante]
+          - ["no", "Non"]
+          - [unknown, Je ne sais pas encore ce que cela implique]
+  - title: Vos priorités
+    intro: Le sujet principal sur lequel vous souhaitez avancer.
+    questions:
+      - name: main_problem
+        label: Quel est aujourd'hui votre principal problème ou votre principale interrogation autour de l'IA ?
+        type: textarea
+        required: true
+        minlength: 20
+        maxlength: 2000
+        help: 20 caractères minimum, 2 000 maximum.
+      - name: priorities
+        label: Que souhaiteriez-vous améliorer en priorité ?
+        type: checkbox
+        options:
+          - [costs, Réduire ou mieux maîtriser les coûts]
+          - [automation, Automatiser certaines tâches]
+          - [training, Former les équipes]
+          - [security, Sécuriser les usages]
+          - [governance, Définir des règles de gouvernance]
+          - [new_tools, Déployer de nouveaux outils IA]
+          - [private_ai, Mettre en place une IA privée / locale]
+          - [strategy, Définir une stratégie IA]
+          - [prototype, Créer un prototype]
+          - [business_app, Développer une application ou un outil métier]
+          - [unknown, Je ne sais pas encore]
+          - [other, Autre]
+      - name: horizon
+        label: À quel horizon souhaitez-vous avancer sur ce sujet ?
+        type: radio
+        options:
+          - [now, Dès maintenant]
+          - [under_3_months, Dans les 3 prochains mois]
+          - ["3_to_6_months", Dans les 3 à 6 mois]
+          - [later, Plus tard]
+          - [exploration, Je suis simplement en phase d'exploration]

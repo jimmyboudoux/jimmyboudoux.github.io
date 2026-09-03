@@ -19,7 +19,6 @@ vendor/
 *.sqlite
 *.sqlite3
 *.db
-*.sql
 *.dump
 *.bak
 *.backup
@@ -36,3 +35,8 @@ Thumbs.db
 notesprivate.md
 privatespecs/
 test-*.txt
+
+# ALTCHA frontend bundle, volontairement versionné
+!assets/vendor/
+!assets/vendor/altcha/
+!assets/vendor/altcha/**

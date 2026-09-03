@@ -90,5 +90,6 @@
   <main>{{ content }}</main>
   {% include footer.html %}
   <script src="/assets/js/site.js" defer></script>
+  {% for script in page.extra_js %}<script src="{{ script }}" defer></script>{% endfor %}
 </body>
 </html>
