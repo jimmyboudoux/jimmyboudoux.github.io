@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Ingénierie & structure — IA, Data, Logiciel">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ site.time | date: '%s' }}">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -89,7 +89,9 @@
   {% include header.html %}
   <main>{{ content }}</main>
   {% include footer.html %}
-  <script src="/assets/js/site.js" defer></script>
-  {% for script in page.extra_js %}<script src="{{ script }}" defer></script>{% endfor %}
+  <script src="/assets/js/site.js?v={{ site.time | date: '%s' }}" defer></script>
+  {% for script in page.extra_js %}
+  <script src="{{ script }}?v={{ site.time | date: '%s' }}" defer></script>
+  {% endfor %}
 </body>
 </html>
