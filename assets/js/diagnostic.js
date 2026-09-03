@@ -333,7 +333,13 @@ async function solveAltcha() {
     } catch (error) {
       formError.textContent = `${error.message || 'Une erreur est survenue lors de l’envoi.'} Vos réponses sont conservées. Vous pouvez réessayer.`;
       formError.hidden = false;
-      formError.focus?.();
+
+      formError.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+      formError.focus({ preventScroll: true });
       submitButton.disabled = false;
       submitButton.textContent = 'Envoyer mon diagnostic';
       sending = false;

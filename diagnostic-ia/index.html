@@ -68,7 +68,6 @@ extra_js:
         <div class="diagnostic-progress__meta"><span data-step-label>Étape 1 sur 7</span><span data-step-title>Votre entreprise</span></div>
         <div class="diagnostic-progress__track"><span data-progress-bar></span></div>
       </div>
-      <div class="diagnostic-form-error" role="alert" aria-live="assertive" data-form-error hidden></div>
       <altcha-widget
         challenge="{{ site.diagnostic_api_url | default: 'https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics' }}/challenge"
         display="invisible"
@@ -115,6 +114,14 @@ extra_js:
         <div class="diagnostic-honeypot" aria-hidden="true"><label for="website">Votre site web</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
       </fieldset>
 
+      <div
+        class="diagnostic-form-error"
+        role="alert"
+        aria-live="assertive"
+        tabindex="-1"
+        data-form-error
+        hidden>
+      </div>
       <div class="diagnostic-nav"><button class="btn btn--ghost" type="button" data-previous hidden>← Précédent</button><button class="btn" type="button" data-next>Suivant →</button><button class="btn" type="submit" data-submit hidden>Envoyer mon diagnostic</button></div>
     </form>
   </div>
