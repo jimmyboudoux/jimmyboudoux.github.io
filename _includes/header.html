@@ -2,10 +2,10 @@
   <div class="container navbar">
     <a class="brand" href="/" aria-label="Accueil — Jimmy Boudoux">
       <img class="brand-mark-img" src="/assets/img/logo-jb.svg" alt="" width="44" height="44">
-      <span class="brand-copy"><strong>Jimmy Boudoux</strong><small>Ingénieur polyvalent</small></span>
+      <span class="brand-copy"><strong>Jimmy Boudoux</strong><small>IA · Data · Software</small></span>
     </a>
-    <button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-button>☰</button>
-    <nav class="nav-links" aria-label="Navigation principale" data-menu>
+    <button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="main-navigation" aria-expanded="false" data-menu-button>☰</button>
+    <nav class="nav-links" id="main-navigation" aria-label="Navigation principale" data-menu>
       {% for item in site.data.navigation %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
       <a class="nav-cta" href="/diagnostic-ia/">Faire le diagnostic</a>
     </nav>

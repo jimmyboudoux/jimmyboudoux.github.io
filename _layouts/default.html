@@ -18,12 +18,12 @@
   <meta property="og:image" content="{{ site.url }}/assets/img/og.png">
   <meta property="og:image:width" content="1730">
   <meta property="og:image:height" content="909">
-  <meta property="og:image:alt" content="Ingénierie & structure — IA, Data, Logiciel">
+  <meta property="og:image:alt" content="Jimmy Boudoux — Ingénieur IA, Data & Software">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
   <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}">
   <meta name="twitter:image" content="{{ site.url }}/assets/img/og.png">
-  <meta name="twitter:image:alt" content="Ingénierie & structure — IA, Data, Logiciel">
+  <meta name="twitter:image:alt" content="Jimmy Boudoux — Ingénieur IA, Data & Software">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/site.css?v={{ site.time | date: '%s' }}">
@@ -37,7 +37,7 @@
         "name": "Jimmy Boudoux",
         "url": "{{ site.url }}/",
         "image": "{{ site.url }}/assets/img/avatar.png",
-        "jobTitle": "Ingénieur IA, Data et logiciel",
+        "jobTitle": "Ingénieur IA, Data & Software",
         "sameAs": ["{{ site.linkedin }}", "{{ site.github }}"]
       },
       {
@@ -86,8 +86,9 @@
 </script>
 </head>
 <body class="{{ page.theme | default: 'theme-ai' }}">
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
   {% include header.html %}
-  <main>{{ content }}</main>
+  <main id="main-content">{{ content }}</main>
   {% include footer.html %}
   <script src="/assets/js/site.js?v={{ site.time | date: '%s' }}" defer></script>
   {% for script in page.extra_js %}

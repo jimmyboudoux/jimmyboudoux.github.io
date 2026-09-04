@@ -1,37 +1,32 @@
 - slug: ai-adoption
   title: Adoption & transformation IA
-  short: Stratégie, cas d’usage, communauté, formation, gouvernance et conduite du
-    changement.
+  short: Cas d’usage, formation, gouvernance et transformation des pratiques pour faire passer l’IA des tests aux usages réels.
   theme: theme-ai
   icon: network
   number: '01'
 - slug: ai-engineering
   title: Ingénierie IA & automatisation
-  short: Assistants, agents, RAG, automatisations, APIs et architectures locales,
-    cloud ou hybrides.
-  keywords: AI Engineering · LLM · Agents · RAG
+  short: Assistants, RAG, agents IA, automatisation et architectures locales, privées, cloud ou hybrides.
+  keywords: AI Engineering · LLM · Agents · RAG · IA locale
   theme: theme-engineering
   icon: gear
   number: '02'
 - slug: software-rescue
-  title: Modernisation logicielle
-  short: Audit, stabilisation, tests, sécurité et modernisation progressive des applications
-    fragiles.
-  keywords: Software Rescue · Legacy · Tests · Sécurité
+  title: Sauvetage & modernisation logicielle
+  short: Reprendre une application legacy ou vibe codée, la stabiliser, comprendre ce qui casse et construire une trajectoire durable.
+  keywords: Software Rescue · Vibe Coding · Legacy · Modernisation
   theme: theme-software
   icon: code
   number: '03'
 - slug: data-reporting
   title: Data, Analytics & Reporting
-  short: Pipelines, qualité, modélisation, contrôles et reporting automatisé pour
-    des données exploitables.
+  short: "Pipelines, qualité, automatisation et reporting : fiabiliser les données et réduire les traitements manuels."
   theme: theme-data
   icon: database
   number: '04'
 - slug: ai-finops
-  title: AI FinOps & Rationalisation
-  short: Coûts IA, licences, APIs, outils redondants, choix technologiques et décisions
-    build vs buy.
+  title: AI FinOps & optimisation
+  short: Mesurer les coûts IA, rationaliser licences et outils, et comparer cloud, API, privé ou local.
   theme: theme-finops
   icon: chart
   number: '05'

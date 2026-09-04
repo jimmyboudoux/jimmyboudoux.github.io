@@ -100,8 +100,3 @@ cd diagnostic-api && npm test
 ```
 
 Les tests couvrent la validation, le honeypot, le rate limit, l’idempotence, le CORS, l’allowlist de Host (public/admin/localhost), Basic Auth, CSRF, les en-têtes de sécurité admin, l’isolation des réseaux Compose, la gateway à chemin/méthodes exacts, les scores manuels, SQLite sans score automatique, ntfy non bloquant et la persistance après réouverture.
-
-## À vérifier avant publication définitive
-- tester `contact@jboudoux.fr`
-- confirmer les repères budgétaires publics
-- remplacer l’avatar par une photo professionnelle quand souhaité

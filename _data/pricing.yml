@@ -1,30 +1,63 @@
-- title: Revue expert
-  price: 290 €
-  suffix: HT
-  detail: 90 min de travail ciblé + une synthèse courte.
-  use: Architecture, code, IA, Data, choix d’outil ou seconde opinion.
-  theme: theme-ai
-- title: ½ journée de cadrage
-  price: 550 €
-  suffix: HT
-  detail: Une demi-journée pour clarifier un problème et décider du prochain pas.
-  use: Idéal pour freelance, TPE ou PME avec un sujet précis.
-  theme: theme-engineering
-- title: Journée / mission d’ingénierie
-  price: 900 €
-  suffix: HT / jour
-  detail: Conception, build, revue, modernisation ou accompagnement delivery.
-  use: Le périmètre, l’urgence et le niveau de responsabilité sont cadrés en amont.
-  theme: theme-data
-- title: Audit ciblé
-  price: 2 500 €
-  suffix: HT · à partir de
-  detail: État des lieux, priorités, risques et feuille de route actionnable.
-  use: 'Périmètre typique : quelques jours, puis décision go / no-go.'
-  theme: theme-software
-- title: Temps partagé
-  price: Dès 1 800 €
-  suffix: HT / mois
-  detail: "2 jours / mois : 1 800 € · 4 jours / mois : 3 400 €."
-  use: "Rythme supérieur : devis. CTO, Data/IA ou pilotage digital selon le besoin."
-  theme: theme-fractional
+expert_review:
+  label: "Revue experte ciblée"
+  price: "390 € HT"
+  short: "Une question principale, quelques éléments à examiner, une analyse et une recommandation synthétique."
+
+framing:
+  label: "Cadrage ciblé"
+  price: "900 € HT"
+  short: "Clarifier un problème principal, comprendre l’existant, comparer les options et recommander la prochaine étape."
+
+automation:
+  label: "Automatisation"
+  starting_price: "À partir de 1 500 € HT"
+  short: "Automatiser un flux avec la solution adaptée : déterministe, LLM/agent ou hybride."
+
+local_ai:
+  prototype:
+    label: "Prototype IA locale"
+    starting_price: "À partir de 1 500 € HT"
+    short: "Tester un modèle, une API, un benchmark ou un usage local avant d’investir."
+
+ai_portal:
+  essential:
+    label: "Portail IA essentiel"
+    starting_price: "À partir de 1 500 € HT"
+    short: "Une interface IA simple connectée aux modèles choisis par l’entreprise."
+  enterprise:
+    label: "Portail IA d’entreprise"
+    starting_price: "À partir de 4 000 € HT"
+    short: "Un portail IA intégré à l’environnement, aux utilisateurs et aux contraintes de l’entreprise."
+
+software_rescue:
+  label: "Reprise & stabilisation logicielle"
+  starting_price: "À partir de 2 500 € HT"
+  short: "Reprendre une application fragile, legacy ou vibe codée et construire une trajectoire de stabilisation."
+
+audit:
+  starting_price: "À partir de 2 500 € HT"
+  ranges:
+    targeted:
+      label: "Audit ciblé"
+      range: "2 500 – 4 000 € HT"
+    multi_subject:
+      label: "Audit multi-sujets"
+      range: "4 500 – 8 000 € HT"
+    transverse:
+      label: "Audit transverse"
+      range: "8 000 – 20 000 € HT et plus"
+
+fractional:
+  starting_price: "Dès 900 € HT / mois"
+  light:
+    label: "Pilotage léger"
+    range: "900 – 1 500 € HT / mois"
+  regular:
+    label: "Pilotage régulier"
+    range: "2 000 – 3 500 € HT / mois"
+  transverse:
+    label: "Direction transverse"
+    range: "3 500 – 6 500 € HT / mois"
+  reinforced:
+    label: "Direction renforcée"
+    range: "À partir de 6 500 € HT / mois"

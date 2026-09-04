@@ -1,21 +1,17 @@
 <section class="section pricing-section" id="tarifs">
   <div class="container">
     <div class="section-head pricing-head">
-      <div><span class="eyebrow">Repères budgétaires</span><h2>Des points d’entrée lisibles, sans enfermer le projet.</h2></div>
-      <p>Les montants dépendent du périmètre, de l’urgence, de la durée et du niveau de responsabilité.</p>
+      <div><span class="eyebrow">Tarifs & repères budgétaires</span><h2>Des prix clairs quand le périmètre est clair.</h2></div>
+      <p>Des repères publics pour commencer ; le chiffrage d’une mission tient compte du résultat attendu, de la complexité et du niveau d’implication.</p>
     </div>
     <div class="pricing-grid">
-    {% for offer in site.data.pricing %}
-      <article class="price-card {{ offer.theme }}">
-        <span class="price-kicker">{{ offer.title }}</span>
-        <div class="price"><strong>{{ offer.price }}</strong><small>{{ offer.suffix }}</small></div>
-        <p>{{ offer.detail }}</p>
-        <span class="price-use">{{ offer.use }}</span>
-      </article>
-    {% endfor %}
+      <article class="price-card theme-ai"><span class="price-kicker">Revue experte</span><div class="price"><strong>{{ site.data.pricing.expert_review.price }}</strong></div><p>Une question ciblée ou une seconde opinion.</p></article>
+      <article class="price-card theme-engineering"><span class="price-kicker">Cadrage ciblé</span><div class="price"><strong>{{ site.data.pricing.framing.price }}</strong></div><p>Clarifier un problème et décider de la prochaine étape.</p></article>
+      <article class="price-card theme-data"><span class="price-kicker">Construire / automatiser</span><div class="price"><strong>{{ site.data.pricing.automation.starting_price }}</strong></div><p>Automatisation, intégration, prototype ou réalisation ciblée.</p></article>
+      <article class="price-card theme-software"><span class="price-kicker">Audit</span><div class="price"><strong>{{ site.data.pricing.audit.starting_price }}</strong></div><p>D’un sujet ciblé à une investigation transverse.</p></article>
+      <article class="price-card theme-fractional"><span class="price-kicker">CTO / CAIO à temps partagé</span><div class="price"><strong>{{ site.data.pricing.fractional.starting_price }}</strong></div><p>Pilotage et direction adaptés au niveau d’implication réellement nécessaire.</p></article>
+      <article class="price-card theme-finops"><span class="price-kicker">Formation</span><div class="price"><strong>À partir de {{ site.data.formations.ai-literacy.starting_price }}</strong></div><p>Tarifs fixes selon la formation et le format.</p></article>
     </div>
-    <div class="pricing-note">
-      <p>Les petits formats permettent de commencer sans gros engagement. Les missions longues, multi-équipes ou à forte responsabilité sont cadrées au devis.</p>
-    </div>
+    <div class="pricing-note"><p><a class="card-link" href="/tarifs/">Voir tous les tarifs et exemples de périmètre →</a></p></div>
   </div>
 </section>
