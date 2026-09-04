@@ -195,6 +195,8 @@ p { margin: 0; }
 .hero-principles span::before { content:"✓"; color:var(--sage-strong); font-weight:800; margin-right:.45rem; }
 .hero-location { margin-top:1rem; color:var(--text-soft); font-size:.92rem; }
 .hero-location a { color:var(--ink-2); font-weight:700; text-underline-offset:3px; }
+.hero-secondary-link { display:inline-flex; margin-top:1rem; color:var(--ink-2); font-size:.9rem; font-weight:700; text-decoration:none; text-underline-offset:4px; }
+.hero-secondary-link:hover { color:var(--lavender-strong); text-decoration:underline; }
 
 /* Section headers */
 .section-head { display:grid; gap:.9rem; margin-bottom:clamp(2rem,4vw,3rem); }
@@ -225,6 +227,8 @@ p { margin: 0; }
   font-size:.68rem; font-weight:750; letter-spacing:.07em; text-transform:uppercase;
 }
 .card h3 { position:relative; z-index:1; font-size:1.38rem; }
+.portal-heading { position:relative; z-index:1; margin-top:1.35rem; }
+.card-subhead { padding-top:1.15rem; border-top:1px solid var(--line); }
 .card p { position:relative; z-index:1; margin-top:.72rem; color:var(--text-soft); }
 .card-link { position:relative; z-index:1; display:inline-flex; margin-top:1.1rem; color:var(--ink); font-weight:700; text-decoration:none; }
 .card-link:hover { color:var(--lavender-strong); }

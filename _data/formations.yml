@@ -2,7 +2,6 @@ ai-literacy:
   short_title: "AI Literacy"
   title: "AI Literacy — comprendre et utiliser l’IA en entreprise"
   card_title: "AI Literacy"
-  badge: "Offre de lancement"
   theme: "theme-ai"
   promise: "Donner à tous les collaborateurs les bons repères pour utiliser l’IA avec discernement."
   summary: "Des fondamentaux concrets pour choisir les bons usages, formuler de meilleures demandes et garder une vérification humaine."
@@ -99,9 +98,9 @@ ia-locale:
   duration: "1 journée minimum"
   format_short: "7 h · présentiel ou distanciel synchrone"
   starting_price: "1 500 € HT"
-  price_note: "Journée minimum. Atelier approfondi ou programme sur mesure : sur devis."
+  price_note: "1 Journée minimum. Atelier approfondi ou programme sur mesure : sur devis."
   formats:
-    - label: "Journée minimum"
+    - label: "1Journée minimum"
       duration: "7 h"
       purpose: "Comprendre les choix, analyser des cas d’usage et bâtir une première feuille de route de pilote."
   objectives:
@@ -129,5 +128,5 @@ ia-locale:
   assessment: "Auto-évaluation et quiz initial, analyse de scénarios et choix d’architecture pendant la session, puis quiz et cas de décision. Une évaluation à chaud clôture la session."
   access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Une démonstration spécifique ou une adaptation peut demander un délai complémentaire."
   prices:
-    - format: "Journée minimum"
+    - format: "1 Journée minimum"
       price: "1 500 € HT"
