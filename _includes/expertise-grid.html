@@ -1,5 +1,5 @@
 <div class="cards expertise-grid">
-{% for service in site.data.services %}
+  {% for service in site.data.services %}
   <article class="card expertise-card {{ service.theme }}">
     <span class="expertise-icon">{% include icon.html name=service.icon %}</span>
     <h3>{{ service.title }}</h3>
@@ -7,22 +7,22 @@
     <p>{{ service.short }}</p>
     <a class="card-link" href="/{{ service.slug }}/">En savoir plus →</a>
   </article>
-{% endfor %}
-{% if include.include_portal %}
+  {% endfor %} {% if include.include_portal %}
   <article class="card expertise-card expertise-card--portal theme-engineering">
     <span class="expertise-icon">{% include icon.html name="shield" %}</span>
     <h3>Portails IA privés</h3>
     <span class="expertise-keywords">API · Local · Hybride</span>
-    <p>Une interface IA commune pour vos équipes, connectée aux modèles et à l’architecture adaptés à vos contraintes.</p>
+    <p>
+      Une interface IA commune pour vos équipes, connectée aux modèles et à l’architecture adaptés à vos contraintes.
+    </p>
     <a class="card-link" href="/ia-privee-locale/">Découvrir les portails IA →</a>
   </article>
-{% endif %}
-{% if include.include_fractional %}
+  {% endif %} {% if include.include_fractional %}
   <article class="card expertise-card theme-fractional">
     <span class="expertise-icon">{% include icon.html name="users" %}</span>
     <h3>Direction Tech, Data & IA à temps partagé</h3>
     <p>Fractional CTO / AI / Digital Lead selon le besoin : pilotage transversal et continuité.</p>
     <a class="card-link" href="/fractional-lead/">Voir le format →</a>
   </article>
-{% endif %}
+  {% endif %}
 </div>

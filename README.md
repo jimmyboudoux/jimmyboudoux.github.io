@@ -1,102 +1,114 @@
-# jboudoux.fr — V3
+# jboudoux.fr
 
-Site GitHub Pages factorisé avec **Jekyll natif** (supporté par GitHub Pages), sans framework JavaScript ni build externe.
+Site statique Jekyll publié avec GitHub Pages. Il ne repose sur aucun framework frontend ni bundler : Jekyll génère les pages, Sass compile les styles et les modules JavaScript natifs couvrent les interactions.
 
-## Pourquoi Jekyll maintenant ?
-La V2 répétait le `<head>`, le header, le footer et une partie des cartes dans presque chaque `index.html`. La V3 factorise ces éléments :
+## Démarrer
 
-- `_layouts/default.html` : squelette HTML commun
-- `_includes/header.html` / `footer.html` : navigation et footer
-- `_includes/page-hero.html` : hero des pages secondaires
-- `_includes/engineering-map.html` : schéma Comprendre → Concevoir → Construire → Mesurer
-- `_includes/expertise-grid.html` : cartes expertises communes
-- `_includes/pricing.html` : repères tarifaires
-- `_includes/icon.html` : SVG line-art cohérents
-- `_data/services.yml` : contenu des expertises
-- `_data/pricing.yml` : repères budgétaires
-- `_data/navigation.yml` : navigation
-
-Chaque page `index.html` ne contient plus que son front matter et son contenu spécifique.
-
-## Important
-`.nojekyll` a été supprimé volontairement : GitHub Pages doit exécuter Jekyll pour résoudre les layouts/includes.
-
-## Test local
-Le sitemap est compilé automatiquement à chaque build à partir des pages HTML et des
-collections Jekyll publiées (posts, articles, ressources, études de cas, etc.). La
-commande suivante construit le site et vérifie le XML, les URLs canoniques, les
-doublons, les URLs techniques et la référence dans `robots.txt` :
-```bash
-bundle exec jekyll build && ruby script/validate_sitemap.rb
-```
-Cette même vérification est exécutée automatiquement par GitHub Actions à chaque
-push et pull request.
-
-Pour prévisualiser le site localement :
-```bash
-bundle exec jekyll serve
-```
-
-Un contenu qui ne doit pas être indexé doit avoir dans son front matter :
-```yml
-noindex: true
-sitemap: false
-```
-
-Ajoutez `last_modified_at` uniquement lorsqu'une date de modification réelle est
-connue. Les contenus de collections utilisent aussi leur `date` de publication.
-
-## Déploiement
-Dézipper à la racine de `jimmyboudoux.github.io`, puis :
-```bash
-git add .
-git commit -m "Refactor site with Jekyll and engineering identity"
-git push
-```
-
-## Diagnostic IA Entreprise
-
-La page publique et le questionnaire du Diagnostic IA Entreprise sont intégrés au site Jekyll.
-
-### Composants publics
-
-- `/diagnostic-ia/` : page et questionnaire multi-étapes ;
-- `/diagnostic-ia/merci/` : page de confirmation `noindex` ;
-- `assets/js/diagnostic.js` : navigation, conservation temporaire du brouillon et envoi du formulaire ;
-- `assets/vendor/altcha/` : protection anti-robot ALTCHA auto-hébergée côté frontend.
-
-Les réponses complètes ne sont jamais envoyées à Umami. Le brouillon est conservé dans `sessionStorage` et supprimé après un envoi réussi.
-
-Le backend, l'administration, la base de données, les sauvegardes et les services de notification sont maintenus séparément dans une infrastructure privée et ne font pas partie de ce dépôt.
-
-### Développement local
-
-Terminal 1 :
+Prérequis : Ruby 3.2 (voir `.ruby-version`), Bundler et Node.js 22 ou plus récent.
 
 ```bash
-bundle exec jekyll serve
-```
-
-Terminal 2 :
-
-```bash
-cd diagnostic-api
+bundle install
 npm ci
-cp .env.example .env
-# Remplacer les valeurs de secret de cet exemple uniquement pour le développement.
-npm run migrate
-npm start
+bundle exec jekyll serve
 ```
 
-Pour un test intégré local, surcharger `diagnostic_api_url` avec `http://127.0.0.1:3020/v1/diagnostics` dans un fichier de configuration Jekyll local non versionné et ajouter cette origine à `SITE_ORIGINS`.
+La prévisualisation est disponible sur l'adresse affichée par Jekyll, généralement `http://127.0.0.1:4000`.
 
-### Tests
+## Vérifier avant une modification
+
+```bash
+./script/check
+```
+
+Cette commande construit le site dans un répertoire temporaire, vérifie le sitemap, les métadonnées SEO, les liens et ancres internes, le formulaire Diagnostic IA, la syntaxe JavaScript et les tests unitaires du Diagnostic. GitHub Actions exécute la même commande.
+
+Les gabarits HTML/Liquid sont formatés avec Prettier et son plugin Liquid :
+
+```bash
+npm run format:check
+npm run format
+```
+
+Pour conserver les anciennes commandes dans un script externe :
 
 ```bash
 bundle exec jekyll build
 ruby script/validate_sitemap.rb
 ruby script/validate_diagnostic.rb
-cd diagnostic-api && npm test
 ```
 
-Les tests couvrent la validation, le honeypot, le rate limit, l’idempotence, le CORS, l’allowlist de Host (public/admin/localhost), Basic Auth, CSRF, les en-têtes de sécurité admin, l’isolation des réseaux Compose, la gateway à chemin/méthodes exacts, les scores manuels, SQLite sans score automatique, ntfy non bloquant et la persistance après réouverture.
+## Où modifier quoi
+
+| Besoin | Fichier principal |
+|---|---|
+| Identité, URLs, analytics, version des assets | `_config.yml` |
+| Navigation | `_data/navigation.yml` |
+| Services | `_data/services.yml` |
+| Tarifs | `_data/pricing.yml` |
+| Formations | `_data/formations.yml` |
+| Questions du diagnostic | `_data/diagnostic.yml` |
+| Structure commune | `_layouts/default.html`, `_includes/` |
+| Styles | `assets/css/site.scss`, `_sass/` |
+| Menu et interactions globales | `assets/js/site.mjs`, `assets/js/site-core.mjs` |
+| Diagnostic : DOM | `assets/js/diagnostic/index.mjs` |
+| Diagnostic : logique testable | `assets/js/diagnostic/core.mjs` |
+| Contrat public du Diagnostic | `contracts/diagnostic-submission.schema.json` |
+
+Les pages publiques restent dans leurs dossiers (`services/index.html`, `formations/.../index.html`, etc.). Garder le contenu spécifique dans la page ; extraire un include uniquement lorsqu'un bloc est partagé et stable.
+
+## Front matter
+
+Les pages utilisent `layout: default`. Les clés habituelles sont :
+
+```yml
+---
+layout: default
+title: Titre SEO de la page
+description: Description SEO unique
+theme: theme-ai
+noindex: false
+sitemap: true
+extra_js: []
+extra_modules: []
+---
+```
+
+`noindex: true` et `sitemap: false` doivent toujours être utilisés ensemble pour une page privée de l'indexation. `extra_modules` sert aux modules JavaScript ES ; `extra_js` reste disponible pour les scripts classiques.
+
+## Styles et JavaScript
+
+Le point d'entrée Sass est `assets/css/site.scss`. Les partials sous `_sass/` sont organisés par responsabilité et importés dans un ordre qui préserve la cascade. Les variables de design sont dans `_sass/base/_foundation.scss`.
+
+Le formulaire Diagnostic est volontairement séparé : `core.mjs` ne dépend pas du DOM et se teste avec Node ; `index.mjs` orchestre le formulaire, `sessionStorage`, ALTCHA et l'appel réseau. Toute évolution du payload, de la clé de brouillon, de l'URL de confirmation ou des événements analytics doit être coordonnée avec le backend privé.
+
+Les événements analytics ne doivent jamais contenir de réponse de formulaire ni de donnée de contact.
+
+## Diagnostic IA et backend privé
+
+Le backend du Diagnostic, son administration, ses données et ses secrets ne sont pas dans ce dépôt. Pour tester l'interface sans backend, lancer simplement Jekyll. Un test d'envoi intégré nécessite l'accès au projet backend concerné et une configuration locale non versionnée qui remplace `diagnostic_api_url` par son URL de développement.
+
+Ne pas ajouter de secrets au dépôt. Les fichiers `.env`, certificats, bases de données et sauvegardes sont ignorés par Git.
+
+## Déploiement
+
+Le déploiement est déclenché par un push sur la branche configurée dans GitHub Pages. Avant un push :
+
+```bash
+./script/check
+git status
+git add <fichiers-voulus>
+git commit -m "Description du changement"
+git push
+```
+
+## Checklist de revue
+
+- La page a un titre, une description et un seul `h1` uniques.
+- Les liens, ancres et images fonctionnent sur la version générée.
+- La mise en page est vérifiée sur mobile et desktop, au clavier et avec mouvement réduit.
+- Une page non indexable possède `noindex: true` et `sitemap: false`.
+- Les modifications de tarif, service ou formation passent par les données lorsque la donnée est partagée.
+- Le Diagnostic conserve son contrat et ne transmet aucune donnée personnelle à l'analytics.
+- `./script/check` réussit.
+
+Les décisions structurantes sont documentées dans `docs/decisions/`.

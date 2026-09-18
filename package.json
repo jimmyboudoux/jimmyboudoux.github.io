@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "format": "prettier --write '**/*.html'",
+    "format:check": "prettier --check '**/*.html'",
+    "test:js": "node test/js/diagnostic.test.mjs && node test/js/site.test.mjs"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "1.11.0",
+    "prettier": "3.9.6"
+  }
+}

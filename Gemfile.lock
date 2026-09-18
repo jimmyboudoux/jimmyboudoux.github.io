@@ -281,6 +281,8 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  minitest
+  nokogiri
 
 BUNDLED WITH
    2.4.20

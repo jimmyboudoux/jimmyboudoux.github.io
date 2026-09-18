@@ -1,0 +1,26 @@
+{% assign formation = include.formation %}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Modalités</span>
+      <h2>Un format adapté à votre contexte.</h2>
+    </div>
+    <div class="cards cards--3 formation-modalities">
+      <article class="card">
+        <h3>Formats</h3>
+        {% for format in formation.formats %}
+        <p><strong>{{ format.label }} · {{ format.duration }}</strong><br />{{ format.purpose }}</p>
+        {% endfor %}
+      </article>
+      <article class="card">
+        <h3>Prérequis et moyens</h3>
+        <p><strong>Prérequis :</strong> {{ formation.prerequisites }}</p>
+        <p>{{ formation.resources }}</p>
+      </article>
+      <article class="card">
+        <h3>Évaluation</h3>
+        <p>{{ formation.assessment }}</p>
+      </article>
+    </div>
+  </div>
+</section>

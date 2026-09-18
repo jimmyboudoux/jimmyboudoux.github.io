@@ -1,13 +1,32 @@
 <header class="site-header">
   <div class="container navbar">
-    <a class="brand" href="/" aria-label="Accueil — Jimmy Boudoux">
-      <img class="brand-mark-img" src="/assets/img/logo-jb.svg" alt="" width="44" height="44">
-      <span class="brand-copy"><strong>Jimmy Boudoux</strong><small>IA · Data · Software</small></span>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Accueil — {{ site.person_name }}">
+      <img class="brand-mark-img" src="{{ '/assets/img/logo-jb.svg' | relative_url }}" alt="" width="44" height="44" />
+      <span class="brand-copy"><strong>{{ site.person_name }}</strong><small>IA · Data · Software</small></span>
     </a>
-    <button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-controls="main-navigation" aria-expanded="false" data-menu-button>☰</button>
+    <button
+      class="menu-btn"
+      type="button"
+      aria-label="Ouvrir le menu"
+      aria-controls="main-navigation"
+      aria-expanded="false"
+      data-menu-button
+    >
+      ☰
+    </button>
     <nav class="nav-links" id="main-navigation" aria-label="Navigation principale" data-menu>
-      {% for item in site.data.navigation %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
-      <a class="nav-cta" href="/diagnostic-ia/">Faire le diagnostic</a>
+      {% for item in site.data.navigation %} {% assign item_path = item.href | split: '#' | first %} {% if page.url ==
+      item_path %} {% unless item.href contains '#' %}
+      <a href="{{ item.href | relative_url }}" aria-current="page">{{ item.label }}</a>
+      {% else %}
+      <a href="{{ item.href | relative_url }}">{{ item.label }}</a>
+      {% endunless %} {% else %}
+      <a href="{{ item.href | relative_url }}">{{ item.label }}</a>
+      {% endif %} {% endfor %} {% if page.url == '/diagnostic-ia/' %}
+      <a class="nav-cta" href="{{ '/diagnostic-ia/' | relative_url }}" aria-current="page">Faire le diagnostic</a>
+      {% else %}
+      <a class="nav-cta" href="{{ '/diagnostic-ia/' | relative_url }}">Faire le diagnostic</a>
+      {% endif %}
     </nav>
   </div>
 </header>

@@ -1,0 +1,35 @@
+{% assign formation = include.formation %}
+<section class="section">
+  <div class="container cards cards--3 formation-support">
+    <article class="card">
+      <h3>Lieu et adaptation</h3>
+      <p>
+        Formation disponible en présentiel ou à distance, partout en France. Les cas et règles internes peuvent être
+        intégrés après échange.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Accessibilité</h3>
+      <p>
+        Vous avez besoin d’un aménagement lié à une situation de handicap ? Signalez-le dès le premier échange afin que
+        nous étudiions les adaptations possibles ou une orientation adaptée.
+      </p>
+      <a class="card-link" href="mailto:{{ site.email }}?subject=Besoin%20d%27accessibilit%C3%A9">Nous contacter →</a>
+    </article>
+    <article class="card">
+      <h3>Délais d’accès</h3>
+      <p>{{ formation.access_delay }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container cta-box">
+    <h2>Discuter de cette formation</h2>
+    <p>Un échange de 20 minutes suffit pour vérifier si cette formation correspond à votre besoin.</p>
+    <div class="actions">
+      {% include booking-link.html label="Discuter de cette formation" class="btn" location="training" %}
+      <a class="btn btn--ghost" href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </div>
+  </div>
+</section>

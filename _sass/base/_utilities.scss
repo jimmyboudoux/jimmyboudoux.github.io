@@ -1,0 +1,19 @@
+/* Small reusable spacing utilities for CSP-safe markup. */
+.mt-075 { margin-top: .75rem; }
+.mt-1 { margin-top: 1rem; }
+.mt-125 { margin-top: 1.25rem; }
+
+.contact-card--accent {
+  background: var(--lavender);
+  border-color: var(--lavender-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

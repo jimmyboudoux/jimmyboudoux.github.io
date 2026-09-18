@@ -1,0 +1,28 @@
+{% capture page_title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %} {% assign
+page_description = page.description | default: site.description %} {% assign page_url = page.url | absolute_url %} {%
+assign social_image = '/assets/img/og-optimized.png' | absolute_url %}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_description | escape }}" />
+<meta name="author" content="{{ site.person_name | escape }}" />
+{% if page.noindex %}<meta name="robots" content="noindex" />{% endif %}
+<meta name="theme-color" content="#fbfaf7" />
+<link rel="canonical" href="{{ page_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="{{ site.title | escape }}" />
+<meta property="og:title" content="{{ page_title | escape }}" />
+<meta property="og:description" content="{{ page_description | escape }}" />
+<meta property="og:url" content="{{ page_url }}" />
+<meta property="og:image" content="{{ social_image }}" />
+<meta property="og:image:width" content="1730" />
+<meta property="og:image:height" content="909" />
+<meta property="og:image:alt" content="{{ site.person_name | escape }} — {{ site.professional_title | escape }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ page_title | escape }}" />
+<meta name="twitter:description" content="{{ page_description | escape }}" />
+<meta name="twitter:image" content="{{ social_image }}" />
+<meta name="twitter:image:alt" content="{{ site.person_name | escape }} — {{ site.professional_title | escape }}" />
+<link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml" sizes="any" />
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.asset_version }}" />

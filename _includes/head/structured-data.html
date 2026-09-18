@@ -1,0 +1,54 @@
+{% assign homepage = '/' | absolute_url %} {% assign person_id = '/#jimmy-boudoux' | absolute_url %} {% assign
+service_id = '/#professional-service' | absolute_url %} {% assign website_id = '/#website' | absolute_url %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": {{ person_id | jsonify }},
+        "name": {{ site.person_name | jsonify }},
+        "url": {{ homepage | jsonify }},
+        "image": {{ '/assets/img/avatar-512.png' | absolute_url | jsonify }},
+        "jobTitle": {{ site.professional_title | jsonify }},
+        "sameAs": [{{ site.linkedin | jsonify }}, {{ site.github | jsonify }}]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": {{ service_id | jsonify }},
+        "name": {{ site.person_name | jsonify }},
+        "alternateName": {{ site.legal_name | jsonify }},
+        "url": {{ homepage | jsonify }},
+        "image": {{ '/assets/img/og-optimized.png' | absolute_url | jsonify }},
+        "description": {{ site.description | jsonify }},
+        "email": {{ site.email | jsonify }},
+        "founder": { "@id": {{ person_id | jsonify }} },
+        "areaServed": [
+          { "@type": "City", "name": "Poitiers" },
+          { "@type": "City", "name": "Châtellerault" },
+          { "@type": "City", "name": "Niort" },
+          { "@type": "City", "name": "La Rochelle" },
+          { "@type": "City", "name": "Tours" },
+          { "@type": "City", "name": "Angoulême" },
+          { "@type": "City", "name": "Bordeaux" },
+          { "@type": "Country", "name": "France" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Poitiers",
+          "postalCode": "86000",
+          "addressCountry": "FR"
+        },
+        "sameAs": [{{ site.linkedin | jsonify }}, {{ site.github | jsonify }}]
+      },
+      {
+        "@type": "WebSite",
+        "@id": {{ website_id | jsonify }},
+        "name": {{ site.title | jsonify }},
+        "url": {{ homepage | jsonify }},
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": {{ service_id | jsonify }} }
+      }
+    ]
+  }
+</script>

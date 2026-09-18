@@ -1,0 +1,115 @@
+
+:root {
+  --bg: #fbfaf7;
+  --surface: rgba(255,255,255,.84);
+  --surface-solid: #ffffff;
+  --surface-soft: #f5f4f0;
+  --ink: #102746;
+  --ink-2: #243a56;
+  --text: #263b53;
+  --text-soft: #667487;
+  --line: #e6e3de;
+  --line-strong: #d7d4ce;
+
+  --lavender: #ece7fb;
+  --lavender-2: #dfd5f7;
+  --lavender-strong: #8d7bd2;
+
+  --sage: #e5f0e8;
+  --sage-2: #d6e8dc;
+  --sage-strong: #628f79;
+
+  --peach: #fde9df;
+  --peach-2: #f8dacb;
+  --peach-strong: #d98a64;
+
+  --blue: #e8eff8;
+  --blue-2: #d7e4f3;
+  --blue-strong: #6a89b8;
+
+  --cream: #f8f0df;
+  --cream-strong: #bd9864;
+
+  --rose: #f7e7ed;
+  --rose-strong: #ba7c92;
+
+  --accent: var(--lavender);
+  --accent-strong: var(--lavender-strong);
+
+  --container: 1240px;
+  --text-width: 760px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --shadow: 0 18px 60px rgba(26,42,64,.07);
+  --shadow-soft: 0 10px 34px rgba(26,42,64,.055);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 8% 15%, rgba(236,231,251,.55), transparent 23rem),
+    radial-gradient(circle at 96% 27%, rgba(253,233,223,.55), transparent 26rem),
+    var(--bg);
+  font-family: var(--sans);
+  line-height: 1.58;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
+.narrow { max-width: var(--text-width); }
+.section { padding: clamp(4rem, 7vw, 6.5rem) 0; }
+.section--tight { padding: clamp(2.75rem, 4.5vw, 4rem) 0; }
+.section--surface { background: rgba(255,255,255,.42); border-block: 1px solid rgba(230,227,222,.7); }
+.section--soft { background: var(--surface-soft); }
+
+h1,h2,h3,h4 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  letter-spacing: -.028em;
+  line-height: 1.02;
+}
+h1 { font-size: clamp(3.2rem, 7.6vw, 6.6rem); font-weight: 500; }
+h2 { font-size: clamp(2.15rem, 4.5vw, 3.65rem); font-weight: 500; }
+h3 { font-size: clamp(1.3rem, 2vw, 1.65rem); font-weight: 560; }
+h4 { font-size: 1.08rem; font-weight: 650; }
+p { margin: 0; }
+.lead {
+  margin-top: 1.35rem;
+  max-width: 760px;
+  color: var(--text-soft);
+  font-size: clamp(1.06rem, 2vw, 1.25rem);
+  line-height: 1.62;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: 1rem;
+  color: var(--ink-2);
+  font-size: .75rem;
+  font-weight: 750;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px; height: 2px; border-radius: 99px;
+  background: linear-gradient(90deg,var(--lavender-strong),var(--peach-strong));
+}
+.muted { color: var(--text-soft); }
+
+.theme-ai { --accent: var(--lavender); --accent-strong: var(--lavender-strong); }
+.theme-engineering { --accent: var(--sage); --accent-strong: var(--sage-strong); }
+.theme-software { --accent: var(--peach); --accent-strong: var(--peach-strong); }
+.theme-data { --accent: var(--blue); --accent-strong: var(--blue-strong); }
+.theme-finops { --accent: var(--cream); --accent-strong: var(--cream-strong); }
+.theme-fractional { --accent: var(--rose); --accent-strong: var(--rose-strong); }
+

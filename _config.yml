@@ -1,6 +1,9 @@
 title: Jimmy Boudoux
 description: Ingénieur IA, Data & Software à Poitiers. Conception, automatisation, IA locale, modernisation, optimisation des coûts et pilotage Tech & IA.
+person_name: Jimmy Boudoux
 professional_title: "Ingénieur IA, Data & Software"
+legal_name: "Boudoux Jimmy EI"
+legal_status: "Entrepreneur individuel"
 email: contact@jboudoux.fr
 url: https://jboudoux.fr
 baseurl: ""
@@ -9,14 +12,23 @@ linkedin: https://fr.linkedin.com/in/jimmy-boudoux-4b065b3a
 github: https://github.com/jimmyboudoux
 booking_url: https://calendar.app.google/XDhYZfK6gfg258c4A
 diagnostic_api_url: https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics
+analytics_url: https://collect.jboudoux.fr/script.js
+analytics_website_id: 01018f06-797d-46f8-ae7f-9b172b2e1893
+analytics_domains: jboudoux.fr
+asset_version: "20260915"
 markdown: kramdown
 permalink: pretty
 exclude:
   - README.md
+  - todo_refactoring.md
+  - docs
   - vendor
   - .bundle
+  - node_modules
   - Gemfile
   - Gemfile.lock
+  - package.json
+  - package-lock.json
   - notesprivate.md
   - privatespecs
   - diagnostic-api

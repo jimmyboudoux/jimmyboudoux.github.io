@@ -1,0 +1,15 @@
+{% assign formation = include.formation %}
+<section class="formation-hero {{ formation.theme }}">
+  <div class="container narrow">
+    <a class="back-link" href="{{ '/formations/' | relative_url }}">← Toutes les formations</a>
+    <span class="eyebrow">Formation intra-entreprise</span>
+    <h1>{{ formation.title }}</h1>
+    <p class="lead">{{ formation.promise }}</p>
+    <div class="actions">
+      <a class="btn" href="{{ '/contact/' | relative_url }}">Demander un devis →</a>
+      <a class="btn btn--ghost" href="mailto:{{ site.email }}?subject={{ formation.short_title | url_encode }}"
+        >Parler de votre équipe</a
+      >
+    </div>
+  </div>
+</section>

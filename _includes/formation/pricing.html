@@ -1,0 +1,33 @@
+{% assign formation = include.formation %}
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tarifs indicatifs</span>
+      <h2>Un devis clair après cadrage.</h2>
+      <p>
+        Tarifs intra-entreprise, incluant un cadrage léger, l’animation et les supports. Hors éventuels frais de
+        déplacement, hébergement, location de salle, licences, matériel et adaptation importante.
+      </p>
+    </div>
+    <div class="training-pricing" role="table" aria-label="Tarifs {{ formation.short_title }}">
+      <div class="training-pricing__row training-pricing__head" role="row">
+        <span role="columnheader">Format</span>
+        <span role="columnheader">Tarif</span>
+      </div>
+      {% for price in formation.prices %}
+      <div class="training-pricing__row" role="row">
+        <strong role="cell" data-label="Format">{{ price.format }}</strong>
+        <span role="cell" data-label="Tarif">{{ price.price }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% if formation.price_note %}
+    <p class="training-price-caption"><strong>{{ formation.price_note }}</strong></p>
+    {% endif %}
+    <p class="training-price-caption">
+      Formation disponible en présentiel ou à distance. Les déplacements à proximité de Poitiers sont inclus. Pour les
+      interventions plus éloignées, les éventuels frais de transport et d’hébergement sont précisés avant validation du
+      devis.
+    </p>
+  </div>
+</section>

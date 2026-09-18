@@ -1,0 +1,26 @@
+{% assign formation = include.formation %}
+<section class="section section--surface">
+  <div class="container formation-facts">
+    <article><span>Pour qui ?</span><strong>{{ formation.audience }}</strong></article>
+    <article><span>Format</span><strong>{{ formation.format_short }}</strong></article>
+    <article><span>Groupe conseillé</span><strong>{{ formation.capacity }}</strong></article>
+    <article><span>À partir de</span><strong>{{ formation.starting_price }}</strong></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split formation-split">
+    <div class="sticky-intro">
+      <span class="eyebrow">Objectifs</span>
+      <h2>Ce que votre équipe saura faire.</h2>
+      <p class="lead">{{ formation.summary }}</p>
+    </div>
+    <div class="card">
+      <ul class="feature-list formation-objectives">
+        {% for objective in formation.objectives %}
+        <li>{{ objective }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

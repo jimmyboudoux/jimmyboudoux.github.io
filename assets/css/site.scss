@@ -1,0 +1,15 @@
+---
+---
+// The import order preserves the former cascade while keeping each concern local.
+@import "base/foundation";
+@import "components/header";
+@import "components/cards";
+@import "components/content";
+@import "components/footer-accessibility";
+@import "pages/home-pricing";
+@import "pages/portal";
+@import "pages/formations";
+@import "pages/diagnostic-hero";
+@import "pages/diagnostic-support";
+@import "pages/diagnostic-form";
+@import "base/utilities";

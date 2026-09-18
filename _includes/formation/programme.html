@@ -1,0 +1,25 @@
+{% assign formation = include.formation %}
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Programme</span>
+      <h2>Des repères, puis des décisions concrètes.</h2>
+      <p>
+        Les exemples et cas pratiques sont ajustés au contexte de votre organisation, dans le respect de ses règles de
+        confidentialité.
+      </p>
+    </div>
+    <div class="programme-grid">
+      {% for sequence in formation.programme %}
+      <article class="programme-card">
+        <h3>{{ sequence.title }}</h3>
+        <ul class="feature-list">
+          {% for item in sequence.items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+task_site_dir="$(mktemp -d "${TMPDIR:-/tmp}/jboudoux-site.XXXXXX")"
+trap 'rm -rf "$task_site_dir"' EXIT
+
+bundle exec jekyll build --destination "$task_site_dir"
+SITE_DIR="$task_site_dir" bundle exec ruby -Itest test/site_test.rb
+SITE_DIR="$task_site_dir" bundle exec ruby -Itest test/diagnostic_test.rb
+node --check assets/js/site-core.mjs
+node --check assets/js/site.mjs
+node --check assets/js/diagnostic/core.mjs
+node --check assets/js/diagnostic/index.mjs
+node --check assets/js/diagnostic/storage.mjs
+node --check assets/js/diagnostic/altcha.mjs
+node --check assets/js/diagnostic/transport.mjs
+npm run format:check
+npm run test:js

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jboudoux.fr/contracts/diagnostic-submission-v1.schema.json",
+  "title": "Diagnostic IA submission v1",
+  "type": "object",
+  "required": ["submission_id", "diagnostic_type", "form_started_at", "company", "ai_usage", "governance", "costs", "automation", "needs", "contact", "marketing", "altcha"],
+  "properties": {
+    "submission_id": { "type": "string" },
+    "diagnostic_type": { "const": "general_ai" },
+    "form_started_at": { "type": "number" },
+    "company": { "type": "object" },
+    "ai_usage": { "type": "object" },
+    "governance": { "type": "object" },
+    "costs": { "type": "object" },
+    "automation": { "type": "object" },
+    "needs": { "type": "object" },
+    "contact": { "type": "object", "required": ["first_name", "last_name", "company", "email", "contact_preference", "newsletter_opt_in", "website"] },
+    "marketing": { "type": "object" },
+    "altcha": { "type": "object" }
+  }
+}
