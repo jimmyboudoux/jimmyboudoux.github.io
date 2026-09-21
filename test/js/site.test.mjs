@@ -56,10 +56,12 @@ test('menu supports click, Escape, outside click, link click and desktop breakpo
   fixture.button.emit('click');
   assert.equal(fixture.menu.classList.contains('is-open'), true);
   assert.equal(fixture.button.attributes['aria-expanded'], 'true');
+  assert.equal(fixture.button.attributes['aria-label'], 'Fermer le menu');
 
   fixture.documentRef.emit('keydown', { key: 'Escape' });
   assert.equal(fixture.menu.classList.contains('is-open'), false);
   assert.equal(fixture.button.focusCalled, true);
+  assert.equal(fixture.button.attributes['aria-label'], 'Ouvrir le menu');
 
   fixture.button.emit('click');
   fixture.documentRef.emit('click', { target: {} });
@@ -74,7 +76,7 @@ test('menu supports click, Escape, outside click, link click and desktop breakpo
   assert.equal(fixture.menu.classList.contains('is-open'), false);
 });
 
-test('global interactions update the year and only track diagnostic booking links', () => {
+test('global interactions update the year and track only allowlisted booking locations', () => {
   const normal = { ...eventTarget(), dataset: { bookingLocation: 'homepage' } };
   const diagnostic = { ...eventTarget(), dataset: { bookingLocation: 'diagnostic_home' } };
   const year = { textContent: '' };
@@ -87,10 +89,14 @@ test('global interactions update the year and only track diagnostic booking link
   const events = [];
 
   setCurrentYear(documentRef, 2030);
-  mountBookingTracking({ documentRef, umami: { track: (name) => events.push(name) } });
+  mountBookingTracking({ documentRef, umami: { track: (name, properties) => events.push([name, properties]) } });
   normal.emit('click');
   diagnostic.emit('click');
 
   assert.equal(year.textContent, 2030);
-  assert.deepEqual(events, ['diagnostic_calendar_clicked']);
+  assert.deepEqual(events, [
+    ['booking_calendar_clicked', { location: 'homepage' }],
+    ['booking_calendar_clicked', { location: 'diagnostic_home' }],
+    ['diagnostic_calendar_clicked', undefined]
+  ]);
 });

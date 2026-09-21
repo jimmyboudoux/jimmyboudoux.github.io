@@ -1,4 +1,4 @@
-name: Validate Jekyll sitemap
+name: Site quality checks
 
 on:
   push:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  sitemap:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

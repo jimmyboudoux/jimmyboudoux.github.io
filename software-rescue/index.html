@@ -3,6 +3,9 @@ layout: default
 title: 'Sauvetage & modernisation d’applications'
 description: 'Application vibe codée devenue critique, prototype fragile, Access, VBA, Excel ou logiciel legacy : audit, stabilisation et modernisation progressive.'
 theme: theme-software
+service: software-rescue
+breadcrumb_parent: Expertises
+breadcrumb_parent_url: /services/
 eyebrow: 'Software Rescue · Vibe Coding · Modernisation'
 hero: 'Votre application fonctionne. Maintenant, rendons-la fiable.'
 intro: 'Prototype construit très vite, application vibe codée ou logiciel historique : je reprends l’existant, comprends ce qui tient encore debout et construis une trajectoire pour le rendre maintenable et évolutif.'
@@ -11,24 +14,30 @@ hero_cta: 'Parler d’une application'
 
 {% include page-hero.html %}
 <section class="section section--surface">
-  <div class="container cards">
-    <article class="card card--tinted theme-software">
-      <span class="card-tag">Vibe Coding Rescue</span>
-      <h3>Le prototype est devenu une vraie application.</h3>
-      <p>
-        Il a été construit rapidement avec des outils de développement assisté par IA, fonctionne globalement, mais
-        devient difficile à comprendre, corriger ou faire évoluer. Je peux reprendre la codebase, cartographier
-        l’existant et remettre de la structure sans repartir automatiquement de zéro.
-      </p>
-    </article>
-    <article class="card">
-      <span class="card-tag">Application historique</span>
-      <h3>L'outil historique tient encore tout le métier.</h3>
-      <p>
-        Access, VBA, Excel, scripts ou application interne vieillissante : comprendre les dépendances, sécuriser la
-        continuité et moderniser progressivement.
-      </p>
-    </article>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Situations fréquentes</span>
+      <h2>Reprendre l’existant sans perdre le métier.</h2>
+    </div>
+    <div class="cards">
+      <article class="card card--tinted theme-software">
+        <span class="card-tag">Vibe Coding Rescue</span>
+        <h3>Le prototype est devenu une vraie application.</h3>
+        <p>
+          Il a été construit rapidement avec des outils de développement assisté par IA, fonctionne globalement, mais
+          devient difficile à comprendre, corriger ou faire évoluer. Je peux reprendre la codebase, cartographier
+          l’existant et remettre de la structure sans repartir automatiquement de zéro.
+        </p>
+      </article>
+      <article class="card">
+        <span class="card-tag">Application historique</span>
+        <h3>L'outil historique tient encore tout le métier.</h3>
+        <p>
+          Access, VBA, Excel, scripts ou application interne vieillissante : comprendre les dépendances, sécuriser la
+          continuité et moderniser progressivement.
+        </p>
+      </article>
+    </div>
   </div>
 </section>
 <section class="section theme-software">
@@ -85,7 +94,7 @@ hero_cta: 'Parler d’une application'
         implique davantage d’analyse, de stabilisation et de réalisation.
       </p>
       <p><strong>Revue experte ciblée :</strong> {{ site.data.pricing.expert_review.price }}</p>
-      <a class="card-link" href="/tarifs/">Voir les tarifs et périmètres →</a>
+      <a class="card-link" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs et périmètres →</a>
     </div>
   </div>
 </section>

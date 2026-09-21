@@ -1,6 +1,11 @@
 {% assign formation = include.formation %}
 <section class="formation-hero {{ formation.theme }}">
   <div class="container narrow">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a><span aria-hidden="true">/</span>
+      <a href="{{ '/formations/' | relative_url }}">Formations IA</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{{ formation.short_title }}</span>
+    </nav>
     <a class="back-link" href="{{ '/formations/' | relative_url }}">← Toutes les formations</a>
     <span class="eyebrow">Formation intra-entreprise</span>
     <h1>{{ formation.title }}</h1>

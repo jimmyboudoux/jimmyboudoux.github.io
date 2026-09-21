@@ -168,10 +168,34 @@ test('transport returns JSON, server validation errors and invalid JSON errors p
     submitDiagnostic({
       endpoint: 'https://example.test/diagnostics',
       payload: {},
-      fetchImpl: async () => { throw new Error('Network unavailable'); }
+    fetchImpl: async () => { throw new Error('Network unavailable'); }
     }),
-    /Network unavailable/
+    /Impossible de joindre le service/
   );
+});
+
+test('transport aborts a slow submission and reports a retryable French error', async () => {
+  let timeoutCallback;
+  const controller = {
+    signal: { aborted: false },
+    abort() { this.signal.aborted = true; }
+  };
+  const pending = submitDiagnostic({
+    endpoint: 'https://example.test/diagnostics',
+    payload: {},
+    AbortControllerRef: class { constructor() { return controller; } },
+    setTimeoutFn: (callback) => {
+      timeoutCallback = callback;
+      return 1;
+    },
+    clearTimeoutFn: () => {},
+    fetchImpl: async () => {
+      await new Promise((resolve) => queueMicrotask(resolve));
+      throw new Error('aborted');
+    }
+  });
+  timeoutCallback();
+  await assert.rejects(pending, (error) => error.retryable && /prend trop de temps/.test(error.message));
 });
 
 test('analytics properties never receive form answers or contact details', () => {

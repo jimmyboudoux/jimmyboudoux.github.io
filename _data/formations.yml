@@ -12,6 +12,7 @@ ai-literacy:
   duration: "½ journée"
   format_short: "3 h 30 · présentiel ou distanciel synchrone"
   starting_price: "650 € HT"
+  price_amount: 650
   formats:
     - label: "Sensibilisation compacte"
       duration: "3 h 30"
@@ -52,6 +53,7 @@ finops-ia:
   duration: "1 journée"
   format_short: "7 h · présentiel ou distanciel synchrone"
   starting_price: "1 450 € HT"
+  price_amount: 1450
   formats:
     - label: "Journée complète"
       duration: "7 h"
@@ -98,9 +100,10 @@ ia-locale:
   duration: "1 journée minimum"
   format_short: "7 h · présentiel ou distanciel synchrone"
   starting_price: "1 500 € HT"
+  price_amount: 1500
   price_note: "1 Journée minimum. Atelier approfondi ou programme sur mesure : sur devis."
   formats:
-    - label: "1Journée minimum"
+    - label: "1 journée minimum"
       duration: "7 h"
       purpose: "Comprendre les choix, analyser des cas d’usage et bâtir une première feuille de route de pilote."
   objectives:

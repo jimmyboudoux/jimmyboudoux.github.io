@@ -5,7 +5,7 @@
     <h3>{{ service.title }}</h3>
     {% if service.keywords %}<span class="expertise-keywords">{{ service.keywords }}</span>{% endif %}
     <p>{{ service.short }}</p>
-    <a class="card-link" href="/{{ service.slug }}/">En savoir plus →</a>
+    <a class="card-link" href="{{ service.slug | prepend: '/' | append: '/' | relative_url }}">En savoir plus →</a>
   </article>
   {% endfor %} {% if include.include_portal %}
   <article class="card expertise-card expertise-card--portal theme-engineering">
@@ -15,14 +15,14 @@
     <p>
       Une interface IA commune pour vos équipes, connectée aux modèles et à l’architecture adaptés à vos contraintes.
     </p>
-    <a class="card-link" href="/ia-privee-locale/">Découvrir les portails IA →</a>
+    <a class="card-link" href="{{ '/ia-privee-locale/' | relative_url }}">Découvrir les portails IA →</a>
   </article>
   {% endif %} {% if include.include_fractional %}
   <article class="card expertise-card theme-fractional">
     <span class="expertise-icon">{% include icon.html name="users" %}</span>
     <h3>Direction Tech, Data & IA à temps partagé</h3>
     <p>Fractional CTO / AI / Digital Lead selon le besoin : pilotage transversal et continuité.</p>
-    <a class="card-link" href="/fractional-lead/">Voir le format →</a>
+    <a class="card-link" href="{{ '/fractional-lead/' | relative_url }}">Voir le format →</a>
   </article>
   {% endif %}
 </div>

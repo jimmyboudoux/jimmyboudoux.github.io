@@ -1,12 +1,20 @@
 <section class="page-hero {{ page.theme }}">
   <div class="container">
+    {% if page.breadcrumb_parent %}
+    <nav class="breadcrumb" aria-label="Fil d’Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a><span aria-hidden="true">/</span>
+      <a href="{{ page.breadcrumb_parent_url | relative_url }}">{{ page.breadcrumb_parent }}</a
+      ><span aria-hidden="true">/</span>
+      <span aria-current="page">{{ page.title }}</span>
+    </nav>
+    {% endif %}
     <span class="eyebrow">{{ page.eyebrow }}</span>
     <h1>{{ page.hero }}</h1>
     {% if page.intro %}
     <p class="lead">{{ page.intro }}</p>
     {% endif %} {% if page.hero_cta %}
     <div class="actions">
-      <a class="btn" href="{{ page.hero_cta_href | default: '/contact/' }}">{{ page.hero_cta }} →</a>
+      <a class="btn" href="{{ page.hero_cta_href | default: '/contact/' | relative_url }}">{{ page.hero_cta }} →</a>
     </div>
     {% endif %}
   </div>

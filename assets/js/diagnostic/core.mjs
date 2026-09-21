@@ -1,5 +1,4 @@
 export const STORAGE_KEY = 'jboudoux_diagnostic_general_ai_v1';
-export const DEFAULT_API_ENDPOINT = 'https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics';
 export const ALTCHA_TIMEOUT_MS = 20_000;
 export const MARKETING_VALUE_MAX_LENGTH = 200;
 export const MARKETING_CONTEXT_MAX_LENGTH = 1_000;

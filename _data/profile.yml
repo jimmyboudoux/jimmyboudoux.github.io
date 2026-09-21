@@ -1,0 +1,13 @@
+address:
+  street: "120 rue du Porteau"
+  postal_code: "86000"
+  city: "Poitiers"
+  country: "France"
+area_served:
+  - Poitiers
+  - Châtellerault
+  - Niort
+  - La Rochelle
+  - Tours
+  - Angoulême
+  - Bordeaux

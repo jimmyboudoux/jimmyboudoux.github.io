@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'À propos de Jimmy Boudoux — Ingénieur IA, Data & Software'
+title: 'À propos de Jimmy Boudoux'
 description: 'Ingénieur généraliste à la croisée du software, de la Data, de l’IA et de la transformation.'
 theme: theme-data
 eyebrow: 'À propos'
@@ -12,15 +12,19 @@ intro: 'Je travaille à l’interface entre besoins métier, données, applicati
 <section class="section section--surface">
   <div class="container split">
     <div>
-      <img
-        class="avatar avatar--about"
-        src="{{ '/assets/img/avatar-512.png' | relative_url }}"
-        alt="Portrait de Jimmy Boudoux"
-        width="512"
-        height="512"
-        loading="lazy"
-        decoding="async"
-      /><span class="eyebrow">Parcours</span>
+      <picture>
+        <source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
+        <img
+          class="avatar avatar--about"
+          src="{{ '/assets/img/avatar-512.png' | relative_url }}"
+          alt="Portrait de Jimmy Boudoux"
+          width="512"
+          height="512"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <span class="eyebrow">Parcours</span>
       <h2>Du logiciel et de la Data aux systèmes IA.</h2>
       <p class="lead">
         Plus de 12 ans d’expérience entre applications métier, Data, architecture, pilotage et transformation. L’IA
@@ -146,6 +150,6 @@ intro: 'Je travaille à l’interface entre besoins métier, données, applicati
     <span class="eyebrow">Travailler ensemble</span>
     <h2>Une mission peut être technique, organisationnelle — ou les deux.</h2>
     <p>Je préfère un problème réel à résoudre à un intitulé de rôle trop étroit.</p>
-    <div class="actions"><a class="btn" href="/contact/">Me contacter →</a></div>
+    <div class="actions"><a class="btn" href="{{ '/contact/' | relative_url }}">Me contacter →</a></div>
   </div>
 </section>

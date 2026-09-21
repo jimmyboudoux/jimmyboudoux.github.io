@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "format": "prettier --write '**/*.html'",
-    "format:check": "prettier --check '**/*.html'",
+    "format": "prettier --write '**/*.{html,scss}'",
+    "format:check": "prettier --check '**/*.{html,scss}'",
     "test:js": "node test/js/diagnostic.test.mjs && node test/js/site.test.mjs"
   },
   "devDependencies": {

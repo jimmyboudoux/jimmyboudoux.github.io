@@ -7,6 +7,7 @@ legal_status: "Entrepreneur individuel"
 email: contact@jboudoux.fr
 url: https://jboudoux.fr
 baseurl: ""
+theme: null
 lang: fr
 linkedin: https://fr.linkedin.com/in/jimmy-boudoux-4b065b3a
 github: https://github.com/jimmyboudoux
@@ -33,3 +34,11 @@ exclude:
   - privatespecs
   - diagnostic-api
   - ops
+  # Sources graphiques conservées pour les supports externes, non publiées.
+  - assets/img/avatar.png
+  - assets/img/og.png
+  - assets/img/logo-jb-1024.png
+  - assets/img/logo-jb-light.svg
+  - assets/img/logo-jb-lockup-1600.png
+  - assets/img/logo-jb-lockup.svg
+  - assets/img/schema_site.png

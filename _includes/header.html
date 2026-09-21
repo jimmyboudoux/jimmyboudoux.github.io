@@ -14,9 +14,11 @@
     >
       ☰
     </button>
+    {% assign navigation_path = page.url %} {% if page.service %}{% assign navigation_path = '/services/' %}{% endif %}
+    {% if page.formation %}{% assign navigation_path = '/formations/' %}{% endif %}
     <nav class="nav-links" id="main-navigation" aria-label="Navigation principale" data-menu>
-      {% for item in site.data.navigation %} {% assign item_path = item.href | split: '#' | first %} {% if page.url ==
-      item_path %} {% unless item.href contains '#' %}
+      {% for item in site.data.navigation %} {% assign item_path = item.href | split: '#' | first %} {% if
+      navigation_path == item_path %} {% unless item.href contains '#' %}
       <a href="{{ item.href | relative_url }}" aria-current="page">{{ item.label }}</a>
       {% else %}
       <a href="{{ item.href | relative_url }}">{{ item.label }}</a>

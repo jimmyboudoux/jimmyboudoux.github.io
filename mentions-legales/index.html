@@ -34,7 +34,10 @@ intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
 
       <article class="card card--tinted theme-engineering">
         <h3>Adresse</h3>
-        <p>120 rue du Porteau<br />86000 Poitiers<br />France</p>
+        <p>
+          {{ site.data.profile.address.street }}<br />{{ site.data.profile.address.postal_code }} {{
+          site.data.profile.address.city }}<br />{{ site.data.profile.address.country }}
+        </p>
         <p class="muted mt-1">Département : 86 — Vienne</p>
       </article>
 
@@ -77,7 +80,7 @@ intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
           Le site collecte les informations volontairement transmises via le Diagnostic IA, ainsi que celles
           communiquées par email ou via un service externe, afin de répondre aux demandes et d’assurer le suivi de la
           relation professionnelle. Les modalités détaillées figurent dans la
-          <a href="/politique-confidentialite/">politique de confidentialité</a>.
+          <a href="{{ '/politique-confidentialite/' | relative_url }}">politique de confidentialité</a>.
         </p>
       </article>
 
@@ -98,7 +101,7 @@ intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
     <h2>Une question sur le site ou son contenu ?</h2>
     <p>Vous pouvez me contacter depuis la page dédiée.</p>
     <div class="actions">
-      <a class="btn" href="/contact/">Me contacter →</a>
+      <a class="btn" href="{{ '/contact/' | relative_url }}">Me contacter →</a>
     </div>
   </div>
 </section>

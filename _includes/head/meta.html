@@ -1,6 +1,7 @@
 {% capture page_title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %} {% assign
 page_description = page.description | default: site.description %} {% assign page_url = page.url | absolute_url %} {%
-assign social_image = '/assets/img/og-optimized.png' | absolute_url %}
+assign social_image = '/assets/img/og-optimized.jpg' | absolute_url %} {% assign asset_revision =
+site.github.build_revision | default: site.asset_version %}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ page_title }}</title>
@@ -25,4 +26,4 @@ assign social_image = '/assets/img/og-optimized.png' | absolute_url %}
 <meta name="twitter:image" content="{{ social_image }}" />
 <meta name="twitter:image:alt" content="{{ site.person_name | escape }} — {{ site.professional_title | escape }}" />
 <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml" sizes="any" />
-<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.asset_version }}" />
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ asset_revision }}" />

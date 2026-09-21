@@ -24,19 +24,16 @@ service_id = '/#professional-service' | absolute_url %} {% assign website_id = '
         "email": {{ site.email | jsonify }},
         "founder": { "@id": {{ person_id | jsonify }} },
         "areaServed": [
-          { "@type": "City", "name": "Poitiers" },
-          { "@type": "City", "name": "Châtellerault" },
-          { "@type": "City", "name": "Niort" },
-          { "@type": "City", "name": "La Rochelle" },
-          { "@type": "City", "name": "Tours" },
-          { "@type": "City", "name": "Angoulême" },
-          { "@type": "City", "name": "Bordeaux" },
+          {% for city in site.data.profile.area_served %}
+          { "@type": "City", "name": {{ city | jsonify }} }{% unless forloop.last %},{% endunless %}
+          {% endfor %},
           { "@type": "Country", "name": "France" }
         ],
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Poitiers",
-          "postalCode": "86000",
+          "streetAddress": {{ site.data.profile.address.street | jsonify }},
+          "addressLocality": {{ site.data.profile.address.city | jsonify }},
+          "postalCode": {{ site.data.profile.address.postal_code | jsonify }},
           "addressCountry": "FR"
         },
         "sameAs": [{{ site.linkedin | jsonify }}, {{ site.github | jsonify }}]

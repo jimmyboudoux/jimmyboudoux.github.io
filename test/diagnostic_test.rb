@@ -49,9 +49,23 @@ class DiagnosticTest < Minitest::Test
   end
 
   def test_form_announces_progress_and_errors
-    assert @document.at_css(".diagnostic-progress[aria-label]")
+    progress = @document.at_css(".diagnostic-progress[role='progressbar']")
+    assert_equal "1", progress&.[]("aria-valuenow")
+    assert_equal "7", progress&.[]("aria-valuemax")
+    assert @document.at_css(".diagnostic-progress__meta[aria-live='polite']")
     assert @document.at_css('[data-form-error][role="alert"][aria-live="assertive"]')
     assert_equal @document.css(".form-question .field-error").size,
                  @document.css(".form-question .field-error[aria-live='polite']").size
+    @document.css(".form-question .field-error").each do |error|
+      assert @document.at_css(%([aria-describedby~="#{error['id']}"]), "Missing error association for #{error['id']}")
+    end
+  end
+
+  def test_form_endpoint_and_fallback_contact_are_explicit
+    config = YAML.load_file("_config.yml")
+    form = @document.at_css("form[data-diagnostic-form]")
+
+    assert_equal config.fetch("diagnostic_api_url"), form["data-api-endpoint"]
+    assert @document.at_css("noscript a[href='/contact/']")
   end
 end

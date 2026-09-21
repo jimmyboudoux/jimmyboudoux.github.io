@@ -3,6 +3,9 @@ layout: default
 title: 'Ingénierie IA, Agents, RAG & IA locale'
 description: 'Assistants IA, RAG, agents, automatisation, intégration LLM et architectures locales, privées, cloud ou hybrides.'
 theme: theme-engineering
+service: ai-engineering
+breadcrumb_parent: Expertises
+breadcrumb_parent_url: /services/
 eyebrow: 'AI Engineering · Agents · RAG · IA locale'
 hero: 'Construire des systèmes IA utiles, intégrés et exploitables.'
 intro: 'Du prototype au système exploitable : assistants, RAG, agents, automatisations et IA locale pensés pour fonctionner dans votre environnement et avec vos contraintes.'
@@ -11,36 +14,42 @@ hero_cta: 'Parler d’un système IA'
 
 {% include page-hero.html %}
 <section class="section section--surface">
-  <div class="container cards">
-    <article class="card card--tinted theme-engineering">
-      <h3>Assistants & RAG</h3>
-      <p>
-        Chat métier, recherche documentaire, assistants internes, contextualisation et évaluation des réponses à partir
-        de vos données.
-      </p>
-    </article>
-    <article class="card">
-      <h3>Agents & automatisation</h3>
-      <p>
-        Des agents capables de rechercher, analyser, préparer, déclencher des actions ou enchaîner plusieurs étapes —
-        avec contrôle humain lorsque nécessaire.
-      </p>
-    </article>
-    <article class="card">
-      <h3>Intégration aux outils existants</h3>
-      <p>
-        API, Python, FastAPI, workflows, bases de données et applications métier : l’IA doit s’intégrer au système, pas
-        vivre dans une démonstration isolée.
-      </p>
-    </article>
-    <article class="card card--tinted theme-engineering">
-      <h3>IA locale, privée ou hybride</h3>
-      <p>
-        Exécuter des modèles sur une infrastructure maîtrisée lorsque la confidentialité, la souveraineté, le coût ou
-        l’indépendance vis-à-vis d’un fournisseur le justifient.
-      </p>
-      <a class="card-link" href="/ia-privee-locale/">Découvrir les portails IA privés →</a>
-    </article>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Capacités</span>
+      <h2>Des briques techniques reliées à vos usages.</h2>
+    </div>
+    <div class="cards">
+      <article class="card card--tinted theme-engineering">
+        <h3>Assistants & RAG</h3>
+        <p>
+          Chat métier, recherche documentaire, assistants internes, contextualisation et évaluation des réponses à
+          partir de vos données.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Agents & automatisation</h3>
+        <p>
+          Des agents capables de rechercher, analyser, préparer, déclencher des actions ou enchaîner plusieurs étapes —
+          avec contrôle humain lorsque nécessaire.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Intégration aux outils existants</h3>
+        <p>
+          API, Python, FastAPI, workflows, bases de données et applications métier : l’IA doit s’intégrer au système,
+          pas vivre dans une démonstration isolée.
+        </p>
+      </article>
+      <article class="card card--tinted theme-engineering">
+        <h3>IA locale, privée ou hybride</h3>
+        <p>
+          Exécuter des modèles sur une infrastructure maîtrisée lorsque la confidentialité, la souveraineté, le coût ou
+          l’indépendance vis-à-vis d’un fournisseur le justifient.
+        </p>
+        <a class="card-link" href="{{ '/ia-privee-locale/' | relative_url }}">Découvrir les portails IA privés →</a>
+      </article>
+    </div>
   </div>
 </section>
 <section class="section section--soft" id="prototype-local">
@@ -122,7 +131,9 @@ hero_cta: 'Parler d’un système IA'
       </p>
       <div class="actions">
         {% include booking-link.html label="Discuter d’un benchmark IA locale" class="btn" location="ai_local_prototype"
-        %}<a class="btn btn--ghost" href="/formations/ia-locale/">Découvrir la formation IA locale →</a>
+        %}<a class="btn btn--ghost" href="{{ '/formations/ia-locale/' | relative_url }}"
+          >Découvrir la formation IA locale →</a
+        >
       </div>
     </div>
   </div>
@@ -203,16 +214,16 @@ hero_cta: 'Parler d’un système IA'
           Installation, connexion aux API du client, paramétrage simple, personnalisation légère, tests, documentation
           et prise en main administrateur.
         </p>
-        <a class="card-link" href="/ia-privee-locale/">Voir le détail des portails IA →</a>
+        <a class="card-link" href="{{ '/ia-privee-locale/' | relative_url }}">Voir le détail des portails IA →</a>
       </article>
       <article class="card theme-finops">
         <h3>Portail IA d’entreprise</h3>
         <p><strong>{{ site.data.pricing.ai_portal.enterprise.starting_price }}</strong></p>
         <p>{{ site.data.pricing.ai_portal.enterprise.short }}</p>
-        <a class="card-link" href="/ia-privee-locale/">Voir le détail des portails IA →</a>
+        <a class="card-link" href="{{ '/ia-privee-locale/' | relative_url }}">Voir le détail des portails IA →</a>
       </article>
     </div>
-    <div class="actions"><a class="btn" href="/tarifs/">Voir les tarifs et périmètres →</a></div>
+    <div class="actions"><a class="btn" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs et périmètres →</a></div>
   </div>
 </section>
 

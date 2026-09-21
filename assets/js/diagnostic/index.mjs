@@ -1,5 +1,4 @@
 import {
-  DEFAULT_API_ENDPOINT,
   DIAGNOSTIC_EVENTS,
   STORAGE_KEY,
   analyticsProperties,
@@ -24,10 +23,11 @@ import { submitDiagnostic } from './transport.mjs';
   const submitButton = form.querySelector('[data-submit]');
   const stepLabel = form.querySelector('[data-step-label]');
   const stepTitle = form.querySelector('[data-step-title]');
+  const progress = form.querySelector('[data-progress]');
   const progressBar = form.querySelector('[data-progress-bar]');
   const formError = form.querySelector('[data-form-error]');
   const altchaWidget = form.querySelector('altcha-widget');
-  const apiEndpoint = form.dataset.apiEndpoint || DEFAULT_API_ENDPOINT;
+  const apiEndpoint = form.dataset.apiEndpoint;
   const successUrl = form.dataset.successUrl || '/diagnostic-ia/merci/';
   const marketing = readMarketing({
     search: window.location.search,
@@ -39,6 +39,12 @@ import { submitDiagnostic } from './transport.mjs';
   let currentStep = 0;
   let started = false;
   let sending = false;
+
+  if (!apiEndpoint) {
+    formError.textContent = 'Le formulaire est temporairement indisponible. Vous pouvez me contacter directement.';
+    formError.hidden = false;
+    return;
+  }
 
   const track = (name, properties = {}) => {
     if (window.umami && typeof window.umami.track === 'function') {
@@ -89,8 +95,10 @@ import { submitDiagnostic } from './transport.mjs';
     const preference = form.querySelector('[name="contact_preference"]:checked')?.value;
     const phone = form.elements.phone;
     phone.required = preference === 'phone';
+    const optional = form.querySelector('[data-phone-optional]');
+    if (optional) optional.hidden = preference === 'phone';
     const label = form.querySelector('label[for="phone"]');
-    if (label) label.innerHTML = preference === 'phone' ? 'Téléphone *' : 'Téléphone <span class="muted">(optionnel)</span>';
+    if (label) label.firstChild.textContent = preference === 'phone' ? 'Téléphone *' : 'Téléphone ';
   };
 
   const clearErrors = () => {
@@ -126,12 +134,16 @@ import { submitDiagnostic } from './transport.mjs';
     return false;
   };
 
-  const showStep = (index, focus = true) => {
+  const stepIndexForField = (name) => steps.findIndex((step) => step.querySelector(`[name="${CSS.escape(name)}"]`));
+
+  const showStep = (index, focus = true, focusTarget = null) => {
     currentStep = Math.max(0, Math.min(index, steps.length - 1));
     steps.forEach((step, stepIndex) => { step.hidden = stepIndex !== currentStep; });
     stepLabel.textContent = `Étape ${currentStep + 1} sur ${steps.length}`;
     stepTitle.textContent = steps[currentStep].querySelector('legend > span')?.textContent || '';
     progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+    progress.setAttribute('aria-valuenow', String(currentStep + 1));
+    progress.setAttribute('aria-valuetext', `${stepLabel.textContent} : ${stepTitle.textContent}`);
     previousButton.hidden = currentStep === 0;
     nextButton.hidden = currentStep === steps.length - 1;
     submitButton.hidden = currentStep !== steps.length - 1;
@@ -141,7 +153,7 @@ import { submitDiagnostic } from './transport.mjs';
     if (focus) {
       form.scrollIntoView({ behavior: 'auto', block: 'start' });
       window.setTimeout(() => {
-        steps[currentStep].querySelector('input, select, textarea')?.focus({ preventScroll: true });
+        (focusTarget || steps[currentStep].querySelector('input, select, textarea'))?.focus({ preventScroll: true });
       }, 50);
     }
   };
@@ -174,6 +186,7 @@ import { submitDiagnostic } from './transport.mjs';
     if (sending || !validateCurrentStep()) return;
 
     sending = true;
+    form.setAttribute('aria-busy', 'true');
     submitButton.disabled = true;
     submitButton.textContent = 'Envoi en cours…';
     clearErrors();
@@ -202,7 +215,17 @@ import { submitDiagnostic } from './transport.mjs';
       clearDraft(sessionStorage, STORAGE_KEY);
       window.location.assign(successUrl);
     } catch (error) {
-      Object.entries(error.fields || {}).forEach(([name, message]) => setFieldError(name, message));
+      const fields = Object.entries(error.fields || {});
+      const firstField = fields.find(([name]) => stepIndexForField(name) >= 0);
+      if (firstField) {
+        const [name] = firstField;
+        const field = form.elements[name] instanceof RadioNodeList ? form.elements[name][0] : form.elements[name];
+        showStep(stepIndexForField(name), false);
+        fields.forEach(([fieldName, message]) => setFieldError(fieldName, message));
+        window.setTimeout(() => field?.focus({ preventScroll: true }), 50);
+      } else {
+        fields.forEach(([name, message]) => setFieldError(name, message));
+      }
       formError.textContent = `${error.message || 'Une erreur est survenue lors de l’envoi.'} Vos réponses sont conservées. Vous pouvez réessayer.`;
       formError.hidden = false;
       formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -210,6 +233,7 @@ import { submitDiagnostic } from './transport.mjs';
       submitButton.disabled = false;
       submitButton.textContent = 'Envoyer mon diagnostic';
       sending = false;
+      form.removeAttribute('aria-busy');
     }
   });
 

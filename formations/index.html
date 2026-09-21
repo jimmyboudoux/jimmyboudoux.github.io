@@ -14,7 +14,7 @@ theme: theme-ai
       conditions de déploiement.
     </p>
     <div class="actions">
-      <a class="btn" href="/contact/">Échanger sur votre besoin →</a
+      <a class="btn" href="{{ '/contact/' | relative_url }}">Échanger sur votre besoin →</a
       ><a class="btn btn--ghost" href="#formations">Voir les formations</a>
     </div>
   </div>
@@ -63,7 +63,9 @@ theme: theme-ai
         <p class="training-card__note">
           Tarifs intra-entreprise, hors éventuels frais de déplacement et de location de salle. Devis après cadrage.
         </p>
-        <a class="card-link" href="/formations/{{ key }}/">Voir le programme →</a>
+        <a class="card-link" href="{{ key | prepend: '/formations/' | append: '/' | relative_url }}"
+          >Voir le programme →</a
+        >
       </article>
       {% endfor %}
     </div>
@@ -143,8 +145,8 @@ theme: theme-ai
         cas, outils autorisés et questions de votre organisation. Le distanciel reste possible partout en France.
       </p>
       <div class="actions">
-        <a class="btn btn--soft" href="/poitiers/">Voir les interventions à Poitiers</a
-        ><a class="btn btn--ghost" href="/grand-ouest/">Zones d’intervention</a>
+        <a class="btn btn--soft" href="{{ '/poitiers/' | relative_url }}">Voir les interventions à Poitiers</a
+        ><a class="btn btn--ghost" href="{{ '/grand-ouest/' | relative_url }}">Zones d’intervention</a>
       </div>
     </div>
   </div>
@@ -159,7 +161,7 @@ theme: theme-ai
           Vous avez besoin d’un aménagement lié à une situation de handicap ? Signalez-le dès le premier échange afin
           que nous étudiions les adaptations possibles ou une orientation adaptée.
         </p>
-        <a class="card-link" href="/contact/">Nous contacter →</a>
+        <a class="card-link" href="{{ '/contact/' | relative_url }}">Nous contacter →</a>
       </article>
       <article class="card">
         <h3>Intra ou inter ?</h3>

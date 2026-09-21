@@ -1,4 +1,6 @@
-# Plan de refactoring de `jboudoux.fr`
+# Historique du plan de refactoring de `jboudoux.fr`
+
+> Ce document est conservé comme historique de la préparation du refactoring livré le 18 septembre 2026. Les cases des phases décrivent le plan initial ; l'état réellement livré est récapitulé dans « Implémentation réalisée » plus bas. Les améliorations postérieures sont suivies dans [`docs/audit-post-refactoring-2026-09-18.md`](docs/audit-post-refactoring-2026-09-18.md).
 
 ## Objectif
 

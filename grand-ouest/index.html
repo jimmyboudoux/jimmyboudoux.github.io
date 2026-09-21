@@ -16,7 +16,7 @@ theme: theme-data
     <div class="actions">
       {% include booking-link.html label="Échanger sur votre besoin" class="btn" location="grand-ouest" %}<a
         class="btn btn--ghost"
-        href="/poitiers/"
+        href="{{ '/poitiers/' | relative_url }}"
         >Interventions à Poitiers</a
       >
     </div>
@@ -51,7 +51,7 @@ theme: theme-data
         <span aria-hidden="true">·</span> Angoulême <span aria-hidden="true">·</span> Bordeaux
       </p>
       <p class="coverage-summary__note">D’autres déplacements sont possibles selon la mission.</p>
-      <a class="card-link" href="/poitiers/">Voir les interventions à Poitiers →</a>
+      <a class="card-link" href="{{ '/poitiers/' | relative_url }}">Voir les interventions à Poitiers →</a>
     </div>
   </div>
 </section>
@@ -83,35 +83,35 @@ theme: theme-data
     </div>
     <div class="cards cards--3">
       <article class="card">
-        <h3><a href="/services/">Conseil Tech, Data &amp; IA</a></h3>
+        <h3><a href="{{ '/services/' | relative_url }}">Conseil Tech, Data &amp; IA</a></h3>
         <p>Une vue d’ensemble pour partir du problème réel.</p>
       </article>
       <article class="card">
-        <h3><a href="/ai-adoption/">Adoption &amp; transformation IA</a></h3>
+        <h3><a href="{{ '/ai-adoption/' | relative_url }}">Adoption &amp; transformation IA</a></h3>
         <p>Des usages compris, encadrés et adoptés.</p>
       </article>
       <article class="card">
-        <h3><a href="/ai-engineering/">Ingénierie IA, agents &amp; RAG</a></h3>
+        <h3><a href="{{ '/ai-engineering/' | relative_url }}">Ingénierie IA, agents &amp; RAG</a></h3>
         <p>Des systèmes IA intégrés et exploitables.</p>
       </article>
       <article class="card">
-        <h3><a href="/software-rescue/">Modernisation logicielle</a></h3>
+        <h3><a href="{{ '/software-rescue/' | relative_url }}">Modernisation logicielle</a></h3>
         <p>Stabiliser et faire évoluer les applications métier.</p>
       </article>
       <article class="card">
-        <h3><a href="/data-reporting/">Data, Analytics &amp; Reporting</a></h3>
+        <h3><a href="{{ '/data-reporting/' | relative_url }}">Data, Analytics &amp; Reporting</a></h3>
         <p>Des données fiables jusqu’au reporting.</p>
       </article>
       <article class="card">
-        <h3><a href="/ai-finops/">AI FinOps</a></h3>
+        <h3><a href="{{ '/ai-finops/' | relative_url }}">AI FinOps</a></h3>
         <p>Coûts, licences et architecture IA sous contrôle.</p>
       </article>
       <article class="card">
-        <h3><a href="/fractional-lead/">Direction Tech, Data &amp; IA à temps partagé</a></h3>
+        <h3><a href="{{ '/fractional-lead/' | relative_url }}">Direction Tech, Data &amp; IA à temps partagé</a></h3>
         <p>Une direction expérimentée à la bonne cadence.</p>
       </article>
       <article class="card">
-        <h3><a href="/formations/">Formations IA</a></h3>
+        <h3><a href="{{ '/formations/' | relative_url }}">Formations IA</a></h3>
         <p>Des sessions intra-entreprise sur site ou à distance.</p>
       </article>
     </div>

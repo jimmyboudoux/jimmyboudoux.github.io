@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Diagnostic IA Entreprise | Évaluez votre maturité IA'
-description: 'Faites gratuitement le point sur les usages IA de votre entreprise. Jimmy Boudoux analyse personnellement vos réponses et vous adresse ses premières recommandations sous 24h.'
+title: 'Diagnostic IA Entreprise'
+description: 'Faites le point sur les usages IA de votre entreprise. Jimmy Boudoux analyse vos réponses et vous envoie des premières recommandations sous un jour ouvré.'
 theme: theme-ai
 extra_modules:
   - /assets/js/diagnostic/index.mjs
@@ -19,13 +19,13 @@ extra_modules:
         maîtriser vos coûts, vos usages, vos risques ou vos possibilités d’automatisation ?
       </p>
       <p>
-        Répondez à quelques questions. J’analyse personnellement votre situation et vous adresse mon retour sous 24
-        heures ouvrées.
+        Répondez à quelques questions. J’analyse personnellement votre situation et vous adresse mon retour sous un jour
+        ouvré.
       </p>
       <div class="actions"><a class="btn" href="#questionnaire" data-diagnostic-start>Commencer le diagnostic</a></div>
     </div>
     <aside class="diagnostic-promise" aria-label="Caractéristiques du diagnostic">
-      <span>✓ Offert</span><span>✓ Environ 5 minutes</span><span>✓ Analyse humaine</span><span>✓ Sans engagement</span>
+      <span>✓ Offert</span><span>✓ 5 à 8 minutes</span><span>✓ Analyse humaine</span><span>✓ Sans engagement</span>
     </aside>
   </div>
 </section>
@@ -131,25 +131,35 @@ extra_modules:
         Les réponses marquées d’un astérisque sont obligatoires. Votre brouillon reste dans cet onglet jusqu’à l’envoi.
       </p>
     </div>
+    <noscript>
+      <p class="diagnostic-noscript">
+        Le Diagnostic IA nécessite JavaScript pour protéger vos réponses. Vous pouvez sinon
+        <a href="{{ '/contact/' | relative_url }}">me contacter directement</a>.
+      </p>
+    </noscript>
     <form
       class="diagnostic-form"
       data-diagnostic-form
-      data-api-endpoint="{{ site.diagnostic_api_url | default: 'https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics' }}"
+      data-api-endpoint="{{ site.diagnostic_api_url }}"
       data-success-url="{{ '/diagnostic-ia/merci/' | relative_url }}"
       novalidate
     >
-      <div class="diagnostic-progress" aria-label="Progression du questionnaire">
-        <div class="diagnostic-progress__meta">
+      <div
+        class="diagnostic-progress"
+        data-progress
+        role="progressbar"
+        aria-label="Progression du questionnaire"
+        aria-valuemin="1"
+        aria-valuemax="7"
+        aria-valuenow="1"
+        aria-valuetext="Étape 1 sur 7 : Votre entreprise"
+      >
+        <div class="diagnostic-progress__meta" aria-live="polite" aria-atomic="true">
           <span data-step-label>Étape 1 sur 7</span><span data-step-title>Votre entreprise</span>
         </div>
         <div class="diagnostic-progress__track"><span data-progress-bar></span></div>
       </div>
-      <altcha-widget
-        challenge="{{ site.diagnostic_api_url | default: 'https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics' }}/challenge"
-        display="invisible"
-        auto="off"
-        name="altcha"
-      >
+      <altcha-widget challenge="{{ site.diagnostic_api_url }}/challenge" display="invisible" auto="off" name="altcha">
       </altcha-widget>
       {% for step in site.data.diagnostic.steps %}
       <fieldset
@@ -167,7 +177,7 @@ extra_modules:
         {% for question in step.questions %}
         <div class="form-question" data-question="{{ question.name }}">
           {% if question.type == 'radio' or question.type == 'checkbox' %}
-          <fieldset class="choice-fieldset">
+          <fieldset class="choice-fieldset" aria-describedby="error-{{ question.name }}">
             <legend>{{ question.label }}{% if question.required %} <span aria-hidden="true">*</span>{% endif %}</legend>
             <div class="choice-grid{% if question.options.size > 7 %} choice-grid--compact{% endif %}">
               {% for option in question.options %}<label class="choice"
@@ -190,7 +200,18 @@ extra_modules:
           <label for="{{ question.name }}"
             >{{ question.label }}{% if question.required %} <span aria-hidden="true">*</span>{% endif %}</label
           >
-          <select id="{{ question.name }}" name="{{ question.name }}" {% if question.required %} required{% endif %}>
+          <select
+            id="{{ question.name }}"
+            name="{{ question.name }}"
+            aria-describedby="error-{{ question.name }}"
+            {%
+            if
+            question.required
+            %}
+            required{%
+            endif
+            %}
+          >
             <option value="">Sélectionnez une réponse</option>
             {% for option in question.options %}
             <option value="{{ option[0] }}">{{ option[1] }}</option>
@@ -225,6 +246,7 @@ extra_modules:
             endif
             %}
             rows="7"
+            aria-describedby="error-{{ question.name }}"
           ></textarea>
           {% endif %} {% if question.help %}
           <p class="field-help">{{ question.help }}</p>
@@ -237,6 +259,7 @@ extra_modules:
               type="text"
               maxlength="200"
               autocomplete="off"
+              aria-describedby="error-{{ question.name }}"
             />
           </div>
           {% endif %}
@@ -254,17 +277,38 @@ extra_modules:
         <div class="contact-fields">
           <div class="form-question">
             <label for="first_name">Prénom *</label
-            ><input id="first_name" name="first_name" autocomplete="given-name" maxlength="100" required />
+            ><input
+              id="first_name"
+              name="first_name"
+              autocomplete="given-name"
+              maxlength="100"
+              required
+              aria-describedby="error-first_name"
+            />
             <p class="field-error" id="error-first_name" aria-live="polite"></p>
           </div>
           <div class="form-question">
             <label for="last_name">Nom *</label
-            ><input id="last_name" name="last_name" autocomplete="family-name" maxlength="100" required />
+            ><input
+              id="last_name"
+              name="last_name"
+              autocomplete="family-name"
+              maxlength="100"
+              required
+              aria-describedby="error-last_name"
+            />
             <p class="field-error" id="error-last_name" aria-live="polite"></p>
           </div>
           <div class="form-question">
             <label for="company">Entreprise *</label
-            ><input id="company" name="company" autocomplete="organization" maxlength="160" required />
+            ><input
+              id="company"
+              name="company"
+              autocomplete="organization"
+              maxlength="160"
+              required
+              aria-describedby="error-company"
+            />
             <p class="field-error" id="error-company" aria-live="polite"></p>
           </div>
           <div class="form-question">
@@ -277,17 +321,26 @@ extra_modules:
               maxlength="254"
               inputmode="email"
               required
+              aria-describedby="error-email"
             />
             <p class="field-error" id="error-email" aria-live="polite"></p>
           </div>
           <div class="form-question">
-            <label for="phone">Téléphone <span class="muted">(optionnel)</span></label
-            ><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" inputmode="tel" />
+            <label for="phone">Téléphone <span class="muted" data-phone-optional>(optionnel)</span></label
+            ><input
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              maxlength="40"
+              inputmode="tel"
+              aria-describedby="error-phone"
+            />
             <p class="field-error" id="error-phone" aria-live="polite"></p>
           </div>
         </div>
         <div class="form-question">
-          <fieldset class="choice-fieldset">
+          <fieldset class="choice-fieldset" aria-describedby="error-contact_preference">
             <legend>Préférence de retour *</legend>
             <div class="choice-grid">
               <label class="choice"
@@ -309,7 +362,7 @@ extra_modules:
           <p>
             Les informations transmises sont utilisées pour analyser votre situation, générer votre diagnostic et vous
             contacter dans le cadre de cette demande.
-            <a href="/politique-confidentialite/" target="_blank" rel="noopener"
+            <a href="{{ '/politique-confidentialite/' | relative_url }}" target="_blank" rel="noopener"
               >Consulter la politique de confidentialité</a
             >.
           </p>

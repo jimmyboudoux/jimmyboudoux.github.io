@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="{{ site.lang | default: 'fr' }}">
   <head>
-    {% include head/meta.html %} {% include head/structured-data.html %} {% include head/analytics.html %}
+    {% include head/meta.html %} {% include head/structured-data.html %} {% include head/page-structured-data.html %} {%
+    include head/analytics.html %}
   </head>
   <body class="{{ page.theme | default: 'theme-ai' }}">
     <a class="skip-link" href="#main-content">Aller au contenu</a>
     {% include header.html %}
     <main id="main-content">{{ content }}</main>
-    {% include footer.html %}
-    <script type="module" src="{{ '/assets/js/site.mjs' | relative_url }}?v={{ site.asset_version }}"></script>
+    {% include footer.html %} {% assign asset_revision = site.github.build_revision | default: site.asset_version %}
+    <script type="module" src="{{ '/assets/js/site.mjs' | relative_url }}?v={{ asset_revision }}"></script>
     {% for script in page.extra_js %}
-    <script src="{{ script | relative_url }}?v={{ site.asset_version }}" defer></script>
+    <script src="{{ script | relative_url }}?v={{ asset_revision }}" defer></script>
     {% endfor %} {% for script in page.extra_modules %}
-    <script type="module" src="{{ script | relative_url }}?v={{ site.asset_version }}"></script>
+    <script type="module" src="{{ script | relative_url }}?v={{ asset_revision }}"></script>
     {% endfor %}
   </body>
 </html>

@@ -14,7 +14,10 @@ intro: 'Comment les informations transmises sur jboudoux.fr sont utilisées, pro
     <div class="sticky-intro">
       <span class="eyebrow">Responsable du traitement</span>
       <h2>Jimmy Boudoux</h2>
-      <p class="lead">Entrepreneur individuel, 120 rue du Porteau, 86000 Poitiers.</p>
+      <p class="lead">
+        Entrepreneur individuel, {{ site.data.profile.address.street }}, {{ site.data.profile.address.postal_code }} {{
+        site.data.profile.address.city }}.
+      </p>
       <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
     <div class="stack">
@@ -73,8 +76,8 @@ intro: 'Comment les informations transmises sur jboudoux.fr sont utilisées, pro
         <p>
           Des mesures techniques et organisationnelles raisonnables protègent les accès et les données, notamment la
           limitation des accès, la validation des entrées et la protection des secrets. Umami mesure uniquement des
-          étapes du parcours et des paramètres marketing non personnels ; ni l’identité, ni les coordonnées, ni le texte
-          des réponses ne lui sont transmis.
+          étapes du parcours, des clics de réservation identifiés par la page d’origine et des paramètres marketing non
+          personnels ; ni l’identité, ni les coordonnées, ni le texte des réponses ne lui sont transmis.
         </p>
       </article>
     </div>

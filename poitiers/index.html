@@ -3,6 +3,7 @@ layout: default
 title: 'Consultant Tech, Data & IA à Poitiers'
 description: 'Consultant basé à Poitiers pour vos projets IA, Data, logiciels, modernisation, audit et direction Tech à temps partagé. Interventions sur site et à distance.'
 theme: theme-ai
+faq: poitiers
 ---
 
 <section class="page-hero theme-ai">
@@ -17,7 +18,7 @@ theme: theme-ai
     <div class="actions">
       {% include booking-link.html label="Réserver un échange de 20 min" class="btn" location="poitiers" %}<a
         class="btn btn--ghost"
-        href="/services/"
+        href="{{ '/services/' | relative_url }}"
         >Voir les expertises</a
       >
     </div>
@@ -48,7 +49,7 @@ theme: theme-ai
         <h3>Application créée rapidement avec l’IA</h3>
         <p>
           Un prototype ou une application vibe codée fonctionne déjà, mais devient difficile à maintenir, corriger ou
-          industrialiser. <a href="/software-rescue/">Voir le sauvetage logiciel →</a>
+          industrialiser. <a href="{{ '/software-rescue/' | relative_url }}">Voir le sauvetage logiciel →</a>
         </p>
       </article>
       <article class="card">
@@ -90,37 +91,37 @@ theme: theme-ai
       <article class="card card--tinted theme-ai">
         <h3>Adoption &amp; transformation IA</h3>
         <p>Stratégie, cas d’usage, gouvernance et appropriation par les équipes.</p>
-        <a class="card-link" href="/ai-adoption/">Découvrir l’adoption IA →</a>
+        <a class="card-link" href="{{ '/ai-adoption/' | relative_url }}">Découvrir l’adoption IA →</a>
       </article>
       <article class="card card--tinted theme-engineering">
         <h3>Ingénierie IA &amp; automatisation</h3>
         <p>LLM, agents IA, RAG, automatisation, IA locale et architectures hybrides.</p>
-        <a class="card-link" href="/ai-engineering/">Découvrir l’ingénierie IA →</a>
+        <a class="card-link" href="{{ '/ai-engineering/' | relative_url }}">Découvrir l’ingénierie IA →</a>
       </article>
       <article class="card card--tinted theme-finops">
         <h3>AI FinOps &amp; rationalisation</h3>
         <p>Coûts, licences, API, arbitrages cloud, privé ou local.</p>
-        <a class="card-link" href="/ai-finops/">Découvrir l’AI FinOps →</a>
+        <a class="card-link" href="{{ '/ai-finops/' | relative_url }}">Découvrir l’AI FinOps →</a>
       </article>
       <article class="card card--tinted theme-software">
         <h3>Modernisation logicielle</h3>
         <p>Stabiliser, sécuriser, migrer et faire évoluer les applications métier.</p>
-        <a class="card-link" href="/software-rescue/">Moderniser un logiciel →</a>
+        <a class="card-link" href="{{ '/software-rescue/' | relative_url }}">Moderniser un logiciel →</a>
       </article>
       <article class="card card--tinted theme-data">
         <h3>Data, Analytics &amp; Reporting</h3>
         <p>Fiabiliser les flux, les contrôles et les reportings automatisés.</p>
-        <a class="card-link" href="/data-reporting/">Découvrir l’expertise Data →</a>
+        <a class="card-link" href="{{ '/data-reporting/' | relative_url }}">Découvrir l’expertise Data →</a>
       </article>
       <article class="card card--tinted theme-fractional">
         <h3>Direction Tech, Data &amp; IA à temps partagé</h3>
         <p>Roadmap, architecture, équipes et partenaires à la bonne cadence.</p>
-        <a class="card-link" href="/fractional-lead/">Découvrir le temps partagé →</a>
+        <a class="card-link" href="{{ '/fractional-lead/' | relative_url }}">Découvrir le temps partagé →</a>
       </article>
       <article class="card">
         <h3>Formations IA</h3>
         <p>AI Literacy, FinOps IA et IA locale, adaptés à votre entreprise.</p>
-        <a class="card-link" href="/formations/">Découvrir les formations IA →</a>
+        <a class="card-link" href="{{ '/formations/' | relative_url }}">Découvrir les formations IA →</a>
       </article>
     </div>
   </div>
@@ -145,9 +146,13 @@ theme: theme-ai
         <p>
           Le choix entre IA locale, cloud, environnement privé ou architecture hybride dépend des données, de la
           latence, des coûts et de l’exploitation. L’objectif est de passer d’un prototype à un système observable,
-          sécurisé et réellement utilisable. Pour approfondir, consultez l’<a href="/ai-engineering/"
+          sécurisé et réellement utilisable. Pour approfondir, consultez l’<a
+            href="{{ '/ai-engineering/' | relative_url }}"
             >ingénierie IA, agents et RAG</a
-          >, l’<a href="/ai-adoption/">adoption de l’IA</a> et l’<a href="/ai-finops/">AI FinOps</a>.
+          >, l’<a href="{{ '/ai-adoption/' | relative_url }}">adoption de l’IA</a> et l’<a
+            href="{{ '/ai-finops/' | relative_url }}"
+            >AI FinOps</a
+          >.
         </p>
       </article>
     </div>
@@ -166,7 +171,9 @@ theme: theme-ai
         le FinOps IA ou la découverte de l’IA locale, avec des exemples et exercices adaptés aux cas réels de l’équipe.
         Elles peuvent aussi être conçues comme un atelier de départ avant un projet plus large.
       </p>
-      <div class="actions"><a class="btn btn--soft" href="/formations/">Découvrir les formations IA</a></div>
+      <div class="actions">
+        <a class="btn btn--soft" href="{{ '/formations/' | relative_url }}">Découvrir les formations IA</a>
+      </div>
     </div>
   </div>
 </section>
@@ -184,12 +191,12 @@ theme: theme-ai
         Le suivi, l’analyse, la documentation et la réalisation se prêtent généralement très bien au travail à distance.
       </p>
       <p class="intervention-areas">
-        <a href="/poitiers/">Poitiers</a> <span aria-hidden="true">·</span> Futuroscope
+        <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a> <span aria-hidden="true">·</span> Futuroscope
         <span aria-hidden="true">·</span> Châtellerault <span aria-hidden="true">·</span> Niort
         <span aria-hidden="true">·</span> La Rochelle <span aria-hidden="true">·</span> Tours
         <span aria-hidden="true">·</span> Angoulême <span aria-hidden="true">·</span> Bordeaux
       </p>
-      <a class="card-link" href="/grand-ouest/">Voir les zones d’intervention →</a>
+      <a class="card-link" href="{{ '/grand-ouest/' | relative_url }}">Voir les zones d’intervention →</a>
     </div>
     <aside class="intervention-modes" aria-label="Modalités d’intervention">
       <span class="intervention-modes__eyebrow">Modalités</span>
@@ -279,37 +286,12 @@ theme: theme-ai
       <h2>Intervenir à Poitiers.</h2>
     </div>
     <div class="faq">
+      {% for item in site.data.faqs.poitiers %}
       <details>
-        <summary>Intervenez-vous directement dans les entreprises à Poitiers ?</summary>
-        <p>Oui. Les audits, ateliers, formations et réunions de cadrage peuvent être réalisés sur site.</p>
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.answer }}</p>
       </details>
-      <details>
-        <summary>Travaillez-vous uniquement sur des projets IA ?</summary>
-        <p>
-          Non. Les missions couvrent aussi la Data, le reporting, les applications métier, la modernisation et le
-          pilotage Tech.
-        </p>
-      </details>
-      <details>
-        <summary>Pouvez-vous commencer par un audit ?</summary>
-        <p>
-          Oui. C’est souvent la meilleure façon de clarifier le besoin, les risques et les priorités avant d’investir.
-        </p>
-      </details>
-      <details>
-        <summary>Faites-vous aussi la mise en œuvre ?</summary>
-        <p>
-          Oui, selon le périmètre : prototype, intégration, automatisation, modernisation ou accompagnement des équipes.
-        </p>
-      </details>
-      <details>
-        <summary>Proposez-vous des formations IA à Poitiers ?</summary>
-        <p>Oui, en intra-entreprise, sur des thèmes comme l’AI Literacy, le FinOps IA et l’IA locale.</p>
-      </details>
-      <details>
-        <summary>Travaillez-vous également hors de Poitiers ?</summary>
-        <p>Oui, dans le Grand Ouest sur site et partout en France à distance lorsque le format s’y prête.</p>
-      </details>
+      {% endfor %}
     </div>
   </div>
 </section>

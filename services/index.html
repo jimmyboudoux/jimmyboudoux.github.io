@@ -10,7 +10,13 @@ intro: 'Un problème peut commencer par l’IA, la Data, un logiciel devenu frag
 
 {% include page-hero.html %}
 <section class="section section--surface">
-  <div class="container">{% include expertise-grid.html include_fractional=true include_portal=true %}</div>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Domaines d’intervention</span>
+      <h2>Choisir le bon point de départ.</h2>
+    </div>
+    {% include expertise-grid.html include_fractional=true include_portal=true %}
+  </div>
 </section>
 <section class="section" id="audit">
   <div class="container split">
@@ -59,7 +65,7 @@ intro: 'Un problème peut commencer par l’IA, la Data, un logiciel devenu frag
         Revues, cadrages, réalisations, prototypes, audits, formations et direction à temps partagé disposent de repères
         tarifaires publics.
       </p>
-      <a class="card-link" href="/tarifs/">Voir les tarifs →</a>
+      <a class="card-link" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs →</a>
     </div>
   </div>
 </section>
@@ -78,8 +84,8 @@ intro: 'Un problème peut commencer par l’IA, la Data, un logiciel devenu frag
       </p>
       <p>Basé à Poitiers, je peux intervenir facilement dans le Grand Ouest lorsque c’est pertinent.</p>
       <div class="actions">
-        <a class="btn btn--soft" href="/poitiers/">Expertises à Poitiers</a
-        ><a class="btn btn--ghost" href="/grand-ouest/">Interventions dans le Grand Ouest</a>
+        <a class="btn btn--soft" href="{{ '/poitiers/' | relative_url }}">Expertises à Poitiers</a
+        ><a class="btn btn--ghost" href="{{ '/grand-ouest/' | relative_url }}">Interventions dans le Grand Ouest</a>
       </div>
     </div>
   </div>

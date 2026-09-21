@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Tarifs — Ingénierie IA, Data & Software'
-description: 'Tarifs et repères budgétaires pour les revues expertes, cadrages, automatisations, audits, IA locale, portails IA, formations et missions CTO / CAIO à temps partagé.'
+description: 'Tarifs et repères budgétaires pour revues, cadrages, automatisations, audits, IA locale, formations et direction Tech & IA à temps partagé.'
 theme: theme-ai
 ---
 
@@ -24,10 +24,14 @@ theme: theme-ai
       Le temps nécessaire reste évidemment pris en compte pour construire un devis réaliste, mais l’expérience doit
       permettre d’aller plus vite — pas de rendre artificiellement moins précieux un problème résolu efficacement.
     </p>
+    <nav class="pricing-toc" aria-label="Sommaire des tarifs">
+      <a href="#demarrer">Démarrer</a><a href="#construire">Construire</a><a href="#portails-ia">Portails IA</a
+      ><a href="#audits">Audits</a><a href="#temps-partage">Temps partagé</a><a href="#formations">Formations</a>
+    </nav>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="demarrer">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Démarrer avec un sujet précis</span>
@@ -72,13 +76,13 @@ theme: theme-ai
           sujet.
         </p>
         <p>Les formations restent associées à une durée, car la durée d’animation fait partie du produit vendu.</p>
-        <a class="card-link" href="/formations/">Voir les formations IA →</a>
+        <a class="card-link" href="{{ '/formations/' | relative_url }}">Voir les formations IA →</a>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section section--surface">
+<section class="section section--surface" id="construire">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Construire et automatiser</span>
@@ -217,7 +221,9 @@ theme: theme-ai
         </p>
       </article>
     </div>
-    <a class="card-link" href="/ia-privee-locale/">Découvrir les portails IA privés, locaux et hybrides →</a>
+    <a class="card-link" href="{{ '/ia-privee-locale/' | relative_url }}"
+      >Découvrir les portails IA privés, locaux et hybrides →</a
+    >
     <div class="pricing-callout">
       <strong>Portail IA essentiel :</strong> besoin simple, peu d’intégrations, environnement standard.
       <strong>Portail IA d’entreprise :</strong> besoin intégré au SI, plusieurs populations, contraintes de
@@ -411,7 +417,7 @@ theme: theme-ai
   </div>
 </section>
 
-<section class="section section--soft">
+<section class="section section--soft" id="formations">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Formations IA</span>
@@ -455,7 +461,9 @@ theme: theme-ai
         <p>1 Journée minimum. Atelier approfondi ou programme sur mesure : sur devis.</p>
       </article>
     </div>
-    <div class="actions"><a class="btn" href="/formations/">Voir les programmes de formation →</a></div>
+    <div class="actions">
+      <a class="btn" href="{{ '/formations/' | relative_url }}">Voir les programmes de formation →</a>
+    </div>
   </div>
 </section>
 

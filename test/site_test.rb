@@ -82,8 +82,9 @@ class SiteTest < Minitest::Test
       source_path = "/#{file.delete_prefix("#{SITE_DIR}/").delete_suffix("index.html")}".gsub(%r{/+}, "/")
       source_path = "/" if source_path == "/"
 
-      document.css("a[href], img[src], script[src], link[href]").each do |element|
+      document.css("a[href], img[src], source[srcset], script[src], link[href]").each do |element|
         value = element["href"] || element["src"]
+        value ||= element["srcset"]&.split(",")&.first&.split&.first
         next if value.nil? || value.empty? || value.start_with?("mailto:", "tel:", "data:", "javascript:")
 
         uri = URI.parse(value)
@@ -115,6 +116,12 @@ class SiteTest < Minitest::Test
 
     home = html_for_path("/")
     refute home.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
+
+    engineering = html_for_path("/ai-engineering/")
+    assert_equal "Expertises", engineering.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+
+    formation = html_for_path("/formations/ai-literacy/")
+    assert_equal "Formations IA", formation.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
   end
 
   def test_internal_maintenance_files_are_not_published
@@ -129,6 +136,7 @@ class SiteTest < Minitest::Test
     assert_includes css, ".diagnostic-honeypot"
     assert_includes css, ".conditional-field"
     assert_includes css, ".diagnostic-form-error"
+    refute File.exist?(site_file("assets/css/style.css")), "The unused Primer stylesheet must not be generated"
   end
 
   def test_generated_pages_keep_basic_accessibility_landmarks
@@ -140,7 +148,41 @@ class SiteTest < Minitest::Test
       document.css("img").each do |image|
         refute_nil image["alt"], "Image without alt attribute in #{file}: #{image["src"]}"
       end
+
+      levels = document.css("h1, h2, h3, h4, h5, h6").map { |heading| heading.name.delete_prefix("h").to_i }
+      refute levels.each_cons(2).any? { |previous, current| current > previous + 1 },
+             "Heading level skipped in #{file}"
     end
+  end
+
+  def test_page_specific_structured_data_is_valid
+    service = json_ld_for("/ai-engineering/").find { |item| item["@type"] == "Service" }
+    assert_equal "Ingénierie IA & automatisation", service.fetch("name")
+    assert_equal "France", service.fetch("areaServed").fetch("name")
+
+    course = json_ld_for("/formations/ai-literacy/").find { |item| item["@type"] == "Course" }
+    assert_equal 650, course.fetch("offers").fetch("price")
+    assert_equal "EUR", course.fetch("offers").fetch("priceCurrency")
+
+    breadcrumb = json_ld_for("/formations/ai-literacy/").find { |item| item["@type"] == "BreadcrumbList" }
+    assert_equal 3, breadcrumb.fetch("itemListElement").size
+
+    faq = json_ld_for("/poitiers/").find { |item| item["@type"] == "FAQPage" }
+    assert_equal 6, faq.fetch("mainEntity").size
+  end
+
+  def test_optimized_assets_are_generated_and_originals_are_not_published
+    assert File.file?(site_file("assets/img/avatar-512.webp"))
+    assert File.file?(site_file("assets/img/og-optimized.jpg"))
+    refute File.exist?(site_file("assets/img/avatar.png"))
+    refute File.exist?(site_file("assets/img/og.png"))
+  end
+
+  def test_generated_assets_stay_within_maintenance_budgets
+    assert_operator File.size(site_file("assets/css/site.css")), :<, 60_000
+    assert_operator File.size(site_file("assets/js/site.mjs")), :<, 5_000
+    assert_operator File.size(site_file("assets/img/avatar-512.webp")), :<, 100_000
+    assert_operator File.size(site_file("assets/img/og-optimized.jpg")), :<, 500_000
   end
 
   def test_formation_price_labels_and_homepage_diagnostic_cta_remain_clear
@@ -156,7 +198,32 @@ class SiteTest < Minitest::Test
     assert_includes homepage.text, "Faire mon diagnostic IA"
   end
 
+  def test_shared_pricing_data_is_rendered_on_the_pricing_page
+    pricing = YAML.load_file("_data/pricing.yml")
+    prices = [
+      pricing.dig("expert_review", "price"),
+      pricing.dig("framing", "price"),
+      pricing.dig("automation", "starting_price"),
+      pricing.dig("local_ai", "prototype", "starting_price"),
+      pricing.dig("ai_portal", "essential", "starting_price"),
+      pricing.dig("ai_portal", "enterprise", "starting_price"),
+      pricing.dig("software_rescue", "starting_price"),
+      pricing.dig("audit", "starting_price"),
+      pricing.dig("fractional", "starting_price")
+    ] + pricing.fetch("audit").fetch("ranges").values.map { |range| range.fetch("range") } +
+      pricing.fetch("fractional").slice("light", "regular", "transverse", "reinforced").values.map { |range| range.fetch("range") }
+
+    pricing_page = html_for_path("/tarifs/").text
+    prices.each { |price| assert_includes pricing_page, price }
+  end
+
   def test_robots_references_the_generated_sitemap
     assert_includes File.read(site_file("robots.txt")), "Sitemap: #{SITE_ORIGIN}/sitemap.xml"
+  end
+
+  private
+
+  def json_ld_for(path)
+    html_for_path(path).css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }
   end
 end

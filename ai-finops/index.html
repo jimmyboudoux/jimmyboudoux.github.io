@@ -3,6 +3,9 @@ layout: default
 title: 'AI FinOps & optimisation des coûts IA'
 description: 'Mesurer les coûts IA et licences, rationaliser les outils et piloter le bon compromis entre API, IA locale et build vs buy.'
 theme: theme-finops
+service: ai-finops
+breadcrumb_parent: Expertises
+breadcrumb_parent_url: /services/
 eyebrow: 'AI FinOps & Rationalisation'
 hero: 'Savoir ce que l’IA et les outils coûtent réellement.'
 intro: 'Licences, API, cloud, infrastructure locale, doublons et solutions internes : je mesure les coûts et les usages avant de décider quoi garder, optimiser, remplacer ou internaliser.'
@@ -11,35 +14,41 @@ hero_cta: 'Parler de vos coûts'
 
 {% include page-hero.html %}
 <section class="section section--surface">
-  <div class="container cards">
-    <article class="card card--tinted theme-finops">
-      <h3>Baseline</h3>
-      <p>
-        Inventaire des abonnements, coûts API, usages par équipe et outils non référencés quand ils peuvent être
-        identifiés.
-      </p>
-    </article>
-    <article class="card">
-      <h3>Rationalisation</h3>
-      <p>
-        Déduplication, suppression des licences inutilisées, consolidation des outils et alignement entre usage réel et
-        contrat.
-      </p>
-    </article>
-    <article class="card">
-      <h3>Optimisation technique</h3>
-      <p>
-        Choix du modèle, routage, cache, traitement différé, dimensionnement local et compromis coût / qualité /
-        latence.
-      </p>
-    </article>
-    <article class="card card--tinted theme-finops">
-      <h3>Build vs buy</h3>
-      <p>
-        Identifier les outils qui doivent rester achetés et ceux qu'il devient rationnel d'internaliser quand ils
-        touchent le cœur de métier ou des données sensibles.
-      </p>
-    </article>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Axes d’analyse</span>
+      <h2>Rendre les coûts IA lisibles et pilotables.</h2>
+    </div>
+    <div class="cards">
+      <article class="card card--tinted theme-finops">
+        <h3>Baseline</h3>
+        <p>
+          Inventaire des abonnements, coûts API, usages par équipe et outils non référencés quand ils peuvent être
+          identifiés.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Rationalisation</h3>
+        <p>
+          Déduplication, suppression des licences inutilisées, consolidation des outils et alignement entre usage réel
+          et contrat.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Optimisation technique</h3>
+        <p>
+          Choix du modèle, routage, cache, traitement différé, dimensionnement local et compromis coût / qualité /
+          latence.
+        </p>
+      </article>
+      <article class="card card--tinted theme-finops">
+        <h3>Build vs buy</h3>
+        <p>
+          Identifier les outils qui doivent rester achetés et ceux qu'il devient rationnel d'internaliser quand ils
+          touchent le cœur de métier ou des données sensibles.
+        </p>
+      </article>
+    </div>
   </div>
 </section>
 <section class="section theme-finops">
@@ -135,7 +144,9 @@ hero_cta: 'Parler de vos coûts'
         >
         Il n’est pas inclus par défaut dans tous les audits.
       </p>
-      <a class="card-link" href="/ai-engineering/#prototype-local">Découvrir le benchmark IA locale →</a>
+      <a class="card-link" href="{{ '/ai-engineering/#prototype-local' | relative_url }}"
+        >Découvrir le benchmark IA locale →</a
+      >
     </div>
   </div>
 </section>
@@ -154,8 +165,8 @@ hero_cta: 'Parler de vos coûts'
         recommandations. Il reste distinct de la formation FinOps IA, qui transmet à vos équipes la méthode pour mesurer
         et piloter les coûts IA.
       </p>
-      <a class="card-link" href="/tarifs/#audits">Voir comment les audits sont chiffrés →</a
-      ><a class="card-link" href="/formations/finops-ia/">Voir la formation FinOps IA →</a>
+      <a class="card-link" href="{{ '/tarifs/#audits' | relative_url }}">Voir comment les audits sont chiffrés →</a
+      ><a class="card-link" href="{{ '/formations/finops-ia/' | relative_url }}">Voir la formation FinOps IA →</a>
     </div>
   </div>
 </section>

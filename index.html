@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ingénieur IA, Data & Software à Poitiers
-description: 'Ingénieur IA, Data & Software à Poitiers : conception, automatisation, IA locale et privée, modernisation, Data, réduction des coûts et pilotage CTO / CAIO à temps partagé.'
+description: 'Ingénieur IA, Data et Software à Poitiers : automatisation, IA locale, modernisation, Data et pilotage Tech & IA à temps partagé.'
 theme: theme-ai
 ---
 
@@ -22,14 +22,15 @@ theme: theme-ai
         <span>Construire concrètement</span><span>Réduire la complexité</span><span>Maîtriser les coûts</span>
       </div>
       <p class="hero-location">
-        Basé à <a href="/poitiers/">Poitiers</a> · travail principalement à distance · interventions sur site dans le
-        <a href="/grand-ouest/">Grand Ouest</a> lorsque cela apporte une vraie valeur.
+        Basé à <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a> · travail principalement à distance ·
+        interventions sur site dans le <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a> lorsque cela
+        apporte une vraie valeur.
       </p>
       <div class="actions">
-        <a class="btn" href="/diagnostic-ia/">Faire mon diagnostic IA →</a>{% include booking-link.html label="Réserver
-        un échange de 20 min" class="btn btn--ghost" location="homepage" %}
+        <a class="btn" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA →</a>{% include
+        booking-link.html label="Réserver un échange de 20 min" class="btn btn--ghost" location="homepage" %}
       </div>
-      <a class="hero-secondary-link" href="/services/">Découvrir mes expertises →</a>
+      <a class="hero-secondary-link" href="{{ '/services/' | relative_url }}">Découvrir mes expertises →</a>
     </div>
     {% include engineering-map.html %}
   </div>
@@ -46,8 +47,8 @@ theme: theme-ai
         accompagnée de recommandations concrètes. Le diagnostic est offert et sans engagement.
       </p>
       <div class="actions">
-        <a class="btn" href="/diagnostic-ia/">Faire mon diagnostic IA</a>{% include booking-link.html label="Réserver
-        directement 20 minutes" class="btn btn--ghost" location="diagnostic_home" %}
+        <a class="btn" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA</a>{% include
+        booking-link.html label="Réserver directement 20 minutes" class="btn btn--ghost" location="diagnostic_home" %}
       </div>
     </div>
     <div class="home-diagnostic__facts" aria-label="Caractéristiques du diagnostic">
@@ -159,7 +160,9 @@ theme: theme-ai
         Un pilotage adapté aux décisions, à la roadmap, aux équipes et aux fournisseurs, avec un niveau d’implication
         qui évolue selon le périmètre.
       </p>
-      <div class="actions"><a class="btn" href="/fractional-lead/">Découvrir l’accompagnement →</a></div>
+      <div class="actions">
+        <a class="btn" href="{{ '/fractional-lead/' | relative_url }}">Découvrir l’accompagnement →</a>
+      </div>
     </div>
     <div class="pills">
       <span class="pill">Fractional CTO</span><span class="pill">Fractional CAIO</span
@@ -174,15 +177,18 @@ theme: theme-ai
 
 <section class="section section--tight">
   <div class="container about-strip">
-    <img
-      class="avatar"
-      src="{{ '/assets/img/avatar-512.png' | relative_url }}"
-      alt="Avatar de Jimmy Boudoux"
-      width="512"
-      height="512"
-      loading="lazy"
-      decoding="async"
-    />
+    <picture>
+      <source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
+      <img
+        class="avatar"
+        src="{{ '/assets/img/avatar-512.png' | relative_url }}"
+        alt="Avatar de Jimmy Boudoux"
+        width="512"
+        height="512"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
     <div>
       <span class="eyebrow">À propos</span>
       <h2>Ingénieur généraliste, par conviction.</h2>
@@ -191,7 +197,7 @@ theme: theme-ai
         organisation. Puis aller suffisamment loin dans l’exécution pour que les décisions deviennent des résultats
         concrets.
       </p>
-      <a class="card-link" href="/about/">En savoir plus sur mon parcours →</a>
+      <a class="card-link" href="{{ '/about/' | relative_url }}">En savoir plus sur mon parcours →</a>
     </div>
     <div class="about-values">
       <span>Vision système & sens du concret</span><span>Pragmatisme avant sophistication</span

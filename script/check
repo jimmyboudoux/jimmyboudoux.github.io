@@ -2,11 +2,14 @@
 set -euo pipefail
 
 task_site_dir="$(mktemp -d "${TMPDIR:-/tmp}/jboudoux-site.XXXXXX")"
-trap 'rm -rf "$task_site_dir"' EXIT
+task_baseurl_dir="$(mktemp -d "${TMPDIR:-/tmp}/jboudoux-site-baseurl.XXXXXX")"
+trap 'rm -rf "$task_site_dir" "$task_baseurl_dir"' EXIT
 
 bundle exec jekyll build --destination "$task_site_dir"
 SITE_DIR="$task_site_dir" bundle exec ruby -Itest test/site_test.rb
 SITE_DIR="$task_site_dir" bundle exec ruby -Itest test/diagnostic_test.rb
+bundle exec jekyll build --baseurl /preview --destination "$task_baseurl_dir"
+SITE_DIR="$task_baseurl_dir" SITE_BASEURL=/preview bundle exec ruby -Itest test/baseurl_test.rb
 node --check assets/js/site-core.mjs
 node --check assets/js/site.mjs
 node --check assets/js/diagnostic/core.mjs
