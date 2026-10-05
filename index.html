@@ -3,58 +3,47 @@ layout: default
 title: Ingénieur IA, Data & Software à Poitiers
 description: 'Ingénieur IA, Data et Software à Poitiers : automatisation, IA locale, modernisation, Data et pilotage Tech & IA à temps partagé.'
 theme: theme-ai
+faq: false
 ---
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">Construire · transformer · optimiser</span>
-      <h1>Des problèmes Tech, Data ou IA à résoudre ?</h1>
-      <p class="lead">
-        <strong>Ingénieur IA, Data &amp; Software</strong>, je conçois, construis et transforme des systèmes utiles :
-        automatisation, IA, Data, logiciels métier, architectures locales ou cloud et modernisation de l’existant.
-      </p>
-      <p>
-        Je peux intervenir sur un problème ciblé, construire la solution avec vos équipes ou prendre le pilotage Tech
-        &amp; IA dans la durée.
-      </p>
-      <div class="hero-principles">
-        <span>Construire concrètement</span><span>Réduire la complexité</span><span>Maîtriser les coûts</span>
-      </div>
-      <p class="hero-location">
-        Basé à <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a> · travail principalement à distance ·
-        interventions sur site dans le <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a> lorsque cela
-        apporte une vraie valeur.
-      </p>
-      <div class="actions">
-        <a class="btn" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA →</a>{% include
-        booking-link.html label="Réserver un échange de 20 min" class="btn btn--ghost" location="homepage" %}
-      </div>
-      <a class="hero-secondary-link" href="{{ '/services/' | relative_url }}">Découvrir mes expertises →</a>
+<section class="hero hero--concise">
+  <div class="container">
+    <span class="eyebrow">{{ site.professional_title | escape }}</span>
+    <h1>Des problèmes Tech, Data ou IA à résoudre ?</h1>
+    <p class="lead">
+      J’aide les entreprises à automatiser leurs tâches, fiabiliser leurs données et faire évoluer leurs applications.
+    </p>
+    <p class="hero-location">
+      Basé à <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a> · principalement à distance · sur site dans le
+      <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a>.
+    </p>
+    <div class="actions">
+      <a class="btn" href="#expertises">Découvrir les expertises →</a>
+      {% include booking-link.html label="Réserver un échange de __booking_minutes__ min" class="btn btn--ghost"
+      location="homepage" %}
     </div>
-    {% include engineering-map.html %}
   </div>
 </section>
 
 <section class="section section--surface home-diagnostic">
   <div class="container home-diagnostic__grid">
     <div>
-      <span class="eyebrow">Vous ne savez pas par où commencer avec l’IA ?</span>
-      <h2>Faites le diagnostic IA de votre entreprise</h2>
-      <p>
-        En quelques minutes, décrivez vos usages actuels, vos outils et vos principaux enjeux. J’analyse personnellement
-        vos réponses et vous adresse généralement sous un jour ouvré une première lecture humaine du contexte IA,
-        accompagnée de recommandations concrètes. Le diagnostic est offert et sans engagement.
-      </p>
+      <span class="eyebrow">Diagnostic entreprise</span>
+      <h2>Par où commencer avec l’IA ?</h2>
+      <p>Décrivez vos usages et vos priorités. Vous recevrez mon analyse et les premières pistes à explorer.</p>
       <div class="actions">
-        <a class="btn" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA</a>{% include
-        booking-link.html label="Réserver directement 20 minutes" class="btn btn--ghost" location="diagnostic_home" %}
+        <a class="btn" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA →</a>
       </div>
     </div>
     <div class="home-diagnostic__facts" aria-label="Caractéristiques du diagnostic">
-      <span><strong>Offert</strong>Sans engagement</span><span><strong>5 à 8 min</strong>Environ</span
-      ><span><strong>Analyse humaine</strong>Par Jimmy Boudoux</span
-      ><span><strong>1 jour ouvré</strong>En général</span>
+      <span><strong>Offert</strong>Sans engagement</span>
+      <span
+        ><strong
+          >{{ site.data.engagement.diagnostic.duration_min_minutes }} à {{
+          site.data.engagement.diagnostic.duration_max_minutes }} min</strong
+        >Pour répondre</span
+      >
+      <span><strong>{% include diagnostic-response-time.html %}</strong>Délai habituel de retour</span>
     </div>
   </div>
 </section>
@@ -62,97 +51,29 @@ theme: theme-ai
 <section class="section section--surface" id="expertises">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Ce que je construis et transforme</span>
-      <h2>De l’IA au logiciel, en passant par la Data et les coûts.</h2>
-      <p>
-        Certaines missions sont très techniques, d’autres commencent par un problème d’organisation ou de coûts. Je peux
-        traiter un sujet ciblé ou relier plusieurs dimensions lorsqu’elles dépendent les unes des autres.
-      </p>
+      <span class="eyebrow">Expertises</span>
+      <h2>Quel sujet souhaitez-vous faire avancer ?</h2>
     </div>
-    {% include expertise-grid.html %}
-  </div>
-</section>
-
-<section class="section" id="pour-qui">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Comment j'interviens</span>
-      <h2>Construire, transformer, optimiser ou piloter.</h2>
-      <p>Le bon format dépend du problème et de ce qui existe déjà, pas de la taille de l’entreprise.</p>
-    </div>
-    <div class="audience-grid">
-      <article class="audience-card theme-ai">
-        <h3>Construire</h3>
-        <p>Assistant IA, agent, automatisation, application métier, API, pipeline Data ou reporting.</p>
-      </article>
-      <article class="audience-card theme-engineering">
-        <h3>Transformer</h3>
-        <p>
-          Moderniser une application, remplacer un outil fragile, reprendre un prototype ou faire évoluer
-          l’architecture.
-        </p>
-      </article>
-      <article class="audience-card theme-data">
-        <h3>Optimiser</h3>
-        <p>Réduire les licences inutiles, rationaliser les outils et comparer SaaS, API, cloud ou IA locale.</p>
-      </article>
-      <article class="audience-card theme-software">
-        <h3>Piloter</h3>
-        <p>Prendre le rôle de CTO, CAIO ou responsable Tech / IA à temps partagé pour garder une trajectoire claire.</p>
-      </article>
-    </div>
+    {% include expertise-grid.html home=true %}
   </div>
 </section>
 
 <section class="section" id="approche">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Cadrage court</span>
-      <h2>Regarder l’existant avant d’ajouter une nouvelle couche.</h2>
+      <span class="eyebrow">Méthode</span>
+      <h2>Partir de l’existant et avancer par étapes.</h2>
       <p>
-        Un cadrage court peut éviter beaucoup de développement inutile : comprendre ce qui existe, identifier les
-        contraintes et décider ce qu’il faut réellement construire, transformer ou supprimer.
+        Chaque mission commence par vos usages et vos contraintes. Le cadrage fixe les priorités, les livrables et les
+        critères de réussite.
       </p>
     </div>
-    <div class="challenge-grid">
-      <div class="challenge-box">
-        <h3>Vos défis</h3>
-        <div class="challenge-row"><span>Des initiatives IA dispersées ou sans adoption</span><span>→</span></div>
-        <div class="challenge-row"><span>Des données et reportings difficiles à fiabiliser</span><span>→</span></div>
-        <div class="challenge-row">
-          <span>Une application devenue fragile ou coûteuse à faire évoluer</span><span>→</span>
-        </div>
-        <div class="challenge-row"><span>Des outils, licences et fournisseurs qui s’empilent</span><span>→</span></div>
-      </div>
-      <div class="challenge-box">
-        <h3>Ma réponse</h3>
-        <div class="challenge-row"><span>Comprendre les usages et le fonctionnement réel</span><span>✓</span></div>
-        <div class="challenge-row"><span>Concevoir une architecture et une trajectoire sobres</span><span>✓</span></div>
-        <div class="challenge-row">
-          <span>Construire, intégrer et sécuriser ce qui apporte de la valeur</span><span>✓</span>
-        </div>
-        <div class="challenge-row">
-          <span>Mesurer, transmettre et faire évoluer sans dépendance inutile</span><span>✓</span>
-        </div>
-      </div>
-    </div>
-    <div class="audit-deliverables">
-      <div>
-        <span class="eyebrow">Repères utiles</span>
-        <h3>Ce qu’il faut pour décider et construire.</h3>
-      </div>
-      <ul class="feature-list">
-        <li>Cartographie de l’existant</li>
-        <li>Irritants et risques</li>
-        <li>Architecture cible</li>
-        <li>Priorités et dépendances</li>
-      </ul>
-    </div>
+    {% include engineering-map.html %}
   </div>
 </section>
 
 <section class="section section--surface theme-fractional">
-  <div class="container recurring">
+  <div class="container recurring recurring--concise">
     <div>
       <span class="eyebrow">CTO / CAIO à temps partagé</span>
       <h2>Piloter la Tech et l’IA sans recruter immédiatement à plein temps.</h2>
@@ -164,25 +85,19 @@ theme: theme-ai
         <a class="btn" href="{{ '/fractional-lead/' | relative_url }}">Découvrir l’accompagnement →</a>
       </div>
     </div>
-    <div class="pills">
-      <span class="pill">Fractional CTO</span><span class="pill">Fractional CAIO</span
-      ><span class="pill">AI / Data Lead</span><span class="pill">Architecture</span><span class="pill">Roadmap</span
-      ><span class="pill">Fournisseurs</span><span class="pill">Coûts</span><span class="pill">Gouvernance</span
-      ><span class="pill">Delivery</span><span class="pill">Transmission</span>
-    </div>
   </div>
 </section>
 
 {% include pricing.html %}
 
 <section class="section section--tight">
-  <div class="container about-strip">
+  <div class="container about-strip about-strip--concise">
     <picture>
       <source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
       <img
         class="avatar"
         src="{{ '/assets/img/avatar-512.png' | relative_url }}"
-        alt="Avatar de Jimmy Boudoux"
+        alt="Avatar de {{ site.person_name | escape }}"
         width="512"
         height="512"
         loading="lazy"
@@ -193,19 +108,13 @@ theme: theme-ai
       <span class="eyebrow">À propos</span>
       <h2>Ingénieur généraliste, par conviction.</h2>
       <p>
-        J’aime comprendre un système dans son ensemble : métier, utilisateurs, données, logiciels, infrastructure et
-        organisation. Puis aller suffisamment loin dans l’exécution pour que les décisions deviennent des résultats
-        concrets.
+        Mon parcours relie développement logiciel, données et architecture. J’accompagne aussi les équipes dans la prise
+        en main des solutions livrées.
       </p>
       <a class="card-link" href="{{ '/about/' | relative_url }}">En savoir plus sur mon parcours →</a>
-    </div>
-    <div class="about-values">
-      <span>Vision système & sens du concret</span><span>Pragmatisme avant sophistication</span
-      ><span>Transmission & autonomie des équipes</span>
     </div>
   </div>
 </section>
 
-{% include booking-cta.html title="Parlons de votre projet" text="Vous avez un besoin en IA, automatisation,
-développement ou formation ? Réservez un échange de 20 minutes pour en discuter." label="Réserver un échange de 20 min"
-location="homepage" microcopy="Visio Google Meet · 20 minutes" %}
+{% include booking-cta.html title="Votre besoin est déjà précis ?" text="Présentez-moi votre contexte et les contraintes
+à prendre en compte." label="Réserver un échange" location="homepage" %}

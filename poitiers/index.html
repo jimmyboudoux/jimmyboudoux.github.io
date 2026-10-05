@@ -16,11 +16,8 @@ faq: poitiers
       décision importante gagne à se faire sur site.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Réserver un échange de 20 min" class="btn" location="poitiers" %}<a
-        class="btn btn--ghost"
-        href="{{ '/services/' | relative_url }}"
-        >Voir les expertises</a
-      >
+      {% include booking-link.html label="Réserver un échange de __booking_minutes__ min" class="btn"
+      location="poitiers" %}<a class="btn btn--ghost" href="{{ '/services/' | relative_url }}">Voir les expertises</a>
     </div>
   </div>
 </section>
@@ -88,36 +85,16 @@ faq: poitiers
       <p>Chaque expertise dispose de sa page de référence ; elles peuvent aussi se combiner dans une même mission.</p>
     </div>
     <div class="cards cards--3">
-      <article class="card card--tinted theme-ai">
-        <h3>Adoption &amp; transformation IA</h3>
-        <p>Stratégie, cas d’usage, gouvernance et appropriation par les équipes.</p>
-        <a class="card-link" href="{{ '/ai-adoption/' | relative_url }}">Découvrir l’adoption IA →</a>
-      </article>
-      <article class="card card--tinted theme-engineering">
-        <h3>Ingénierie IA &amp; automatisation</h3>
-        <p>LLM, agents IA, RAG, automatisation, IA locale et architectures hybrides.</p>
-        <a class="card-link" href="{{ '/ai-engineering/' | relative_url }}">Découvrir l’ingénierie IA →</a>
-      </article>
-      <article class="card card--tinted theme-finops">
-        <h3>AI FinOps &amp; rationalisation</h3>
-        <p>Coûts, licences, API, arbitrages cloud, privé ou local.</p>
-        <a class="card-link" href="{{ '/ai-finops/' | relative_url }}">Découvrir l’AI FinOps →</a>
-      </article>
-      <article class="card card--tinted theme-software">
-        <h3>Modernisation logicielle</h3>
-        <p>Stabiliser, sécuriser, migrer et faire évoluer les applications métier.</p>
-        <a class="card-link" href="{{ '/software-rescue/' | relative_url }}">Moderniser un logiciel →</a>
-      </article>
-      <article class="card card--tinted theme-data">
-        <h3>Data, Analytics &amp; Reporting</h3>
-        <p>Fiabiliser les flux, les contrôles et les reportings automatisés.</p>
-        <a class="card-link" href="{{ '/data-reporting/' | relative_url }}">Découvrir l’expertise Data →</a>
-      </article>
-      <article class="card card--tinted theme-fractional">
-        <h3>Direction Tech, Data &amp; IA à temps partagé</h3>
-        <p>Roadmap, architecture, équipes et partenaires à la bonne cadence.</p>
-        <a class="card-link" href="{{ '/fractional-lead/' | relative_url }}">Découvrir le temps partagé →</a>
-      </article>
+      {% include local-service-card.html slug="ai-adoption" text="Stratégie, cas d’usage, gouvernance et appropriation
+      par les équipes." tinted=true label="Découvrir l’adoption IA" %} {% include local-service-card.html
+      slug="ai-engineering" text="LLM, agents IA, RAG, automatisation, IA locale et architectures hybrides." tinted=true
+      label="Découvrir l’ingénierie IA" %} {% include local-service-card.html slug="ai-finops" text="Coûts, licences,
+      API, arbitrages cloud, privé ou local." tinted=true label="Découvrir l’AI FinOps" %} {% include
+      local-service-card.html slug="software-rescue" text="Stabiliser, sécuriser, migrer et faire évoluer les
+      applications métier." tinted=true label="Moderniser un logiciel" %} {% include local-service-card.html
+      slug="data-reporting" text="Fiabiliser les flux, les contrôles et les reportings automatisés." tinted=true
+      label="Découvrir l’expertise Data" %} {% include local-service-card.html slug="fractional-lead" text="Roadmap,
+      architecture, équipes et partenaires à la bonne cadence." tinted=true label="Découvrir le temps partagé" %}
       <article class="card">
         <h3>Formations IA</h3>
         <p>AI Literacy, FinOps IA et IA locale, adaptés à votre entreprise.</p>
@@ -190,12 +167,7 @@ faq: poitiers
       <p>
         Le suivi, l’analyse, la documentation et la réalisation se prêtent généralement très bien au travail à distance.
       </p>
-      <p class="intervention-areas">
-        <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a> <span aria-hidden="true">·</span> Futuroscope
-        <span aria-hidden="true">·</span> Châtellerault <span aria-hidden="true">·</span> Niort
-        <span aria-hidden="true">·</span> La Rochelle <span aria-hidden="true">·</span> Tours
-        <span aria-hidden="true">·</span> Angoulême <span aria-hidden="true">·</span> Bordeaux
-      </p>
+      <p class="intervention-areas">{% include intervention-areas.html %}</p>
       <a class="card-link" href="{{ '/grand-ouest/' | relative_url }}">Voir les zones d’intervention →</a>
     </div>
     <aside class="intervention-modes" aria-label="Modalités d’intervention">
@@ -236,66 +208,16 @@ faq: poitiers
   </div>
 </section>
 
-<section class="section section--soft">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Exemples</span>
-      <h2>Des missions qui peuvent démarrer localement.</h2>
-    </div>
-    <div class="cards cards--3">
-      <article class="card">
-        <h3>Audit des usages et coûts IA</h3>
-        <p>Identifier les outils, les cas d’usage et les dépenses à piloter.</p>
-      </article>
-      <article class="card">
-        <h3>Comparaison SaaS, API et IA locale</h3>
-        <p>Choisir une architecture cohérente avec les données et les contraintes.</p>
-      </article>
-      <article class="card">
-        <h3>Prototype d’assistant métier ou RAG documentaire</h3>
-        <p>Tester une réponse utile avant de préparer son intégration.</p>
-      </article>
-      <article class="card">
-        <h3>Agent IA supervisé et automatisation</h3>
-        <p>Automatiser une étape de travail avec des garde-fous explicites.</p>
-      </article>
-      <article class="card">
-        <h3>Modernisation d’une application métier</h3>
-        <p>Stabiliser l’existant et organiser une évolution progressive.</p>
-      </article>
-      <article class="card">
-        <h3>Migration Access, VBA ou Excel</h3>
-        <p>Sortir d’un outil critique sans interrompre le métier.</p>
-      </article>
-      <article class="card">
-        <h3>Automatisation de reporting et audit Data</h3>
-        <p>Fiabiliser les flux, les calculs et les contrôles de données.</p>
-      </article>
-      <article class="card">
-        <h3>Roadmap technique ou CTO à temps partagé</h3>
-        <p>Clarifier les décisions, les priorités et le rythme de pilotage.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section class="section">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Questions fréquentes</span>
       <h2>Intervenir à Poitiers.</h2>
     </div>
-    <div class="faq">
-      {% for item in site.data.faqs.poitiers %}
-      <details>
-        <summary>{{ item.question }}</summary>
-        <p>{{ item.answer }}</p>
-      </details>
-      {% endfor %}
-    </div>
+    {% include faq-list.html group=page.faq %}
   </div>
 </section>
 
-{% include booking-cta.html title="Un projet Tech, Data ou IA à Poitiers ?" text="Réservez un échange de 20 minutes pour
-faire le point sur votre contexte et les prochaines étapes possibles." label="Réserver un échange de 20 min"
-location="poitiers" %}
+{% include booking-cta.html title="Un projet Tech, Data ou IA à Poitiers ?" text="Réservez un échange de
+__booking_minutes__ minutes pour faire le point sur votre contexte et les prochaines étapes possibles." label="Réserver
+un échange de __booking_minutes__ min" location="poitiers" %}

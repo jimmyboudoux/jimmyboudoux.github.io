@@ -1,0 +1,21 @@
+booking_minutes: 20
+diagnostic:
+  duration_min_minutes: 5
+  duration_max_minutes: 8
+  response_days: 1
+booking_locations:
+  - homepage
+  - diagnostic_home
+  - diagnostic
+  - diagnostic_confirmation
+  - service
+  - tarifs
+  - poitiers
+  - grand-ouest
+  - contact
+  - training
+  - private_ai_portal_hero
+  - private_ai_portal_final
+  - ai_local_prototype
+  - sandbox_ia_locale
+  - site

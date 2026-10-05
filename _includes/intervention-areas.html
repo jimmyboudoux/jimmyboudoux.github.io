@@ -1,0 +1,3 @@
+{% for city in site.data.profile.area_served %} {% unless forloop.first %}<span aria-hidden="true">·</span>{% endunless
+%} {% if city == site.data.profile.address.city %}<a href="{{ '/poitiers/' | relative_url }}">{{ city }}</a>{% else %}{{
+city }}{% endif %} {% endfor %}

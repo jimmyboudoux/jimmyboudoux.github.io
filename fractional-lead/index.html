@@ -6,7 +6,7 @@ theme: theme-fractional
 eyebrow: 'Accompagnement récurrent'
 hero: 'Une direction Tech, Data & IA à la bonne dose.'
 intro: 'Une direction Tech, Data ou IA ajustée au périmètre, aux décisions à prendre et au niveau de responsabilité attendu, sans recruter immédiatement un CTO ou un CAIO à plein temps.'
-hero_cta: 'Parler du format'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -61,7 +61,7 @@ hero_cta: 'Parler du format'
     <div class="pricing-detail-grid pricing-detail-grid--four">
       <article class="card">
         <span class="card-tag">{{ site.data.pricing.fractional.light.label }}</span>
-        <h3>{{ site.data.pricing.fractional.light.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.light %}</h3>
         <p>
           Un périmètre simple à garder sous contrôle : quelques décisions, une roadmap légère et des échanges réguliers.
         </p>
@@ -74,7 +74,7 @@ hero_cta: 'Parler du format'
       </article>
       <article class="card">
         <span class="card-tag">{{ site.data.pricing.fractional.regular.label }}</span>
-        <h3>{{ site.data.pricing.fractional.regular.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.regular %}</h3>
         <p>
           Plusieurs sujets à suivre, avec davantage d’arbitrages, de coordination et de continuité au cours du mois.
         </p>
@@ -86,7 +86,7 @@ hero_cta: 'Parler du format'
       </article>
       <article class="card">
         <span class="card-tag">{{ site.data.pricing.fractional.transverse.label }}</span>
-        <h3>{{ site.data.pricing.fractional.transverse.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.transverse %}</h3>
         <p>
           Plusieurs chantiers, équipes ou fournisseurs à coordonner, avec implication sur la stratégie, les budgets,
           l’architecture et la gouvernance.
@@ -99,7 +99,7 @@ hero_cta: 'Parler du format'
       </article>
       <article class="card">
         <span class="card-tag">{{ site.data.pricing.fractional.reinforced.label }}</span>
-        <h3>{{ site.data.pricing.fractional.reinforced.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.reinforced %}</h3>
         <p>
           Un rôle de direction Tech ou IA fortement intégré à l’organisation, avec responsabilité transverse sur les
           décisions, la roadmap, les partenaires et les principaux arbitrages.
@@ -135,10 +135,6 @@ hero_cta: 'Parler du format'
   </div>
 </section>
 
-{% include local-intervention.html title="Basé à Poitiers, pour une direction Tech à la bonne cadence" text="Basé à
-Poitiers, j’interviens comme CTO, CAIO ou direction Tech, Data & IA à temps partagé, avec des temps sur site pour les
-décisions, ateliers et comités importants. Le pilotage récurrent, les arbitrages et le suivi des partenaires se
-poursuivent ensuite à distance." %}
 <section class="section section--soft">
   <div class="container split">
     <div>
@@ -163,4 +159,6 @@ poursuivent ensuite à distance." %}
     </div>
   </div>
 </section>
-{% include booking-cta.html title="Parler de votre projet" label="Réserver un échange de 20 min" location="service" %}
+{% include booking-cta.html title="Définissons le bon niveau de pilotage" text="Besoin d’une direction Tech sans
+recruter immédiatement ? Échangeons sur les décisions à prendre et le rythme d’accompagnement adapté." label="Réserver
+un échange de __booking_minutes__ min" location="service" %}

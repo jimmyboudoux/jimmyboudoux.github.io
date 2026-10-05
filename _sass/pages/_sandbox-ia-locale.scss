@@ -1,0 +1,193 @@
+.sandbox-hero h1 {
+  max-width: 14ch;
+}
+.sandbox-configurations {
+  background: radial-gradient(circle at 90% 8%, rgba(229, 240, 232, 0.65), transparent 30rem), var(--surface-soft);
+}
+.sandbox-config-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem;
+}
+.sandbox-config {
+  grid-column: span 2;
+}
+.sandbox-config:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+.sandbox-config:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+.sandbox-variants {
+  margin-top: 1.25rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+}
+.sandbox-variants h3,
+.sandbox-hardware-results h3 {
+  margin-bottom: 0.8rem;
+}
+.sandbox-variants p + p {
+  margin-top: 0.75rem;
+}
+.sandbox-note {
+  margin-top: 1rem;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+.sandbox-flow {
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow-soft);
+}
+.sandbox-flow__node {
+  width: min(100%, 360px);
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+}
+.sandbox-flow__node--main {
+  border-color: var(--sage-strong);
+  background: var(--sage);
+}
+.sandbox-flow__node--decision {
+  background: var(--lavender);
+}
+.sandbox-flow__arrow {
+  color: var(--sage-strong);
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.sandbox-flow__branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  width: min(100%, 680px);
+}
+.sandbox-flow__branches div {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+}
+.sandbox-flow__branches span,
+.sandbox-metrics span {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+.sandbox-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.sandbox-metrics div {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.78);
+}
+.sandbox-feedback {
+  max-width: 900px;
+  margin-top: 1.25rem;
+  color: var(--text-soft);
+}
+.sandbox-scenario-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sandbox-scenario-list li {
+  position: relative;
+  padding: 0.7rem 0 0.7rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.sandbox-scenario-list li::before {
+  position: absolute;
+  left: 0;
+  color: var(--sage-strong);
+  content: '→';
+  font-weight: 800;
+}
+.sandbox-hardware {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.sandbox-hardware-results {
+  margin-top: 1rem;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.75);
+}
+.sandbox-privacy {
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border: 1px solid var(--peach-strong);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, #fff, var(--peach));
+}
+.sandbox-privacy p + p {
+  margin-top: 1rem;
+}
+.sandbox-offer {
+  background: linear-gradient(120deg, rgba(229, 240, 232, 0.7), rgba(236, 231, 251, 0.55));
+}
+.sandbox-price {
+  margin-top: 1rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 650;
+}
+
+@media (max-width: $breakpoint-menu) {
+  .sandbox-config-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sandbox-config,
+  .sandbox-config:nth-child(4),
+  .sandbox-config:nth-child(5) {
+    grid-column: auto;
+  }
+  .sandbox-config:last-child {
+    grid-column: 1 / -1;
+  }
+  .sandbox-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: $breakpoint-compact) {
+  .sandbox-config-grid,
+  .sandbox-metrics,
+  .sandbox-scenario-list,
+  .sandbox-hardware,
+  .sandbox-flow__branches {
+    grid-template-columns: 1fr;
+  }
+  .sandbox-config:last-child {
+    grid-column: auto;
+  }
+}

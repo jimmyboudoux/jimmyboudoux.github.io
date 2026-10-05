@@ -2,14 +2,13 @@
 layout: default
 title: 'Sauvetage & modernisation d’applications'
 description: 'Application vibe codée devenue critique, prototype fragile, Access, VBA, Excel ou logiciel legacy : audit, stabilisation et modernisation progressive.'
-theme: theme-software
 service: software-rescue
 breadcrumb_parent: Expertises
 breadcrumb_parent_url: /services/
 eyebrow: 'Software Rescue · Vibe Coding · Modernisation'
 hero: 'Votre application fonctionne. Maintenant, rendons-la fiable.'
 intro: 'Prototype construit très vite, application vibe codée ou logiciel historique : je reprends l’existant, comprends ce qui tient encore debout et construis une trajectoire pour le rendre maintenable et évolutif.'
-hero_cta: 'Parler d’une application'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -86,21 +85,19 @@ hero_cta: 'Parler d’une application'
     <div>
       <span class="eyebrow">Repère tarifaire</span>
       <h2>Reprise & stabilisation</h2>
-      <p class="lead"><strong>{{ site.data.pricing.software_rescue.starting_price }}</strong></p>
+      <p class="lead"><strong>{% include price.html offer=site.data.pricing.software_rescue %}</strong></p>
     </div>
     <div class="card">
       <p>
         Une simple seconde opinion ou revue ciblée peut relever de la revue experte. Une vraie mission de reprise
         implique davantage d’analyse, de stabilisation et de réalisation.
       </p>
-      <p><strong>Revue experte ciblée :</strong> {{ site.data.pricing.expert_review.price }}</p>
+      <p><strong>Revue experte ciblée :</strong> {% include price.html offer=site.data.pricing.expert_review %}</p>
       <a class="card-link" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs et périmètres →</a>
     </div>
   </div>
 </section>
 
-{% include local-intervention.html title="À distance par défaut, sur site quand c’est utile." text="Les audits de code,
-ateliers de cadrage et revues d’architecture peuvent être réalisés sur site à Poitiers et dans le Grand Ouest lorsque
-cela apporte une vraie valeur. La stabilisation, la migration progressive et le suivi se poursuivent facilement à
-distance." %} {% include booking-cta.html title="Parler de votre projet" label="Réserver un échange de 20 min"
+{% include booking-cta.html title="Parlons de votre application" text="Une application à stabiliser ou moderniser ?
+Décrivons l’existant et identifions les prochaines étapes." label="Réserver un échange de __booking_minutes__ min"
 location="service" %}

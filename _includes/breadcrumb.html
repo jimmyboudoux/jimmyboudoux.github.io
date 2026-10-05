@@ -1,0 +1,8 @@
+{% if page.breadcrumb_parent %}
+<nav class="breadcrumb" aria-label="Fil d’Ariane">
+  <a href="{{ '/' | relative_url }}">Accueil</a><span aria-hidden="true">/</span>
+  <a href="{{ page.breadcrumb_parent_url | relative_url }}">{{ page.breadcrumb_parent }}</a
+  ><span aria-hidden="true">/</span>
+  <span aria-current="page">{% include breadcrumb-label.html %}</span>
+</nav>
+{% endif %}

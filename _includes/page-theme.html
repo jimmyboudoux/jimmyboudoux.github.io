@@ -1,0 +1,4 @@
+{%- assign resolved_theme = page.theme | default: 'theme-ai' -%} {%- if page.service -%} {%- assign theme_service =
+site.data.services | where: 'slug', page.service | first -%} {%- assign resolved_theme = theme_service.theme | default:
+resolved_theme -%} {%- elsif page.formation -%} {%- assign resolved_theme = site.data.formations[page.formation].theme |
+default: resolved_theme -%} {%- endif -%} {{- resolved_theme -}}

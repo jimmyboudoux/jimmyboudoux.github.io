@@ -4,7 +4,10 @@
     {% include head/meta.html %} {% include head/structured-data.html %} {% include head/page-structured-data.html %} {%
     include head/analytics.html %}
   </head>
-  <body class="{{ page.theme | default: 'theme-ai' }}">
+  <body
+    class="{% include page-theme.html %}"
+    data-booking-locations="{{ site.data.engagement.booking_locations | jsonify | escape }}"
+  >
     <a class="skip-link" href="#main-content">Aller au contenu</a>
     {% include header.html %}
     <main id="main-content">{{ content }}</main>

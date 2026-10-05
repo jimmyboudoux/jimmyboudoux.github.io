@@ -242,28 +242,7 @@
   color: var(--text-soft);
   font-size: 0.86rem;
 }
-.faq {
-  display: grid;
-  gap: 0.75rem;
-  max-width: 900px;
-  margin: 1.5rem auto 0;
-}
-.faq details {
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.7);
-}
-.faq summary {
-  color: var(--ink);
-  font-weight: 750;
-  cursor: pointer;
-}
-.faq p {
-  margin-top: 0.75rem;
-  color: var(--text-soft);
-}
-@media (max-width: 900px) {
+@media (max-width: $breakpoint-menu) {
   .training-cards {
     grid-template-columns: 1fr;
   }
@@ -275,5 +254,15 @@
   }
   .formation-facts article:nth-child(-n + 2) {
     border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .programme-grid {
+    grid-template-columns: 1fr;
+  }
+  .programme-card {
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 }

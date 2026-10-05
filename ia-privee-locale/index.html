@@ -2,11 +2,15 @@
 layout: default
 title: 'IA privée & locale en entreprise | Portail IA'
 description: 'Portail IA privé pour vos équipes : API, modèles locaux ou architecture hybride, avec maîtrise des données, modèles et coûts.'
-theme: theme-engineering
+service: ia-privee-locale
+breadcrumb_parent: Expertises
+breadcrumb_parent_url: /services/
+faq: false
 ---
 
-<section class="page-hero portal-hero">
+<section class="page-hero {% include page-theme.html %} portal-hero">
   <div class="container">
+    {% include breadcrumb.html %}
     <span class="eyebrow">IA privée · API · locale · hybride</span>
     <h1>Un portail IA privé pour vos équipes, connecté aux bons modèles.</h1>
     <p class="lead">
@@ -167,7 +171,7 @@ theme: theme-engineering
     <div class="section-head">
       <span class="eyebrow">Démarrer simplement</span>
       <h2>Portail IA essentiel</h2>
-      <p class="portal-price">{{ site.data.pricing.ai_portal.essential.starting_price }}</p>
+      <p class="portal-price">{% include price.html offer=site.data.pricing.ai_portal.essential %}</p>
       <p>
         Une première version prête à l’emploi pour une entreprise qui dispose déjà d’un environnement adapté et souhaite
         proposer rapidement une interface IA commune à ses équipes.
@@ -212,7 +216,7 @@ theme: theme-engineering
     <div class="section-head">
       <span class="eyebrow">Aller plus loin</span>
       <h2>Portail IA d’entreprise</h2>
-      <p class="portal-price">{{ site.data.pricing.ai_portal.enterprise.starting_price }}</p>
+      <p class="portal-price">{% include price.html offer=site.data.pricing.ai_portal.enterprise %}</p>
       <p>
         Pour intégrer le portail au système d’information, aux utilisateurs et aux contraintes de l’entreprise, avec
         plusieurs modèles ou plusieurs architectures possibles.
@@ -398,5 +402,5 @@ theme: theme-engineering
 </section>
 
 {% include booking-cta.html title="Construisons le bon portail IA pour vos usages." text="API, local ou hybride : un
-échange de 20 minutes permet de comprendre vos contraintes et de déterminer un premier périmètre réaliste."
-label="Réserver un échange de 20 min" location="private_ai_portal_final" %}
+échange de __booking_minutes__ minutes permet de comprendre vos contraintes et de déterminer un premier périmètre
+réaliste." label="Réserver un échange de __booking_minutes__ min" location="private_ai_portal_final" %}

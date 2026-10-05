@@ -1,10 +1,14 @@
 {% capture page_title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %} {% assign
 page_description = page.description | default: site.description %} {% assign page_url = page.url | absolute_url %} {%
 assign social_image = '/assets/img/og-optimized.jpg' | absolute_url %} {% assign asset_revision =
-site.github.build_revision | default: site.asset_version %}
+site.github.build_revision | default: site.asset_version %} {% if page.diagnostic_meta %} {% capture page_description
+%}Faites le point sur les usages IA de votre entreprise. {{ site.person_name }} analyse vos réponses et vous envoie des
+premières recommandations généralement sous {% include diagnostic-response-time.html %}.{% endcapture %} {% endif %} {%
+assign page_title = page_title | replace: '__person_name__', site.person_name %} {% assign page_description =
+page_description | replace: '__person_name__', site.person_name %}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{{ page_title }}</title>
+<title>{{ page_title | escape }}</title>
 <meta name="description" content="{{ page_description | escape }}" />
 <meta name="author" content="{{ site.person_name | escape }}" />
 {% if page.noindex %}<meta name="robots" content="noindex" />{% endif %}

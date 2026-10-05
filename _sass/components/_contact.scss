@@ -1,0 +1,28 @@
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1rem;
+}
+.contact-card {
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: var(--shadow-soft);
+}
+.contact-card a {
+  font-weight: 720;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: $breakpoint-menu) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card--accent {
+  background: var(--lavender);
+  border-color: var(--lavender-strong);
+}

@@ -1,0 +1,5 @@
+{%- assign training_minimum = nil -%} {%- if include.formation -%} {%- assign training_minimum =
+include.formation.prices | sort: 'amount' | first -%} {%- else -%} {%- for training_entry in site.data.formations -%}
+{%- assign training_candidate = training_entry[1].prices | sort: 'amount' | first -%} {%- if training_minimum == nil or
+training_candidate.amount < training_minimum.amount -%} {%- assign training_minimum = training_candidate -%} {%- endif
+-%} {%- endfor -%} {%- endif -%} {%- include price.html offer=training_minimum -%}

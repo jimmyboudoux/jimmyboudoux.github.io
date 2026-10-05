@@ -3,6 +3,7 @@ layout: default
 title: 'Tarifs — Ingénierie IA, Data & Software'
 description: 'Tarifs et repères budgétaires pour revues, cadrages, automatisations, audits, IA locale, formations et direction Tech & IA à temps partagé.'
 theme: theme-ai
+faq: false
 ---
 
 <section class="page-hero">
@@ -25,7 +26,8 @@ theme: theme-ai
       permettre d’aller plus vite — pas de rendre artificiellement moins précieux un problème résolu efficacement.
     </p>
     <nav class="pricing-toc" aria-label="Sommaire des tarifs">
-      <a href="#demarrer">Démarrer</a><a href="#construire">Construire</a><a href="#portails-ia">Portails IA</a
+      <a href="#demarrer">Démarrer</a><a href="#construire">Construire</a
+      ><a href="#sandbox-ia-locale">Sandbox IA locale</a><a href="#portails-ia">Portails IA</a
       ><a href="#audits">Audits</a><a href="#temps-partage">Temps partagé</a><a href="#formations">Formations</a>
     </nav>
   </div>
@@ -40,7 +42,7 @@ theme: theme-ai
     <div class="cards cards--3">
       <article class="card card--tinted theme-ai">
         <span class="card-tag">{{ site.data.pricing.expert_review.label }}</span>
-        <h3>{{ site.data.pricing.expert_review.price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.expert_review %}</h3>
         <p>
           Une question principale, quelques éléments à examiner, une analyse et une recommandation synthétique. Si le
           sujet nécessite une investigation plus large ou plusieurs scénarios approfondis, je propose plutôt un cadrage.
@@ -53,7 +55,7 @@ theme: theme-ai
       </article>
       <article class="card card--tinted theme-engineering">
         <span class="card-tag">{{ site.data.pricing.framing.label }}</span>
-        <h3>{{ site.data.pricing.framing.price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.framing %}</h3>
         <p>
           Un problème principal à clarifier : comprendre l’existant, identifier les contraintes, comparer les
           principales options et recommander la prochaine étape.
@@ -70,7 +72,7 @@ theme: theme-ai
       </article>
       <article class="card theme-data">
         <span class="card-tag">Formation</span>
-        <h3>À partir de {{ site.data.formations.ai-literacy.starting_price }}</h3>
+        <h3>À partir de {% include formation-starting-price.html %}</h3>
         <p>
           Le client achète des connaissances, une méthode et la capacité de ses équipes à comprendre ou appliquer le
           sujet.
@@ -91,7 +93,7 @@ theme: theme-ai
     <div class="cards cards--3">
       <article class="card card--tinted theme-engineering">
         <span class="card-tag">{{ site.data.pricing.automation.label }}</span>
-        <h3>{{ site.data.pricing.automation.starting_price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.automation %}</h3>
         <p>
           Automatiser une tâche ou un processus avec la solution la plus adaptée au besoin : script déterministe,
           workflow, LLM / agent ou combinaison hybride.
@@ -113,11 +115,14 @@ theme: theme-ai
       </article>
       <article class="card card--tinted theme-data">
         <span class="card-tag">{{ site.data.pricing.local_ai.prototype.label }}</span>
-        <h3>{{ site.data.pricing.local_ai.prototype.starting_price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.local_ai.prototype %}</h3>
         <p>
           Un benchmark et une validation technique avant investissement : tester concrètement une architecture locale,
-          comparer les résultats et recommander la suite.
+          valider un scénario ciblé, comparer les résultats et recommander la suite. Pour un environnement de {{
+          site.data.pricing.sandbox.duration_days }} jours permettant de comparer jusqu’à {{
+          site.data.pricing.sandbox.max_configurations }} configurations, voir l’offre Sandbox IA locale.
         </p>
+        <a class="card-link" href="{{ '/sandbox-ia-locale/' | relative_url }}">Découvrir l’offre Sandbox IA locale →</a>
         <ul class="feature-list">
           <li>Comparer plusieurs modèles sur la qualité, la latence, le débit et le contexte</li>
           <li>Exposer une API temporaire pour tester une application ou un workflow existant</li>
@@ -138,7 +143,7 @@ theme: theme-ai
       </article>
       <article class="card theme-software">
         <span class="card-tag">{{ site.data.pricing.software_rescue.label }}</span>
-        <h3>{{ site.data.pricing.software_rescue.starting_price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.software_rescue %}</h3>
         <p>
           Reprendre une application legacy, un outil métier fragile ou une application vibe codée devenue difficile à
           comprendre et maintenir, puis construire une trajectoire réaliste de stabilisation.
@@ -157,6 +162,45 @@ theme: theme-ai
   </div>
 </section>
 
+<section class="section section--surface" id="sandbox-ia-locale">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Benchmark &amp; aide à la décision</span>
+      <h2>Sandbox IA locale</h2>
+      <p>
+        Une expérimentation de {{ site.data.pricing.sandbox.duration_days }} jours pour comparer des modèles open-weight
+        sur des cas d’usage représentatifs.
+      </p>
+    </div>
+    <div class="cards cards--3">
+      <article class="card card--tinted theme-engineering">
+        <span class="card-tag">Sandbox IA locale — {{ site.data.pricing.sandbox.duration_days }} jours</span>
+        <h3>{% include price.html offer=site.data.pricing.sandbox %}</h3>
+        <p>
+          Cadrage du benchmark, préparation des scénarios et jusqu’à {{ site.data.pricing.sandbox.max_configurations }}
+          configurations principales.
+        </p>
+        <ul class="feature-list">
+          <li>Environnement temporaire pendant {{ site.data.pricing.sandbox.duration_days }} jours</li>
+          <li>Interface conversationnelle et accès API selon le besoin</li>
+          <li>Métriques techniques, prise en main et synthèse finale</li>
+        </ul>
+        <a class="card-link" href="{{ '/sandbox-ia-locale/' | relative_url }}">Voir le détail de l’offre →</a>
+      </article>
+      <article class="card">
+        <span class="card-tag">Option benchmark matériel</span>
+        <h3>{% include price.html offer=site.data.pricing.sandbox.hardware %}</h3>
+        <p>Comparaison de plusieurs profils CPU/mémoire et GPU sur une sélection de scénarios identiques.</p>
+      </article>
+      <article class="card">
+        <span class="card-tag">Prolongation</span>
+        <h3>{% include price.html offer=site.data.pricing.sandbox.extension %}</h3>
+        <p>{% include sandbox-extension-scope.html %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="portails-ia">
   <div class="container">
     <div class="section-head">
@@ -167,7 +211,7 @@ theme: theme-ai
     <div class="cards">
       <article class="card card--tinted theme-ai">
         <span class="card-tag">{{ site.data.pricing.ai_portal.essential.label }}</span>
-        <h3>{{ site.data.pricing.ai_portal.essential.starting_price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.ai_portal.essential %}</h3>
         <p>
           Une interface IA prête à l’emploi, connectée aux modèles choisis par l’entreprise, pour proposer une
           expérience proche d’un chat IA professionnel sans lancer un projet d’intégration complexe.
@@ -191,7 +235,7 @@ theme: theme-ai
       </article>
       <article class="card card--tinted theme-finops">
         <span class="card-tag">{{ site.data.pricing.ai_portal.enterprise.label }}</span>
-        <h3>{{ site.data.pricing.ai_portal.enterprise.starting_price }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.ai_portal.enterprise %}</h3>
         <p>
           Un portail IA adapté au SI, aux utilisateurs et aux contraintes de l’entreprise, capable de combiner plusieurs
           modèles ou architectures selon les usages.
@@ -238,7 +282,9 @@ theme: theme-ai
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Audit</span>
-      <h2>{{ site.data.pricing.audit.starting_price }}</h2>
+      <h2>
+        {% include price.html offer=site.data.pricing.audit.ranges.targeted amount_only=true prefix="À partir de " %}
+      </h2>
       <p>
         <strong>Vous payez le périmètre à analyser, pas la taille de votre entreprise.</strong> Le nombre de
         collaborateurs peut naturellement faire augmenter le travail lorsqu’il implique davantage d’équipes, d’usages,
@@ -248,7 +294,7 @@ theme: theme-ai
     <div class="pricing-detail-grid">
       <article class="card theme-ai">
         <span class="card-tag">{{ site.data.pricing.audit.ranges.targeted.label }}</span>
-        <h3>{{ site.data.pricing.audit.ranges.targeted.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.audit.ranges.targeted %}</h3>
         <p>
           Un sujet clairement défini, quelques outils ou usages, données relativement accessibles et nombre limité
           d’interlocuteurs.
@@ -260,7 +306,7 @@ theme: theme-ai
       </article>
       <article class="card theme-engineering">
         <span class="card-tag">{{ site.data.pricing.audit.ranges.multi_subject.label }}</span>
-        <h3>{{ site.data.pricing.audit.ranges.multi_subject.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.audit.ranges.multi_subject %}</h3>
         <p>
           Plusieurs outils, équipes ou usages, avec davantage de données à analyser, d’entretiens à mener ou de
           scénarios à comparer.
@@ -272,7 +318,7 @@ theme: theme-ai
       </article>
       <article class="card theme-software">
         <span class="card-tag">{{ site.data.pricing.audit.ranges.transverse.label }}</span>
-        <h3>{{ site.data.pricing.audit.ranges.transverse.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.audit.ranges.transverse %}</h3>
         <p>
           Investigation large impliquant plusieurs populations, sources de données ou dimensions : usages officiels et
           Shadow IA, coûts, gouvernance, architecture, fournisseurs et recommandations structurantes.
@@ -333,7 +379,7 @@ theme: theme-ai
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">CTO / CAIO à temps partagé</span>
-      <h2>{{ site.data.pricing.fractional.starting_price }}</h2>
+      <h2>{% include price.html offer=site.data.pricing.fractional.light amount_only=true prefix="Dès " %}</h2>
       <p>
         Pour apporter une direction Tech ou IA adaptée au besoin, sans recruter immédiatement à plein temps. Le forfait
         dépend du nombre de chantiers, de la fréquence des décisions, des interlocuteurs à coordonner et du niveau de
@@ -348,7 +394,7 @@ theme: theme-ai
     <div class="pricing-detail-grid pricing-detail-grid--four">
       <article class="card theme-fractional">
         <span class="card-tag">{{ site.data.pricing.fractional.light.label }}</span>
-        <h3>{{ site.data.pricing.fractional.light.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.light %}</h3>
         <p>
           Un périmètre simple à garder sous contrôle : quelques décisions, une roadmap légère et des échanges réguliers.
         </p>
@@ -359,7 +405,7 @@ theme: theme-ai
       </article>
       <article class="card theme-fractional">
         <span class="card-tag">{{ site.data.pricing.fractional.regular.label }}</span>
-        <h3>{{ site.data.pricing.fractional.regular.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.regular %}</h3>
         <p>
           Plusieurs sujets à suivre, avec davantage d’arbitrages, de coordination et de continuité au cours du mois.
         </p>
@@ -370,7 +416,7 @@ theme: theme-ai
       </article>
       <article class="card theme-fractional">
         <span class="card-tag">{{ site.data.pricing.fractional.transverse.label }}</span>
-        <h3>{{ site.data.pricing.fractional.transverse.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.transverse %}</h3>
         <p>
           Plusieurs chantiers, équipes ou fournisseurs à coordonner, avec implication sur la stratégie, les budgets,
           l’architecture et la gouvernance.
@@ -379,7 +425,7 @@ theme: theme-ai
       </article>
       <article class="card theme-fractional">
         <span class="card-tag">{{ site.data.pricing.fractional.reinforced.label }}</span>
-        <h3>{{ site.data.pricing.fractional.reinforced.range }}</h3>
+        <h3>{% include price.html offer=site.data.pricing.fractional.reinforced %}</h3>
         <p>
           Un rôle de direction Tech ou IA fortement intégré à l’organisation, avec responsabilité transverse sur les
           décisions, la roadmap, les partenaires et les principaux arbitrages.
@@ -432,8 +478,8 @@ theme: theme-ai
         <h3>{{ site.data.formations.ai-literacy.card_title }}</h3>
         <p>
           <strong
-            >{{ site.data.formations.ai-literacy.prices[0].format }} — {{
-            site.data.formations.ai-literacy.prices[0].price }}</strong
+            >{{ site.data.formations.ai-literacy.prices[0].format }} — {% assign training_display_offer =
+            site.data.formations.ai-literacy.prices[0] %}{% include price.html offer=training_display_offer %}</strong
           >
         </p>
         <p>Sensibilisation compacte aux usages et précautions de l’IA.</p>
@@ -442,8 +488,8 @@ theme: theme-ai
         <h3>{{ site.data.formations.finops-ia.card_title }}</h3>
         <p>
           <strong
-            >{{ site.data.formations.finops-ia.prices[0].format }} — {{ site.data.formations.finops-ia.prices[0].price
-            }}</strong
+            >{{ site.data.formations.finops-ia.prices[0].format }} — {% assign training_display_offer =
+            site.data.formations.finops-ia.prices[0] %}{% include price.html offer=training_display_offer %}</strong
           >
         </p>
         <p>
@@ -454,8 +500,8 @@ theme: theme-ai
         <h3>{{ site.data.formations.ia-locale.card_title }}</h3>
         <p>
           <strong
-            >{{ site.data.formations.ia-locale.prices[0].format }} — {{ site.data.formations.ia-locale.prices[0].price
-            }}</strong
+            >{{ site.data.formations.ia-locale.prices[0].format }} — {% assign training_display_offer =
+            site.data.formations.ia-locale.prices[0] %}{% include price.html offer=training_display_offer %}</strong
           >
         </p>
         <p>1 Journée minimum. Atelier approfondi ou programme sur mesure : sur devis.</p>
@@ -467,6 +513,7 @@ theme: theme-ai
   </div>
 </section>
 
-{% include booking-cta.html title="Parlons du bon périmètre" text="Un échange de 20 minutes est gratuit. Il permet de
-distinguer un premier diagnostic, une revue experte, un cadrage ou une mission plus large." label="Réserver un échange
-de 20 min" location="tarifs" microcopy="Visio Google Meet · 20 minutes" %}
+{% include booking-cta.html title="Parlons du bon périmètre" text="Un échange de __booking_minutes__ minutes est
+gratuit. Il permet de distinguer un premier diagnostic, une revue experte, un cadrage ou une mission plus large."
+label="Réserver un échange de __booking_minutes__ min" location="tarifs" microcopy="Visio Google Meet ·
+__booking_minutes__ minutes" %}

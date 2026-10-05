@@ -1,3 +1,12 @@
+global:
+  - question: "Quels types de sujets pouvez-vous prendre en charge ?"
+    answer: "Les missions couvrent l’IA, la Data, les applications et logiciels métier, la modernisation, l’automatisation, l’optimisation des coûts et le pilotage Tech ou IA. Le périmètre est défini selon votre besoin."
+  - question: "Comment démarrer une mission ?"
+    answer: "Un premier échange permet de préciser le problème, le contexte et les contraintes. Selon le sujet, la suite peut être un diagnostic, un audit, un cadrage ou une proposition d’accompagnement."
+  - question: "Où les interventions sont-elles possibles ?"
+    answer: "Basé à Poitiers, j’interviens sur site dans le Grand Ouest lorsque le projet le nécessite. Le travail à distance est possible partout en France."
+  - question: "Comment sont définis les tarifs ?"
+    answer: "Le tarif dépend du périmètre, de la durée et du niveau d’implication. Les repères disponibles figurent sur la page Tarifs ; une proposition précise est établie après échange sur le besoin."
 poitiers:
   - question: "Intervenez-vous directement dans les entreprises à Poitiers ?"
     answer: "Oui. Les audits, ateliers, formations et réunions de cadrage peuvent être réalisés sur site."
@@ -11,3 +20,35 @@ poitiers:
     answer: "Oui, en intra-entreprise, sur des thèmes comme l’AI Literacy, le FinOps IA et l’IA locale."
   - question: "Travaillez-vous également hors de Poitiers ?"
     answer: "Oui, dans le Grand Ouest sur site et partout en France à distance lorsque le format s’y prête."
+
+formations:
+- question: Faut-il déjà avoir un outil IA ?
+  answer: Non pour AI Literacy. Pour les autres formations, consultez les prérequis de chaque fiche.
+- question: Quel délai prévoir ?
+  answer: Sous réserve des disponibilités et de la finalisation du besoin, la session peut en principe être planifiée sous
+    15 jours ouvrés ; délais à confirmer dans la proposition.
+- question: La certification Qualiopi est-elle obtenue ?
+  answer: Le programme et le suivi sont structurés dans une démarche qualité. La certification Qualiopi n’est pas revendiquée
+    tant qu’elle n’est pas obtenue.
+
+sandbox:
+- question: Qu’est-ce qu’un modèle open-weight ?
+  answer: Un modèle open-weight met ses paramètres entraînés à disposition afin qu’il puisse être exécuté sur une infrastructure
+    choisie par l’utilisateur. Les droits exacts d’utilisation dépendent de la licence du modèle.
+- question: Peut-on tester plusieurs modèles ?
+  answer: Oui. Jusqu’à __max_configurations__ configurations principales peuvent être sélectionnées afin de comparer différentes
+    tailles de modèles, architectures et spécialisations.
+- question: Peut-on comparer CPU et GPU ?
+  answer: Oui. Certains scénarios peuvent être exécutés sur différentes plateformes afin d’observer l’impact du matériel sur
+    la vitesse, la latence et la mémoire nécessaire.
+- question: Peut-on utiliser nos propres documents ?
+  answer: Oui pour des documents adaptés au POC. Par défaut, l’environnement est destiné à des données synthétiques ou publiques.
+    L’utilisation de données confidentielles ou sensibles nécessite un cadrage spécifique.
+- question: Est-ce une infrastructure de production ?
+  answer: Non. La sandbox est un environnement temporaire de test, de benchmark et d’aide à la décision.
+- question: Peut-on connecter une application au modèle ?
+  answer: Oui. Un accès API peut être prévu afin de connecter un script, un prototype, un agent ou une application pendant
+    le POC.
+- question: Ollama ou llama.cpp sont-ils utilisés ?
+  answer: Ils peuvent faire partie des outils retenus selon les modèles, le matériel et les besoins du test. Le choix du modèle
+    et de l’environnement dépend du POC.

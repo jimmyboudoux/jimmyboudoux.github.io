@@ -1,0 +1,397 @@
+---
+layout: default
+title: 'Sandbox IA locale : tester des modèles open source & open-weight'
+description: 'Testez et comparez des modèles IA open source et open-weight : qualité, vitesse, CPU/GPU, contexte long, OCR, code et besoins matériels.'
+service: sandbox-ia-locale
+breadcrumb_parent: Expertises
+breadcrumb_parent_url: /services/
+faq: sandbox
+---
+
+<section class="page-hero {% include page-theme.html %} sandbox-hero">
+  <div class="container narrow">
+    {% include breadcrumb.html %}
+    <span class="eyebrow">POC · Benchmark · IA locale · Open-weight</span>
+    <h1>Testez une IA locale avant d’investir</h1>
+    <p class="lead">
+      Comparez des modèles open source et open-weight sur vos cas d’usage. Mesurez la qualité des réponses, la vitesse
+      et les besoins CPU/GPU pour choisir une infrastructure adaptée.
+    </p>
+    <div class="actions">
+      {% include booking-link.html label="Échanger sur mon besoin" class="btn" location="sandbox_ia_locale" %}
+      <a class="btn btn--ghost" href="#configurations">Découvrir les tests possibles</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface" id="tests">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Vos usages d’abord</span>
+      <h2>Ce que vous pouvez tester</h2>
+      <p>Un benchmark IA utile relie les réponses aux scénarios et contraintes de votre activité.</p>
+    </div>
+    <div class="cards cards--3">
+      <article class="card">
+        <h3>Qualité des modèles</h3>
+        <p>Comparez pertinence, précision et qualité des réponses de plusieurs modèles sur les mêmes scénarios.</p>
+      </article>
+      <article class="card">
+        <h3>Performance</h3>
+        <p>Mesurez la latence, le temps avant la première réponse et la vitesse de génération.</p>
+      </article>
+      <article class="card">
+        <h3>Documents &amp; OCR</h3>
+        <p>
+          Testez l’analyse de documents, l’extraction d’informations, les longs rapports, tableaux, l’OCR et les modèles
+          multimodaux lorsque cela est pertinent.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Développement</h3>
+        <p>Comparez génération, compréhension, correction et analyse de code avec des modèles spécialisés.</p>
+      </article>
+      <article class="card">
+        <h3>Contextes longs</h3>
+        <p>
+          Mesurez l’impact de différentes tailles de contexte, jusqu’à environ 100&nbsp;000 tokens lorsque le modèle et
+          l’infrastructure le permettent.
+        </p>
+      </article>
+      <article class="card">
+        <h3>CPU / GPU</h3>
+        <p>
+          Comparez différentes ressources matérielles et observez leur impact sur les performances et les besoins en
+          mémoire.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section sandbox-configurations" id="configurations">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations à comparer</span>
+      <h2>Plusieurs configurations, un même cas d’usage</h2>
+      <p>
+        Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations principales peuvent être préparées.
+        Les modèles exacts sont sélectionnés selon vos usages, les modèles disponibles, leurs licences et leur
+        compatibilité technique.
+      </p>
+    </div>
+    <div class="sandbox-config-grid">
+      <article class="card sandbox-config">
+        <span class="card-tag">01 · Dense</span>
+        <h3>Petit modèle Dense</h3>
+        <p>
+          Relativement compact, rapide et économique en ressources : il permet d’évaluer jusqu’où un modèle léger peut
+          répondre au besoin.
+        </p>
+      </article>
+      <article class="card sandbox-config">
+        <span class="card-tag">02 · Dense</span>
+        <h3>Grand modèle Dense</h3>
+        <p>
+          Un modèle plus important pour mesurer le gain de qualité obtenu en échange de besoins matériels plus élevés.
+        </p>
+      </article>
+      <article class="card sandbox-config">
+        <span class="card-tag">03 · MoE</span>
+        <h3>Architecture MoE</h3>
+        <p>
+          Une architecture « Mixture of Experts » active seulement une partie de ses paramètres à chaque génération. On
+          peut ainsi étudier un autre compromis entre capacité, mémoire et performance.
+        </p>
+      </article>
+      <article class="card sandbox-config">
+        <span class="card-tag">04 · Code</span>
+        <h3>Modèle spécialisé code</h3>
+        <p>Une configuration orientée développement logiciel, génération de code, analyse et assistance technique.</p>
+      </article>
+      <article class="card sandbox-config">
+        <span class="card-tag">05 · Vision</span>
+        <h3>Vision, OCR &amp; documentaire</h3>
+        <p>
+          Un modèle capable d’exploiter des documents, images ou contenus complexes lorsque le cas d’usage le nécessite.
+        </p>
+      </article>
+    </div>
+    <div class="sandbox-variants">
+      <h3>Une configuration, c’est quoi&nbsp;?</h3>
+      <p>
+        Le <strong>modèle</strong> désigne ses poids et son architecture. La <strong>configuration</strong> décrit
+        comment il est exécuté : modèle et version, quantification, paramètres de service et taille de contexte. Le
+        <strong>matériel</strong> correspond aux ressources CPU, GPU et mémoire qui font tourner cette configuration.
+      </p>
+      <p>
+        Les configurations peuvent varier selon le CPU ou GPU, la quantité de mémoire, la quantification du modèle, le
+        contexte court ou long, la version et taille du modèle, ainsi que l’architecture Dense ou MoE.
+      </p>
+      <p class="sandbox-note">Les différentes configurations ne sont pas nécessairement disponibles simultanément.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Du cas d’usage à la décision</span>
+      <h2>Une comparaison lisible par toute l’équipe</h2>
+    </div>
+    <div
+      class="sandbox-flow"
+      aria-label="Vos cas d’usage sont testés avec plusieurs configurations, puis comparés pour éclairer la décision"
+    >
+      <div class="sandbox-flow__node">Vos cas d’usage</div>
+      <span class="sandbox-flow__arrow" aria-hidden="true">↓</span>
+      <div class="sandbox-flow__node sandbox-flow__node--main">Sandbox IA locale</div>
+      <span class="sandbox-flow__arrow" aria-hidden="true">↓</span>
+      <div class="sandbox-flow__branches">
+        <div><strong>Modèle A</strong><span>Dense</span></div>
+        <div><strong>Modèle B</strong><span>MoE</span></div>
+        <div><strong>Modèle C</strong><span>Code</span></div>
+      </div>
+      <span class="sandbox-flow__arrow" aria-hidden="true">↓</span>
+      <div class="sandbox-flow__node">Qualité + performances</div>
+      <span class="sandbox-flow__arrow" aria-hidden="true">↓</span>
+      <div class="sandbox-flow__node sandbox-flow__node--decision">Aide à la décision</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Dans des conditions proches de l’usage</span>
+      <h2>Pas seulement un benchmark technique</h2>
+      <p>Profils techniques et utilisateurs métier peuvent participer à l’évaluation des modèles.</p>
+    </div>
+    <div class="cards">
+      <article class="card card--tinted theme-engineering">
+        <h3>Interface conversationnelle</h3>
+        <p>
+          Une interface web permet de sélectionner une configuration, discuter avec les modèles, envoyer des documents
+          et comparer leurs résultats.
+        </p>
+      </article>
+      <article class="card">
+        <h3>API</h3>
+        <p>
+          Une API peut permettre aux équipes techniques de connecter scripts, prototypes, applications ou agents aux
+          modèles testés pendant le POC.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface" id="mesures">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Observations quantitatives et retours d’usage</span>
+      <h2>Des mesures concrètes, pas seulement des impressions</h2>
+    </div>
+    <div class="sandbox-metrics">
+      <div><strong>Modèle &amp; configuration</strong><span>Version, paramètres et ressources utilisées</span></div>
+      <div><strong>Requêtes &amp; tokens</strong><span>Nombre de requêtes, tokens d’entrée et de sortie</span></div>
+      <div><strong>Latence totale</strong><span>Durée entre la demande et la réponse complète</span></div>
+      <div><strong>TTFT</strong><span>Time To First Token : délai avant le début de la réponse</span></div>
+      <div><strong>Vitesse de génération</strong><span>Tokens générés par seconde</span></div>
+      <div>
+        <strong>Erreurs &amp; utilisation</strong><span>Erreurs observées et utilisation par configuration</span>
+      </div>
+    </div>
+    <p class="sandbox-feedback">
+      Les mesures techniques peuvent être complétées par le ressenti des testeurs : qualité, pertinence, réponses
+      incomplètes, hallucinations et perception de la vitesse.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="scenarios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Benchmark adapté à votre activité</span>
+      <h2>Testez vos cas d’usage</h2>
+      <p>
+        Les modèles sont comparés sur des scénarios représentatifs de votre activité. Un jeu de données synthétiques ou
+        des documents publics peuvent être préparés pour effectuer des tests reproductibles sans exposer de données
+        sensibles.
+      </p>
+    </div>
+    <ul class="sandbox-scenario-list">
+      <li>Synthèse et classification d’e-mails</li>
+      <li>Extraction d’informations</li>
+      <li>Analyse de rapports</li>
+      <li>Comparaison de documents</li>
+      <li>Recherche dans un document long</li>
+      <li>Analyse de tableaux et données structurées</li>
+      <li>Réponse à partir de plusieurs sources</li>
+      <li>Génération et analyse de code</li>
+      <li>Recherche documentaire / RAG</li>
+      <li>OCR et analyse documentaire lorsque nécessaire</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--surface" id="materiel">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Option benchmark matériel</span>
+      <h2>Quel matériel faut-il réellement&nbsp;?</h2>
+      <p>
+        Un même modèle peut se comporter très différemment selon le CPU, le GPU, la mémoire disponible et la taille du
+        contexte. Certains scénarios peuvent être rejoués sur plusieurs plateformes pour mesurer l’impact réel du
+        matériel.
+      </p>
+    </div>
+    <div class="sandbox-hardware">
+      <article class="card">
+        <h3>CPU / mémoire</h3>
+        <p>Configuration A <span aria-hidden="true">↔</span> Configuration B</p>
+      </article>
+      <article class="card">
+        <h3>GPU</h3>
+        <p>Configuration A <span aria-hidden="true">↔</span> Configuration B</p>
+      </article>
+    </div>
+    <div class="sandbox-hardware-results">
+      <h3>Mesures comparées</h3>
+      <div class="pills">
+        <span class="pill">Latence</span><span class="pill">Délai avant premier token</span
+        ><span class="pill">Tokens/seconde</span><span class="pill">Contextes différents</span
+        ><span class="pill">Mémoire nécessaire</span><span class="pill">Limites rencontrées</span>
+      </div>
+    </div>
+    <p class="sandbox-note">
+      Ce benchmark oriente une décision ; il ne constitue pas le dimensionnement définitif d’une infrastructure de
+      production.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Restitution du POC</span>
+      <h2>Une décision basée sur des résultats mesurés</h2>
+      <p class="lead">
+        Le but n’est pas de désigner « le meilleur modèle », mais d’identifier le meilleur compromis pour votre usage
+        entre qualité, vitesse, matériel nécessaire et coût potentiel.
+      </p>
+    </div>
+    <div class="card">
+      <h3>La synthèse finale peut couvrir</h3>
+      <ul class="feature-list">
+        <li>Configurations testées et performances observées</li>
+        <li>Comparaison CPU/GPU lorsqu’elle a été effectuée</li>
+        <li>Différences entre tailles de modèles et architectures</li>
+        <li>Impact de la taille du contexte</li>
+        <li>Performances OCR et documentaires</li>
+        <li>Résultats par scénario et retours utilisateurs</li>
+        <li>Limites identifiées et usages intéressants pour une suite</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Cadre des essais</span>
+      <h2>Un environnement d’expérimentation</h2>
+    </div>
+    <div class="sandbox-privacy">
+      <p>
+        Par défaut, les tests sont réalisés avec des données synthétiques, des documents publics ou des jeux de données
+        spécifiquement préparés pour le POC.
+      </p>
+      <p>
+        <strong
+          >Les données confidentielles, données personnelles réelles, secrets métier, données de production,
+          identifiants et informations sensibles nécessitent un cadre spécifique avant toute utilisation.</strong
+        >
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section sandbox-offer" id="offre">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Une offre cadrée</span>
+      <h2>Sandbox IA locale — {{ site.data.pricing.sandbox.duration_days }} jours</h2>
+      <p class="sandbox-price">{% include price.html offer=site.data.pricing.sandbox %}</p>
+      <p>
+        Le périmètre est confirmé selon les usages, les modèles disponibles, leurs licences et la compatibilité
+        technique.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Comprend</h3>
+      <ul class="feature-list">
+        <li>Cadrage du benchmark et préparation des scénarios</li>
+        <li>Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations principales</li>
+        <li>Environnement pendant {{ site.data.pricing.sandbox.duration_days }} jours</li>
+        <li>Interface conversationnelle</li>
+        <li>Accès API selon le besoin</li>
+        <li>Métriques techniques</li>
+        <li>Accompagnement à la prise en main</li>
+        <li>Synthèse finale</li>
+      </ul>
+      <h3 class="portal-heading">Options</h3>
+      <p>
+        <strong>Benchmark matériel&nbsp;: {% include price.html offer=site.data.pricing.sandbox.hardware %}.</strong>
+        Comparaison de profils CPU/mémoire et GPU sur des scénarios identiques.
+      </p>
+      <p>
+        <strong>Prolongation&nbsp;: {% include price.html offer=site.data.pricing.sandbox.extension %}.</strong>
+        {% include sandbox-extension-scope.html %}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Après le benchmark</span>
+      <h2>Et après le benchmark&nbsp;?</h2>
+      <p class="lead">
+        La sandbox répond à une première question&nbsp;: « Est-ce que des modèles open-weight peuvent répondre
+        correctement à nos usages, et avec quelles ressources&nbsp;? »
+      </p>
+      <p>
+        Si les résultats sont concluants, ils peuvent servir de base à une étude d’architecture, un dimensionnement, un
+        calcul de TCO ou un POC métier plus approfondi.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Une suite adaptée aux résultats</h3>
+      <p>
+        Le POC ne comprend pas l’architecture de production, la haute disponibilité, le SLA, le SSO, l’intégration
+        Microsoft 365 / SharePoint, un RAG métier complet, la mise en production, le dimensionnement exhaustif ou la
+        migration de workloads.
+      </p>
+      <div class="actions">
+        <a class="btn btn--soft" href="{{ '/ai-engineering/' | relative_url }}">IA Engineering</a
+        ><a class="btn btn--ghost" href="{{ '/tarifs/' | relative_url }}#sandbox-ia-locale">FinOps IA &amp; tarifs</a
+        ><a class="btn btn--ghost" href="{{ '/services/' | relative_url }}">Conseil &amp; architecture IA</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>FAQ — sandbox et benchmark IA locale</h2>
+    </div>
+    {% include faq-list.html group=page.faq %}
+  </div>
+</section>
+
+{% include booking-cta.html title="Échanger sur votre besoin de test" text="Quelques éléments sur vos usages suffisent
+pour cadrer les modèles et configurations à comparer." label="Échanger sur mon besoin" location="sandbox_ia_locale" %}

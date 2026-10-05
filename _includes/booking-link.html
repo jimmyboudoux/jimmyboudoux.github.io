@@ -1,8 +1,10 @@
+{% assign booking_minutes = site.data.engagement.booking_minutes | append: '' %}
 <a
   class="{{ include.class | default: 'btn' }}"
   href="{{ site.booking_url }}"
   target="_blank"
   rel="noopener noreferrer"
   data-booking-location="{{ include.location | default: 'site' }}"
-  >{{ include.label | default: 'Réserver un échange de 20 min' }}</a
+  >{{ include.label | default: 'Réserver un échange de __booking_minutes__ min' | replace: '__booking_minutes__',
+  booking_minutes }}</a
 >

@@ -8,6 +8,7 @@ class SiteTest < Minitest::Test
     /services/
     /ai-adoption/
     /ai-engineering/
+    /sandbox-ia-locale/
     /software-rescue/
     /data-reporting/
     /ai-finops/
@@ -35,7 +36,7 @@ class SiteTest < Minitest::Test
 
     refute_empty locations
     assert_equal locations.uniq, locations
-    assert_equal 21, locations.size
+    assert_equal 22, locations.size
     assert_empty EXPECTED_PATHS - public_paths
     refute_includes public_paths, "/404.html"
     refute_includes public_paths, "/diagnostic-ia/merci/"
@@ -63,6 +64,32 @@ class SiteTest < Minitest::Test
       assert_equal "#{SITE_ORIGIN}#{path}", document.at_css('link[rel="canonical"]')&.[]("href")
       refute document.at_css('meta[name="robots"]')&.[]("content")&.match?(/\bnoindex\b/i)
     end
+  end
+
+  def test_local_ai_sandbox_offer_is_linked_and_scoped_as_a_poc
+    sandbox = html_for_path("/sandbox-ia-locale/")
+    assert_includes sandbox.css("h1").text, "Testez une IA locale avant d’investir"
+    assert_includes sandbox.text.downcase, "#{YAML.load_file("_data/pricing.yml").dig("sandbox", "max_configurations")} configurations principales"
+    assert_includes sandbox.text, "Time To First Token"
+    %w[Dense MoE OCR Vision CPU GPU code].each do |term|
+      assert_includes sandbox.text, term
+    end
+    assert_includes sandbox.text, "contexte court ou long"
+    assert_includes sandbox.text, "environnement temporaire de test, de benchmark et d’aide à la décision"
+    assert_includes sandbox.text, "données confidentielles"
+    assert_includes sandbox.text, "#{formatted_amount(YAML.load_file("_data/pricing.yml").dig("sandbox", "amount"))} € HT"
+    assert_includes sandbox.text, "+#{formatted_amount(YAML.load_file("_data/pricing.yml").dig("sandbox", "hardware", "amount"))} € HT"
+    extension = YAML.load_file("_data/pricing.yml").dig("sandbox", "extension")
+    assert_includes sandbox.text, "+#{formatted_amount(extension.fetch("amount"))} € HT / #{extension.fetch("period_days")} jours"
+
+    %w[/services/ /ai-engineering/ /tarifs/].each do |path|
+      assert html_for_path(path).css('a[href="/sandbox-ia-locale/"]').any?, "Missing sandbox link from #{path}"
+    end
+    assert_includes html_for_path("/services/").text, "Tester des modèles IA"
+
+    homepage = html_for_path("/")
+    assert homepage.css('a[href="/sandbox-ia-locale/"]').any?, "Missing sandbox service card on homepage"
+    assert_includes homepage.text, "Découvrir la sandbox"
   end
 
   def test_noindex_pages_are_not_in_the_sitemap
@@ -161,7 +188,7 @@ class SiteTest < Minitest::Test
     assert_equal "France", service.fetch("areaServed").fetch("name")
 
     course = json_ld_for("/formations/ai-literacy/").find { |item| item["@type"] == "Course" }
-    assert_equal 650, course.fetch("offers").fetch("price")
+    assert_equal YAML.load_file("_data/formations.yml").fetch("ai-literacy").fetch("prices").map { |offer| offer.fetch("amount") }.min, course.fetch("offers").fetch("price")
     assert_equal "EUR", course.fetch("offers").fetch("priceCurrency")
 
     breadcrumb = json_ld_for("/formations/ai-literacy/").find { |item| item["@type"] == "BreadcrumbList" }
@@ -200,21 +227,68 @@ class SiteTest < Minitest::Test
 
   def test_shared_pricing_data_is_rendered_on_the_pricing_page
     pricing = YAML.load_file("_data/pricing.yml")
-    prices = [
-      pricing.dig("expert_review", "price"),
-      pricing.dig("framing", "price"),
-      pricing.dig("automation", "starting_price"),
-      pricing.dig("local_ai", "prototype", "starting_price"),
-      pricing.dig("ai_portal", "essential", "starting_price"),
-      pricing.dig("ai_portal", "enterprise", "starting_price"),
-      pricing.dig("software_rescue", "starting_price"),
-      pricing.dig("audit", "starting_price"),
-      pricing.dig("fractional", "starting_price")
-    ] + pricing.fetch("audit").fetch("ranges").values.map { |range| range.fetch("range") } +
-      pricing.fetch("fractional").slice("light", "regular", "transverse", "reinforced").values.map { |range| range.fetch("range") }
+    offers = []
+    collect = lambda do |node|
+      return unless node.is_a?(Hash)
+      offers << node if node.key?("amount")
+      node.each_value { |value| collect.call(value) }
+    end
+    collect.call(pricing)
+    pricing_page = html_for_path("/tarifs/").text.gsub(/\s+/, " ")
+    offers.each do |offer|
+      assert_includes pricing_page, "#{formatted_amount(offer.fetch("amount"))} € HT" unless offer.key?("max_amount")
+      if offer.key?("max_amount")
+        assert_includes pricing_page, "#{formatted_amount(offer.fetch("amount"))} – #{formatted_amount(offer.fetch("max_amount"))} € HT"
+      end
+    end
+  end
 
-    pricing_page = html_for_path("/tarifs/").text
-    prices.each { |price| assert_includes pricing_page, price }
+  def test_faqs_and_catalogue_themes_are_explicit_and_consistent
+    %w[/404.html /diagnostic-ia/merci/ /mentions-legales/ /politique-confidentialite/].each do |path|
+      document = path == "/404.html" ? Nokogiri::HTML5(File.read(site_file("404.html"))) : html_for_path(path)
+      assert_empty document.css(".site-faq__list"), "Unexpected commercial FAQ on #{path}"
+    end
+    services = YAML.load_file("_data/services.yml")
+    %w[sandbox-ia-locale ia-privee-locale].each do |slug|
+      service = services.find { |item| item.fetch("slug") == slug }
+      document = html_for_path("/#{slug}/")
+      assert_equal service.fetch("theme"), document.at_css("body")["class"]
+      assert_equal "Expertises", document.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+      assert json_ld_for("/#{slug}/").any? { |item| item["@type"] == "Service" }
+    end
+    %w[/ /ai-engineering/ /tarifs/ /contact/ /diagnostic-ia/ /formations/ai-literacy/].each do |path|
+      assert_empty html_for_path(path).css(".site-faq__list"), "Repeated generic FAQ on #{path}"
+    end
+    overview = html_for_path("/services/")
+    assert_equal 1, overview.css(".site-faq__list").size
+    assert_operator overview.css("section").index { |section| section["id"] == "faq" }, :<,
+                    overview.css("section").to_a.rindex { |section| section.at_css(".cta-box") }
+    public_paths.each do |path|
+      document = html_for_path(path)
+      locations = JSON.parse(document.at_css("body")["data-booking-locations"])
+      document.css("[data-booking-location]").each { |link| assert_includes locations, link["data-booking-location"] }
+      document.css('script[type="application/ld+json"]').each do |script|
+        data = JSON.parse(script.text)
+        next unless data["@type"] == "FAQPage"
+        actual = document.css(".site-faq__list details").map { |detail| [detail.at_css("summary").text.strip, detail.at_css("p").text.strip] }
+        expected = data.fetch("mainEntity").map { |item| [item.fetch("name"), item.fetch("acceptedAnswer").fetch("text")] }
+        assert_equal expected, actual, "FAQ markup differs from visible answers on #{path}"
+      end
+    end
+  end
+
+  def test_homepage_has_distinct_roles_and_no_duplicate_diagnostic_promotion
+    document = html_for_path("/")
+    hero = document.at_css(".hero")
+    assert_equal 1, hero.css("p.lead").size
+    assert_equal 2, hero.css(".actions a").size
+    assert_empty hero.css('a[href="/diagnostic-ia/"], .engineering-map, .hero-principles')
+    assert_equal 1, document.css(".home-diagnostic").size
+    assert_equal 1, document.css('.home-diagnostic a[href="/diagnostic-ia/"]').size
+    assert_empty document.css(".home-diagnostic [data-booking-location]")
+    assert_equal 1, document.css(".engineering-map").size
+    assert document.at_css("#approche .engineering-map")
+    assert_empty document.css("#pour-qui")
   end
 
   def test_robots_references_the_generated_sitemap
@@ -222,6 +296,10 @@ class SiteTest < Minitest::Test
   end
 
   private
+
+  def formatted_amount(amount)
+    amount.to_s.reverse.scan(/.{1,3}/).join(" ").reverse
+  end
 
   def json_ld_for(path)
     html_for_path(path).css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }

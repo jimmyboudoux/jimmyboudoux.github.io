@@ -345,7 +345,7 @@
 }
 
 /* Mobile */
-@media (max-width: 720px) {
+@media (max-width: $breakpoint-form) {
   .diagnostic-form-shell {
     width: min(calc(100% - 28px), 1040px);
   }
@@ -389,4 +389,9 @@
   .diagnostic-nav .btn {
     flex: 1 1 auto;
   }
+}
+
+/* ALTCHA is triggered programmatically on submission. */
+.diagnostic-form altcha-widget {
+  display: none !important;
 }

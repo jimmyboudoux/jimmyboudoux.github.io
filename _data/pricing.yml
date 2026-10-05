@@ -1,63 +1,89 @@
+# Montants en euros HT. Modifier chaque montant uniquement ici.
 expert_review:
-  label: "Revue experte ciblée"
-  price: "390 € HT"
-  short: "Une question principale, quelques éléments à examiner, une analyse et une recommandation synthétique."
-
+  label: Revue experte ciblée
+  short: Une question principale, quelques éléments à examiner, une analyse et une recommandation synthétique.
+  amount: 390
 framing:
-  label: "Cadrage ciblé"
-  price: "900 € HT"
-  short: "Clarifier un problème principal, comprendre l’existant, comparer les options et recommander la prochaine étape."
-
+  label: Cadrage ciblé
+  short: Clarifier un problème principal, comprendre l’existant, comparer les options et recommander la prochaine étape.
+  amount: 900
 automation:
-  label: "Automatisation"
-  starting_price: "À partir de 1 500 € HT"
-  short: "Automatiser un flux avec la solution adaptée : déterministe, LLM/agent ou hybride."
-
+  label: Automatisation
+  short: 'Automatiser un flux avec la solution adaptée : déterministe, LLM/agent ou hybride.'
+  amount: 1500
+  prefix: 'À partir de '
 local_ai:
   prototype:
-    label: "Prototype IA locale"
-    starting_price: "À partir de 1 500 € HT"
-    short: "Tester un modèle, une API, un benchmark ou un usage local avant d’investir."
-
+    label: Prototype IA locale ciblé
+    short: Valider techniquement un scénario local ciblé. Pour comparer plusieurs configurations dans un environnement temporaire,
+      voir la Sandbox IA locale.
+    amount: 1500
+    prefix: 'À partir de '
 ai_portal:
   essential:
-    label: "Portail IA essentiel"
-    starting_price: "À partir de 1 500 € HT"
-    short: "Une interface IA simple connectée aux modèles choisis par l’entreprise."
+    label: Portail IA essentiel
+    short: Une interface IA simple connectée aux modèles choisis par l’entreprise.
+    amount: 1500
+    prefix: 'À partir de '
   enterprise:
-    label: "Portail IA d’entreprise"
-    starting_price: "À partir de 4 000 € HT"
-    short: "Un portail IA intégré à l’environnement, aux utilisateurs et aux contraintes de l’entreprise."
-
+    label: Portail IA d’entreprise
+    short: Un portail IA intégré à l’environnement, aux utilisateurs et aux contraintes de l’entreprise.
+    amount: 4000
+    prefix: 'À partir de '
 software_rescue:
-  label: "Reprise & stabilisation logicielle"
-  starting_price: "À partir de 2 500 € HT"
-  short: "Reprendre une application fragile, legacy ou vibe codée et construire une trajectoire de stabilisation."
-
+  label: Reprise & stabilisation logicielle
+  short: Reprendre une application fragile, legacy ou vibe codée et construire une trajectoire de stabilisation.
+  amount: 2500
+  prefix: 'À partir de '
 audit:
-  starting_price: "À partir de 2 500 € HT"
   ranges:
     targeted:
-      label: "Audit ciblé"
-      range: "2 500 – 4 000 € HT"
+      label: Audit ciblé
+      amount: 2500
+      max_amount: 4000
     multi_subject:
-      label: "Audit multi-sujets"
-      range: "4 500 – 8 000 € HT"
+      label: Audit multi-sujets
+      amount: 4500
+      max_amount: 8000
     transverse:
-      label: "Audit transverse"
-      range: "8 000 – 20 000 € HT et plus"
-
+      label: Audit transverse
+      amount: 8000
+      max_amount: 20000
+      suffix: ' et plus'
 fractional:
-  starting_price: "Dès 900 € HT / mois"
   light:
-    label: "Pilotage léger"
-    range: "900 – 1 500 € HT / mois"
+    label: Pilotage léger
+    amount: 900
+    max_amount: 1500
+    period: mois
   regular:
-    label: "Pilotage régulier"
-    range: "2 000 – 3 500 € HT / mois"
+    label: Pilotage régulier
+    amount: 2000
+    max_amount: 3500
+    period: mois
   transverse:
-    label: "Direction transverse"
-    range: "3 500 – 6 500 € HT / mois"
+    label: Direction transverse
+    amount: 3500
+    max_amount: 6500
+    period: mois
   reinforced:
-    label: "Direction renforcée"
-    range: "À partir de 6 500 € HT / mois"
+    label: Direction renforcée
+    amount: 6500
+    prefix: 'À partir de '
+    period: mois
+sandbox:
+  label: Sandbox IA locale
+  amount: 2400
+  prefix: 'À partir de '
+  duration_days: 30
+  max_configurations: 5
+  hardware:
+    label: Benchmark matériel
+    amount: 600
+    prefix: +
+  extension:
+    label: Prolongation
+    amount: 650
+    prefix: +
+    period_days: 30
+    additional_configurations: 1

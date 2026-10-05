@@ -6,6 +6,7 @@ theme: theme-data
 eyebrow: 'Informations légales'
 hero: 'Mentions légales'
 intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -14,17 +15,17 @@ intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
   <div class="container split">
     <div class="sticky-intro">
       <span class="eyebrow">Éditeur du site</span>
-      <h2>Jimmy Boudoux</h2>
-      <p class="lead">Entrepreneur individuel — activité de conseil en systèmes et logiciels informatiques.</p>
+      <h2>{{ site.person_name }}</h2>
+      <p class="lead">{{ site.legal_status | escape }} — activité de conseil en systèmes et logiciels informatiques.</p>
     </div>
 
     <div class="stack">
       <article class="card">
         <h3>Entreprise</h3>
         <ul class="feature-list">
-          <li><strong>Dénomination :</strong> Jimmy Boudoux</li>
-          <li><strong>Nom commercial :</strong> Boudoux Jimmy EI</li>
-          <li><strong>Forme juridique :</strong> Entrepreneur individuel</li>
+          <li><strong>Dénomination :</strong> {{ site.person_name }}</li>
+          <li><strong>Nom commercial :</strong> {{ site.legal_name }}</li>
+          <li><strong>Forme juridique :</strong> {{ site.legal_status }}</li>
           <li><strong>SIREN :</strong> 108 385 154</li>
           <li><strong>SIRET de l’établissement principal :</strong> 108 385 154 00019</li>
           <li><strong>Code APE :</strong> 62.02A — Conseil en systèmes et logiciels informatiques</li>
@@ -44,8 +45,8 @@ intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
       <article class="card">
         <h3>Publication</h3>
         <p>
-          Le site <strong>jboudoux.fr</strong> est édité par Jimmy Boudoux, entrepreneur individuel. Directeur de la
-          publication : Jimmy Boudoux.
+          Le site <strong>jboudoux.fr</strong> est édité par {{ site.person_name | escape }}, {{ site.legal_status |
+          downcase | escape }}. Directeur de la publication : {{ site.person_name | escape }}.
         </p>
         <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
       </article>
@@ -69,8 +70,8 @@ intro: 'Informations relatives à l’éditeur du site jboudoux.fr.'
         <h3>Propriété intellectuelle</h3>
         <p>
           Sauf mention contraire, les contenus présents sur ce site — textes, éléments graphiques, structure et
-          créations originales — sont la propriété de Jimmy Boudoux. Toute reproduction ou réutilisation substantielle
-          sans autorisation préalable est interdite.
+          créations originales — sont la propriété de {{ site.person_name | escape }}. Toute reproduction ou
+          réutilisation substantielle sans autorisation préalable est interdite.
         </p>
       </article>
 

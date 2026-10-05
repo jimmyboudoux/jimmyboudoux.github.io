@@ -1,10 +1,11 @@
 ---
 layout: default
 title: 'Diagnostic IA Entreprise'
-description: 'Faites le point sur les usages IA de votre entreprise. Jimmy Boudoux analyse vos réponses et vous envoie des premières recommandations sous un jour ouvré.'
+diagnostic_meta: true
 theme: theme-ai
 extra_modules:
   - /assets/js/diagnostic/index.mjs
+faq: false
 ---
 
 <script type="module" src="{{ '/assets/vendor/altcha/altcha.min.js' | relative_url }}"></script>
@@ -15,31 +16,18 @@ extra_modules:
       <h1>Diagnostic IA Entreprise</h1>
       <p class="lead">Une première évaluation personnalisée de la maturité IA de votre organisation.</p>
       <p>
-        Vous utilisez déjà ChatGPT, Copilot ou d’autres outils IA ? Vous vous demandez par où commencer, comment
-        maîtriser vos coûts, vos usages, vos risques ou vos possibilités d’automatisation ?
-      </p>
-      <p>
-        Répondez à quelques questions. J’analyse personnellement votre situation et vous adresse mon retour sous un jour
-        ouvré.
+        Répondez à quelques questions. J’analyse personnellement votre situation et vous adresse mon retour généralement
+        sous {% include diagnostic-response-time.html %}.
       </p>
       <div class="actions"><a class="btn" href="#questionnaire" data-diagnostic-start>Commencer le diagnostic</a></div>
     </div>
     <aside class="diagnostic-promise" aria-label="Caractéristiques du diagnostic">
-      <span>✓ Offert</span><span>✓ 5 à 8 minutes</span><span>✓ Analyse humaine</span><span>✓ Sans engagement</span>
+      <span>✓ Offert</span
+      ><span
+        >✓ {{ site.data.engagement.diagnostic.duration_min_minutes }} à {{
+        site.data.engagement.diagnostic.duration_max_minutes }} minutes</span
+      ><span>✓ Analyse humaine</span><span>✓ Sans engagement</span>
     </aside>
-  </div>
-</section>
-
-<section class="section section--tight diagnostic-intro">
-  <div class="container narrow">
-    <div class="section-head">
-      <span class="eyebrow">Pourquoi réaliser un diagnostic IA ?</span>
-      <h2>Identifier les sujets qui méritent vraiment votre attention.</h2>
-      <p>
-        Le diagnostic met en perspective vos usages, vos outils et vos enjeux. Il vous aide à distinguer les gains
-        accessibles, les risques à traiter et les questions qui demandent un approfondissement.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -78,12 +66,12 @@ extra_modules:
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Comment fonctionne le diagnostic ?</span>
-      <h2>Trois étapes, avec une analyse humaine.</h2>
+      <h2>Du questionnaire aux recommandations.</h2>
     </div>
     <div class="process diagnostic-process">
       <article class="process-step">
         <h3>Vous décrivez votre situation</h3>
-        <p>Un questionnaire d’environ cinq minutes sur vos usages et vos priorités.</p>
+        <p>Vos outils, vos usages et les difficultés rencontrées.</p>
       </article>
       <article class="process-step">
         <h3>J’analyse personnellement vos réponses</h3>
@@ -91,10 +79,7 @@ extra_modules:
       </article>
       <article class="process-step">
         <h3>Vous recevez mon retour</h3>
-        <p>
-          Sous 24 heures ouvrées, je vous transmets votre première évaluation et les deux ou trois sujets que je
-          traiterais en priorité.
-        </p>
+        <p>Une synthèse de votre situation et les sujets à traiter en priorité.</p>
       </article>
     </div>
   </div>
@@ -390,12 +375,11 @@ extra_modules:
 </section>
 
 <section class="section section--tight">
-  <div class="container cta-box">
-    <h2>Prêt à faire le point ?</h2>
-    <p>Vous pouvez commencer le questionnaire maintenant, ou échanger directement si votre besoin est déjà précis.</p>
+  <div class="container narrow">
+    <h2>Vous préférez en parler ?</h2>
     <div class="actions">
-      <a class="btn" href="#questionnaire" data-diagnostic-start>Commencer mon diagnostic</a>{% include
-      booking-link.html label="Réserver directement 20 minutes" class="btn btn--ghost" location="diagnostic" %}
+      {% include booking-link.html label="Réserver un échange de __booking_minutes__ min" class="btn btn--ghost"
+      location="diagnostic" %}
     </div>
   </div>
 </section>

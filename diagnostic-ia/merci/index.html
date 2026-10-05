@@ -5,6 +5,7 @@ description: 'Confirmation de réception de votre Diagnostic IA Entreprise.'
 theme: theme-ai
 noindex: true
 sitemap: false
+faq: false
 ---
 
 <section class="confirmation-page">
@@ -13,7 +14,7 @@ sitemap: false
     <span class="eyebrow">Diagnostic reçu</span>
     <h1>Merci, j’ai bien reçu vos réponses.</h1>
     <p class="lead">Je vais maintenant analyser personnellement votre situation.</p>
-    <p>Vous recevrez mon retour sous 24 heures ouvrées.</p>
+    <p>Vous recevrez mon retour généralement sous {% include diagnostic-response-time.html %}.</p>
     <div class="confirmation-content">
       <h2>Votre retour comprendra notamment</h2>
       <ul class="feature-list">
@@ -25,12 +26,12 @@ sitemap: false
       <p>Si votre situation nécessite quelques précisions avant mon analyse, je pourrai également vous contacter.</p>
     </div>
     <div class="confirmation-signature">
-      <strong>Jimmy Boudoux</strong><span>Consultant IA, Data & transformation numérique</span>
+      <strong>{{ site.person_name | escape }}</strong><span>Consultant IA, Data & transformation numérique</span>
     </div>
     <div class="confirmation-secondary">
       <p>Vous souhaitez déjà échanger ?</p>
-      {% include booking-link.html label="Réserver 20 minutes" class="btn btn--ghost" location="diagnostic_confirmation"
-      %}
+      {% include booking-link.html label="Réserver __booking_minutes__ minutes" class="btn btn--ghost"
+      location="diagnostic_confirmation" %}
     </div>
   </div>
 </section>

@@ -13,32 +13,41 @@
     <div class="pricing-grid">
       <article class="price-card theme-ai">
         <span class="price-kicker">Revue experte</span>
-        <div class="price"><strong>{{ site.data.pricing.expert_review.price }}</strong></div>
+        <div class="price"><strong>{% include price.html offer=site.data.pricing.expert_review %}</strong></div>
         <p>Une question ciblée ou une seconde opinion.</p>
       </article>
       <article class="price-card theme-engineering">
         <span class="price-kicker">Cadrage ciblé</span>
-        <div class="price"><strong>{{ site.data.pricing.framing.price }}</strong></div>
+        <div class="price"><strong>{% include price.html offer=site.data.pricing.framing %}</strong></div>
         <p>Clarifier un problème et décider de la prochaine étape.</p>
       </article>
       <article class="price-card theme-data">
         <span class="price-kicker">Construire / automatiser</span>
-        <div class="price"><strong>{{ site.data.pricing.automation.starting_price }}</strong></div>
+        <div class="price"><strong>{% include price.html offer=site.data.pricing.automation %}</strong></div>
         <p>Automatisation, intégration, prototype ou réalisation ciblée.</p>
       </article>
       <article class="price-card theme-software">
         <span class="price-kicker">Audit</span>
-        <div class="price"><strong>{{ site.data.pricing.audit.starting_price }}</strong></div>
+        <div class="price">
+          <strong
+            >{% include price.html offer=site.data.pricing.audit.ranges.targeted amount_only=true prefix="À partir de "
+            %}</strong
+          >
+        </div>
         <p>D’un sujet ciblé à une investigation transverse.</p>
       </article>
       <article class="price-card theme-fractional">
         <span class="price-kicker">CTO / CAIO à temps partagé</span>
-        <div class="price"><strong>{{ site.data.pricing.fractional.starting_price }}</strong></div>
+        <div class="price">
+          <strong
+            >{% include price.html offer=site.data.pricing.fractional.light amount_only=true prefix="Dès " %}</strong
+          >
+        </div>
         <p>Pilotage et direction adaptés au niveau d’implication réellement nécessaire.</p>
       </article>
       <article class="price-card theme-finops">
         <span class="price-kicker">Formation</span>
-        <div class="price"><strong>À partir de {{ site.data.formations.ai-literacy.starting_price }}</strong></div>
+        <div class="price"><strong>À partir de {% include formation-starting-price.html %}</strong></div>
         <p>Tarifs fixes selon la formation et le format.</p>
       </article>
     </div>

@@ -2,14 +2,13 @@
 layout: default
 title: 'Ingénierie IA, Agents, RAG & IA locale'
 description: 'Assistants IA, RAG, agents, automatisation, intégration LLM et architectures locales, privées, cloud ou hybrides.'
-theme: theme-engineering
 service: ai-engineering
 breadcrumb_parent: Expertises
 breadcrumb_parent_url: /services/
 eyebrow: 'AI Engineering · Agents · RAG · IA locale'
 hero: 'Construire des systèmes IA utiles, intégrés et exploitables.'
 intro: 'Du prototype au système exploitable : assistants, RAG, agents, automatisations et IA locale pensés pour fonctionner dans votre environnement et avec vos contraintes.'
-hero_cta: 'Parler d’un système IA'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -55,87 +54,31 @@ hero_cta: 'Parler d’un système IA'
 <section class="section section--soft" id="prototype-local">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Tester avant d’investir</span>
-      <h2>Un benchmark IA locale pour valider une architecture.</h2>
-      <p>
-        Le prototype est une expérimentation technique avant investissement : un protocole de test, des mesures, une
-        comparaison et une recommandation. L’infrastructure disponible sert à réaliser ces essais, pas à vendre un accès
-        à une machine.
-      </p>
+      <span class="eyebrow">Valider l’IA locale</span>
+      <h2>Quel périmètre de test vous faut-il ?</h2>
     </div>
-    <div class="cards cards--3">
+    <div class="cards">
+      <article class="card">
+        <h3>Un scénario ciblé</h3>
+        <p>
+          Le prototype vérifie une hypothèse technique : qualité des réponses, intégration ou contraintes matérielles.
+          Le protocole et la fenêtre de test sont définis au cadrage.
+        </p>
+        <a class="card-link" href="#reperes">Voir les repères tarifaires →</a>
+      </article>
       <article class="card card--tinted theme-engineering">
-        <h3>Benchmark de modèles</h3>
+        <h3>Plusieurs configurations à comparer</h3>
         <p>
-          Tester plusieurs modèles locaux sur les mêmes cas d’usage afin de comparer qualité des réponses, latence,
-          capacité de contexte et comportement réel.
+          La Sandbox permet de comparer modèles et profils CPU/GPU sur les mêmes scénarios pendant {{
+          site.data.pricing.sandbox.duration_days }} jours.
         </p>
-      </article>
-      <article class="card">
-        <h3>API temporaire de prototype</h3>
-        <p>
-          Exposer temporairement un ou plusieurs modèles via une API afin de tester une application, un workflow ou une
-          interface déjà existante sans investir immédiatement dans une infrastructure dédiée.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Performance &amp; dimensionnement</h3>
-        <p>
-          Mesurer les performances, la mémoire nécessaire, les temps de réponse et les contraintes matérielles afin
-          d’estimer l’infrastructure cible.
-        </p>
+        <a class="card-link" href="{{ '/sandbox-ia-locale/' | relative_url }}">Découvrir la Sandbox IA locale →</a>
       </article>
     </div>
-    <div class="split mt-125">
-      <div class="card">
-        <h3>Ce que le benchmark peut mesurer</h3>
-        <p>Selon le cas d’usage, le benchmark peut mesurer :</p>
-        <ul class="feature-list">
-          <li>Qualité des réponses, latence, débit et taille de contexte</li>
-          <li>Utilisation mémoire / VRAM et besoins matériels</li>
-          <li>Comportement sur les documents et comparaison entre plusieurs modèles</li>
-          <li>
-            RAG lorsqu’il est pertinent, ainsi qu’une comparaison avec le cloud ou les API si elle apporte de la valeur
-          </li>
-        </ul>
-      </div>
-      <div class="card card--tinted theme-engineering">
-        <h3>Décider à partir de résultats réels</h3>
-        <p>
-          Un jeu de documents peut être utilisé pour tester un scénario de RAG et comparer la qualité des réponses, la
-          latence et la pertinence du modèle. Le RAG reste ici un cas de test, pas une offre complète de plateforme.
-        </p>
-        <p>
-          <strong>À l’issue du prototype, l’objectif est de répondre à des questions concrètes :</strong> le modèle
-          est-il suffisamment bon, quelles performances peut-on attendre, quel matériel serait nécessaire et le scénario
-          local est-il réellement pertinent face au cloud ou aux API ?
-        </p>
-      </div>
-    </div>
-    <div class="pricing-callout">
-      <p>
-        Lorsque le prototype nécessite un accès API, celui-ci est ouvert pendant une fenêtre de test définie avec le
-        client et uniquement pour les besoins du prototype.
-      </p>
-      <p>
-        <strong
-          >Cette disponibilité ne constitue pas un service d’hébergement de production et n’est associée à aucun
-          SLA.</strong
-        >
-      </p>
-    </div>
-    <div class="card mt-125">
-      <p>
-        Selon la sensibilité du projet, les essais peuvent être réalisés avec des données de démonstration, anonymisées
-        ou convenues avec l’entreprise.
-      </p>
-      <div class="actions">
-        {% include booking-link.html label="Discuter d’un benchmark IA locale" class="btn" location="ai_local_prototype"
-        %}<a class="btn btn--ghost" href="{{ '/formations/ia-locale/' | relative_url }}"
-          >Découvrir la formation IA locale →</a
-        >
-      </div>
-    </div>
+    <p class="pricing-callout">
+      Ces essais sont temporaires. Ils ne constituent pas un hébergement de production ; les données utilisables sont
+      convenues avant le test.
+    </p>
   </div>
 </section>
 <section class="section">
@@ -186,7 +129,7 @@ hero_cta: 'Parler d’un système IA'
   </div>
 </section>
 
-<section class="section section--surface">
+<section class="section section--surface" id="reperes">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Repères tarifaires</span>
@@ -195,20 +138,23 @@ hero_cta: 'Parler d’un système IA'
     <div class="cards cards--3">
       <article class="card theme-engineering">
         <h3>Automatisation</h3>
-        <p><strong>{{ site.data.pricing.automation.starting_price }}</strong></p>
+        <p><strong>{% include price.html offer=site.data.pricing.automation %}</strong></p>
         <p>{{ site.data.pricing.automation.short }}</p>
       </article>
       <article class="card theme-data">
         <h3>Prototype IA locale</h3>
-        <p><strong>{{ site.data.pricing.local_ai.prototype.starting_price }}</strong></p>
+        <p><strong>{% include price.html offer=site.data.pricing.local_ai.prototype %}</strong></p>
         <p>
           Un benchmark et une validation technique avant investissement : modèles, API temporaire, mesures et
           recommandation.
         </p>
+        <a class="card-link" href="{{ '/sandbox-ia-locale/' | relative_url }}"
+          >Voir l’offre Sandbox IA locale — {{ site.data.pricing.sandbox.duration_days }} jours →</a
+        >
       </article>
       <article class="card theme-ai">
         <h3>Portail IA essentiel</h3>
-        <p><strong>{{ site.data.pricing.ai_portal.essential.starting_price }}</strong></p>
+        <p><strong>{% include price.html offer=site.data.pricing.ai_portal.essential %}</strong></p>
         <p>{{ site.data.pricing.ai_portal.essential.short }}</p>
         <p>
           Installation, connexion aux API du client, paramétrage simple, personnalisation légère, tests, documentation
@@ -218,7 +164,7 @@ hero_cta: 'Parler d’un système IA'
       </article>
       <article class="card theme-finops">
         <h3>Portail IA d’entreprise</h3>
-        <p><strong>{{ site.data.pricing.ai_portal.enterprise.starting_price }}</strong></p>
+        <p><strong>{% include price.html offer=site.data.pricing.ai_portal.enterprise %}</strong></p>
         <p>{{ site.data.pricing.ai_portal.enterprise.short }}</p>
         <a class="card-link" href="{{ '/ia-privee-locale/' | relative_url }}">Voir le détail des portails IA →</a>
       </article>
@@ -227,7 +173,6 @@ hero_cta: 'Parler d’un système IA'
   </div>
 </section>
 
-{% include local-intervention.html title="À distance par défaut, sur site quand c’est utile." text="Basé à Poitiers, je
-travaille principalement à distance pour les projets d’agents IA, RAG, IA locale, intégration LLM et automatisation. Des
-ateliers ou revues techniques peuvent être organisés dans le Grand Ouest lorsque cela apporte une vraie valeur." %} {%
-include booking-cta.html title="Parler de votre projet" label="Réserver un échange de 20 min" location="service" %}
+{% include booking-cta.html title="Construisons votre système IA" text="Un assistant, un agent ou un système RAG à
+intégrer ? Décrivons les usages, les données et les contraintes techniques." label="Réserver un échange de
+__booking_minutes__ min" location="service" %}

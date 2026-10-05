@@ -1,0 +1,11 @@
+{% assign local_service = site.data.services | where: 'slug', include.slug | first %} {% assign local_service_url =
+local_service.slug | prepend: '/' | append: '/' | relative_url %}
+<article class="card{% if include.tinted %} card--tinted {{ local_service.theme }}{% endif %}">
+  {% if include.linked_title %}
+  <h3><a href="{{ local_service_url }}">{{ local_service.title }}</a></h3>
+  {% else %}
+  <h3>{{ local_service.title }}</h3>
+  {% endif %}
+  <p>{{ include.text }}</p>
+  {% if include.label %}<a class="card-link" href="{{ local_service_url }}">{{ include.label }} →</a>{% endif %}
+</article>

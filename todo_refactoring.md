@@ -1,3 +1,7 @@
+# Historique du refactoring initial
+
+Ce document conserve le plan initial et son état au moment de sa rédaction. Les cases historiques ne décrivent pas l’état actuel du site. Pour la maintenance, consulter le README et `docs/audit-factorisation-2026-10-05.md`.
+
 # Historique du plan de refactoring de `jboudoux.fr`
 
 > Ce document est conservé comme historique de la préparation du refactoring livré le 18 septembre 2026. Les cases des phases décrivent le plan initial ; l'état réellement livré est récapitulé dans « Implémentation réalisée » plus bas. Les améliorations postérieures sont suivies dans [`docs/audit-post-refactoring-2026-09-18.md`](docs/audit-post-refactoring-2026-09-18.md).

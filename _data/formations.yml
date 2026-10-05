@@ -11,8 +11,6 @@ ai-literacy:
   capacity: "4 à 12 participants"
   duration: "½ journée"
   format_short: "3 h 30 · présentiel ou distanciel synchrone"
-  starting_price: "650 € HT"
-  price_amount: 650
   formats:
     - label: "Sensibilisation compacte"
       duration: "3 h 30"
@@ -37,7 +35,7 @@ ai-literacy:
   access_delay: "Sous réserve de la finalisation du besoin, de l’accord sur le devis et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Ce délai est confirmé dans la proposition."
   prices:
     - format: "½ journée"
-      price: "650 € HT"
+      amount: 650
 
 finops-ia:
   short_title: "FinOps IA"
@@ -52,8 +50,6 @@ finops-ia:
   capacity: "4 à 10 participants"
   duration: "1 journée"
   format_short: "7 h · présentiel ou distanciel synchrone"
-  starting_price: "1 450 € HT"
-  price_amount: 1450
   formats:
     - label: "Journée complète"
       duration: "7 h"
@@ -84,7 +80,7 @@ finops-ia:
   access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Confirmation au devis."
   prices:
     - format: "Journée"
-      price: "1 450 € HT"
+      amount: 1450
 
 ia-locale:
   short_title: "Découverte de l’IA locale"
@@ -99,9 +95,7 @@ ia-locale:
   capacity: "4 à 10 participants"
   duration: "1 journée minimum"
   format_short: "7 h · présentiel ou distanciel synchrone"
-  starting_price: "1 500 € HT"
-  price_amount: 1500
-  price_note: "1 Journée minimum. Atelier approfondi ou programme sur mesure : sur devis."
+  price_note: "1 journée minimum. Atelier approfondi ou programme sur mesure : sur devis."
   formats:
     - label: "1 journée minimum"
       duration: "7 h"
@@ -131,5 +125,5 @@ ia-locale:
   assessment: "Auto-évaluation et quiz initial, analyse de scénarios et choix d’architecture pendant la session, puis quiz et cas de décision. Une évaluation à chaud clôture la session."
   access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Une démonstration spécifique ou une adaptation peut demander un délai complémentaire."
   prices:
-    - format: "1 Journée minimum"
-      price: "1 500 € HT"
+    - format: "1 journée minimum"
+      amount: 1500

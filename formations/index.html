@@ -3,6 +3,7 @@ layout: default
 title: 'Formations IA pour entreprises'
 description: 'Formations IA intra-entreprise, sur site à Poitiers et dans le Grand Ouest ou à distance : AI Literacy, FinOps IA et IA locale.'
 theme: theme-ai
+faq: formations
 ---
 
 <section class="formation-hero">
@@ -57,8 +58,10 @@ theme: theme-ai
           </div>
         </dl>
         <p class="training-card__price">
-          <strong>{{ formation.prices[0].format }} — {{ formation.prices[0].price }}</strong>{% if formation.price_note
-          %}<small>{{ formation.price_note }}</small>{% endif %}
+          <strong
+            >{{ formation.prices[0].format }} — {% assign training_display_offer = formation.prices[0] %}{% include
+            price.html offer=training_display_offer %}</strong
+          >{% if formation.price_note %}<small>{{ formation.price_note }}</small>{% endif %}
         </p>
         <p class="training-card__note">
           Tarifs intra-entreprise, hors éventuels frais de déplacement et de location de salle. Devis après cadrage.
@@ -172,33 +175,17 @@ theme: theme-ai
         <p>Oui, après analyse du besoin : exemples, niveau, rythme et cas pratiques sont ajustés au contexte.</p>
       </article>
     </div>
-    <div class="faq">
-      <details>
-        <summary>Faut-il déjà avoir un outil IA ?</summary>
-        <p>Non pour AI Literacy. Pour les autres formations, consultez les prérequis de chaque fiche.</p>
-      </details>
-      <details>
-        <summary>Quel délai prévoir ?</summary>
-        <p>
-          Sous réserve des disponibilités et de la finalisation du besoin, la session peut en principe être planifiée
-          sous 15 jours ouvrés ; délais à confirmer dans la proposition.
-        </p>
-      </details>
-      <details>
-        <summary>La certification Qualiopi est-elle obtenue ?</summary>
-        <p>
-          Le programme et le suivi sont structurés dans une démarche qualité. La certification Qualiopi n’est pas
-          revendiquée tant qu’elle n’est pas obtenue.
-        </p>
-      </details>
-    </div>
+    {% include faq-list.html group=page.faq %}
   </div>
 </section>
 
 <section class="section section--tight">
   <div class="container cta-box">
     <h2>Vous cherchez le bon point de départ ?</h2>
-    <p>Un échange de 20 minutes suffit pour vérifier quelle formation correspond à votre besoin.</p>
+    <p>
+      Un échange de {{ site.data.engagement.booking_minutes }} minutes suffit pour vérifier quelle formation correspond
+      à votre besoin.
+    </p>
     <div class="actions">
       {% include booking-link.html label="Discuter de cette formation" class="btn" location="training" %}
     </div>

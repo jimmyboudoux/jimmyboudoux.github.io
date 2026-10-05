@@ -6,6 +6,7 @@ theme: theme-data
 eyebrow: 'Données personnelles'
 hero: 'Politique de confidentialité'
 intro: 'Comment les informations transmises sur jboudoux.fr sont utilisées, protégées et conservées.'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -13,10 +14,10 @@ intro: 'Comment les informations transmises sur jboudoux.fr sont utilisées, pro
   <div class="container split">
     <div class="sticky-intro">
       <span class="eyebrow">Responsable du traitement</span>
-      <h2>Jimmy Boudoux</h2>
+      <h2>{{ site.person_name | escape }}</h2>
       <p class="lead">
-        Entrepreneur individuel, {{ site.data.profile.address.street }}, {{ site.data.profile.address.postal_code }} {{
-        site.data.profile.address.city }}.
+        {{ site.legal_status | escape }}, {{ site.data.profile.address.street }}, {{
+        site.data.profile.address.postal_code }} {{ site.data.profile.address.city }}.
       </p>
       <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
@@ -36,7 +37,8 @@ intro: 'Comment les informations transmises sur jboudoux.fr sont utilisées, pro
           Les données sont utilisées pour traiter votre demande, analyser personnellement votre situation, préparer et
           transmettre le diagnostic, demander une précision si nécessaire et assurer le suivi de cette relation
           professionnelle. Ce traitement est nécessaire à l’exécution des mesures demandées avant une éventuelle
-          prestation. Le suivi commercial raisonnablement attendu repose sur l’intérêt légitime de Jimmy Boudoux.
+          prestation. Le suivi commercial raisonnablement attendu repose sur l’intérêt légitime de {{ site.person_name |
+          escape }}.
         </p>
         <p>
           L’envoi occasionnel de contenus sur l’IA, la Data et la transformation numérique repose uniquement sur votre
@@ -46,10 +48,10 @@ intro: 'Comment les informations transmises sur jboudoux.fr sont utilisées, pro
       <article class="card">
         <h3>Destinataires et fournisseurs</h3>
         <p>
-          Jimmy Boudoux est destinataire des informations. Les diagnostics sont conservés sur une infrastructure privée
-          administrée par Jimmy Boudoux. Des prestataires techniques peuvent intervenir uniquement dans la mesure
-          nécessaire au fonctionnement et à la sécurisation du service ; ils n’accèdent pas aux réponses détaillées pour
-          leurs propres finalités.
+          {{ site.person_name | escape }} est destinataire des informations. Les diagnostics sont conservés sur une
+          infrastructure privée administrée par {{ site.person_name | escape }}. Des prestataires techniques peuvent
+          intervenir uniquement dans la mesure nécessaire au fonctionnement et à la sécurisation du service ; ils
+          n’accèdent pas aux réponses détaillées pour leurs propres finalités.
         </p>
       </article>
       <article class="card">

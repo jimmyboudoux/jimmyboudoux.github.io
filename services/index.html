@@ -6,6 +6,7 @@ theme: theme-ai
 eyebrow: 'Expertises'
 hero: 'Des expertises pour construire, transformer et optimiser.'
 intro: 'Un problème peut commencer par l’IA, la Data, un logiciel devenu fragile ou des coûts qui dérivent. Je peux analyser l’existant, construire la solution et rester impliqué jusqu’à sa mise en œuvre.'
+faq: global
 ---
 
 {% include page-hero.html %}
@@ -91,4 +92,6 @@ intro: 'Un problème peut commencer par l’IA, la Data, un logiciel devenu frag
   </div>
 </section>
 
-{% include booking-cta.html title="Parler de votre projet" label="Réserver un échange de 20 min" location="service" %}
+{% include site-faq.html %} {% include booking-cta.html title="Choisissons le bon point de départ" text="Vous cherchez à
+construire, transformer ou optimiser un système ? Faisons le point sur le problème et l’expertise à mobiliser."
+label="Réserver un échange de __booking_minutes__ min" location="service" %}

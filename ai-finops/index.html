@@ -2,14 +2,13 @@
 layout: default
 title: 'AI FinOps & optimisation des coûts IA'
 description: 'Mesurer les coûts IA et licences, rationaliser les outils et piloter le bon compromis entre API, IA locale et build vs buy.'
-theme: theme-finops
 service: ai-finops
 breadcrumb_parent: Expertises
 breadcrumb_parent_url: /services/
 eyebrow: 'AI FinOps & Rationalisation'
 hero: 'Savoir ce que l’IA et les outils coûtent réellement.'
 intro: 'Licences, API, cloud, infrastructure locale, doublons et solutions internes : je mesure les coûts et les usages avant de décider quoi garder, optimiser, remplacer ou internaliser.'
-hero_cta: 'Parler de vos coûts'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -154,7 +153,10 @@ hero_cta: 'Parler de vos coûts'
   <div class="container split">
     <div>
       <span class="eyebrow">Repère tarifaire</span>
-      <h2>Audit {{ site.data.pricing.audit.starting_price }}</h2>
+      <h2>
+        Audit {% include price.html offer=site.data.pricing.audit.ranges.targeted amount_only=true prefix="À partir de "
+        %}
+      </h2>
       <p class="lead">
         Le budget dépend du nombre d’outils, d’usages, d’équipes, de données disponibles et de scénarios à analyser.
       </p>
@@ -170,8 +172,6 @@ hero_cta: 'Parler de vos coûts'
     </div>
   </div>
 </section>
-{% include local-intervention.html title="À distance par défaut, sur site quand c’est utile." text="Basé à Poitiers, je
-travaille principalement à distance pour suivre les usages, les licences et les arbitrages SaaS, API, cloud, IA privée
-ou IA locale. Des ateliers FinOps IA peuvent se tenir sur site dans le Grand Ouest lorsque cela apporte une vraie
-valeur." %} {% include booking-cta.html title="Parler de votre projet" label="Réserver un échange de 20 min"
-location="service" %}
+{% include booking-cta.html title="Reprendre le contrôle des coûts IA" text="Besoin de reprendre le contrôle sur vos
+coûts IA ? Identifions les usages, dépenses et arbitrages à piloter." label="Réserver un échange de __booking_minutes__
+min" location="service" %}

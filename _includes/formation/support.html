@@ -26,7 +26,10 @@
 <section class="section section--tight">
   <div class="container cta-box">
     <h2>Discuter de cette formation</h2>
-    <p>Un échange de 20 minutes suffit pour vérifier si cette formation correspond à votre besoin.</p>
+    <p>
+      Un échange de {{ site.data.engagement.booking_minutes }} minutes suffit pour vérifier si cette formation
+      correspond à votre besoin.
+    </p>
     <div class="actions">
       {% include booking-link.html label="Discuter de cette formation" class="btn" location="training" %}
       <a class="btn btn--ghost" href="mailto:{{ site.email }}">{{ site.email }}</a>

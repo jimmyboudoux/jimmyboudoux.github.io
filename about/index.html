@@ -1,11 +1,12 @@
 ---
 layout: default
-title: 'À propos de Jimmy Boudoux'
+title: 'À propos de __person_name__'
 description: 'Ingénieur généraliste à la croisée du software, de la Data, de l’IA et de la transformation.'
 theme: theme-data
 eyebrow: 'À propos'
 hero: 'Ingénieur généraliste, à la croisée du métier et des systèmes.'
 intro: 'Je travaille à l’interface entre besoins métier, données, applications, infrastructure et usages IA — avec suffisamment de profondeur technique pour challenger une architecture mais aussi construire et faire évoluer les solutions.'
+faq: false
 ---
 
 {% include page-hero.html %}
@@ -17,7 +18,7 @@ intro: 'Je travaille à l’interface entre besoins métier, données, applicati
         <img
           class="avatar avatar--about"
           src="{{ '/assets/img/avatar-512.png' | relative_url }}"
-          alt="Portrait de Jimmy Boudoux"
+          alt="Portrait de {{ site.person_name | escape }}"
           width="512"
           height="512"
           loading="lazy"

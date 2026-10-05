@@ -11,6 +11,14 @@
   theme: theme-engineering
   icon: gear
   number: '02'
+- slug: sandbox-ia-locale
+  title: Sandbox IA locale
+  short: Testez plusieurs modèles open-weight et configurations CPU/GPU sur vos cas d’usage avant d’investir dans une infrastructure.
+  keywords: POC · Benchmark · IA locale
+  home_link_label: Découvrir la sandbox
+  link_label: Tester des modèles IA
+  theme: theme-engineering
+  icon: chart
 - slug: software-rescue
   title: Sauvetage & modernisation logicielle
   short: Reprendre une application legacy ou vibe codée, la stabiliser, comprendre ce qui casse et construire une trajectoire durable.
@@ -30,3 +38,19 @@
   theme: theme-finops
   icon: chart
   number: '05'
+
+- slug: ia-privee-locale
+  title: Portails IA privés
+  short: Une interface IA commune pour vos équipes, connectée aux modèles et à l’architecture adaptés à vos contraintes.
+  keywords: API · Local · Hybride
+  link_label: Découvrir les portails IA
+  theme: theme-engineering
+  icon: shield
+  optional: portal
+- slug: fractional-lead
+  title: Direction Tech, Data & IA à temps partagé
+  short: "Fractional CTO / AI / Digital Lead selon le besoin : pilotage transversal et continuité."
+  link_label: Voir le format
+  theme: theme-fractional
+  icon: users
+  optional: fractional

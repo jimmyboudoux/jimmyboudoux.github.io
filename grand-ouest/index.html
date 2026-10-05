@@ -3,6 +3,7 @@ layout: default
 title: 'Consultant Tech, Data & IA dans le Grand Ouest'
 description: 'Basé à Poitiers, j’interviens à Niort, La Rochelle, Tours, Angoulême, Châtellerault et Bordeaux pour vos projets Tech, Data, IA et modernisation.'
 theme: theme-data
+faq: false
 ---
 
 <section class="page-hero theme-data">
@@ -23,33 +24,13 @@ theme: theme-data
   </div>
 </section>
 
-<section class="section section--surface">
-  <div class="container split">
-    <div>
-      <span class="eyebrow">Une présence adaptée</span>
-      <h2>À distance par défaut, sur site lorsque la présence est utile.</h2>
-    </div>
-    <div class="card">
-      <p>
-        Je privilégie les déplacements pour les moments où travailler ensemble physiquement apporte une vraie valeur.
-        L’analyse, le développement, la documentation et l’accompagnement récurrent se font efficacement à distance.
-      </p>
-    </div>
-  </div>
-</section>
-
 <section class="section">
   <div class="container">
     <div class="coverage-summary">
       <span class="eyebrow">Zones d’intervention</span>
       <h2>Basé à Poitiers, mobile dans le Grand Ouest.</h2>
       <div class="coverage-summary__divider" aria-hidden="true"></div>
-      <p class="coverage-summary__areas">
-        <strong>Poitiers</strong> <span aria-hidden="true">·</span> Futuroscope / Chasseneuil-du-Poitou
-        <span aria-hidden="true">·</span> Châtellerault <span aria-hidden="true">·</span> Niort
-        <span aria-hidden="true">·</span> La Rochelle <span aria-hidden="true">·</span> Tours
-        <span aria-hidden="true">·</span> Angoulême <span aria-hidden="true">·</span> Bordeaux
-      </p>
+      <p class="coverage-summary__areas">{% include intervention-areas.html %}</p>
       <p class="coverage-summary__note">D’autres déplacements sont possibles selon la mission.</p>
       <a class="card-link" href="{{ '/poitiers/' | relative_url }}">Voir les interventions à Poitiers →</a>
     </div>
@@ -86,30 +67,14 @@ theme: theme-data
         <h3><a href="{{ '/services/' | relative_url }}">Conseil Tech, Data &amp; IA</a></h3>
         <p>Une vue d’ensemble pour partir du problème réel.</p>
       </article>
-      <article class="card">
-        <h3><a href="{{ '/ai-adoption/' | relative_url }}">Adoption &amp; transformation IA</a></h3>
-        <p>Des usages compris, encadrés et adoptés.</p>
-      </article>
-      <article class="card">
-        <h3><a href="{{ '/ai-engineering/' | relative_url }}">Ingénierie IA, agents &amp; RAG</a></h3>
-        <p>Des systèmes IA intégrés et exploitables.</p>
-      </article>
-      <article class="card">
-        <h3><a href="{{ '/software-rescue/' | relative_url }}">Modernisation logicielle</a></h3>
-        <p>Stabiliser et faire évoluer les applications métier.</p>
-      </article>
-      <article class="card">
-        <h3><a href="{{ '/data-reporting/' | relative_url }}">Data, Analytics &amp; Reporting</a></h3>
-        <p>Des données fiables jusqu’au reporting.</p>
-      </article>
-      <article class="card">
-        <h3><a href="{{ '/ai-finops/' | relative_url }}">AI FinOps</a></h3>
-        <p>Coûts, licences et architecture IA sous contrôle.</p>
-      </article>
-      <article class="card">
-        <h3><a href="{{ '/fractional-lead/' | relative_url }}">Direction Tech, Data &amp; IA à temps partagé</a></h3>
-        <p>Une direction expérimentée à la bonne cadence.</p>
-      </article>
+      {% include local-service-card.html slug="ai-adoption" text="Des usages compris, encadrés et adoptés."
+      linked_title=true %} {% include local-service-card.html slug="ai-engineering" text="Des systèmes IA intégrés et
+      exploitables." linked_title=true %} {% include local-service-card.html slug="software-rescue" text="Stabiliser et
+      faire évoluer les applications métier." linked_title=true %} {% include local-service-card.html
+      slug="data-reporting" text="Des données fiables jusqu’au reporting." linked_title=true %} {% include
+      local-service-card.html slug="ai-finops" text="Coûts, licences et architecture IA sous contrôle."
+      linked_title=true %} {% include local-service-card.html slug="fractional-lead" text="Une direction expérimentée à
+      la bonne cadence." linked_title=true %}
       <article class="card">
         <h3><a href="{{ '/formations/' | relative_url }}">Formations IA</a></h3>
         <p>Des sessions intra-entreprise sur site ou à distance.</p>

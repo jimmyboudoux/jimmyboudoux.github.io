@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import fs from 'node:fs';
+
+const allowedLocations = fs.readFileSync(new URL('../../_data/engagement.yml', import.meta.url), 'utf8')
+  .split('booking_locations:')[1].split('\n').map((line) => line.trim().replace(/^- /, '')).filter(Boolean);
 
 import { mountBookingTracking, mountMenu, setCurrentYear } from '../../assets/js/site-core.mjs';
 
@@ -79,24 +83,40 @@ test('menu supports click, Escape, outside click, link click and desktop breakpo
 test('global interactions update the year and track only allowlisted booking locations', () => {
   const normal = { ...eventTarget(), dataset: { bookingLocation: 'homepage' } };
   const diagnostic = { ...eventTarget(), dataset: { bookingLocation: 'diagnostic_home' } };
+  const sandbox = { ...eventTarget(), dataset: { bookingLocation: 'sandbox_ia_locale' } };
   const year = { textContent: '' };
   const documentRef = {
     querySelectorAll(selector) {
       if (selector === '[data-year]') return [year];
-      return [normal, diagnostic];
+      return [normal, diagnostic, sandbox];
     }
   };
   const events = [];
 
   setCurrentYear(documentRef, 2030);
-  mountBookingTracking({ documentRef, umami: { track: (name, properties) => events.push([name, properties]) } });
+  mountBookingTracking({ documentRef, allowedLocations, umami: { track: (name, properties) => events.push([name, properties]) } });
   normal.emit('click');
   diagnostic.emit('click');
+  sandbox.emit('click');
 
   assert.equal(year.textContent, 2030);
   assert.deepEqual(events, [
     ['booking_calendar_clicked', { location: 'homepage' }],
     ['booking_calendar_clicked', { location: 'diagnostic_home' }],
-    ['diagnostic_calendar_clicked', undefined]
+    ['diagnostic_calendar_clicked', undefined],
+    ['booking_calendar_clicked', { location: 'sandbox_ia_locale' }]
   ]);
+});
+
+
+test('configured booking locations track even when analytics loads after mounting', () => {
+  const links = [...allowedLocations, 'untrusted'].map((location) => ({ ...eventTarget(), dataset: { bookingLocation: location } }));
+  const events = [];
+  let tracker;
+  mountBookingTracking({ documentRef: { querySelectorAll: () => links }, allowedLocations, umami: () => tracker });
+  links[0].emit('click');
+  assert.equal(events.length, 0);
+  tracker = { track: (name, properties) => events.push([name, properties]) };
+  links.forEach((link) => link.emit('click'));
+  assert.deepEqual(events.filter(([name]) => name === 'booking_calendar_clicked').map(([, properties]) => properties.location), allowedLocations);
 });

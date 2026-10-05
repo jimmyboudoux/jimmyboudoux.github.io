@@ -85,20 +85,6 @@
   max-width: 590px;
   color: var(--ink-2);
 }
-.hero-principles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.45rem;
-  margin-top: 1.25rem;
-  color: var(--text-soft);
-  font-size: 0.88rem;
-}
-.hero-principles span::before {
-  content: '✓';
-  color: var(--sage-strong);
-  font-weight: 800;
-  margin-right: 0.45rem;
-}
 .hero-location {
   margin-top: 1rem;
   color: var(--text-soft);
@@ -108,19 +94,6 @@
   color: var(--ink-2);
   font-weight: 700;
   text-underline-offset: 3px;
-}
-.hero-secondary-link {
-  display: inline-flex;
-  margin-top: 1rem;
-  color: var(--ink-2);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  text-underline-offset: 4px;
-}
-.hero-secondary-link:hover {
-  color: var(--lavender-strong);
-  text-decoration: underline;
 }
 
 /* Section headers */
@@ -254,4 +227,22 @@
 }
 .expertise-keywords + p {
   margin-top: 0.55rem;
+}
+
+@media (max-width: $breakpoint-wide) {
+  .expertise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: $breakpoint-menu) {
+  .cards--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: $breakpoint-tablet) {
+  .expertise-grid,
+  .cards,
+  .cards--3 {
+    grid-template-columns: 1fr;
+  }
 }

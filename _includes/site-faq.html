@@ -1,0 +1,9 @@
+<section class="section section--soft site-faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>{{ include.title | default: 'Quelques repères avant d’échanger.' }}</h2>
+    </div>
+    {% include faq-list.html group=page.faq %}
+  </div>
+</section>

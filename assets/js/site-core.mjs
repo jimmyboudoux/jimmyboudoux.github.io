@@ -32,17 +32,16 @@ export function setCurrentYear(documentRef, year = new Date().getFullYear()) {
   documentRef.querySelectorAll('[data-year]').forEach((element) => { element.textContent = year; });
 }
 
-export function mountBookingTracking({ documentRef, umami }) {
-  const safeLocations = new Set([
-    'homepage', 'diagnostic_home', 'diagnostic', 'service', 'tarifs', 'poitiers', 'private_ai_portal_hero', 'site'
-  ]);
+export function mountBookingTracking({ documentRef, umami, allowedLocations = [] }) {
+  const safeLocations = new Set(allowedLocations);
   documentRef.querySelectorAll('[data-booking-location]').forEach((link) => {
     link.addEventListener('click', () => {
       const location = link.dataset.bookingLocation;
-      if (!safeLocations.has(location) || typeof umami?.track !== 'function') return;
+      const tracker = typeof umami === 'function' ? umami() : umami;
+      if (!safeLocations.has(location) || typeof tracker?.track !== 'function') return;
 
-      umami.track('booking_calendar_clicked', { location });
-      if (location.startsWith('diagnostic')) umami.track('diagnostic_calendar_clicked');
+      tracker.track('booking_calendar_clicked', { location });
+      if (location.startsWith('diagnostic')) tracker.track('diagnostic_calendar_clicked');
     });
   });
 }

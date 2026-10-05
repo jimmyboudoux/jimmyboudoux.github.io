@@ -1,0 +1,5 @@
+{%- assign price_offer = include.offer -%} {{- include.prefix | default: price_offer.prefix -}} {%- include
+format-amount.html amount=price_offer.amount -%} {%- if price_offer.max_amount and include.amount_only != true %} – {%
+include format-amount.html amount=price_offer.max_amount %}{% endif %} € HT {%- if price_offer.period %} / {{
+price_offer.period }}{% endif -%} {%- if price_offer.period_days %} / {{ price_offer.period_days }} jours{% endif -%}
+{{- price_offer.suffix -}}

@@ -1,0 +1,5 @@
+{%- assign breadcrumb_label = page.breadcrumb_label | default: page.title -%} {%- if page.service -%} {%- assign
+breadcrumb_service = site.data.services | where: 'slug', page.service | first -%} {%- assign breadcrumb_label =
+page.breadcrumb_label | default: breadcrumb_service.title | default: breadcrumb_label -%} {%- elsif page.formation -%}
+{%- assign breadcrumb_label = page.breadcrumb_label | default: site.data.formations[page.formation].short_title |
+default: breadcrumb_label -%} {%- endif -%} {{- breadcrumb_label -}}

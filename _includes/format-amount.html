@@ -1,0 +1,4 @@
+{%- assign amount_digits = include.amount | append: '' | split: '' | reverse -%} {%- assign amount_formatted = '' -%}
+{%- for digit in amount_digits -%} {%- assign digit_group = forloop.index0 | modulo: 3 -%} {%- if forloop.index0 > 0 and
+digit_group == 0 -%} {%- assign amount_formatted = amount_formatted | prepend: ' ' -%} {%- endif -%} {%- assign
+amount_formatted = amount_formatted | prepend: digit -%} {%- endfor -%} {{- amount_formatted -}}

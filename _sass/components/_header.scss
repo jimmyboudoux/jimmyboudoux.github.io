@@ -78,7 +78,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
+@media (max-width: $breakpoint-menu) {
   .navbar {
     min-height: 70px;
   }

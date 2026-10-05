@@ -17,7 +17,7 @@
       {% for price in formation.prices %}
       <div class="training-pricing__row" role="row">
         <strong role="cell" data-label="Format">{{ price.format }}</strong>
-        <span role="cell" data-label="Tarif">{{ price.price }}</span>
+        <span role="cell" data-label="Tarif">{% include price.html offer=price %}</span>
       </div>
       {% endfor %}
     </div>
