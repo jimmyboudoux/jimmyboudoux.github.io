@@ -1,13 +1,24 @@
+{% assign booking_minutes = site.data.engagement.booking_minutes | append: '' %}
 <section class="page-hero {% include page-theme.html %}">
   <div class="container">
     {% include breadcrumb.html %}
     <span class="eyebrow">{{ page.eyebrow }}</span>
-    <h1>{{ page.hero }}</h1>
+    <h1>{{ page.hero | replace: '__project_cta_label__', site.project_cta_label }}</h1>
     {% if page.intro %}
-    <p class="lead">{{ page.intro }}</p>
-    {% endif %} {% if page.hero_cta %}
+    <p class="lead">{{ page.intro | replace: '__booking_minutes__', booking_minutes }}</p>
+    {% endif %} {% if include.booking %}
     <div class="actions">
-      <a class="btn" href="{{ page.hero_cta_href | default: '/contact/' | relative_url }}">{{ page.hero_cta }} →</a>
+      {% include booking-link.html location="contact" %} {% if include.email %}<a
+        class="btn btn--ghost"
+        href="mailto:{{ site.email }}"
+        >{{ site.email }}</a
+      >{% endif %}
+    </div>
+    {% elsif page.hero_cta %}
+    <div class="actions">
+      <a class="btn" href="{{ page.hero_cta_href | default: '/contact/' | relative_url }}"
+        >{{ page.hero_cta | replace: '__project_cta_label__', site.project_cta_label }} →</a
+      >
     </div>
     {% endif %}
   </div>

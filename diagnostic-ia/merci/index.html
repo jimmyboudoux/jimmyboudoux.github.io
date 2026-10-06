@@ -26,11 +26,14 @@ faq: false
       <p>Si votre situation nécessite quelques précisions avant mon analyse, je pourrai également vous contacter.</p>
     </div>
     <div class="confirmation-signature">
-      <strong>{{ site.person_name | escape }}</strong><span>Consultant IA, Data & transformation numérique</span>
+      <strong>{{ site.person_name | escape }}</strong><span>{{ site.professional_title | escape }}</span>
     </div>
     <div class="confirmation-secondary">
-      <p>Vous souhaitez déjà échanger ?</p>
-      {% include booking-link.html label="Réserver __booking_minutes__ minutes" class="btn btn--ghost"
+      <p>
+        Vous souhaitez déjà échanger ? Un rendez-vous de {{ site.data.engagement.booking_minutes }} minutes permet de
+        préciser votre besoin.
+      </p>
+      {% include booking-link.html label=site.project_cta_label class="btn btn--ghost"
       location="diagnostic_confirmation" %}
     </div>
   </div>

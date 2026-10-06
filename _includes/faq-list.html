@@ -1,9 +1,13 @@
+{% assign training_access_days = site.data.engagement.training_access_days | append: '' %}
 <div class="site-faq__list">
   {% assign faq_questions = site.data.faqs[include.group] %} {% assign configuration_count =
   site.data.pricing.sandbox.max_configurations | append: '' %} {% for item in faq_questions %}
   <details>
     <summary>{{ item.question | escape }}</summary>
-    <p>{{ item.answer | replace: '__max_configurations__', configuration_count | escape }}</p>
+    <p>
+      {{ item.answer | replace: '__max_configurations__', configuration_count | replace: '__training_access_days__',
+      training_access_days | escape }}
+    </p>
   </details>
   {% endfor %}
 </div>

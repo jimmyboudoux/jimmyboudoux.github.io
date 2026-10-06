@@ -43,7 +43,8 @@ ruby script/validate_diagnostic.rb
 |---|---|
 | Identité, URLs, analytics, version des assets | `_config.yml` |
 | Navigation | `_data/navigation.yml` |
-| Services | `_data/services.yml` |
+| Trois piliers d’intervention | `_data/interventions.yml` |
+| Catalogue des expertises spécialisées | `_data/services.yml` |
 | Tarifs | `_data/pricing.yml` |
 | Formations | `_data/formations.yml` |
 | Questions du diagnostic | `_data/diagnostic.yml` |
@@ -68,6 +69,8 @@ Les prix sont des **montants numériques entiers en euros HT**, sans espaces ni 
 - Formations : modifier `prices[].amount` dans `_data/formations.yml`. Les tableaux et cartes utilisent les tarifs des formats ; le prix de départ et l’offre JSON-LD utilisent le minimum. Le repère général des formations utilise le minimum du catalogue.
 - Sandbox : `sandbox.duration_days`, `sandbox.max_configurations`, `sandbox.hardware.amount`, `sandbox.extension.amount`, `sandbox.extension.period_days` et `sandbox.extension.additional_configurations` pilotent le périmètre et les options.
 - Rendez-vous : `booking_minutes` dans `_data/engagement.yml` pilote les durées affichées. Dans les arguments textuels des includes de réservation, utiliser `__booking_minutes__` : Liquid ne réévalue pas une expression imbriquée dans une chaîne.
+- Délais d’accès aux formations : `training_access_days` dans `_data/engagement.yml` ; les textes du catalogue et de la FAQ utilisent `__training_access_days__`.
+- Pilotage léger : `fractional.light.meetings_min` et `meetings_max` dans `_data/pricing.yml` pilotent la fréquence affichée.
 - Diagnostic : `diagnostic.duration_min_minutes`, `duration_max_minutes` et `response_days` dans `_data/engagement.yml` pilotent les promesses affichées et la description SEO. Les questions restent dans `_data/diagnostic.yml`.
 - Suivi des réservations : chaque `location` passée à `booking-link.html` doit figurer dans `booking_locations` ; les contrôles vérifient cette cohérence. L’analytics est recherché au moment du clic.
 
@@ -79,7 +82,7 @@ Après une modification de `_data`, Jekyll régénère les pages ; après une mo
 
 Les pages de service déclarent `service: <slug>`. Leur thème, les cartes partagées et les données structurées proviennent de `_data/services.yml`. Les formations utilisent `formation: <clé>` et leur thème vient de `_data/formations.yml`. Le titre SEO et les textes propres à une page restent dans sa source. Le token `__person_name__` dans un titre ou une description reprend l’identité de `_config.yml`. Le fil d’Ariane reprend le nom du catalogue ; `breadcrumb_label` permet de le personnaliser.
 
-La FAQ générale est affichée sur la page Expertises. Les pages de service gardent leur contenu spécifique et leur CTA final ; les FAQ propres aux formations, à la Sandbox et à Poitiers restent sur leurs pages.
+La FAQ générale est affichée sur la page Services. Les pages de service gardent leur contenu spécifique et leur CTA final ; les FAQ propres aux formations, à la Sandbox et à Poitiers restent sur leurs pages.
 
 Chaque page choisit explicitement `faq: global`, `faq: poitiers`, `faq: sandbox`, `faq: formations` ou `faq: false`. Le layout n’ajoute aucune FAQ automatiquement. Placer `site-faq.html` avant le CTA final, ou `faq-list.html group=page.faq` dans une section existante. Les questions sont dans `_data/faqs.yml` et le JSON-LD lit les mêmes données. La FAQ Sandbox peut utiliser le token `__max_configurations__` pour reprendre sa limite commune.
 
@@ -143,8 +146,24 @@ git push
 
 Les décisions structurantes sont documentées dans `docs/decisions/`.
 
-## Éviter les répétitions éditoriales
+## Positionnement et parcours
 
-Sur l’accueil, réserver la présentation au hero, les caractéristiques du diagnostic à son bloc dédié et les étapes de travail à la section Approche. Une phrase de présentation suffit ; les cartes d’expertise portent les détails. Éviter de proposer le diagnostic et la réservation dans plusieurs blocs successifs. Les rappels de réservation en début et en fin d’une page longue restent utiles.
+L’identité est définie par `professional_title` et la promesse par `signature` dans `_config.yml`. Le libellé commun des CTA de projet, y compris les titres des blocs de contact, est défini par `project_cta_label` (« Parler de mon projet »). Les descriptions restent adaptées au contexte de chaque offre. L’accueil et Services présentent les trois piliers **Concevoir → Construire → Transformer**, décrits dans `_data/interventions.yml`. Le catalogue `_data/services.yml` conserve les expertises et leurs URLs ; il continue de piloter leurs thèmes et données structurées.
 
-Les pages d’expertise présentent leur périmètre, les résultats attendus et les repères tarifaires. Renvoyer vers la Sandbox pour ses modalités détaillées et vers les pages locales pour les zones d’intervention. Une FAQ doit répondre à des questions propres à la page, plutôt que recopier la présentation commerciale.
+L’accueil présente le besoin, les trois interventions, la méthode, les compétences transverses, les raisons de travailler ensemble, les modes d’intervention et le contact. Le Diagnostic IA reste accessible depuis l’adoption IA et les ressources du footer. Formation et temps partagé sont des accompagnements secondaires. La page Contact rassemble la réservation et l’email dans le hero, puis une courte liste pour préparer l’échange, sans répéter un bloc CTA.
+
+## Préparer le portfolio
+
+La structure du portfolio est prête dans `realisations/index.html`. Elle est masquée pour le moment : `portfolio_enabled: false` dans `_config.yml` retire l’entrée Réalisations du header et du footer, le bloc portfolio de l’accueil et le lien depuis Services. Les blocs sont conservés dans les sources pour une réactivation simple.
+
+La page reste accessible par son URL directe et affiche « Portfolio en préparation ». Elle porte `noindex: true` et `sitemap: false` tant que les cas publiables ne sont pas prêts. Ne pas créer de références ni de résultats pour remplir cet espace.
+
+Pour publier le portfolio :
+
+1. Remplacer le contenu provisoire de `realisations/index.html` par les cas validés : contexte, objectif, approche, réalisation, résultat, rôle et technologies en dernier.
+2. Remplacer le bloc provisoire de l’accueil par au maximum trois cas, avec des liens vers les détails.
+3. Passer `portfolio_enabled: true` dans `_config.yml` pour réafficher la navigation et les blocs conservés.
+4. Retirer `noindex: true` et `sitemap: false` de la page Réalisations : le sitemap généré l’ajoutera au prochain build.
+5. Adapter le test du portfolio masqué, les attentes de navigation et de sections, ainsi que le nombre de pages publiques attendu dans `test/site_test.rb`, puis exécuter `./script/check`.
+
+Ne pas recréer un catalogue de technologies ou de sous-offres au même niveau que les trois piliers.

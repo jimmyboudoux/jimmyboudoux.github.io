@@ -1,59 +1,43 @@
 <section class="section pricing-section" id="tarifs">
   <div class="container">
-    <div class="section-head pricing-head">
-      <div>
-        <span class="eyebrow">Tarifs & repères budgétaires</span>
-        <h2>Des prix clairs quand le périmètre est clair.</h2>
-      </div>
-      <p>
-        Des repères publics pour commencer ; le chiffrage d’une mission tient compte du résultat attendu, de la
-        complexité et du niveau d’implication.
-      </p>
+    <div class="section-head">
+      <span class="eyebrow">Modes d’intervention</span>
+      <h2>Un format adapté au besoin.</h2>
     </div>
-    <div class="pricing-grid">
+    <div class="cards cards--3">
       <article class="price-card theme-ai">
-        <span class="price-kicker">Revue experte</span>
-        <div class="price"><strong>{% include price.html offer=site.data.pricing.expert_review %}</strong></div>
-        <p>Une question ciblée ou une seconde opinion.</p>
+        <h3>Cadrage / Audit</h3>
+        <p>Structurer le besoin, analyser l’existant et définir une solution.</p>
+        <p>Cadrage ciblé : {% include price.html offer=site.data.pricing.framing %}</p>
+        <p>
+          Audit : {% include price.html offer=site.data.pricing.audit.ranges.targeted amount_only=true prefix="À partir
+          de " %}
+        </p>
       </article>
       <article class="price-card theme-engineering">
-        <span class="price-kicker">Cadrage ciblé</span>
-        <div class="price"><strong>{% include price.html offer=site.data.pricing.framing %}</strong></div>
-        <p>Clarifier un problème et décider de la prochaine étape.</p>
-      </article>
-      <article class="price-card theme-data">
-        <span class="price-kicker">Construire / automatiser</span>
-        <div class="price"><strong>{% include price.html offer=site.data.pricing.automation %}</strong></div>
-        <p>Automatisation, intégration, prototype ou réalisation ciblée.</p>
-      </article>
-      <article class="price-card theme-software">
-        <span class="price-kicker">Audit</span>
-        <div class="price">
-          <strong
-            >{% include price.html offer=site.data.pricing.audit.ranges.targeted amount_only=true prefix="À partir de "
-            %}</strong
-          >
-        </div>
-        <p>D’un sujet ciblé à une investigation transverse.</p>
+        <h3>Projet / Forfait</h3>
+        <p>Prendre en charge un périmètre avec un résultat défini, chiffré après cadrage.</p>
+        <p>Automatisation ciblée : {% include price.html offer=site.data.pricing.automation %}</p>
       </article>
       <article class="price-card theme-fractional">
-        <span class="price-kicker">CTO / CAIO à temps partagé</span>
-        <div class="price">
-          <strong
-            >{% include price.html offer=site.data.pricing.fractional.light amount_only=true prefix="Dès " %}</strong
-          >
-        </div>
-        <p>Pilotage et direction adaptés au niveau d’implication réellement nécessaire.</p>
-      </article>
-      <article class="price-card theme-finops">
-        <span class="price-kicker">Formation</span>
-        <div class="price"><strong>À partir de {% include formation-starting-price.html %}</strong></div>
-        <p>Tarifs fixes selon la formation et le format.</p>
+        <h3>Accompagnement récurrent</h3>
+        <p>Architecture, transformation et pilotage technique ou IA dans la durée.</p>
+        <p>{% include price.html offer=site.data.pricing.fractional.light amount_only=true prefix="Dès " %}</p>
       </article>
     </div>
-    <div class="pricing-note">
+    <a class="card-link" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs →</a>
+    <div class="pricing-note pricing-note--accompaniment">
+      <h3>Besoin d’un accompagnement dans la durée ?</h3>
       <p>
-        <a class="card-link" href="{{ '/tarifs/' | relative_url }}">Voir tous les tarifs et exemples de périmètre →</a>
+        Je peux accompagner une roadmap technique ou IA : architecture, priorisation, choix technologiques, coordination
+        des intervenants et décisions.
+      </p>
+      <a class="card-link" href="{{ '/fractional-lead/' | relative_url }}"
+        >Découvrir l’accompagnement à temps partagé →</a
+      >
+      <p>
+        Pour transmettre les méthodes aux équipes :
+        <a href="{{ '/formations/' | relative_url }}">formations AI Literacy, FinOps IA et IA locale</a>.
       </p>
     </div>
   </div>

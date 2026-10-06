@@ -1,97 +1,125 @@
 ---
 layout: default
-title: 'Expertises Tech, Data & IA'
-description: 'Ingénierie et conseil en IA, Data, modernisation logicielle, AI FinOps et direction Tech, Data & IA à temps partagé.'
+title: 'Services — Cadrage, applications et modernisation'
+description: 'Concevoir, construire et transformer : cadrage, architecture, applications métier, automatisation et intégration IA. Formation et accompagnement dans la durée.'
 theme: theme-ai
-eyebrow: 'Expertises'
-hero: 'Des expertises pour construire, transformer et optimiser.'
-intro: 'Un problème peut commencer par l’IA, la Data, un logiciel devenu fragile ou des coûts qui dérivent. Je peux analyser l’existant, construire la solution et rester impliqué jusqu’à sa mise en œuvre.'
+eyebrow: 'Services'
+hero: 'Concevoir. Construire. Transformer.'
+intro: 'Confiez-moi un besoin métier ou technique. Je peux le comprendre, concevoir la solution et aller jusqu’à sa réalisation, avec ou sans IA.'
 faq: global
+hero_cta: __project_cta_label__
 ---
 
 {% include page-hero.html %}
 <section class="section section--surface">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Domaines d’intervention</span>
-      <h2>Choisir le bon point de départ.</h2>
-    </div>
-    {% include expertise-grid.html include_fractional=true include_portal=true %}
+    <div class="section-head"><h2>Trois façons de travailler ensemble.</h2></div>
+    {% include intervention-cards.html %}
   </div>
 </section>
-<section class="section" id="audit">
+{% for intervention in site.data.interventions %}
+<section class="section {{ intervention.theme }}" id="{{ intervention.id }}">
   <div class="container split">
     <div>
-      <span class="eyebrow">Audit & cadrage</span>
+      <span class="eyebrow">{{ intervention.verb }}</span>
+      <h2>{{ intervention.title }}</h2>
+      <p class="lead">{{ intervention.short }}</p>
+    </div>
+    <div class="card">
+      <h3>Du besoin au résultat</h3>
+      <ul class="feature-list">
+        {% for item in intervention.scope %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      <p>{{ intervention.deliverables }}</p>
+      {% if intervention.id == 'concevoir' %}
+      <p>
+        Cadrage ciblé : {% include price.html offer=site.data.pricing.framing %}. Le périmètre est précisé ensemble.
+      </p>
+      {% endif %} {% if intervention.id == 'construire' %}
+      <p>
+        Pour l’IA locale, j’arbitre entre API cloud, modèles open-weight et infrastructure dédiée selon confidentialité,
+        souveraineté, performances, coût et dépendance fournisseur.
+      </p>
+      {% endif %} {% if intervention.id == 'transformer' %}
+      <p>
+        Software Rescue concerne notamment une application devenue difficile à maintenir, instable, incomplète ou
+        bloquée. La Data et le FinOps servent ici la fiabilité des flux et la maîtrise des coûts.
+      </p>
+      {% endif %}
+      <ul class="feature-list">
+        {% for link in intervention.links %}
+        <li><a href="{{ link.href | relative_url }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+      <a class="card-link" href="{{ '/contact/' | relative_url }}">{{ intervention.cta }} →</a>
+    </div>
+  </div>
+</section>
+{% endfor %}
+<section class="section section--surface" id="audit">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Cadrage & audit</span>
       <h2>Comprendre suffisamment avant de construire.</h2>
-      <p class="lead">
-        Quand le problème est large ou mal défini, une courte phase de cadrage permet de comprendre l’existant,
-        identifier les vrais points de blocage et éviter de construire la mauvaise solution.
-      </p>
+      <p class="lead">Analyser les usages, l’architecture, les données et les risques pour fixer les priorités.</p>
     </div>
-    <div class="stack">
-      <article class="card">
-        <h3>Ce qu’on regarde</h3>
-        <ul class="feature-list">
-          <li>Outils, licences, données et flux</li>
-          <li>Usages IA et shadow IA</li>
-          <li>Architecture et dette technique</li>
-          <li>Process manuels et reporting</li>
-          <li>Risques, sécurité et gouvernance</li>
-          <li>Capacité d’adoption des équipes</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3>Ce que vous recevez</h3>
-        <ul class="feature-list">
-          <li>Cartographie de l’existant</li>
-          <li>Irritants et risques</li>
-          <li>Architecture cible</li>
-          <li>Priorités et dépendances</li>
-          <li>Roadmap actionnable</li>
-          <li>Chiffrage des prochaines étapes</li>
-        </ul>
-      </article>
+    <div class="card">
+      <h3>Des décisions préparées</h3>
+      <p>
+        Cartographie de l’existant, architecture cible, choix technologiques, roadmap et estimation des prochaines
+        étapes.
+      </p>
+      <a class="card-link" href="{{ '/tarifs/#demarrer' | relative_url }}">Voir les repères de cadrage et d’audit →</a>
     </div>
   </div>
 </section>
-<section class="section section--surface">
-  <div class="container split">
-    <div>
-      <span class="eyebrow">Repères budgétaires</span>
-      <h2>Des tarifs publics pour comprendre l’ordre de grandeur.</h2>
+<section class="section" id="accompagner">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Accompagner</span>
+      <h2>Accompagnement & transmission.</h2>
+      <p>Formation, conseil et continuité technique prolongent le cadrage et la réalisation.</p>
     </div>
-    <div class="card">
-      <p>
-        Revues, cadrages, réalisations, prototypes, audits, formations et direction à temps partagé disposent de repères
-        tarifaires publics.
-      </p>
-      <a class="card-link" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs →</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section--soft">
-  <div class="container split">
-    <div>
-      <span class="eyebrow">Disponibilité</span>
-      <h2>À distance par défaut, sur site quand cela apporte quelque chose.</h2>
-    </div>
-    <div class="card">
-      <p>
-        Une grande partie de mon travail — analyse, architecture, développement, IA, Data, documentation et pilotage —
-        se fait efficacement à distance. Je me déplace lorsque la présence sur site facilite réellement le cadrage, les
-        ateliers, la formation ou une décision importante.
-      </p>
-      <p>Basé à Poitiers, je peux intervenir facilement dans le Grand Ouest lorsque c’est pertinent.</p>
-      <div class="actions">
-        <a class="btn btn--soft" href="{{ '/poitiers/' | relative_url }}">Expertises à Poitiers</a
-        ><a class="btn btn--ghost" href="{{ '/grand-ouest/' | relative_url }}">Interventions dans le Grand Ouest</a>
+    <div class="split">
+      <div>
+        <h3>Faire progresser les équipes</h3>
+        <p class="lead">Des formations aux usages de l’IA générative et aux décisions techniques.</p>
+        <ul class="feature-list">
+          {% for entry in site.data.formations %}{% assign formation = entry[1] %}
+          <li>
+            <a href="{{ entry[0] | prepend: '/formations/' | append: '/' | relative_url }}"
+              >{{ formation.card_title }}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="card-link" href="{{ '/formations/' | relative_url }}">Voir les programmes de formation →</a>
+      </div>
+      <div>
+        <h3>Besoin d’un accompagnement dans la durée ?</h3>
+        <p class="lead">
+          Je peux accompagner une roadmap technique ou IA : architecture, priorisation, choix technologiques,
+          coordination des intervenants et accompagnement des décisions.
+        </p>
+        <a class="card-link" href="{{ '/fractional-lead/' | relative_url }}"
+          >Découvrir l’accompagnement à temps partagé →</a
+        >
       </div>
     </div>
   </div>
 </section>
-
-{% include site-faq.html %} {% include booking-cta.html title="Choisissons le bon point de départ" text="Vous cherchez à
-construire, transformer ou optimiser un système ? Faisons le point sur le problème et l’expertise à mobiliser."
-label="Réserver un échange de __booking_minutes__ min" location="service" %}
+<section class="section section--soft">
+  <div class="container">
+    <h2>Un format adapté à votre projet.</h2>
+    <div class="actions">
+      <a class="btn btn--soft" href="{{ '/tarifs/' | relative_url }}">Voir les tarifs</a>
+      {% if site.portfolio_enabled %}<a class="btn btn--ghost" href="{{ '/realisations/' | relative_url }}"
+        >Découvrir les réalisations</a
+      >{% endif %}
+    </div>
+  </div>
+</section>
+{% include site-faq.html %} {% include booking-cta.html text="Parlons du besoin, de l’existant et du résultat attendu."
+location="service" %}

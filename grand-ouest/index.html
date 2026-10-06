@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Consultant Tech, Data & IA dans le Grand Ouest'
-description: 'Basé à Poitiers, j’interviens à Niort, La Rochelle, Tours, Angoulême, Châtellerault et Bordeaux pour vos projets Tech, Data, IA et modernisation.'
+title: 'Ingénieur Informatique & Architecte IA dans le Grand Ouest'
+description: 'Ingénieur informatique et architecte IA basé à Poitiers. Cadrage, applications métier, automatisation et modernisation dans le Grand Ouest et à distance.'
 theme: theme-data
 faq: false
 ---
@@ -9,13 +9,13 @@ faq: false
 <section class="page-hero theme-data">
   <div class="container">
     <span class="eyebrow">Basé à Poitiers</span>
-    <h1>Interventions Tech, Data &amp; IA dans le Grand Ouest</h1>
+    <h1>{{ site.professional_title | escape }} dans le Grand Ouest</h1>
     <p class="lead">
       Basé à Poitiers, je travaille principalement à distance et peux intervenir dans le Grand Ouest lorsque la présence
       sur site est utile : audit, atelier, formation, lancement ou temps de décision.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Échanger sur votre besoin" class="btn" location="grand-ouest" %}<a
+      {% include booking-link.html label=site.project_cta_label class="btn" location="grand-ouest" %}<a
         class="btn btn--ghost"
         href="{{ '/poitiers/' | relative_url }}"
         >Interventions à Poitiers</a
@@ -64,7 +64,7 @@ faq: false
     </div>
     <div class="cards cards--3">
       <article class="card">
-        <h3><a href="{{ '/services/' | relative_url }}">Conseil Tech, Data &amp; IA</a></h3>
+        <h3><a href="{{ '/services/' | relative_url }}">Cadrage, construction et transformation</a></h3>
         <p>Une vue d’ensemble pour partir du problème réel.</p>
       </article>
       {% include local-service-card.html slug="ai-adoption" text="Des usages compris, encadrés et adoptés."
@@ -83,5 +83,5 @@ faq: false
   </div>
 </section>
 
-{% include booking-cta.html title="Échanger sur votre besoin" text="Parlons du contexte, du format d’intervention et des
-prochaines étapes possibles." label="Échanger sur votre besoin" location="grand-ouest" %}
+{% include booking-cta.html text="Parlons du contexte, du format d’intervention et des prochaines étapes possibles."
+label=site.project_cta_label location="grand-ouest" %}

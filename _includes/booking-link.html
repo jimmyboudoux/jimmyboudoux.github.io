@@ -5,6 +5,5 @@
   target="_blank"
   rel="noopener noreferrer"
   data-booking-location="{{ include.location | default: 'site' }}"
-  >{{ include.label | default: 'Réserver un échange de __booking_minutes__ min' | replace: '__booking_minutes__',
-  booking_minutes }}</a
+  >{{ include.label | default: site.project_cta_label | replace: '__booking_minutes__', booking_minutes }}</a
 >

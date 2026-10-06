@@ -18,7 +18,7 @@ faq: sandbox
       et les besoins CPU/GPU pour choisir une infrastructure adaptée.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Échanger sur mon besoin" class="btn" location="sandbox_ia_locale" %}
+      {% include booking-link.html label=site.project_cta_label class="btn" location="sandbox_ia_locale" %}
       <a class="btn btn--ghost" href="#configurations">Découvrir les tests possibles</a>
     </div>
   </div>
@@ -393,5 +393,5 @@ faq: sandbox
   </div>
 </section>
 
-{% include booking-cta.html title="Échanger sur votre besoin de test" text="Quelques éléments sur vos usages suffisent
-pour cadrer les modèles et configurations à comparer." label="Échanger sur mon besoin" location="sandbox_ia_locale" %}
+{% include booking-cta.html text="Quelques éléments sur vos usages suffisent pour cadrer les modèles et configurations à
+comparer." label=site.project_cta_label location="sandbox_ia_locale" %}

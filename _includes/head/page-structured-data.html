@@ -1,6 +1,6 @@
-{% assign page_url = page.url | absolute_url %} {% assign professional_service_id = '/#professional-service' |
-absolute_url %} {% if page.service %} {% assign service = site.data.services | where: 'slug', page.service | first %} {%
-if service %}
+{% assign training_access_days = site.data.engagement.training_access_days | append: '' %} {% assign page_url = page.url
+| absolute_url %} {% assign professional_service_id = '/#professional-service' | absolute_url %} {% if page.service %}
+{% assign service = site.data.services | where: 'slug', page.service | first %} {% if service %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,7 +62,7 @@ site.data.pricing.sandbox.max_configurations | append: '' %} {% if questions %}
         "name": {{ question.question | jsonify }},
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": {{ question.answer | replace: '__max_configurations__', configuration_count | jsonify }}
+          "text": {{ question.answer | replace: '__max_configurations__', configuration_count | replace: '__training_access_days__', training_access_days | jsonify }}
         }
       }{% unless forloop.last %},{% endunless %}
       {% endfor %}

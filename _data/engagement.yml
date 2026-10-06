@@ -1,4 +1,5 @@
 booking_minutes: 20
+training_access_days: 15
 diagnostic:
   duration_min_minutes: 5
   duration_max_minutes: 8

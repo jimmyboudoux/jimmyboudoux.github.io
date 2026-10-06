@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 'À propos de __person_name__'
-description: 'Ingénieur généraliste à la croisée du software, de la Data, de l’IA et de la transformation.'
+title: 'À propos de __person_name__ — Ingénieur Informatique & Architecte IA'
+description: '__person_name__, ingénieur informatique et architecte IA : comprendre le métier, concevoir une architecture et accompagner la mise en œuvre jusqu’à une solution utilisable.'
 theme: theme-data
-eyebrow: 'À propos'
-hero: 'Ingénieur généraliste, à la croisée du métier et des systèmes.'
-intro: 'Je travaille à l’interface entre besoins métier, données, applications, infrastructure et usages IA — avec suffisamment de profondeur technique pour challenger une architecture mais aussi construire et faire évoluer les solutions.'
+eyebrow: À propos
+hero: 'Ingénieur Informatique & Architecte IA'
+intro: 'J’aime comprendre un besoin dans son ensemble, échanger avec les équipes métier et techniques, identifier les bonnes solutions puis accompagner leur mise en œuvre jusqu’à quelque chose de réellement utilisable.'
 faq: false
 ---
 
@@ -13,8 +13,8 @@ faq: false
 <section class="section section--surface">
   <div class="container split">
     <div>
-      <picture>
-        <source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
+      <picture
+        ><source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
         <img
           class="avatar avatar--about"
           src="{{ '/assets/img/avatar-512.png' | relative_url }}"
@@ -23,134 +23,76 @@ faq: false
           height="512"
           loading="lazy"
           decoding="async"
-        />
-      </picture>
+      /></picture>
       <span class="eyebrow">Parcours</span>
-      <h2>Du logiciel et de la Data aux systèmes IA.</h2>
+      <h2>Comprendre le métier et construire la solution.</h2>
       <p class="lead">
-        Plus de 12 ans d’expérience entre applications métier, Data, architecture, pilotage et transformation. L’IA
-        s’est ajoutée à ces compétences comme une nouvelle brique à intégrer aux systèmes existants.
+        Mon expérience relie applications métier, données, architecture et transformation dans des environnements
+        complexes. L’IA ajoute une brique à choisir et à intégrer lorsque le besoin le justifie.
+      </p>
+      <p class="lead">
+        Je travaille avec les métiers, l’IT et les partenaires pour expliciter les contraintes, coordonner les décisions
+        et garder une trajectoire de mise en œuvre réaliste.
       </p>
     </div>
     <div class="stack">
       <article class="card">
-        <h3>Technique</h3>
-        <div class="pills">
-          <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">FastAPI</span
-          ><span class="pill">Docker</span><span class="pill">Data Engineering</span><span class="pill">LLMs</span
-          ><span class="pill">Coding agents</span>
-        </div>
+        <h3>Architecture et capacité technique</h3>
+        <p>
+          Concevoir l’ensemble, puis prototyper, développer, intégrer et valider les choix au contact du système réel.
+        </p>
       </article>
-      <article class="card card--tinted theme-ai">
-        <h3>Organisation</h3>
-        <div class="pills">
-          <span class="pill">Agile</span><span class="pill">AI adoption</span><span class="pill">Training</span
-          ><span class="pill">Community</span><span class="pill">Governance</span
-          ><span class="pill">Business ↔ IT</span>
-        </div>
+      <article class="card">
+        <h3>Transformation progressive</h3>
+        <p>
+          Faire évoluer les applications et les flux existants en tenant compte de la maintenabilité, des utilisateurs
+          et de la continuité d’activité.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Pragmatisme</h3>
+        <p>
+          Choisir la technologie selon le problème, avec ou sans IA. Comparer cloud, API et local sur la qualité, les
+          coûts et les contraintes de données.
+        </p>
       </article>
     </div>
   </div>
 </section>
-
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Ma façon de travailler</span>
-      <h2>Comprendre. Construire. Transformer. Optimiser.</h2>
+      <span class="eyebrow">Méthode</span>
+      <h2>Du besoin à la production.</h2>
+      <p>Sur l’ensemble du projet ou sur l’étape où vous avez besoin de renfort.</p>
     </div>
-    <div class="cards cards--3">
-      <article class="card">
-        <h3>Comprendre</h3>
-        <p>Regarder le système réel, les usages et les contraintes avant de proposer une solution.</p>
-      </article>
-      <article class="card">
-        <h3>Construire</h3>
-        <p>Développer, intégrer, automatiser et aller suffisamment loin pour obtenir quelque chose d’utilisable.</p>
-      </article>
-      <article class="card">
-        <h3>Transformer</h3>
-        <p>Faire évoluer l’existant progressivement plutôt que repartir de zéro par principe.</p>
-      </article>
-      <article class="card">
-        <h3>Optimiser</h3>
-        <p>
-          Réduire la complexité, les tâches manuelles, les licences inutiles et les coûts techniques lorsque c’est
-          possible.
-        </p>
-      </article>
-    </div>
+    {% include engineering-map.html %}
   </div>
 </section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Expérience</span>
-      <h2>Une expérience construite entre métier et technologie.</h2>
-      <p>
-        Le même fil conducteur : rendre les systèmes plus fiables, plus compréhensibles et plus utiles aux équipes qui
-        les font vivre.
-      </p>
-    </div>
-    <div class="cards cards--3">
-      <article class="card card--tinted theme-software">
-        <h3>Logiciel &amp; applications métier</h3>
-        <p>
-          Développement, maintenance, modernisation et évolution d’applications métier, avec une attention particulière
-          à l’architecture, à la migration progressive et à la continuité d’activité.
-        </p>
-      </article>
-      <article class="card card--tinted theme-data">
-        <h3>Data &amp; reporting</h3>
-        <p>
-          Data Engineering, qualité de données, automatisation et reporting : relier les sources, fiabiliser les
-          traitements et réduire les opérations manuelles.
-        </p>
-      </article>
-      <article class="card card--tinted theme-fractional">
-        <h3>Architecture &amp; pilotage</h3>
-        <p>
-          Faire travailler ensemble métiers, IT, Data et partenaires autour d’un cadrage clair, de décisions techniques
-          documentées et d’une trajectoire réaliste.
-        </p>
-      </article>
-      <article class="card card--tinted theme-ai">
-        <h3>IA &amp; transformation</h3>
-        <p>
-          De l’adoption aux usages opérationnels : LLM, agents, IA locale, AI FinOps, formation et gouvernance sont
-          abordés en lien avec les contraintes réelles de l’organisation.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section class="section section--soft">
   <div class="container split">
     <div>
-      <span class="eyebrow">Transmission</span>
-      <h2>Faire progresser les équipes, pas seulement livrer un système.</h2>
+      <span class="eyebrow">Accompagnement & transmission</span>
+      <h2>Faire progresser les équipes.</h2>
     </div>
     <div class="card">
+      <h3>Transmettre les repères et les décisions</h3>
       <p>
-        Les formations et ateliers prolongent le travail de cadrage et de réalisation. Plus de 600 collaborateurs ont
-        déjà été sensibilisés à l’IA dans des contextes exigeants.
+        Les formations et ateliers prolongent le travail de cadrage et de réalisation. Ils aident les équipes à
+        comprendre les solutions et à se les approprier.
       </p>
-      <div class="actions">
-        <a class="btn btn--soft" href="{{ site.linkedin }}" rel="me external noopener" target="_blank"
-          >Voir le parcours sur LinkedIn <span aria-hidden="true">↗</span></a
+      <a class="card-link" href="{{ '/formations/' | relative_url }}">Découvrir les formations →</a>
+      <p>Je peux également accompagner les décisions d’architecture et la roadmap dans la durée.</p>
+      <a class="card-link" href="{{ '/fractional-lead/' | relative_url }}"
+        >Découvrir l’accompagnement à temps partagé →</a
+      >
+      <p>
+        <a href="{{ site.linkedin }}" rel="me external noopener" target="_blank"
+          >Consulter mon parcours sur LinkedIn ↗</a
         >
-      </div>
+      </p>
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="container cta-box">
-    <span class="eyebrow">Travailler ensemble</span>
-    <h2>Une mission peut être technique, organisationnelle — ou les deux.</h2>
-    <p>Je préfère un problème réel à résoudre à un intitulé de rôle trop étroit.</p>
-    <div class="actions"><a class="btn" href="{{ '/contact/' | relative_url }}">Me contacter →</a></div>
-  </div>
-</section>
+{% include booking-cta.html text="Présentez-moi votre besoin métier ou technique et ce que vous souhaitez rendre
+opérationnel." location="site" %}

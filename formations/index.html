@@ -15,7 +15,7 @@ faq: formations
       conditions de déploiement.
     </p>
     <div class="actions">
-      <a class="btn" href="{{ '/contact/' | relative_url }}">Échanger sur votre besoin →</a
+      <a class="btn" href="{{ '/contact/' | relative_url }}">Parler de mon projet →</a
       ><a class="btn btn--ghost" href="#formations">Voir les formations</a>
     </div>
   </div>
@@ -23,7 +23,7 @@ faq: formations
 
 <section class="trust-strip">
   <div class="container">
-    <span>12 ans d’expérience Tech, Data &amp; Software</span><span>Expertise IA</span
+    <span>Expérience en architecture et applications métier</span><span>Expertise IA</span
     ><span>Environnements exigeants / régulés</span><span>600+ collaborateurs sensibilisés à l’IA</span>
   </div>
 </section>
@@ -164,7 +164,7 @@ faq: formations
           Vous avez besoin d’un aménagement lié à une situation de handicap ? Signalez-le dès le premier échange afin
           que nous étudiions les adaptations possibles ou une orientation adaptée.
         </p>
-        <a class="card-link" href="{{ '/contact/' | relative_url }}">Nous contacter →</a>
+        <a class="card-link" href="{{ '/contact/' | relative_url }}">Discuter d’un aménagement →</a>
       </article>
       <article class="card">
         <h3>Intra ou inter ?</h3>
@@ -181,13 +181,13 @@ faq: formations
 
 <section class="section section--tight">
   <div class="container cta-box">
-    <h2>Vous cherchez le bon point de départ ?</h2>
+    <h2>{{ site.project_cta_label }}</h2>
     <p>
       Un échange de {{ site.data.engagement.booking_minutes }} minutes suffit pour vérifier quelle formation correspond
       à votre besoin.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Discuter de cette formation" class="btn" location="training" %}
+      {% include booking-link.html label=site.project_cta_label class="btn" location="training" %}
     </div>
   </div>
 </section>

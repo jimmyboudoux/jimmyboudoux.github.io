@@ -1,4 +1,5 @@
-{% assign formation = include.formation %}
+{% assign formation = include.formation %} {% assign training_access_days = site.data.engagement.training_access_days |
+append: '' %}
 <section class="section">
   <div class="container cards cards--3 formation-support">
     <article class="card">
@@ -14,24 +15,26 @@
         Vous avez besoin d’un aménagement lié à une situation de handicap ? Signalez-le dès le premier échange afin que
         nous étudiions les adaptations possibles ou une orientation adaptée.
       </p>
-      <a class="card-link" href="mailto:{{ site.email }}?subject=Besoin%20d%27accessibilit%C3%A9">Nous contacter →</a>
+      <a class="card-link" href="mailto:{{ site.email }}?subject=Besoin%20d%27accessibilit%C3%A9"
+        >Me signaler un besoin d’accessibilité →</a
+      >
     </article>
     <article class="card">
       <h3>Délais d’accès</h3>
-      <p>{{ formation.access_delay }}</p>
+      <p>{{ formation.access_delay | replace: '__training_access_days__', training_access_days }}</p>
     </article>
   </div>
 </section>
 
 <section class="section section--tight">
   <div class="container cta-box">
-    <h2>Discuter de cette formation</h2>
+    <h2>{{ site.project_cta_label }}</h2>
     <p>
       Un échange de {{ site.data.engagement.booking_minutes }} minutes suffit pour vérifier si cette formation
       correspond à votre besoin.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Discuter de cette formation" class="btn" location="training" %}
+      {% include booking-link.html label=site.project_cta_label class="btn" location="training" %}
       <a class="btn btn--ghost" href="mailto:{{ site.email }}">{{ site.email }}</a>
     </div>
   </div>

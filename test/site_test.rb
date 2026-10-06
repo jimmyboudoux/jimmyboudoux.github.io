@@ -139,16 +139,16 @@ class SiteTest < Minitest::Test
   def test_navigation_marks_only_the_active_page
     services = html_for_path("/services/")
     current = services.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
-    assert_equal "Expertises", current.text
+    assert_equal "Services", current.text
 
     home = html_for_path("/")
     refute home.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
 
     engineering = html_for_path("/ai-engineering/")
-    assert_equal "Expertises", engineering.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+    assert_equal "Services", engineering.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
 
     formation = html_for_path("/formations/ai-literacy/")
-    assert_equal "Formations IA", formation.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+    assert_equal "Services", formation.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
   end
 
   def test_internal_maintenance_files_are_not_published
@@ -212,7 +212,7 @@ class SiteTest < Minitest::Test
     assert_operator File.size(site_file("assets/img/og-optimized.jpg")), :<, 500_000
   end
 
-  def test_formation_price_labels_and_homepage_diagnostic_cta_remain_clear
+  def test_formation_price_labels_and_secondary_diagnostic_access_remain_clear
     %w[/formations/ai-literacy/ /formations/finops-ia/ /formations/ia-locale/].each do |path|
       text = html_for_path(path).text
       refute_includes text, "À partir de dès"
@@ -222,7 +222,8 @@ class SiteTest < Minitest::Test
 
     homepage = html_for_path("/")
     assert homepage.at_css('a[href="/diagnostic-ia/"]')
-    assert_includes homepage.text, "Faire mon diagnostic IA"
+    assert_empty homepage.css('main a[href="/diagnostic-ia/"]')
+    assert html_for_path("/ai-adoption/").at_css('a[href="/diagnostic-ia/"]')
   end
 
   def test_shared_pricing_data_is_rendered_on_the_pricing_page
@@ -253,7 +254,7 @@ class SiteTest < Minitest::Test
       service = services.find { |item| item.fetch("slug") == slug }
       document = html_for_path("/#{slug}/")
       assert_equal service.fetch("theme"), document.at_css("body")["class"]
-      assert_equal "Expertises", document.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+      assert_equal "Services", document.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
       assert json_ld_for("/#{slug}/").any? { |item| item["@type"] == "Service" }
     end
     %w[/ /ai-engineering/ /tarifs/ /contact/ /diagnostic-ia/ /formations/ai-literacy/].each do |path|
@@ -283,12 +284,49 @@ class SiteTest < Minitest::Test
     assert_equal 1, hero.css("p.lead").size
     assert_equal 2, hero.css(".actions a").size
     assert_empty hero.css('a[href="/diagnostic-ia/"], .engineering-map, .hero-principles')
-    assert_equal 1, document.css(".home-diagnostic").size
-    assert_equal 1, document.css('.home-diagnostic a[href="/diagnostic-ia/"]').size
-    assert_empty document.css(".home-diagnostic [data-booking-location]")
+    assert_empty document.css(".home-diagnostic")
+    assert_empty document.css('main a[href="/diagnostic-ia/"]')
     assert_equal 1, document.css(".engineering-map").size
     assert document.at_css("#approche .engineering-map")
     assert_empty document.css("#pour-qui")
+  end
+
+  def test_repositioning_is_clear_and_specialist_pages_remain_secondary
+    document = html_for_path("/")
+    assert_equal "De l’idée métier à la solution logicielle complète.", document.at_css("h1").text.strip
+    assert_includes document.at_css("title").text, "Ingénieur Informatique & Architecte IA"
+    assert_includes document.at_css(".hero .eyebrow").text, "Ingénieur Informatique & Architecte IA"
+    assert_equal "Parler de mon projet", document.at_css(".hero .actions a").text.strip
+    assert_equal ["Concevoir", "Construire", "Transformer"], document.css("#services .card-tag").map { |node| node.text.strip }
+    assert_includes document.at_css("#services").text, "avec ou sans intelligence artificielle"
+    assert_equal ["Comprendre", "Concevoir", "Construire", "Intégrer", "Déployer"], document.css("#approche .map-card b").map(&:text)
+    assert_equal 3, document.css("#pourquoi .card").size
+    assert_equal 3, document.css("#tarifs .price-card").size
+    ids = document.css("main > section[id]").map { |node| node["id"] }
+    assert_equal %w[services approche expertises pourquoi tarifs], ids
+    nav = document.css('nav[aria-label="Navigation principale"] a:not(.nav-cta)')
+    assert_equal ["Services", "À propos", "Tarifs", "Contact"], nav.map(&:text)
+    assert_equal "Parler de mon projet", document.at_css(".nav-cta").text.strip
+    %w[ai-engineering sandbox-ia-locale ia-privee-locale software-rescue data-reporting ai-finops ai-adoption formations fractional-lead].each do |slug|
+      assert html_for_path("/services/").at_css("main a[href='/#{slug}/']"), "Missing specialist link: #{slug}"
+    end
+    %w[/poitiers/ /grand-ouest/].each do |path|
+      assert_includes html_for_path(path).at_css("h1").text, "Ingénieur Informatique & Architecte IA"
+    end
+  end
+
+  def test_portfolio_is_prepared_but_hidden_and_not_indexed
+    document = html_for_path("/realisations/")
+    assert_equal 1, document.css("h1").size
+    assert_equal "noindex", document.at_css('meta[name="robots"]')["content"]
+    assert_equal "#{SITE_ORIGIN}/realisations/", document.at_css('link[rel="canonical"]')["href"]
+    refute_includes public_paths, "/realisations/"
+    assert_empty html_for_path("/").css("#realisations")
+    public_paths.each do |path|
+      assert_empty html_for_path(path).css('a[href="/realisations/"]'), "Portfolio should be hidden on #{path}"
+    end
+    assert_includes document.at_css("main").text, "En construction"
+    refute document.at_css("main").text.match?(/client|résultat chiffré/)
   end
 
   def test_robots_references_the_generated_sitemap

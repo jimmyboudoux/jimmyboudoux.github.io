@@ -32,7 +32,7 @@ ai-literacy:
   methods: "Formation synchrone intra-entreprise : apports courts, démonstrations, quiz, exercices individuels, échanges et cas d’usage collectifs."
   resources: "Support de présentation, fiche mémo, consignes d’exercices et ressources de veille. Un ordinateur personnel est recommandé pour les exercices."
   assessment: "Positionnement préalable, exercices et mises en situation pendant la session, puis quiz final et cas pratique. Une évaluation à chaud clôture la session."
-  access_delay: "Sous réserve de la finalisation du besoin, de l’accord sur le devis et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Ce délai est confirmé dans la proposition."
+  access_delay: "Sous réserve de la finalisation du besoin, de l’accord sur le devis et des disponibilités, une session peut en principe être planifiée sous __training_access_days__ jours ouvrés. Ce délai est confirmé dans la proposition."
   prices:
     - format: "½ journée"
       amount: 650
@@ -77,7 +77,7 @@ finops-ia:
   methods: "Formation synchrone intra-entreprise : apports structurés, cas chiffrés, échanges inter-fonctionnels, travaux en sous-groupes et restitution."
   resources: "Support de formation, canevas de cartographie de coûts, fiche d’indicateurs, modèle de rituel de revue et ressources de veille."
   assessment: "Questionnaire de positionnement, exercices chiffrés et canevas pendant la session, puis quiz et recommandation sur un cas. Une évaluation à chaud clôture la session."
-  access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Confirmation au devis."
+  access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous __training_access_days__ jours ouvrés. Confirmation au devis."
   prices:
     - format: "Journée"
       amount: 1450
@@ -123,7 +123,7 @@ ia-locale:
   methods: "Formation synchrone intra-entreprise : visualisations d’architecture, démonstration encadrée, étude de cas, atelier de décision et échanges métier-technique."
   resources: "Support de formation, glossaire, matrice d’aide à la décision, fiche de précautions de sécurité et confidentialité, canevas de pilote responsable et ressources de veille."
   assessment: "Auto-évaluation et quiz initial, analyse de scénarios et choix d’architecture pendant la session, puis quiz et cas de décision. Une évaluation à chaud clôture la session."
-  access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous 15 jours ouvrés. Une démonstration spécifique ou une adaptation peut demander un délai complémentaire."
+  access_delay: "Sous réserve de l’analyse du besoin, de l’accord et des disponibilités, une session peut en principe être planifiée sous __training_access_days__ jours ouvrés. Une démonstration spécifique ou une adaptation peut demander un délai complémentaire."
   prices:
     - format: "1 journée minimum"
       amount: 1500

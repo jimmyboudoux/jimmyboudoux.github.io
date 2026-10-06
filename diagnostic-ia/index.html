@@ -376,10 +376,12 @@ faq: false
 
 <section class="section section--tight">
   <div class="container narrow">
-    <h2>Vous préférez en parler ?</h2>
+    <h2>{{ site.project_cta_label }}</h2>
+    <p class="lead">
+      Un échange de {{ site.data.engagement.booking_minutes }} minutes permet de discuter de votre contexte.
+    </p>
     <div class="actions">
-      {% include booking-link.html label="Réserver un échange de __booking_minutes__ min" class="btn btn--ghost"
-      location="diagnostic" %}
+      {% include booking-link.html label=site.project_cta_label class="btn btn--ghost" location="diagnostic" %}
     </div>
   </div>
 </section>

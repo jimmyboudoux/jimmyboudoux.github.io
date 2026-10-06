@@ -1,0 +1,55 @@
+- id: concevoir
+  verb: Concevoir
+  title: Cadrage & Architecture
+  short: Transformer une idée ou un besoin encore flou en solution structurée et réaliste.
+  theme: theme-ai
+  cta: Cadrer mon projet
+  scope:
+    - Compréhension du besoin métier et analyse de l’existant
+    - Architecture fonctionnelle et technique, intégration au SI
+    - Choix technologiques et arbitrage entre construire et acheter
+    - Estimation, roadmap, risques et contraintes
+  deliverables: Une architecture cible, des choix expliqués et une feuille de route pour décider de la suite.
+  links:
+    - label: Audit et cadrage
+      href: /services/#audit
+    - label: Adoption, gouvernance et roadmap IA
+      href: /ai-adoption/
+- id: construire
+  verb: Construire
+  title: Applications, automatisation & IA
+  short: Concevoir et réaliser une solution opérationnelle adaptée au besoin, avec ou sans intelligence artificielle.
+  theme: theme-engineering
+  cta: Construire une solution
+  scope:
+    - Applications métier, back-end, API et intégrations
+    - Automatisations, prototypes et MVP
+    - Assistants, agents et recherche documentaire lorsque l’IA est utile
+    - Données, tests, documentation et déploiement
+  deliverables: Une solution utilisable, intégrée à votre environnement et accompagnée de sa documentation.
+  links:
+    - label: AI Engineering et automatisation
+      href: /ai-engineering/
+    - label: Portails IA privés, locaux et hybrides
+      href: /ia-privee-locale/
+    - label: Tester des modèles IA dans une sandbox
+      href: /sandbox-ia-locale/
+- id: transformer
+  verb: Transformer
+  title: Modernisation & optimisation
+  short: Faire évoluer un système existant devenu trop manuel, fragile, complexe ou coûteux.
+  theme: theme-software
+  cta: Moderniser mon existant
+  scope:
+    - Reprise d’applications, stabilisation et modernisation progressive
+    - Migration, automatisation de processus et rationalisation des outils
+    - Flux de données, qualité, contrôles et reporting
+    - Optimisation des architectures et des coûts IA ou cloud
+  deliverables: Un existant plus fiable et une trajectoire d’évolution qui tient compte de la continuité d’activité.
+  links:
+    - label: Software Rescue — reprendre une application bloquée
+      href: /software-rescue/
+    - label: Data, pipelines et reporting
+      href: /data-reporting/
+    - label: AI FinOps — maîtriser les coûts
+      href: /ai-finops/

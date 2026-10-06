@@ -19,7 +19,7 @@ faq: false
       infrastructure, ou combiner les deux selon les usages.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Parler de mon projet IA" class="btn" location="private_ai_portal_hero" %}<a
+      {% include booking-link.html label=site.project_cta_label class="btn" location="private_ai_portal_hero" %}<a
         class="btn btn--ghost"
         href="#architectures"
         >Voir les architectures possibles ↓</a
@@ -401,6 +401,6 @@ faq: false
   </div>
 </section>
 
-{% include booking-cta.html title="Construisons le bon portail IA pour vos usages." text="API, local ou hybride : un
-échange de __booking_minutes__ minutes permet de comprendre vos contraintes et de déterminer un premier périmètre
-réaliste." label="Réserver un échange de __booking_minutes__ min" location="private_ai_portal_final" %}
+{% include booking-cta.html text="API, local ou hybride : un échange de __booking_minutes__ minutes permet de comprendre
+vos contraintes et de déterminer un premier périmètre réaliste." label=site.project_cta_label
+location="private_ai_portal_final" %}

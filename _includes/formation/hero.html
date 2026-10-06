@@ -7,9 +7,9 @@
     <h1>{{ formation.title }}</h1>
     <p class="lead">{{ formation.promise }}</p>
     <div class="actions">
-      <a class="btn" href="{{ '/contact/' | relative_url }}">Demander un devis →</a>
+      <a class="btn" href="{{ '/contact/' | relative_url }}">{{ site.project_cta_label }} →</a>
       <a class="btn btn--ghost" href="mailto:{{ site.email }}?subject={{ formation.short_title | url_encode }}"
-        >Parler de votre équipe</a
+        >Écrire par email</a
       >
     </div>
   </div>

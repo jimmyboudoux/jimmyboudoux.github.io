@@ -1,7 +1,11 @@
 title: Jimmy Boudoux
-description: Ingénieur IA, Data & Software à Poitiers. Conception, automatisation, IA locale, modernisation, optimisation des coûts et pilotage Tech & IA.
+description: Ingénieur informatique et architecte IA à Poitiers. Cadrage, architecture, applications métier, automatisation, intégration IA et modernisation de solutions existantes.
 person_name: Jimmy Boudoux
-professional_title: "Ingénieur IA, Data & Software"
+professional_title: "Ingénieur Informatique & Architecte IA"
+signature: "De l’idée métier à la solution logicielle complète."
+# Activer après préparation du portfolio (voir README).
+portfolio_enabled: false
+project_cta_label: "Parler de mon projet"
 legal_name: "Boudoux Jimmy EI"
 legal_status: "Entrepreneur individuel"
 email: contact@jboudoux.fr

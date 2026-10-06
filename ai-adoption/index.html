@@ -84,6 +84,13 @@ faq: false
     </div>
   </div>
 </section>
-{% include booking-cta.html title="Faisons progresser l’adoption IA" text="Vos équipes testent l’IA sans parvenir à
-l’adopter ? Identifions les usages utiles, les freins et les conditions pour avancer." label="Réserver un échange de
-__booking_minutes__ min" location="service" %}
+<section class="section section--tight">
+  <div class="container">
+    <h2>Faire le point sur vos usages IA.</h2>
+    <p class="lead">Le diagnostic IA permet de décrire votre contexte avant mon analyse.</p>
+    <a class="card-link" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA →</a>
+  </div>
+</section>
+
+{% include booking-cta.html text="Vos équipes testent l’IA sans parvenir à l’adopter ? Identifions les usages utiles,
+les freins et les conditions pour avancer." label=site.project_cta_label location="service" %}

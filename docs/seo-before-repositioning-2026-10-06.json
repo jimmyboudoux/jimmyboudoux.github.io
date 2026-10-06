@@ -1,0 +1,242 @@
+[
+  {
+    "path": "/404.html",
+    "title": "Page introuvable | Jimmy Boudoux",
+    "description": "La page demandée n’existe pas.",
+    "h1": [
+      "Cette page n’existe pas."
+    ],
+    "canonical": "https://jboudoux.fr/404.html",
+    "noindex": true
+  },
+  {
+    "path": "/about/index.html",
+    "title": "À propos de Jimmy Boudoux | Jimmy Boudoux",
+    "description": "Ingénieur généraliste à la croisée du software, de la Data, de l’IA et de la transformation.",
+    "h1": [
+      "Ingénieur généraliste, à la croisée du métier et des systèmes."
+    ],
+    "canonical": "https://jboudoux.fr/about/",
+    "noindex": false
+  },
+  {
+    "path": "/ai-adoption/index.html",
+    "title": "Adoption & transformation IA en entreprise | Jimmy Boudoux",
+    "description": "Cas d’usage IA, référents internes, formation, gouvernance opérationnelle et transformation des pratiques pour installer des usages utiles.",
+    "h1": [
+      "Faire passer l’IA des expérimentations aux usages quotidiens."
+    ],
+    "canonical": "https://jboudoux.fr/ai-adoption/",
+    "noindex": false
+  },
+  {
+    "path": "/ai-engineering/index.html",
+    "title": "Ingénierie IA, Agents, RAG & IA locale | Jimmy Boudoux",
+    "description": "Assistants IA, RAG, agents, automatisation, intégration LLM et architectures locales, privées, cloud ou hybrides.",
+    "h1": [
+      "Construire des systèmes IA utiles, intégrés et exploitables."
+    ],
+    "canonical": "https://jboudoux.fr/ai-engineering/",
+    "noindex": false
+  },
+  {
+    "path": "/ai-finops/index.html",
+    "title": "AI FinOps & optimisation des coûts IA | Jimmy Boudoux",
+    "description": "Mesurer les coûts IA et licences, rationaliser les outils et piloter le bon compromis entre API, IA locale et build vs buy.",
+    "h1": [
+      "Savoir ce que l’IA et les outils coûtent réellement."
+    ],
+    "canonical": "https://jboudoux.fr/ai-finops/",
+    "noindex": false
+  },
+  {
+    "path": "/contact/index.html",
+    "title": "Contact — conseil IA, Data & logiciel | Jimmy Boudoux",
+    "description": "Contactez Jimmy Boudoux pour une mission IA, Data, Software Rescue ou direction Tech/Data/IA à temps partagé.",
+    "h1": [
+      "Parlez-moi du problème, pas du titre de mission."
+    ],
+    "canonical": "https://jboudoux.fr/contact/",
+    "noindex": false
+  },
+  {
+    "path": "/data-reporting/index.html",
+    "title": "Data, Analytics & Reporting | Jimmy Boudoux",
+    "description": "Pipelines, qualité des données, modélisation, contrôles, analytics et reporting automatisé.",
+    "h1": [
+      "Des données fiables jusqu’au reporting exploitable."
+    ],
+    "canonical": "https://jboudoux.fr/data-reporting/",
+    "noindex": false
+  },
+  {
+    "path": "/diagnostic-ia/index.html",
+    "title": "Diagnostic IA Entreprise | Jimmy Boudoux",
+    "description": "Faites le point sur les usages IA de votre entreprise. Jimmy Boudoux analyse vos réponses et vous envoie des\npremières recommandations généralement sous 1 jour ouvré.",
+    "h1": [
+      "Diagnostic IA Entreprise"
+    ],
+    "canonical": "https://jboudoux.fr/diagnostic-ia/",
+    "noindex": false
+  },
+  {
+    "path": "/diagnostic-ia/merci/index.html",
+    "title": "Merci — Diagnostic IA reçu | Jimmy Boudoux",
+    "description": "Confirmation de réception de votre Diagnostic IA Entreprise.",
+    "h1": [
+      "Merci, j’ai bien reçu vos réponses."
+    ],
+    "canonical": "https://jboudoux.fr/diagnostic-ia/merci/",
+    "noindex": true
+  },
+  {
+    "path": "/formations/ai-literacy/index.html",
+    "title": "Formation AI Literacy à Poitiers et à distance | Jimmy Boudoux",
+    "description": "Formation AI Literacy intra-entreprise à Poitiers, Niort et à distance : comprendre, utiliser et vérifier l’IA avec discernement.",
+    "h1": [
+      "AI Literacy — comprendre et utiliser l’IA en entreprise"
+    ],
+    "canonical": "https://jboudoux.fr/formations/ai-literacy/",
+    "noindex": false
+  },
+  {
+    "path": "/formations/finops-ia/index.html",
+    "title": "Formation FinOps IA à Poitiers et à distance | Jimmy Boudoux",
+    "description": "Formation FinOps IA intra-entreprise à Poitiers, Niort et à distance : piloter coûts, valeur et risques des usages IA.",
+    "h1": [
+      "FinOps IA — piloter les coûts, la valeur et les risques de l’IA"
+    ],
+    "canonical": "https://jboudoux.fr/formations/finops-ia/",
+    "noindex": false
+  },
+  {
+    "path": "/formations/ia-locale/index.html",
+    "title": "Formation IA locale à Poitiers et à distance | Jimmy Boudoux",
+    "description": "Formation intra-entreprise sur l’IA locale à Poitiers, Niort et à distance : confidentialité, architecture et décisions de déploiement.",
+    "h1": [
+      "Découverte de l’IA locale — reprendre le contrôle sur l’exécution et les données"
+    ],
+    "canonical": "https://jboudoux.fr/formations/ia-locale/",
+    "noindex": false
+  },
+  {
+    "path": "/formations/index.html",
+    "title": "Formations IA pour entreprises | Jimmy Boudoux",
+    "description": "Formations IA intra-entreprise, sur site à Poitiers et dans le Grand Ouest ou à distance : AI Literacy, FinOps IA et IA locale.",
+    "h1": [
+      "Formations IA pour comprendre, décider et agir"
+    ],
+    "canonical": "https://jboudoux.fr/formations/",
+    "noindex": false
+  },
+  {
+    "path": "/fractional-lead/index.html",
+    "title": "Direction Tech, Data & IA à temps partagé | Jimmy Boudoux",
+    "description": "CTO ou CAIO à temps partagé : pilotage récurrent de la roadmap, architecture, IA, Data, équipes, coûts, outils et fournisseurs.",
+    "h1": [
+      "Une direction Tech, Data & IA à la bonne dose."
+    ],
+    "canonical": "https://jboudoux.fr/fractional-lead/",
+    "noindex": false
+  },
+  {
+    "path": "/grand-ouest/index.html",
+    "title": "Consultant Tech, Data & IA dans le Grand Ouest | Jimmy Boudoux",
+    "description": "Basé à Poitiers, j’interviens à Niort, La Rochelle, Tours, Angoulême, Châtellerault et Bordeaux pour vos projets Tech, Data, IA et modernisation.",
+    "h1": [
+      "Interventions Tech, Data & IA dans le Grand Ouest"
+    ],
+    "canonical": "https://jboudoux.fr/grand-ouest/",
+    "noindex": false
+  },
+  {
+    "path": "/ia-privee-locale/index.html",
+    "title": "IA privée & locale en entreprise | Portail IA | Jimmy Boudoux",
+    "description": "Portail IA privé pour vos équipes : API, modèles locaux ou architecture hybride, avec maîtrise des données, modèles et coûts.",
+    "h1": [
+      "Un portail IA privé pour vos équipes, connecté aux bons modèles."
+    ],
+    "canonical": "https://jboudoux.fr/ia-privee-locale/",
+    "noindex": false
+  },
+  {
+    "path": "/index.html",
+    "title": "Ingénieur IA, Data & Software à Poitiers | Jimmy Boudoux",
+    "description": "Ingénieur IA, Data et Software à Poitiers : automatisation, IA locale, modernisation, Data et pilotage Tech & IA à temps partagé.",
+    "h1": [
+      "Des problèmes Tech, Data ou IA à résoudre ?"
+    ],
+    "canonical": "https://jboudoux.fr/",
+    "noindex": false
+  },
+  {
+    "path": "/mentions-legales/index.html",
+    "title": "Mentions légales | Jimmy Boudoux",
+    "description": "Mentions légales du site jboudoux.fr.",
+    "h1": [
+      "Mentions légales"
+    ],
+    "canonical": "https://jboudoux.fr/mentions-legales/",
+    "noindex": false
+  },
+  {
+    "path": "/poitiers/index.html",
+    "title": "Consultant Tech, Data & IA à Poitiers | Jimmy Boudoux",
+    "description": "Consultant basé à Poitiers pour vos projets IA, Data, logiciels, modernisation, audit et direction Tech à temps partagé. Interventions sur site et à distance.",
+    "h1": [
+      "Ingénieur IA, Data & Software à Poitiers"
+    ],
+    "canonical": "https://jboudoux.fr/poitiers/",
+    "noindex": false
+  },
+  {
+    "path": "/politique-confidentialite/index.html",
+    "title": "Politique de confidentialité | Jimmy Boudoux",
+    "description": "Politique de confidentialité de jboudoux.fr et informations relatives au Diagnostic IA Entreprise.",
+    "h1": [
+      "Politique de confidentialité"
+    ],
+    "canonical": "https://jboudoux.fr/politique-confidentialite/",
+    "noindex": false
+  },
+  {
+    "path": "/sandbox-ia-locale/index.html",
+    "title": "Sandbox IA locale : tester des modèles open source & open-weight | Jimmy Boudoux",
+    "description": "Testez et comparez des modèles IA open source et open-weight : qualité, vitesse, CPU/GPU, contexte long, OCR, code et besoins matériels.",
+    "h1": [
+      "Testez une IA locale avant d’investir"
+    ],
+    "canonical": "https://jboudoux.fr/sandbox-ia-locale/",
+    "noindex": false
+  },
+  {
+    "path": "/services/index.html",
+    "title": "Expertises Tech, Data & IA | Jimmy Boudoux",
+    "description": "Ingénierie et conseil en IA, Data, modernisation logicielle, AI FinOps et direction Tech, Data & IA à temps partagé.",
+    "h1": [
+      "Des expertises pour construire, transformer et optimiser."
+    ],
+    "canonical": "https://jboudoux.fr/services/",
+    "noindex": false
+  },
+  {
+    "path": "/software-rescue/index.html",
+    "title": "Sauvetage & modernisation d’applications | Jimmy Boudoux",
+    "description": "Application vibe codée devenue critique, prototype fragile, Access, VBA, Excel ou logiciel legacy : audit, stabilisation et modernisation progressive.",
+    "h1": [
+      "Votre application fonctionne. Maintenant, rendons-la fiable."
+    ],
+    "canonical": "https://jboudoux.fr/software-rescue/",
+    "noindex": false
+  },
+  {
+    "path": "/tarifs/index.html",
+    "title": "Tarifs — Ingénierie IA, Data & Software | Jimmy Boudoux",
+    "description": "Tarifs et repères budgétaires pour revues, cadrages, automatisations, audits, IA locale, formations et direction Tech & IA à temps partagé.",
+    "h1": [
+      "Des prix clairs quand le périmètre est clair."
+    ],
+    "canonical": "https://jboudoux.fr/tarifs/",
+    "noindex": false
+  }
+]

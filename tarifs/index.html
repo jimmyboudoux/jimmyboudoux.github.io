@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Tarifs — Ingénierie IA, Data & Software'
-description: 'Tarifs et repères budgétaires pour revues, cadrages, automatisations, audits, IA locale, formations et direction Tech & IA à temps partagé.'
+title: 'Tarifs — cadrage, projet et accompagnement'
+description: 'Tarifs de cadrage, de projets logiciels et d’accompagnement récurrent. Repères publics pour automatisation, modernisation, IA locale et formations.'
 theme: theme-ai
 faq: false
 ---
@@ -11,24 +11,12 @@ faq: false
     <span class="eyebrow">Tarifs & repères budgétaires</span>
     <h1>Des prix clairs quand le périmètre est clair.</h1>
     <p class="lead">
-      Une revue ciblée, un cadrage ou une formation peuvent avoir un prix défini à l’avance. Pour une réalisation, un
-      audit ou une direction Tech / IA à temps partagé, le budget dépend du problème réel à traiter, du niveau
-      d’expertise nécessaire et du résultat attendu.
-    </p>
-    <p class="pricing-intro">
-      <strong
-        >Je ne cherche pas à facturer un nombre d’heures : je chiffre le périmètre à comprendre, construire, transformer
-        ou piloter.</strong
-      >
-    </p>
-    <p class="pricing-intro">
-      Le temps nécessaire reste évidemment pris en compte pour construire un devis réaliste, mais l’expérience doit
-      permettre d’aller plus vite — pas de rendre artificiellement moins précieux un problème résolu efficacement.
+      Cadrage / Audit pour définir la solution, Projet / Forfait pour un résultat précis, Accompagnement récurrent pour
+      avancer dans la durée. Le budget dépend du périmètre, de la complexité et du résultat attendu.
     </p>
     <nav class="pricing-toc" aria-label="Sommaire des tarifs">
-      <a href="#demarrer">Démarrer</a><a href="#construire">Construire</a
-      ><a href="#sandbox-ia-locale">Sandbox IA locale</a><a href="#portails-ia">Portails IA</a
-      ><a href="#audits">Audits</a><a href="#temps-partage">Temps partagé</a><a href="#formations">Formations</a>
+      <a href="#demarrer">Cadrage / Audit</a><a href="#construire">Projet / Forfait</a
+      ><a href="#temps-partage">Accompagnement récurrent</a><a href="#formations">Formation</a>
     </nav>
   </div>
 </section>
@@ -36,7 +24,7 @@ faq: false
 <section class="section" id="demarrer">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Démarrer avec un sujet précis</span>
+      <span class="eyebrow">Cadrage / Audit</span>
       <h2>Une question, un problème, une prochaine étape.</h2>
     </div>
     <div class="cards cards--3">
@@ -87,7 +75,7 @@ faq: false
 <section class="section section--surface" id="construire">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Construire et automatiser</span>
+      <span class="eyebrow">Projet / Forfait</span>
       <h2>La technologie sert le flux, pas l’inverse.</h2>
     </div>
     <div class="cards cards--3">
@@ -378,7 +366,7 @@ faq: false
 <section class="section" id="temps-partage">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">CTO / CAIO à temps partagé</span>
+      <span class="eyebrow">Accompagnement récurrent</span>
       <h2>{% include price.html offer=site.data.pricing.fractional.light amount_only=true prefix="Dès " %}</h2>
       <p>
         Pour apporter une direction Tech ou IA adaptée au besoin, sans recruter immédiatement à plein temps. Le forfait
@@ -399,8 +387,9 @@ faq: false
           Un périmètre simple à garder sous contrôle : quelques décisions, une roadmap légère et des échanges réguliers.
         </p>
         <p>
-          Un périmètre principal, 1 à 2 points mensuels, quelques décisions à challenger et éventuellement un
-          fournisseur à suivre. Ce niveau est moins cher parce que le besoin de pilotage reste léger.
+          Un périmètre principal, {{ site.data.pricing.fractional.light.meetings_min }} à {{
+          site.data.pricing.fractional.light.meetings_max }} points mensuels, quelques décisions à challenger et
+          éventuellement un fournisseur à suivre. Ce niveau est moins cher parce que le besoin de pilotage reste léger.
         </p>
       </article>
       <article class="card theme-fractional">
@@ -493,7 +482,8 @@ faq: false
           >
         </p>
         <p>
-          Une journée complète pour traiter coûts, licences, API, TCO, métriques, scénarios, exercices et gouvernance.
+          {{ site.data.formations.finops-ia.duration }} pour traiter coûts, licences, API, TCO, métriques, scénarios,
+          exercices et gouvernance.
         </p>
       </article>
       <article class="card theme-engineering">
@@ -504,7 +494,7 @@ faq: false
             site.data.formations.ia-locale.prices[0] %}{% include price.html offer=training_display_offer %}</strong
           >
         </p>
-        <p>1 Journée minimum. Atelier approfondi ou programme sur mesure : sur devis.</p>
+        <p>{{ site.data.formations.ia-locale.price_note }}</p>
       </article>
     </div>
     <div class="actions">
@@ -513,7 +503,6 @@ faq: false
   </div>
 </section>
 
-{% include booking-cta.html title="Parlons du bon périmètre" text="Un échange de __booking_minutes__ minutes est
-gratuit. Il permet de distinguer un premier diagnostic, une revue experte, un cadrage ou une mission plus large."
-label="Réserver un échange de __booking_minutes__ min" location="tarifs" microcopy="Visio Google Meet ·
-__booking_minutes__ minutes" %}
+{% include booking-cta.html text="Un échange de __booking_minutes__ minutes est gratuit. Il permet de distinguer un
+premier diagnostic, une revue experte, un cadrage ou une mission plus large." label=site.project_cta_label
+location="tarifs" microcopy="Visio Google Meet · __booking_minutes__ minutes" %}

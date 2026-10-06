@@ -1,6 +1,6 @@
 global:
   - question: "Quels types de sujets pouvez-vous prendre en charge ?"
-    answer: "Les missions couvrent l’IA, la Data, les applications et logiciels métier, la modernisation, l’automatisation, l’optimisation des coûts et le pilotage Tech ou IA. Le périmètre est défini selon votre besoin."
+    answer: "Je peux cadrer et concevoir une solution, construire une application ou une automatisation, et moderniser un système existant. L’IA et les données sont mobilisées lorsque le besoin le justifie."
   - question: "Comment démarrer une mission ?"
     answer: "Un premier échange permet de préciser le problème, le contexte et les contraintes. Selon le sujet, la suite peut être un diagnostic, un audit, un cadrage ou une proposition d’accompagnement."
   - question: "Où les interventions sont-elles possibles ?"
@@ -26,7 +26,7 @@ formations:
   answer: Non pour AI Literacy. Pour les autres formations, consultez les prérequis de chaque fiche.
 - question: Quel délai prévoir ?
   answer: Sous réserve des disponibilités et de la finalisation du besoin, la session peut en principe être planifiée sous
-    15 jours ouvrés ; délais à confirmer dans la proposition.
+    __training_access_days__ jours ouvrés ; délais à confirmer dans la proposition.
 - question: La certification Qualiopi est-elle obtenue ?
   answer: Le programme et le suivi sont structurés dans une démarche qualité. La certification Qualiopi n’est pas revendiquée
     tant qu’elle n’est pas obtenue.

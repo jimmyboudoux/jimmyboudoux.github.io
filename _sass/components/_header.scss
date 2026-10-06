@@ -111,3 +111,30 @@
     min-height: 48px;
   }
 }
+
+/* The longer professional title must still fit beside the existing menu. */
+.site-header .brand-copy {
+  max-width: 245px;
+}
+@media (min-width: $breakpoint-menu + 1px) and (max-width: $breakpoint-wide) {
+  .navbar {
+    gap: 0.75rem;
+  }
+  .nav-links {
+    gap: 0.75rem;
+  }
+  .site-header .brand-copy {
+    max-width: 170px;
+  }
+}
+@media (max-width: $breakpoint-phone) {
+  .site-header .brand {
+    gap: 0.55rem;
+  }
+  .site-header .brand-copy {
+    max-width: 190px;
+  }
+  .menu-btn {
+    flex: 0 0 auto;
+  }
+}

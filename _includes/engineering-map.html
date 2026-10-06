@@ -1,20 +1,17 @@
-<div class="engineering-map" aria-label="Approche en quatre étapes : comprendre, concevoir, construire et mesurer">
-  <div class="map-atmosphere" aria-hidden="true"></div>
-  <div class="map-connectors" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-  <article class="map-card map-card--understand">
-    {% include icon.html name="search" class="map-icon" %}
-    <b>Comprendre</b><span>le contexte</span>
-  </article>
-  <article class="map-card map-card--design">
-    {% include icon.html name="cube" class="map-icon" %}
-    <b>Concevoir</b><span>l’architecture</span>
-  </article>
-  <article class="map-card map-card--build">
-    {% include icon.html name="code" class="map-icon" %}
-    <b>Construire</b><span>le système</span>
-  </article>
-  <article class="map-card map-card--measure">
-    {% include icon.html name="chart" class="map-icon" %}
-    <b>Mesurer</b><span>l’impact</span>
-  </article>
-</div>
+<ol class="engineering-map engineering-map--chain" aria-label="Du besoin à la production">
+  <li class="map-card map-card--understand">
+    {% include icon.html name="search" class="map-icon" %}<b>Comprendre</b><span>le besoin</span>
+  </li>
+  <li class="map-card map-card--design">
+    {% include icon.html name="cube" class="map-icon" %}<b>Concevoir</b><span>l’architecture</span>
+  </li>
+  <li class="map-card map-card--build">
+    {% include icon.html name="code" class="map-icon" %}<b>Construire</b><span>la solution</span>
+  </li>
+  <li class="map-card">
+    {% include icon.html name="network" class="map-icon" %}<b>Intégrer</b><span>à votre environnement</span>
+  </li>
+  <li class="map-card map-card--measure">
+    {% include icon.html name="gear" class="map-icon" %}<b>Déployer</b><span>et transmettre</span>
+  </li>
+</ol>

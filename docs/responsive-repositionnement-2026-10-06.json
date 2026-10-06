@@ -1,0 +1,16 @@
+{
+  "pages": 25,
+  "widths": [
+    320,
+    390,
+    760,
+    900,
+    901,
+    1024,
+    1440
+  ],
+  "issues": [],
+  "menu": "click and Escape passed",
+  "keyboard_focus": "visible CTA focus passed",
+  "reduced_motion": "passed"
+}

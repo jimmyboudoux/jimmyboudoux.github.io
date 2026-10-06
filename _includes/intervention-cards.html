@@ -1,0 +1,12 @@
+<div class="cards cards--3">
+  {% for intervention in site.data.interventions %}
+  <article class="card card--tinted {{ intervention.theme }}">
+    <span class="card-tag">{{ intervention.verb }}</span>
+    <h3>{{ intervention.title }}</h3>
+    <p>{{ intervention.short }}</p>
+    <a class="card-link" href="{{ intervention.id | prepend: '/services/#' | relative_url }}"
+      >{{ intervention.cta }} →</a
+    >
+  </article>
+  {% endfor %}
+</div>

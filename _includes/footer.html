@@ -1,33 +1,65 @@
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <a class="brand" href="{{ '/' | relative_url }}">
-        <img
-          class="brand-mark-img"
-          src="{{ '/assets/img/logo-jb.svg' | relative_url }}"
-          alt=""
-          width="44"
-          height="44"
-        />
-        <span class="brand-copy"
-          ><strong>{{ site.person_name }}</strong><small>{{ site.professional_title }}</small></span
-        >
-      </a>
-      <p class="footer-copy">© <span data-year></span> {{ site.person_name }} — {{ site.legal_status }}.</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <img
+            class="brand-mark-img"
+            src="{{ '/assets/img/logo-jb.svg' | relative_url }}"
+            alt=""
+            width="44"
+            height="44"
+          />
+          <span class="brand-copy"
+            ><strong>{{ site.person_name }}</strong><small>{{ site.professional_title | escape }}</small></span
+          >
+        </a>
+        <div class="footer-links footer-social">
+          <a href="{{ site.linkedin }}" rel="me external noopener" target="_blank">LinkedIn</a>
+          <a href="{{ site.github }}" rel="me external noopener" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <nav class="footer-group" aria-label="Navigation de pied de page">
+        <p class="footer-zone-label">Navigation</p>
+        <ul class="footer-list">
+          {% for item in site.data.navigation %}{% if item.feature == nil or site[item.feature] == true %}
+          <li><a href="{{ item.href | relative_url }}">{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <nav class="footer-group" aria-label="Expertises">
+        <p class="footer-zone-label">Expertises</p>
+        <ul class="footer-list">
+          <li><a href="{{ '/ai-engineering/' | relative_url }}">AI Engineering</a></li>
+          <li><a href="{{ '/ai-finops/' | relative_url }}">AI FinOps</a></li>
+          <li><a href="{{ '/data-reporting/' | relative_url }}">Data / Reporting</a></li>
+          <li><a href="{{ '/software-rescue/' | relative_url }}">Software Rescue</a></li>
+        </ul>
+      </nav>
+      <div class="footer-group">
+        <nav class="footer-group" aria-label="Accompagnement et ressources">
+          <p class="footer-zone-label">Accompagnement</p>
+          <ul class="footer-list">
+            <li><a href="{{ '/formations/' | relative_url }}">Formations</a></li>
+            <li><a href="{{ '/fractional-lead/' | relative_url }}">Temps partagé</a></li>
+            <li><a href="{{ '/diagnostic-ia/' | relative_url }}">Diagnostic IA</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-group footer-zones" aria-label="Zones d’intervention">
+          <p class="footer-zone-label">Zones d’intervention</p>
+          <div class="footer-links">
+            <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a>
+            <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a>
+          </div>
+        </nav>
+      </div>
     </div>
-    <nav class="footer-links" aria-label="Navigation de pied de page">
-      <a href="{{ '/diagnostic-ia/' | relative_url }}">Diagnostic IA</a>
-      <a href="{{ '/services/' | relative_url }}">Expertises</a>
-      <a href="{{ '/formations/' | relative_url }}">Formations IA</a>
-      <span class="footer-zone-label">Zones d’intervention</span>
-      <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a>
-      <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a>
-      <a href="{{ '/about/' | relative_url }}">À propos</a>
-      <a href="{{ '/contact/' | relative_url }}">Contact</a>
-      <a href="{{ '/mentions-legales/' | relative_url }}">Mentions légales</a>
-      <a href="{{ '/politique-confidentialite/' | relative_url }}">Confidentialité</a>
-      <a href="{{ site.linkedin }}" rel="me external noopener" target="_blank">LinkedIn</a>
-      <a href="{{ site.github }}" rel="me external noopener" target="_blank">GitHub</a>
-    </nav>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span data-year></span> {{ site.person_name }} — {{ site.legal_status }}.</p>
+      <nav class="footer-links" aria-label="Informations légales">
+        <a href="{{ '/mentions-legales/' | relative_url }}">Mentions légales</a>
+        <a href="{{ '/politique-confidentialite/' | relative_url }}">Confidentialité</a>
+      </nav>
+    </div>
   </div>
 </footer>

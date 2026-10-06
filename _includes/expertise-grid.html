@@ -9,7 +9,7 @@
     <h3>{{ service.title }}</h3>
     {% if service.keywords %}<span class="expertise-keywords">{{ service.keywords }}</span>{% endif %}
     <p>{{ service.short }}</p>
-    {% assign service_link_label = service.link_label | default: 'En savoir plus' %} {% if include.home and
+    {% assign service_link_label = service.link_label | default: service.title %} {% if include.home and
     service.home_link_label %}{% assign service_link_label = service.home_link_label %}{% endif %}
     <a class="card-link" href="{{ service.slug | prepend: '/' | append: '/' | relative_url }}"
       >{{ service_link_label }} →</a

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Ingénieur IA, Data & Software à Poitiers
-description: 'Ingénieur IA, Data et Software à Poitiers : automatisation, IA locale, modernisation, Data et pilotage Tech & IA à temps partagé.'
+title: Ingénieur Informatique & Architecte IA
+description: 'Ingénieur informatique et architecte IA à Poitiers. Cadrage, architecture, applications métier, automatisation, intégration IA et modernisation de solutions existantes.'
 theme: theme-ai
 faq: false
 ---
@@ -9,112 +9,126 @@ faq: false
 <section class="hero hero--concise">
   <div class="container">
     <span class="eyebrow">{{ site.professional_title | escape }}</span>
-    <h1>Des problèmes Tech, Data ou IA à résoudre ?</h1>
+    <h1>{{ site.signature }}</h1>
     <p class="lead">
-      J’aide les entreprises à automatiser leurs tâches, fiabiliser leurs données et faire évoluer leurs applications.
+      J’aide les entreprises à transformer un besoin, un processus ou une idée en une solution réellement opérationnelle
+      : cadrage, architecture, applications, automatisation et intégration de l’IA.
     </p>
     <p class="hero-location">
-      Basé à <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a> · principalement à distance · sur site dans le
-      <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a>.
+      Du choix de l’architecture à la réalisation technique, je peux accompagner l’ensemble du projet ou intervenir sur
+      une étape ciblée.
     </p>
     <div class="actions">
-      <a class="btn" href="#expertises">Découvrir les expertises →</a>
-      {% include booking-link.html label="Réserver un échange de __booking_minutes__ min" class="btn btn--ghost"
-      location="homepage" %}
+      {% include booking-link.html label=site.project_cta_label location="homepage" %}
+      <a class="btn btn--ghost" href="#services">Découvrir comment j’interviens →</a>
     </div>
   </div>
 </section>
-
-<section class="section section--surface home-diagnostic">
-  <div class="container home-diagnostic__grid">
-    <div>
-      <span class="eyebrow">Diagnostic entreprise</span>
-      <h2>Par où commencer avec l’IA ?</h2>
-      <p>Décrivez vos usages et vos priorités. Vous recevrez mon analyse et les premières pistes à explorer.</p>
-      <div class="actions">
-        <a class="btn" href="{{ '/diagnostic-ia/' | relative_url }}">Faire mon diagnostic IA →</a>
-      </div>
-    </div>
-    <div class="home-diagnostic__facts" aria-label="Caractéristiques du diagnostic">
-      <span><strong>Offert</strong>Sans engagement</span>
-      <span
-        ><strong
-          >{{ site.data.engagement.diagnostic.duration_min_minutes }} à {{
-          site.data.engagement.diagnostic.duration_max_minutes }} min</strong
-        >Pour répondre</span
-      >
-      <span><strong>{% include diagnostic-response-time.html %}</strong>Délai habituel de retour</span>
-    </div>
-  </div>
-</section>
-
-<section class="section section--surface" id="expertises">
+<section class="section section--surface" id="services">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Expertises</span>
-      <h2>Quel sujet souhaitez-vous faire avancer ?</h2>
+      <span class="eyebrow">Concevoir → Construire → Transformer</span>
+      <h2>Trois façons de travailler ensemble.</h2>
     </div>
-    {% include expertise-grid.html home=true %}
+    {% include intervention-cards.html %}
   </div>
 </section>
-
 <section class="section" id="approche">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Méthode</span>
-      <h2>Partir de l’existant et avancer par étapes.</h2>
-      <p>
-        Chaque mission commence par vos usages et vos contraintes. Le cadrage fixe les priorités, les livrables et les
-        critères de réussite.
-      </p>
+      <h2>Du besoin à la production.</h2>
+      <p>Je peux intervenir sur l’ensemble de la chaîne ou uniquement sur l’étape où vous avez besoin de renfort.</p>
     </div>
     {% include engineering-map.html %}
   </div>
 </section>
-
-<section class="section section--surface theme-fractional">
-  <div class="container recurring recurring--concise">
-    <div>
-      <span class="eyebrow">CTO / CAIO à temps partagé</span>
-      <h2>Piloter la Tech et l’IA sans recruter immédiatement à plein temps.</h2>
-      <p>
-        Un pilotage adapté aux décisions, à la roadmap, aux équipes et aux fournisseurs, avec un niveau d’implication
-        qui évolue selon le périmètre.
-      </p>
-      <div class="actions">
-        <a class="btn" href="{{ '/fractional-lead/' | relative_url }}">Découvrir l’accompagnement →</a>
-      </div>
+{% if site.portfolio_enabled %}
+<section class="section section--surface" id="realisations">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Réalisations</span>
+      <h2>Le portfolio est en préparation.</h2>
+      <p>Les cas détaillés seront publiés dans cet espace.</p>
+    </div>
+    <a class="card-link" href="{{ '/realisations/' | relative_url }}">Voir l’espace Réalisations →</a>
+  </div>
+</section>
+{% endif %}
+<section class="section" id="expertises">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Expertises transverses</span>
+      <h2>Des compétences pour choisir la bonne solution.</h2>
+      <p>L’objectif est de choisir la technologie adaptée au besoin, avec ou sans IA.</p>
+    </div>
+    <div class="pills">
+      <span class="pill">Architecture logicielle</span><span class="pill">IA générative · LLM · RAG · Agents</span
+      ><span class="pill">Automatisation</span><span class="pill">API & intégrations</span
+      ><span class="pill">Data · Python · SQL</span><span class="pill">Cloud · Linux · Docker</span
+      ><span class="pill">IA locale</span><span class="pill">Infrastructure</span
+      ><span class="pill">Sécurité & gouvernance IA</span><span class="pill">FinOps IA</span>
+    </div>
+    <p class="lead">
+      L’IA locale permet de comparer API cloud, modèles open-weight et infrastructure dédiée selon la confidentialité,
+      la souveraineté, les performances, le coût et la dépendance fournisseur.
+    </p>
+    <a class="card-link" href="{{ '/sandbox-ia-locale/' | relative_url }}">Découvrir la sandbox IA locale →</a>
+  </div>
+</section>
+<section class="section section--surface" id="pourquoi">
+  <div class="container">
+    <div class="section-head"><h2>Pourquoi travailler avec moi ?</h2></div>
+    <div class="cards cards--3">
+      <article class="card">
+        <h3>Vision globale</h3>
+        <p>Comprendre le métier, les utilisateurs, l’existant et les contraintes avant de choisir une technologie.</p>
+      </article>
+      <article class="card">
+        <h3>Architecture + capacité technique</h3>
+        <p>
+          Concevoir une solution au niveau global, puis aller suffisamment loin techniquement pour la prototyper,
+          l’intégrer et la valider.
+        </p>
+      </article>
+      <article class="card">
+        <h3>IA pragmatique</h3>
+        <p>
+          Utiliser l’IA lorsqu’elle apporte réellement quelque chose, avec le bon arbitrage entre cloud, API, open
+          source et local.
+        </p>
+      </article>
     </div>
   </div>
 </section>
-
 {% include pricing.html %}
-
 <section class="section section--tight">
   <div class="container about-strip about-strip--concise">
-    <picture>
-      <source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
+    <picture
+      ><source srcset="{{ '/assets/img/avatar-512.webp' | relative_url }}" type="image/webp" />
       <img
         class="avatar"
         src="{{ '/assets/img/avatar-512.png' | relative_url }}"
-        alt="Avatar de {{ site.person_name | escape }}"
+        alt="Portrait de {{ site.person_name | escape }}"
         width="512"
         height="512"
         loading="lazy"
         decoding="async"
-      />
-    </picture>
+    /></picture>
     <div>
-      <span class="eyebrow">À propos</span>
-      <h2>Ingénieur généraliste, par conviction.</h2>
+      <span class="eyebrow">{{ site.person_name }}</span>
+      <h2>{{ site.professional_title | escape }}</h2>
       <p>
-        Mon parcours relie développement logiciel, données et architecture. J’accompagne aussi les équipes dans la prise
-        en main des solutions livrées.
+        J’aime comprendre un besoin dans son ensemble, échanger avec les équipes métier et techniques, puis accompagner
+        la mise en œuvre jusqu’à quelque chose de réellement utilisable.
       </p>
-      <a class="card-link" href="{{ '/about/' | relative_url }}">En savoir plus sur mon parcours →</a>
+      <p>
+        Basé à <a href="{{ '/poitiers/' | relative_url }}">Poitiers</a>, à distance ou sur site dans le
+        <a href="{{ '/grand-ouest/' | relative_url }}">Grand Ouest</a>.
+      </p>
+      <a class="card-link" href="{{ '/about/' | relative_url }}">Découvrir mon parcours →</a>
     </div>
   </div>
 </section>
-
-{% include booking-cta.html title="Votre besoin est déjà précis ?" text="Présentez-moi votre contexte et les contraintes
-à prendre en compte." label="Réserver un échange" location="homepage" %}
+{% include booking-cta.html text="Présentez-moi votre besoin, votre existant et les contraintes à prendre en compte. Un
+échange de __booking_minutes__ minutes permet de choisir le bon point de départ." location="homepage" %}

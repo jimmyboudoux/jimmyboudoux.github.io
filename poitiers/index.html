@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 'Consultant Tech, Data & IA à Poitiers'
-description: 'Consultant basé à Poitiers pour vos projets IA, Data, logiciels, modernisation, audit et direction Tech à temps partagé. Interventions sur site et à distance.'
+title: 'Ingénieur Informatique & Architecte IA à Poitiers'
+description: 'Ingénieur informatique et architecte IA à Poitiers : cadrage, applications métier, automatisation et modernisation. À distance ou sur site selon le besoin.'
 theme: theme-ai
 faq: poitiers
 ---
@@ -9,15 +9,18 @@ faq: poitiers
 <section class="page-hero theme-ai">
   <div class="container">
     <span class="eyebrow">Basé à Poitiers</span>
-    <h1>Ingénieur IA, Data &amp; Software à Poitiers</h1>
+    <h1>{{ site.professional_title | escape }} à {{ site.data.profile.address.city }}</h1>
     <p class="lead">
-      Basé à Poitiers, je travaille principalement à distance sur les sujets IA, Data, logiciels, automatisation et
-      pilotage Tech. Je peux également intervenir dans vos locaux lorsque le cadrage, un atelier, une formation ou une
-      décision importante gagne à se faire sur site.
+      Basé à Poitiers, j’accompagne le cadrage, l’architecture et la réalisation de solutions métier : applications,
+      automatisation, intégration IA et modernisation. Je peux également intervenir dans vos locaux lorsque le cadrage,
+      un atelier, une formation ou une décision importante gagne à se faire sur site.
     </p>
     <div class="actions">
-      {% include booking-link.html label="Réserver un échange de __booking_minutes__ min" class="btn"
-      location="poitiers" %}<a class="btn btn--ghost" href="{{ '/services/' | relative_url }}">Voir les expertises</a>
+      {% include booking-link.html label=site.project_cta_label class="btn" location="poitiers" %}<a
+        class="btn btn--ghost"
+        href="{{ '/services/' | relative_url }}"
+        >Découvrir les services</a
+      >
     </div>
   </div>
 </section>
@@ -218,6 +221,5 @@ faq: poitiers
   </div>
 </section>
 
-{% include booking-cta.html title="Un projet Tech, Data ou IA à Poitiers ?" text="Réservez un échange de
-__booking_minutes__ minutes pour faire le point sur votre contexte et les prochaines étapes possibles." label="Réserver
-un échange de __booking_minutes__ min" location="poitiers" %}
+{% include booking-cta.html text="Réservez un échange de __booking_minutes__ minutes pour faire le point sur votre
+contexte et les prochaines étapes possibles." label=site.project_cta_label location="poitiers" %}

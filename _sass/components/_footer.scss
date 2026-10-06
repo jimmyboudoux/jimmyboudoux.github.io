@@ -1,17 +1,33 @@
 /* Footer */
 .site-footer {
-  padding: 3rem 0;
+  padding: 3rem 0 1.5rem;
   border-top: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.34);
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.6fr);
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
   gap: 2rem;
-  align-items: end;
+  align-items: start;
 }
-.footer-grid p {
-  max-width: 680px;
+.footer-social {
+  margin-top: 1rem;
+}
+.footer-group {
+  display: grid;
+  gap: 0.85rem;
+}
+.footer-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer-zones {
+  margin-top: 0.75rem;
+}
+.footer-copy {
   color: var(--text-soft);
   font-size: 0.88rem;
 }
@@ -19,35 +35,53 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: flex-end;
 }
-.footer-links a {
+.footer-links a,
+.footer-list a {
   color: var(--text-soft);
   font-size: 0.88rem;
   text-decoration: none;
 }
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-list a:hover {
   color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 .footer-zone-label {
-  flex-basis: 100%;
   color: var(--ink-2);
   font-size: 0.75rem;
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
 
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: $breakpoint-menu) {
   .footer-grid {
-    grid-template-columns: 1fr;
-    align-items: start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .footer-links {
-    justify-content: flex-start;
+  .footer-identity {
+    grid-column: 1 / -1;
   }
 }
 
-.footer-copy {
-  margin-top: 0.7rem;
+@media (max-width: $breakpoint-phone) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

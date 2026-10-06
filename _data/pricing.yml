@@ -53,6 +53,8 @@ audit:
 fractional:
   light:
     label: Pilotage léger
+    meetings_min: 1
+    meetings_max: 2
     amount: 900
     max_amount: 1500
     period: mois
