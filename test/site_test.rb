@@ -136,6 +136,63 @@ class SiteTest < Minitest::Test
     assert_equal "jboudoux.fr", document.at_css("script[data-website-id]")&.[]("data-domains")
   end
 
+  def test_professional_profiles_are_visible_and_safe_on_every_page
+    profiles = YAML.load_file("_config.yml").fetch("socials").values
+    assert_equal ["LinkedIn", "Malt", "Codeur.com"], profiles.map { |profile| profile.fetch("label") }
+    profiles.each do |profile|
+      uri = URI.parse(profile.fetch("url"))
+      assert_equal "https", uri.scheme
+      refute_nil uri.host
+    end
+    Dir.glob(site_file("**/*.html")).each do |file|
+      document = Nokogiri::HTML5(File.read(file))
+      links = document.css("footer .footer-social a")
+      assert_equal profiles.map { |profile| profile.fetch("url") }, links.map { |link| link["href"] }, file
+      assert_equal profiles.map { |profile| profile.fetch("label") }, links.map { |link| link.text.strip }, file
+      links.each { |link| assert_safe_profile_link(link) }
+    end
+    contact_links = html_for_path("/contact/").css("main .contact-profiles a")
+    assert_equal profiles.map { |profile| profile.fetch("url") }, contact_links.map { |link| link["href"] }
+    assert_equal profiles.map { |profile| profile.fetch("label") }, contact_links.map { |link| link.text.strip }
+    contact_links.each { |link| assert_safe_profile_link(link) }
+    assert_equal "Retrouvez-moi également sur LinkedIn, Malt et Codeur.com.",
+                 html_for_path("/contact/").at_css(".contact-profiles").text.gsub(/\s+/, " ").strip
+    about_link = html_for_path("/about/").at_css('main a[rel~="me"]')
+    assert_equal profiles.first.fetch("url"), about_link["href"]
+    assert_safe_profile_link(about_link)
+  end
+
+  def test_schema_identity_is_unique_and_connected_on_every_page
+    config = YAML.load_file("_config.yml")
+    urls = config.fetch("socials").values.map { |profile| profile.fetch("url") }
+    Dir.glob(site_file("**/*.html")).each do |file|
+      document = Nokogiri::HTML5(File.read(file))
+      entities = document.css('script[type="application/ld+json"]').flat_map do |script|
+        data = JSON.parse(script.text)
+        assert_equal "https://schema.org", data.fetch("@context"), file
+        data.fetch("@graph", [data])
+      end
+      %w[Person WebSite ProfessionalService].each do |type|
+        assert_equal 1, entities.count { |entity| entity["@type"] == type }, "Duplicate or missing #{type} in #{file}"
+      end
+      person = entities.find { |entity| entity["@type"] == "Person" }
+      assert_equal "#{SITE_ORIGIN}/#person", person.fetch("@id")
+      assert_equal config.fetch("person_name"), person.fetch("name")
+      assert_equal "#{SITE_ORIGIN}/", person.fetch("url")
+      assert_equal "Ingénieur IA, Data & Software", person.fetch("jobTitle")
+      assert_equal urls, person.fetch("sameAs")
+      assert_equal "#{SITE_ORIGIN}#{html_for_path("/about/").at_css("img.avatar")["src"]}", person.fetch("image")
+      website = entities.find { |entity| entity["@type"] == "WebSite" }
+      assert_equal "#{SITE_ORIGIN}/#website", website.fetch("@id")
+      assert_equal config.fetch("title"), website.fetch("name")
+      assert_equal "#{SITE_ORIGIN}/", website.fetch("url")
+      assert_equal person.fetch("@id"), website.fetch("publisher").fetch("@id")
+      service = entities.find { |entity| entity["@type"] == "ProfessionalService" }
+      assert_equal person.fetch("@id"), service.fetch("founder").fetch("@id")
+      assert_equal urls, service.fetch("sameAs")
+    end
+  end
+
   def test_navigation_marks_only_the_active_page
     services = html_for_path("/services/")
     current = services.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
@@ -334,6 +391,14 @@ class SiteTest < Minitest::Test
   end
 
   private
+
+  def assert_safe_profile_link(link)
+    assert_equal "_blank", link["target"]
+    rel = link["rel"].to_s.split
+    %w[noopener noreferrer].each { |value| assert_includes rel, value }
+    refute_includes rel, "nofollow"
+    refute_empty link.text.strip
+  end
 
   def formatted_amount(amount)
     amount.to_s.reverse.scan(/.{1,3}/).join(" ").reverse

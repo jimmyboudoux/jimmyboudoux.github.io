@@ -1,0 +1,5 @@
+{%- capture profile_link -%}
+<a href="{{ include.profile.url | escape }}" target="_blank" rel="me external noopener noreferrer"
+  >{{ include.label | default: include.profile.label | escape }}</a
+>
+{%- endcapture -%} {{- profile_link -}}

@@ -2,6 +2,7 @@ title: Jimmy Boudoux
 description: Ingénieur informatique et architecte IA à Poitiers. Cadrage, architecture, applications métier, automatisation, intégration IA et modernisation de solutions existantes.
 person_name: Jimmy Boudoux
 professional_title: "Ingénieur Informatique & Architecte IA"
+schema_job_title: "Ingénieur IA, Data & Software"
 signature: "De l’idée métier à la solution logicielle complète."
 # Activer après préparation du portfolio (voir README).
 portfolio_enabled: false
@@ -13,8 +14,16 @@ url: https://jboudoux.fr
 baseurl: ""
 theme: null
 lang: fr
-linkedin: https://fr.linkedin.com/in/jimmy-boudoux-4b065b3a
-github: https://github.com/jimmyboudoux
+socials:
+  linkedin:
+    label: "LinkedIn"
+    url: "https://www.linkedin.com/in/jimmy-boudoux-4b065b3a"
+  malt:
+    label: "Malt"
+    url: "https://www.malt.fr/profile/jimmyboudoux1"
+  codeur:
+    label: "Codeur.com"
+    url: "https://www.codeur.com/-jimmybnqga"
 booking_url: https://calendar.app.google/XDhYZfK6gfg258c4A
 diagnostic_api_url: https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics
 analytics_url: https://collect.jboudoux.fr/script.js

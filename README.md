@@ -41,7 +41,7 @@ ruby script/validate_diagnostic.rb
 
 | Besoin | Fichier principal |
 |---|---|
-| Identité, URLs, analytics, version des assets | `_config.yml` |
+| Identité, URLs, profils professionnels, analytics, version des assets | `_config.yml` |
 | Navigation | `_data/navigation.yml` |
 | Trois piliers d’intervention | `_data/interventions.yml` |
 | Catalogue des expertises spécialisées | `_data/services.yml` |
@@ -77,6 +77,10 @@ Les prix sont des **montants numériques entiers en euros HT**, sans espaces ni 
 Par exemple, changer `sandbox.amount: 2400` en `sandbox.amount: 2800` suffit pour mettre à jour la page Sandbox et la page Tarifs. Aucun changement de template ni de constante de test n’est nécessaire.
 
 Après une modification de `_data`, Jekyll régénère les pages ; après une modification de `_config.yml`, redémarrer le serveur local. Les changements apparaissent en production après construction et déploiement du site.
+
+Les profils professionnels sont définis dans `socials` de `_config.yml`, avec une clé par plateforme et les champs `label` et `url`. Le footer, la page Contact et les tableaux `sameAs` du JSON-LD parcourent cette configuration dans l’ordre déclaré. Pour ajouter un profil, ajouter uniquement cette entrée ; aucun changement de template n’est nécessaire. Le lien LinkedIn de la page À propos utilise également cette source. Les liens ouvrent un nouvel onglet avec `noopener noreferrer`, sans `nofollow`.
+
+Le graphe Schema.org conserve une seule entité `Person` (`/#person`), la photo existante et le `ProfessionalService` dont elle est fondatrice. `WebSite` désigne cette personne comme `publisher`. `schema_job_title` définit le métier pour les données structurées indépendamment du titre visible `professional_title` et de la signature marketing.
 
 ## Catalogue et FAQ
 

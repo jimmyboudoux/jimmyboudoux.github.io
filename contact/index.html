@@ -18,5 +18,10 @@ faq: false
       <li>Ce qui existe déjà et les contraintes à prendre en compte</li>
       <li>Votre horizon de temps et le besoin : mission ciblée ou accompagnement dans la durée</li>
     </ul>
+    <p class="lead contact-profiles">
+      Retrouvez-moi également sur {% for entry in site.socials %}{% if forloop.last and forloop.length > 1 %} et {%
+      elsif forloop.first == false %}, {% endif %}{% assign profile = entry[1] %}{% include
+      professional-profile-link.html profile=profile %}{% endfor %}.
+    </p>
   </div>
 </section>

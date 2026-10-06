@@ -1,5 +1,7 @@
-{% assign homepage = '/' | absolute_url %} {% assign person_id = '/#jimmy-boudoux' | absolute_url %} {% assign
-service_id = '/#professional-service' | absolute_url %} {% assign website_id = '/#website' | absolute_url %}
+{% assign homepage = '/' | absolute_url %} {% assign person_id = '/#person' | absolute_url %} {% assign service_id =
+'/#professional-service' | absolute_url %} {% assign website_id = '/#website' | absolute_url %} {% capture profile_urls
+%}[ {% for entry in site.socials %}{{ entry[1].url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %} ]{%
+endcapture %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -10,8 +12,8 @@ service_id = '/#professional-service' | absolute_url %} {% assign website_id = '
         "name": {{ site.person_name | jsonify }},
         "url": {{ homepage | jsonify }},
         "image": {{ '/assets/img/avatar-512.png' | absolute_url | jsonify }},
-        "jobTitle": {{ site.professional_title | jsonify }},
-        "sameAs": [{{ site.linkedin | jsonify }}, {{ site.github | jsonify }}]
+        "jobTitle": {{ site.schema_job_title | jsonify }},
+        "sameAs": {{ profile_urls }}
       },
       {
         "@type": "ProfessionalService",
@@ -36,7 +38,7 @@ service_id = '/#professional-service' | absolute_url %} {% assign website_id = '
           "postalCode": {{ site.data.profile.address.postal_code | jsonify }},
           "addressCountry": "FR"
         },
-        "sameAs": [{{ site.linkedin | jsonify }}, {{ site.github | jsonify }}]
+        "sameAs": {{ profile_urls }}
       },
       {
         "@type": "WebSite",
@@ -44,7 +46,7 @@ service_id = '/#professional-service' | absolute_url %} {% assign website_id = '
         "name": {{ site.title | jsonify }},
         "url": {{ homepage | jsonify }},
         "inLanguage": "fr-FR",
-        "publisher": { "@id": {{ service_id | jsonify }} }
+        "publisher": { "@id": {{ person_id | jsonify }} }
       }
     ]
   }

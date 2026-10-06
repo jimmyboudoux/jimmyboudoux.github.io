@@ -15,8 +15,8 @@
           >
         </a>
         <div class="footer-links footer-social">
-          <a href="{{ site.linkedin }}" rel="me external noopener" target="_blank">LinkedIn</a>
-          <a href="{{ site.github }}" rel="me external noopener" target="_blank">GitHub</a>
+          {% for entry in site.socials %} {% assign profile = entry[1] %} {% include professional-profile-link.html
+          profile=profile %} {% endfor %}
         </div>
       </div>
       <nav class="footer-group" aria-label="Navigation de pied de page">

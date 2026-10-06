@@ -59,6 +59,11 @@ class ConfigurationTest < Minitest::Test
       config["person_name"] = "Alice & Martin"
       config["title"] = "Atelier de démonstration"
       config["portfolio_enabled"] = true
+      config["schema_job_title"] = "Ingénieure Data & Software"
+      config.fetch("socials").each do |key, profile|
+        profile["url"] = "https://profiles.example.test/#{key}?a=1&b=2"
+      end
+      config.fetch("socials")["github"] = { "label" => "GitHub & code", "url" => "https://profiles.example.test/github" }
       File.write(config_file, YAML.dump(config))
       change_data(source, "pricing") do |data|
         data.fetch("framing")["amount"] = 1230
@@ -96,6 +101,22 @@ class ConfigurationTest < Minitest::Test
         file = path == "/" ? "index.html" : "#{path.delete_prefix("/")}index.html"
         Nokogiri::HTML5(File.read(File.join(destination, file)))
       end
+      profiles = config.fetch("socials").values
+      urls = profiles.map { |profile| profile.fetch("url") }
+      %w[/ /contact/ /about/].each do |path|
+        document = page.call(path)
+        assert_equal urls, document.css("footer .footer-social a").map { |link| link["href"] }
+        assert_equal profiles.map { |profile| profile.fetch("label") }, document.css("footer .footer-social a").map { |link| link.text.strip }
+        graph = JSON.parse(document.at_css('script[type="application/ld+json"]').text).fetch("@graph")
+        person = graph.find { |entity| entity["@type"] == "Person" }
+        assert_equal "Alice & Martin", person.fetch("name")
+        assert_equal config.fetch("schema_job_title"), person.fetch("jobTitle")
+        assert_equal urls, person.fetch("sameAs")
+        assert_equal urls, graph.find { |entity| entity["@type"] == "ProfessionalService" }.fetch("sameAs")
+      end
+      assert_equal urls, page.call("/contact/").css("main .contact-profiles a").map { |link| link["href"] }
+      assert_equal profiles.map { |profile| profile.fetch("label") }, page.call("/contact/").css("main .contact-profiles a").map { |link| link.text.strip }
+      assert_equal config.dig("socials", "linkedin", "url"), page.call("/about/").at_css('main a[rel~="me"]')["href"]
       %w[/sandbox-ia-locale/ /tarifs/].each do |path|
         text = page.call(path).text.gsub(/\s+/, " ")
         ["À partir de 2 780 € HT", "+730 € HT", "+890 € HT / 60 jours", "45 jours", "7 configurations", "2 configurations pertinentes"].each do |value|
