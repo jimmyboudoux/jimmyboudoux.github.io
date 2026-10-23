@@ -1,11 +1,16 @@
 <header class="site-header">
-  <div class="container navbar">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Accueil — {{ site.person_name }}">
-      <img class="brand-mark-img" src="{{ '/assets/img/logo-jb.svg' | relative_url }}" alt="" width="44" height="44" />
-      <span class="brand-copy"
-        ><strong>{{ site.person_name }}</strong><small>{{ site.professional_title | escape }}</small></span
-      >
-    </a>
+  <div class="navbar">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Accueil — {{ site.person_name | escape }}"
+      >jboudoux.fr</a
+    >
+    {% assign tariff_current = false %}{% assign contact_current = false %} {% if page.url == '/tarifs/' %}{% assign
+    tariff_current = 'page' %}{% endif %} {% if page.url == '/contact/' %}{% assign contact_current = 'page' %}{% endif
+    %}
+    <nav class="header-links" aria-label="Accès rapides">
+      <a href="{{ '/tarifs/' | relative_url }}" aria-current="{{ tariff_current }}">Tarifs</a>
+      <a href="{{ '/#approche' | relative_url }}">Méthode</a>
+      <a href="{{ '/contact/' | relative_url }}" aria-current="{{ contact_current }}">Contact</a>
+    </nav>
     <button
       class="menu-btn"
       type="button"
@@ -13,22 +18,9 @@
       aria-controls="main-navigation"
       aria-expanded="false"
       data-menu-button
+      hidden
     >
-      ☰
+      Menu
     </button>
-    {% assign navigation_path = page.url %} {% if page.service %}{% assign navigation_path = '/services/' %}{% endif %}
-    {% if page.formation or page.url == '/formations/' %}{% assign navigation_path = '/services/' %}{% endif %}
-    <nav class="nav-links" id="main-navigation" aria-label="Navigation principale" data-menu>
-      {% for item in site.data.navigation %} {% if item.feature == nil or site[item.feature] == true %} {% assign
-      item_path = item.href | split: '#' | first %} {% if navigation_path == item_path %} {% unless item.href contains
-      '#' %}
-      <a href="{{ item.href | relative_url }}" aria-current="page">{{ item.label }}</a>
-      {% else %}
-      <a href="{{ item.href | relative_url }}">{{ item.label }}</a>
-      {% endunless %} {% else %}
-      <a href="{{ item.href | relative_url }}">{{ item.label }}</a>
-      {% endif %} {% endif %} {% endfor %} {% include booking-link.html label=site.project_cta_label class="nav-cta"
-      location="site" %}
-    </nav>
   </div>
 </header>

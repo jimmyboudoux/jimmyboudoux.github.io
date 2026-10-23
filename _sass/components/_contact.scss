@@ -8,8 +8,8 @@
   padding: 2rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.74);
-  box-shadow: var(--shadow-soft);
+  background: var(--surface);
+  box-shadow: none;
 }
 .contact-card a {
   font-weight: 720;

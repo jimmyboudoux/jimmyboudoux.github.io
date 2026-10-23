@@ -1,0 +1,46 @@
+- label: Accueil
+  href: /
+  icon: home
+- label: Offres
+  icon: chevron
+  children:
+    - label: Vue d’ensemble
+      href: /services/
+      icon: list
+    - label: Applications & automatisation
+      href: /ai-engineering/
+      icon: gear
+    - label: IA locale · Sandbox
+      href: /sandbox-ia-locale/
+      icon: chip
+    - label: Portails IA privés
+      href: /ia-privee-locale/
+      icon: shield
+    - label: Data & Reporting
+      href: /data-reporting/
+      icon: database
+    - label: Reprise logicielle
+      href: /software-rescue/
+      icon: code
+    - label: Adoption IA
+      href: /ai-adoption/
+      icon: network
+    - label: FinOps IA
+      href: /ai-finops/
+      icon: chart
+    - label: CTO / IA à temps partagé
+      href: /fractional-lead/
+      icon: users
+- label: Formations
+  href: /formations/
+  icon: book
+- label: Réalisations
+  href: /realisations/
+  icon: folder
+  feature: portfolio_enabled
+- label: À propos
+  href: /about/
+  icon: user
+- label: Contact
+  href: /contact/
+  icon: mail

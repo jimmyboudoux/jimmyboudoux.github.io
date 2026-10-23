@@ -1,0 +1,18 @@
+<aside class="site-sidebar" id="main-navigation" data-menu>
+  <nav aria-label="Navigation principale">
+    <ul class="sidebar-list">
+      {% for item in site.data.sidebar %} {% if item.feature == nil or site[item.feature] == true %}
+      <li>
+        {% if item.children %}
+        <div class="sidebar-group-label">{% include icon.html name=item.icon %}<span>{{ item.label }}</span></div>
+        <ul class="sidebar-children">
+          {% for child in item.children %}
+          <li>{% include sidebar-link.html item=child %}</li>
+          {% endfor %}
+        </ul>
+        {% else %} {% include sidebar-link.html item=item %} {% endif %}
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </nav>
+</aside>

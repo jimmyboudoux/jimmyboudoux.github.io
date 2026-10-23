@@ -1,8 +1,14 @@
 import { mountBookingTracking, mountMenu, setCurrentYear } from './site-core.mjs';
 
+const menuButton = document.querySelector('[data-menu-button]');
+const menu = document.querySelector('[data-menu]');
+if (menuButton && menu) {
+  menuButton.hidden = false;
+  menu.classList.add('is-collapsible');
+}
 mountMenu({
-  button: document.querySelector('[data-menu-button]'),
-  menu: document.querySelector('[data-menu]'),
+  button: menuButton,
+  menu,
   documentRef: document,
   mediaQuery: window.matchMedia(`(min-width: ${getComputedStyle(document.documentElement).getPropertyValue('--menu-desktop-min').trim()})`)
 });

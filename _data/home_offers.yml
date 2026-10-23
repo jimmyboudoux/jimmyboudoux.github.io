@@ -1,0 +1,18 @@
+- label: Applications métier
+  href: /services/#construire
+  description: Applications web, back-end et API adaptés à vos processus.
+- label: Automatisation
+  href: /ai-engineering/
+  description: Réduction des tâches manuelles, scripts, workflows et intégrations.
+- label: IA locale
+  href: /sandbox-ia-locale/
+  description: POC, tests et comparaison de modèles en environnement maîtrisé.
+- label: Data & API
+  href: /data-reporting/
+  description: Collecte, transformation, exposition et exploitation de données.
+- label: Reprise logicielle
+  href: /software-rescue/
+  description: Audit, stabilisation, modernisation et sécurisation d’applications.
+- label: CTO / IA à temps partagé
+  href: /fractional-lead/
+  description: Structuration technique, accompagnement et pilotage.

@@ -14,6 +14,10 @@ bundle exec jekyll serve
 
 La prévisualisation est disponible sur l'adresse affichée par Jekyll, généralement `http://127.0.0.1:4000`.
 
+## Essai de l’interface minimaliste
+
+La branche `test_ui_minimalist` propose une interface sombre centrée sur le texte, avec navigation latérale, synthèse d’accueil et sections compactes. Le [plan de transformation et les résultats de validation](docs/plan-ui-minimalist.md) décrivent les choix et les points d’entrée. Lancer `bundle exec jekyll serve` depuis cette branche pour l’essayer localement.
+
 ## Vérifier avant une modification
 
 ```bash

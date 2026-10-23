@@ -4,7 +4,7 @@
   overflow: hidden;
   padding: clamp(4rem, 7vw, 6.6rem) 0;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(125deg, rgba(255, 255, 255, 0.78), rgba(236, 231, 251, 0.78));
+  background: var(--surface);
 }
 .diagnostic-hero::after {
   content: '';
@@ -39,8 +39,8 @@
   padding: clamp(1.5rem, 3vw, 2rem);
   border: 1px solid var(--lavender-2);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow-soft);
+  background: var(--surface);
+  box-shadow: none;
 }
 .diagnostic-promise span {
   display: flex;
@@ -84,6 +84,6 @@
   margin-top: 1.5rem;
   padding: 1rem 1.15rem;
   border-left: 3px solid var(--lavender-strong);
-  background: rgba(236, 231, 251, 0.4);
+  background: var(--surface);
   color: var(--text-soft);
 }

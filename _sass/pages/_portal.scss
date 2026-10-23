@@ -21,8 +21,8 @@
   padding: clamp(1.35rem, 2.5vw, 1.8rem);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.88), var(--accent));
-  box-shadow: var(--shadow-soft);
+  background: var(--surface);
+  box-shadow: none;
   overflow: hidden;
 }
 .architecture-card.theme-finops {
@@ -69,8 +69,8 @@
   min-width: 0;
   padding: 0.58rem 0.42rem;
   border: 1px solid color-mix(in srgb, var(--accent-strong) 36%, var(--line));
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.72);
+  border-radius: 4px;
+  background: var(--surface);
 }
 .architecture-flow b {
   display: grid;
@@ -116,8 +116,8 @@
   min-width: 0;
   padding: 1rem 0.8rem;
   border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.76);
+  border-radius: 4px;
+  background: var(--surface);
   color: var(--ink-2);
   font-size: 0.86rem;
   font-weight: 720;

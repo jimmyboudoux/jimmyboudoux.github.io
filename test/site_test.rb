@@ -194,23 +194,22 @@ class SiteTest < Minitest::Test
   end
 
   def test_navigation_marks_only_the_active_page
-    services = html_for_path("/services/")
-    current = services.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
-    assert_equal "Services", current.text
-
-    home = html_for_path("/")
-    refute home.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
-
-    engineering = html_for_path("/ai-engineering/")
-    assert_equal "Services", engineering.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
-
-    formation = html_for_path("/formations/ai-literacy/")
-    assert_equal "Services", formation.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+    public_paths.each do |path|
+      document = html_for_path(path)
+      links = document.css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
+      expected_path = path.start_with?("/formations/") ? "/formations/" : path
+      linked = document.at_css("nav[aria-label='Navigation principale'] a[href='#{expected_path}']")
+      assert_equal linked ? 1 : 0, links.size, "Unexpected active navigation for #{path}"
+      assert_equal expected_path, links.first["href"] if linked
+      assert_equal 1, document.css('nav[aria-label="Fil d’Ariane"]').size
+    end
   end
 
   def test_internal_maintenance_files_are_not_published
     refute File.exist?(site_file("todo_refactoring.md"))
     refute Dir.exist?(site_file("docs"))
+    refute Dir.exist?(site_file("AUDIT_ARCHITECTURE_jboudouxfr"))
+    refute File.exist?(site_file("AUDIT_ARCHITECTURE_jboudouxfr.md"))
   end
 
   def test_compiled_styles_keep_accessibility_and_diagnostic_safety_rules
@@ -311,7 +310,7 @@ class SiteTest < Minitest::Test
       service = services.find { |item| item.fetch("slug") == slug }
       document = html_for_path("/#{slug}/")
       assert_equal service.fetch("theme"), document.at_css("body")["class"]
-      assert_equal "Services", document.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]').text
+      assert_equal "/#{slug}/", document.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')["href"]
       assert json_ld_for("/#{slug}/").any? { |item| item["@type"] == "Service" }
     end
     %w[/ /ai-engineering/ /tarifs/ /contact/ /diagnostic-ia/ /formations/ai-literacy/].each do |path|
@@ -335,36 +334,31 @@ class SiteTest < Minitest::Test
     end
   end
 
-  def test_homepage_has_distinct_roles_and_no_duplicate_diagnostic_promotion
+  def test_homepage_has_a_direct_overview_without_marketing_sections
     document = html_for_path("/")
-    hero = document.at_css(".hero")
-    assert_equal 1, hero.css("p.lead").size
-    assert_equal 2, hero.css(".actions a").size
-    assert_empty hero.css('a[href="/diagnostic-ia/"], .engineering-map, .hero-principles')
-    assert_empty document.css(".home-diagnostic")
+    assert_equal "Accueil", document.at_css("h1").text.strip
+    assert_empty document.css(".hero, .page-hero, .card, .price-card, .engineering-map")
     assert_empty document.css('main a[href="/diagnostic-ia/"]')
-    assert_equal 1, document.css(".engineering-map").size
-    assert document.at_css("#approche .engineering-map")
-    assert_empty document.css("#pour-qui")
+    assert_equal 6, document.css(".offer-table tr").size
+    assert_equal 6, document.css('.offer-table th[scope="row"] a').size
+    refute_empty document.at_css(".offer-table caption").text.strip
+    assert_equal 4, document.css("#approche ol li").size
+    assert_equal 5, document.css("#tarifs > .price-list > div").size
+    assert document.at_css('main a[href="mailto:contact@jboudoux.fr"]')
+    assert document.at_css('main a.btn[href="/contact/"]')
+    assert document.at_css('[data-menu-button][aria-controls="main-navigation"][hidden]')
+    assert document.at_css("aside#main-navigation[data-menu]")
   end
 
-  def test_repositioning_is_clear_and_specialist_pages_remain_secondary
+  def test_repositioning_is_clear_and_specialist_pages_remain_accessible
     document = html_for_path("/")
-    assert_equal "De l’idée métier à la solution logicielle complète.", document.at_css("h1").text.strip
     assert_includes document.at_css("title").text, "Ingénieur Informatique & Architecte IA"
-    assert_includes document.at_css(".hero .eyebrow").text, "Ingénieur Informatique & Architecte IA"
-    assert_equal "Parler de mon projet", document.at_css(".hero .actions a").text.strip
-    assert_equal ["Concevoir", "Construire", "Transformer"], document.css("#services .card-tag").map { |node| node.text.strip }
-    assert_includes document.at_css("#services").text, "avec ou sans intelligence artificielle"
-    assert_equal ["Comprendre", "Concevoir", "Construire", "Intégrer", "Déployer"], document.css("#approche .map-card b").map(&:text)
-    assert_equal 3, document.css("#pourquoi .card").size
-    assert_equal 3, document.css("#tarifs .price-card").size
-    ids = document.css("main > section[id]").map { |node| node["id"] }
-    assert_equal %w[services approche expertises pourquoi tarifs], ids
-    nav = document.css('nav[aria-label="Navigation principale"] a:not(.nav-cta)')
-    assert_equal ["Services", "À propos", "Tarifs", "Contact"], nav.map(&:text)
-    assert_equal "Parler de mon projet", document.at_css(".nav-cta").text.strip
+    assert_includes document.at_css("main").text, "Sobres, utiles, maintenables."
+    assert_includes document.at_css("main").text, "Ingénieur Informatique & Architecte IA"
+    assert_equal ["Cadrer", "Concevoir", "Développer", "Mettre en production"], document.css("#approche strong").map(&:text)
+    assert_equal ["Tarifs", "Méthode", "Contact"], document.css(".header-links a").map { |node| node.text.strip }
     %w[ai-engineering sandbox-ia-locale ia-privee-locale software-rescue data-reporting ai-finops ai-adoption formations fractional-lead].each do |slug|
+      assert document.at_css("nav[aria-label='Navigation principale'] a[href='/#{slug}/']"), "Missing navigation: #{slug}"
       assert html_for_path("/services/").at_css("main a[href='/#{slug}/']"), "Missing specialist link: #{slug}"
     end
     %w[/poitiers/ /grand-ouest/].each do |path|

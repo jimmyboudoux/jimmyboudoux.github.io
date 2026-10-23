@@ -1,0 +1,451 @@
+/* Shared editorial hierarchy. Existing page classes keep their content contracts. */
+.page-hero,
+.formation-hero,
+.diagnostic-hero,
+.confirmation-page {
+  padding: 0 0 1.5rem;
+  background: transparent;
+}
+.page-hero::after,
+.formation-hero::after,
+.diagnostic-hero::after,
+.training-card::after,
+.audience-card::before {
+  content: none;
+}
+.page-hero h1,
+.formation-hero h1,
+.diagnostic-hero h1,
+.sandbox-hero h1,
+.confirmation-card h1 {
+  max-width: 32ch;
+  font-size: clamp(1.65rem, 2.5vw, 2.1rem);
+}
+.training-card h3,
+.programme-card h3,
+.architecture-card h3,
+.audit-deliverables h3,
+.diagnostic-form-heading h2,
+.confirmation-content h2 {
+  font-size: 1.2rem;
+}
+.training-card__price strong,
+.portal-price,
+.sandbox-price {
+  font-size: 1.3rem !important;
+}
+.training-cards,
+.architecture-grid,
+.audience-grid,
+.problem-list,
+.portal-extension-grid,
+.portal-value-grid,
+.diagnostic-dimensions,
+.sandbox-config-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.training-card,
+.architecture-card,
+.audience-card,
+.problem,
+.programme-card,
+.process-step,
+.challenge-box,
+.contact-card,
+.sandbox-config.card {
+  padding: 1rem 0;
+  min-height: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.sandbox-config,
+.sandbox-config:nth-child(4),
+.sandbox-config:nth-child(5) {
+  grid-column: auto;
+}
+.training-card .card-link {
+  margin-top: 0.75rem;
+  padding-top: 0;
+}
+.diagnostic-dimensions .card {
+  min-height: 0;
+}
+.diagnostic-hero__grid {
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+.diagnostic-promise {
+  padding: 1rem;
+  max-width: 780px;
+  border-color: var(--line);
+}
+.diagnostic-intro,
+.diagnostic-form-heading {
+  text-align: left;
+}
+.diagnostic-intro .section-head p,
+.diagnostic-form-heading,
+.diagnostic-form-heading p {
+  margin-left: 0;
+}
+.diagnostic-form-section {
+  padding: 1.5rem 0;
+}
+.diagnostic-form-shell {
+  width: 100%;
+  max-width: 1040px;
+  margin-left: 0;
+}
+.diagnostic-form {
+  padding: 1.25rem;
+  border-radius: 4px;
+}
+.diagnostic-step > legend > span {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.diagnostic-form input:focus-visible,
+.diagnostic-form select:focus-visible,
+.diagnostic-form textarea:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+.choice:hover {
+  transform: none;
+}
+.choice:has(input:checked) {
+  background: var(--selected);
+}
+.field-error {
+  color: var(--danger);
+}
+.diagnostic-form [aria-invalid='true'] {
+  border-color: var(--danger) !important;
+}
+.diagnostic-nav .btn:disabled {
+  color: var(--text-soft);
+  border-color: var(--line);
+  cursor: wait;
+}
+.diagnostic-progress__track > span {
+  background: var(--link);
+}
+.split {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem;
+}
+.sticky-intro {
+  position: static;
+}
+.intervention-summary {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+.intervention-summary h2,
+.cta-box h2,
+.home-diagnostic h2 {
+  max-width: none;
+}
+.recurring,
+.cta-box,
+.audit-deliverables,
+.about-strip,
+.intervention-modes {
+  padding: 1.25rem;
+  background: transparent;
+  border: 1px solid var(--line);
+}
+.cta-box .btn {
+  color: var(--link);
+  background: transparent;
+  border-color: var(--link);
+}
+.cta-box .btn:hover {
+  background: var(--selected);
+}
+.avatar {
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+.pill,
+.training-card__badge {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-weight: 500;
+}
+.pills {
+  gap: 0.5rem 1.25rem;
+}
+.process {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.process-step::before {
+  float: left;
+  margin: 0 0.8rem 0 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  color: var(--text);
+}
+.architecture-note,
+.training-card dl div,
+.intervention-modes li {
+  border-color: var(--line);
+}
+.confirmation-card {
+  padding: 1.25rem;
+}
+.confirmation-check {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+}
+
+/* Homepage: information panels, semantic offer table and numbered method. */
+.home-heading {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.home-subtitle {
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-size: 1.2rem;
+  line-height: 1.55;
+}
+.home-intro {
+  max-width: 100ch;
+  margin: 15px 0 22px;
+}
+.overview-primary {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(285px, 1fr);
+  gap: 12px;
+}
+.overview-secondary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+.info-panel {
+  min-width: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+}
+.info-panel h2 {
+  margin-bottom: 14px;
+  font-size: 1.25rem;
+}
+.info-panel h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.info-panel h2 a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+.offer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.offer-table tr {
+  border-bottom: 1px solid var(--line);
+}
+.offer-table tr:first-child {
+  border-top: 1px solid var(--line-strong);
+}
+.offer-table th {
+  width: 29%;
+  border-right: 1px solid var(--line);
+  font-weight: 550;
+  text-align: left;
+}
+.offer-table th,
+.offer-table td {
+  padding: 10px 12px;
+}
+.offer-table th {
+  padding-left: 4px;
+}
+.offer-table td {
+  padding-right: 0;
+}
+.offer-table a {
+  text-decoration: none;
+}
+.offer-table a:hover {
+  text-decoration: underline;
+}
+.panel-note {
+  margin-top: 14px;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+.panel-note a {
+  text-decoration: none;
+}
+.panel-note a:hover {
+  text-decoration: underline;
+}
+.price-list {
+  margin: 0;
+  font-size: 0.86rem;
+}
+.price-list > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2px 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+.price-list > div:first-child {
+  border-top: 1px solid var(--line-strong);
+}
+.price-list dd {
+  margin: 0 0 0 auto;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.price-details {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+.price-details summary:hover {
+  color: var(--link);
+}
+.price-details .price-list {
+  margin-top: 12px;
+}
+.method-list {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 4px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  font-size: 0.88rem;
+}
+.method-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  counter-increment: step;
+}
+.method-list li::before {
+  content: counter(step);
+  display: grid;
+  flex: 0 0 32px;
+  height: 32px;
+  place-items: center;
+  align-self: start;
+  border-radius: 3px;
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+.method-list strong {
+  font-weight: 600;
+}
+.contact-facts,
+.position-list {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+  font-size: 0.9rem;
+}
+.contact-facts li,
+.position-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.contact-facts .icon,
+.position-list .icon {
+  margin-top: 3px;
+}
+.contact-facts a {
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+.contact-facts a:hover {
+  text-decoration: underline;
+}
+.position-list {
+  gap: 13px;
+}
+.portfolio-note {
+  margin-top: 14px;
+}
+@media (max-width: 1250px) {
+  .overview-primary {
+    grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
+  }
+  .overview-secondary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .overview-secondary > :first-child {
+    grid-column: 1 / -1;
+  }
+  .method-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1080px) and (min-width: $breakpoint-menu + 1px) {
+  .overview-primary {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: $breakpoint-form) {
+  .overview-primary,
+  .overview-secondary,
+  .method-list,
+  .split,
+  .contact-grid,
+  .programme-grid {
+    grid-template-columns: 1fr;
+  }
+  .overview-secondary > :first-child {
+    grid-column: auto;
+  }
+  .home-subtitle {
+    font-size: 1.05rem;
+  }
+  .info-panel {
+    padding: 14px;
+  }
+  .offer-table th,
+  .offer-table td {
+    padding-block: 10px;
+  }
+  .offer-table th {
+    width: 37%;
+    padding-right: 10px;
+  }
+  .offer-table td {
+    padding-left: 10px;
+  }
+  .price-list dd {
+    white-space: normal;
+  }
+}
+@media (max-width: 380px) {
+  .offer-table {
+    font-size: 0.8rem;
+  }
+  .info-panel {
+    padding: 12px;
+  }
+}

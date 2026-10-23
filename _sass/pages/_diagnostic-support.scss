@@ -6,8 +6,8 @@
   padding: clamp(1.7rem, 5vw, 4rem);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.84);
-  box-shadow: var(--shadow);
+  background: var(--surface);
+  box-shadow: none;
 }
 .confirmation-card h1 {
   max-width: 14ch;
@@ -62,7 +62,7 @@
 }
 .home-diagnostic {
   border-block: 1px solid var(--line);
-  background: linear-gradient(115deg, rgba(236, 231, 251, 0.48), rgba(255, 255, 255, 0.66), rgba(229, 240, 232, 0.42));
+  background: var(--surface);
 }
 .home-diagnostic__grid {
   display: grid;
@@ -87,8 +87,8 @@
   display: grid;
   padding: 1rem;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.72);
+  border-radius: 4px;
+  background: var(--surface);
   color: var(--text-soft);
   font-size: 0.82rem;
 }
@@ -100,37 +100,6 @@
   font-family: var(--serif);
   font-size: 1.18rem;
   font-weight: 600;
-}
-
-@media (max-width: $breakpoint-container) and (min-width: ($breakpoint-menu + 1px)) {
-  .menu-btn {
-    display: grid;
-    place-items: center;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 82px;
-    left: 20px;
-    right: 20px;
-    padding: 1rem;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.97);
-    box-shadow: var(--shadow);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.3rem;
-  }
-  .nav-links.is-open {
-    display: flex;
-  }
-  .nav-links a {
-    padding: 0.7rem;
-  }
-  .nav-links .nav-cta {
-    min-height: 48px;
-  }
 }
 
 @media (max-width: $breakpoint-wide) {
@@ -178,7 +147,7 @@
     margin-inline: -1rem;
     margin-bottom: -1rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.96);
+    background: var(--surface);
     z-index: 3;
   }
   .diagnostic-nav .btn {

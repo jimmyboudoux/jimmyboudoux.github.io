@@ -4,7 +4,7 @@
   overflow: hidden;
   padding: clamp(4rem, 7vw, 6.6rem) 0;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(125deg, rgba(255, 255, 255, 0.7), var(--accent));
+  background: var(--surface);
 }
 .formation-hero::after {
   content: '';
@@ -38,7 +38,7 @@
 .trust-strip {
   padding: 1rem 0;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.58);
+  background: var(--surface);
 }
 .trust-strip .container {
   display: flex;
@@ -73,8 +73,8 @@
   padding: 1.65rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.92), var(--accent));
-  box-shadow: var(--shadow-soft);
+  background: var(--surface);
+  box-shadow: none;
   overflow: hidden;
 }
 .training-card::after {
@@ -95,9 +95,9 @@
   align-self: flex-start;
   margin-bottom: 0.9rem;
   padding: 0.3rem 0.55rem;
-  border-radius: 7px;
-  background: var(--ink);
-  color: #fff;
+  border-radius: 4px;
+  background: var(--surface-soft);
+  color: var(--ink);
   font-size: 0.67rem;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -159,7 +159,7 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--surface);
 }
 .formation-facts article {
   padding: 1.25rem;
@@ -194,7 +194,7 @@
   padding: 1.6rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--surface);
 }
 .programme-card h3 {
   font-size: 1.5rem;
@@ -208,7 +208,7 @@
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.76);
+  background: var(--surface);
 }
 .training-pricing__row {
   display: grid;
@@ -221,8 +221,8 @@
   border-top: 0;
 }
 .training-pricing__head {
-  background: var(--ink);
-  color: #fff;
+  background: var(--surface-soft);
+  color: var(--ink);
   font-size: 0.78rem;
   font-weight: 760;
 }

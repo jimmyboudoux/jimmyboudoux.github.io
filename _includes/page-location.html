@@ -1,0 +1,14 @@
+<nav class="page-location" aria-label="Fil d’Ariane">
+  {% if page.url == '/' %}
+  <span aria-current="page">Accueil</span>
+  {% else %}
+  <a href="{{ '/' | relative_url }}">Accueil</a><span aria-hidden="true">/</span>
+  {% if page.breadcrumb_parent %}
+  <a href="{{ page.breadcrumb_parent_url | relative_url }}">{{ page.breadcrumb_parent }}</a
+  ><span aria-hidden="true">/</span>
+  {% elsif page.service %}
+  <a href="{{ '/services/' | relative_url }}">Offres</a><span aria-hidden="true">/</span>
+  {% endif %}
+  <span aria-current="page">{% include breadcrumb-label.html %}</span>
+  {% endif %}
+</nav>

@@ -1,0 +1,5 @@
+{% assign sidebar_current = false %} {% if page.url == include.item.href %}{% assign sidebar_current = true %}{% endif
+%} {% if include.item.href == '/formations/' and page.formation %}{% assign sidebar_current = true %}{% endif %}
+<a href="{{ include.item.href | relative_url }}" {% if sidebar_current %} aria-current="page" {% endif %}>
+  {% include icon.html name=include.item.icon %}<span>{{ include.item.label }}</span>
+</a>

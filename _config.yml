@@ -29,11 +29,12 @@ diagnostic_api_url: https://diagnostic-ia-api.jboudoux.fr/v1/diagnostics
 analytics_url: https://collect.jboudoux.fr/script.js
 analytics_website_id: 01018f06-797d-46f8-ae7f-9b172b2e1893
 analytics_domains: jboudoux.fr
-asset_version: "20260915"
+asset_version: "20261023-minimalist"
 markdown: kramdown
 permalink: pretty
 exclude:
   - README.md
+  - AUDIT_ARCHITECTURE_jboudouxfr.md
   - todo_refactoring.md
   - docs
   - vendor
