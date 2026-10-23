@@ -11,6 +11,7 @@ SITE_DIR="$task_site_dir" bundle exec ruby -Itest test/diagnostic_test.rb
 SITE_DIR="$task_site_dir" bundle exec ruby -Itest test/configuration_test.rb
 bundle exec jekyll build --baseurl /preview --destination "$task_baseurl_dir"
 SITE_DIR="$task_baseurl_dir" SITE_BASEURL=/preview bundle exec ruby -Itest test/baseurl_test.rb
+node --check assets/js/theme.js
 node --check assets/js/site-core.mjs
 node --check assets/js/site.mjs
 node --check assets/js/diagnostic/core.mjs

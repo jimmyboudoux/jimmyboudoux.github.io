@@ -51,3 +51,11 @@ Ouvrir l’adresse affichée par Jekyll. Aucun déploiement n’est nécessaire 
 - Diagnostic IA : erreur obligatoire et passage de la première à la deuxième étape vérifiés avec des réponses de test. L’envoi au backend n’a pas été exécuté.
 - CSS compilé : 52 714 octets, sous le budget existant de 60 000 octets.
 - L’audit local `AUDIT_ARCHITECTURE_jboudouxfr.md`, présent avant la refonte, est exclu de la génération Jekyll ; son contenu reste intact.
+
+## Sélecteur clair / sombre
+
+L’en-tête propose **Système**, **Clair** et **Sombre**. Le mode Système suit le réglage du système d’exploitation. Une sélection explicite permet de prévisualiser le thème clair même sur un ordinateur configuré en sombre.
+
+La préférence est mémorisée localement dans le navigateur et appliquée avant la feuille de style pour éviter un changement de couleur au chargement. Sans JavaScript, la palette suit le système ; si le stockage est bloqué, le sélecteur reste utilisable sur la page courante.
+
+Le contrôle a été vérifié dans le navigateur : choix Clair, navigation vers Poitiers, rechargement et retour au sombre. Trois tests JavaScript couvrent la persistance, les changements du système et le stockage indisponible. `./script/check` valide désormais 19 tests JavaScript.

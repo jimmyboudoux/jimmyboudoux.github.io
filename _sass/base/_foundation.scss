@@ -43,6 +43,33 @@
   --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --serif: var(--sans);
 }
+
+@mixin light-palette {
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-solid: #ffffff;
+  --surface-soft: #eceff3;
+  --ink: #19212c;
+  --ink-2: #303d4d;
+  --text: #303d4d;
+  --text-soft: #556273;
+  --line: #d2d8e0;
+  --line-strong: #8d98a7;
+  --link: #185da8;
+  --selected: #e2ecf8;
+  --danger: #a72d28;
+}
+:root[data-color-theme='light'] {
+  @include light-palette;
+}
+// Without JavaScript, use the computer's appearance preference.
+@media (prefers-color-scheme: light) {
+  :root:not([data-color-theme]) {
+    @include light-palette;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
