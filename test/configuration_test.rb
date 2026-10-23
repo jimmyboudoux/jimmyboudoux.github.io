@@ -99,7 +99,7 @@ class ConfigurationTest < Minitest::Test
 
       page = lambda do |path|
         file = path == "/" ? "index.html" : "#{path.delete_prefix("/")}index.html"
-        Nokogiri::HTML5(File.read(File.join(destination, file)))
+        presentation_document(File.read(File.join(destination, file)))
       end
       profiles = config.fetch("socials").values
       urls = profiles.map { |profile| profile.fetch("url") }
@@ -171,6 +171,12 @@ class ConfigurationTest < Minitest::Test
         assert_includes page.call(path).text.gsub(/\s+/, " "), "2 jours ouvrés"
       end
       assert_includes page.call("/diagnostic-ia/").at_css('meta[name="description"]')["content"], "2 jours ouvrés"
+      minimal_home = presentation_document(File.read(File.join(destination, "index.html")), presentation: "minimalist")
+      minimal_text = minimal_home.at_css("main").text.gsub(/\s+/, " ")
+      ["1 230 € HT", "1 780 € HT", "À partir de 2 910 € HT", "Dès 1 100 € HT / mois", "Alice & Martin"].each do |value|
+        assert_includes minimal_text, value, "Configuration not propagated to minimalist homepage"
+      end
+      assert minimal_home.at_css("#realisations")
     end
   end
 

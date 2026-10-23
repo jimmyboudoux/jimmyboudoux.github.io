@@ -14,9 +14,11 @@ bundle exec jekyll serve
 
 La prévisualisation est disponible sur l'adresse affichée par Jekyll, généralement `http://127.0.0.1:4000`.
 
-## Essai de l’interface minimaliste
+## Deux présentations du site
 
-La branche `test_ui_minimalist` propose une interface sombre centrée sur le texte, avec navigation latérale, synthèse d’accueil et sections compactes. Le [plan de transformation et les résultats de validation](docs/plan-ui-minimalist.md) décrivent les choix et les points d’entrée. Lancer `bundle exec jekyll serve` depuis cette branche pour l’essayer localement.
+La branche `test_ui_minimalist` permet de choisir **Commercial** ou **Minimaliste** dans le sélecteur « Présentation ». Commercial affiche l’accueil d’origine, la navigation haute et les couleurs claires ; c’est le choix par défaut. Minimaliste propose la synthèse d’accueil, la navigation latérale et les couleurs Système / Clair / Sombre. Les choix sont mémorisés indépendamment dans le navigateur.
+
+Les pages et leurs URLs restent communes. Le changement se fait sans recharger la page ni remplacer les formulaires. Lancer `bundle exec jekyll serve` pour essayer les deux présentations localement. Voir le [fonctionnement et les vérifications](docs/presentations.md) et le [plan initial de la refonte minimaliste](docs/plan-ui-minimalist.md).
 
 ## Vérifier avant une modification
 
@@ -56,7 +58,9 @@ ruby script/validate_diagnostic.rb
 | Adresse et zones d’intervention | `_data/profile.yml` |
 | Questions fréquentes | `_data/faqs.yml` |
 | Structure commune | `_layouts/default.html`, `_includes/` |
-| Styles | `assets/css/site.scss`, `_sass/` |
+| Styles | `assets/css/site.scss` (minimaliste), `assets/css/commercial.scss`, `_sass/` |
+| Préférences de présentation et de couleur | `assets/js/theme.js` |
+| Accueils, en-têtes et pieds de page alternatifs | `_includes/presentations/`, `_includes/header.html`, `_includes/footer.html` |
 | Menu et interactions globales | `assets/js/site.mjs`, `assets/js/site-core.mjs` |
 | Diagnostic : DOM | `assets/js/diagnostic/index.mjs` |
 | Diagnostic : logique testable | `assets/js/diagnostic/core.mjs` |
@@ -118,7 +122,7 @@ extra_modules: []
 
 ## Styles et JavaScript
 
-Le point d'entrée Sass est `assets/css/site.scss`. Les partials sous `_sass/` sont organisés par responsabilité et importés dans un ordre qui préserve la cascade. Les couleurs, polices et rayons sont dans `_sass/base/_foundation.scss`, les seuils responsive dans `_sass/base/_breakpoints.scss`. Le seuil desktop du menu est dérivé du même paramètre pour le CSS et le JavaScript. Les règles responsive d’un composant restent dans son partial ; le footer, le contact et l’accessibilité ont chacun leur fichier.
+Les points d’entrée Sass sont `assets/css/site.scss` pour Minimaliste et `assets/css/commercial.scss` pour Commercial. Une seule feuille est active à la fois. Le script classique `assets/js/theme.js`, exécuté dans l’en-tête, rétablit les préférences avant le rendu, puis échange les gabarits d’accueil et de navigation sans modifier le contenu des pages intérieures. Les partials sous `_sass/` sont organisés par responsabilité et importés dans un ordre qui préserve la cascade. Les couleurs, polices et rayons sont dans `_sass/base/_foundation.scss`, les seuils responsive dans `_sass/base/_breakpoints.scss`. Le seuil desktop du menu est dérivé du même paramètre pour le CSS et le JavaScript. Les règles responsive d’un composant restent dans son partial ; le footer, le contact et l’accessibilité ont chacun leur fichier.
 
 Le formulaire Diagnostic est volontairement séparé : `core.mjs` ne dépend pas du DOM et se teste avec Node ; `index.mjs` orchestre le formulaire, `sessionStorage`, ALTCHA et l'appel réseau. Toute évolution du payload, de la clé de brouillon, de l'URL de confirmation ou des événements analytics doit être coordonnée avec le backend privé.
 

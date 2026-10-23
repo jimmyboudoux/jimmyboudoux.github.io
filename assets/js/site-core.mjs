@@ -1,3 +1,5 @@
+const trackedBookingLinks = new WeakSet();
+
 export function mountMenu({ button, menu, documentRef, mediaQuery }) {
   if (!button || !menu) return () => {};
 
@@ -35,6 +37,8 @@ export function setCurrentYear(documentRef, year = new Date().getFullYear()) {
 export function mountBookingTracking({ documentRef, umami, allowedLocations = [] }) {
   const safeLocations = new Set(allowedLocations);
   documentRef.querySelectorAll('[data-booking-location]').forEach((link) => {
+    if (trackedBookingLinks.has(link)) return;
+    trackedBookingLinks.add(link);
     link.addEventListener('click', () => {
       const location = link.dataset.bookingLocation;
       const tracker = typeof umami === 'function' ? umami() : umami;

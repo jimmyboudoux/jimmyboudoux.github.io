@@ -94,7 +94,7 @@ class SiteTest < Minitest::Test
 
   def test_noindex_pages_are_not_in_the_sitemap
     Dir.glob(site_file("**/*.html")).each do |file|
-      document = Nokogiri::HTML5(File.read(file))
+      document = presentation_document(File.read(file))
       robots = document.at_css('meta[name="robots"]')&.[]("content")
       next unless robots&.match?(/\bnoindex\b/i)
 
@@ -105,7 +105,7 @@ class SiteTest < Minitest::Test
 
   def test_generated_internal_links_assets_and_anchors_exist
     Dir.glob(site_file("**/*.html")).each do |file|
-      document = Nokogiri::HTML5(File.read(file))
+      document = presentation_document(File.read(file))
       source_path = "/#{file.delete_prefix("#{SITE_DIR}/").delete_suffix("index.html")}".gsub(%r{/+}, "/")
       source_path = "/" if source_path == "/"
 
@@ -145,7 +145,7 @@ class SiteTest < Minitest::Test
       refute_nil uri.host
     end
     Dir.glob(site_file("**/*.html")).each do |file|
-      document = Nokogiri::HTML5(File.read(file))
+      document = presentation_document(File.read(file))
       links = document.css("footer .footer-social a")
       assert_equal profiles.map { |profile| profile.fetch("url") }, links.map { |link| link["href"] }, file
       assert_equal profiles.map { |profile| profile.fetch("label") }, links.map { |link| link.text.strip }, file
@@ -166,7 +166,7 @@ class SiteTest < Minitest::Test
     config = YAML.load_file("_config.yml")
     urls = config.fetch("socials").values.map { |profile| profile.fetch("url") }
     Dir.glob(site_file("**/*.html")).each do |file|
-      document = Nokogiri::HTML5(File.read(file))
+      document = presentation_document(File.read(file))
       entities = document.css('script[type="application/ld+json"]').flat_map do |script|
         data = JSON.parse(script.text)
         assert_equal "https://schema.org", data.fetch("@context"), file
@@ -194,14 +194,21 @@ class SiteTest < Minitest::Test
   end
 
   def test_navigation_marks_only_the_active_page
-    public_paths.each do |path|
-      document = html_for_path(path)
-      links = document.css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
-      expected_path = path.start_with?("/formations/") ? "/formations/" : path
-      linked = document.at_css("nav[aria-label='Navigation principale'] a[href='#{expected_path}']")
-      assert_equal linked ? 1 : 0, links.size, "Unexpected active navigation for #{path}"
-      assert_equal expected_path, links.first["href"] if linked
-      assert_equal 1, document.css('nav[aria-label="Fil d’Ariane"]').size
+    %w[commercial minimalist].each do |presentation|
+      public_paths.each do |path|
+        document = html_for_path(path, presentation: presentation)
+        links = document.css('nav[aria-label="Navigation principale"] a[aria-current="page"]')
+        expected = path.start_with?("/formations/") ? "/formations/" : path
+        source = File.read(path == "/" ? "index.html" : ".#{path}index.html")
+        metadata = YAML.safe_load(source.split("---", 3)[1])
+        if presentation == "commercial" && (metadata["service"] || metadata["formation"] || path == "/formations/")
+          expected = "/services/"
+        end
+        linked = document.at_css("nav[aria-label='Navigation principale'] a[href='#{expected}']")
+        assert_equal linked ? 1 : 0, links.size, "Unexpected #{presentation} navigation for #{path}"
+        assert_equal expected, links.first["href"] if linked
+        assert_equal 1, document.css('nav[aria-label="Fil d’Ariane"]').size
+      end
     end
   end
 
@@ -224,7 +231,7 @@ class SiteTest < Minitest::Test
 
   def test_generated_pages_keep_basic_accessibility_landmarks
     Dir.glob(site_file("**/*.html")).each do |file|
-      document = Nokogiri::HTML5(File.read(file))
+      document = presentation_document(File.read(file))
       assert_equal "fr", document.at_css("html")&.[]("lang"), "Missing French document language in #{file}"
       assert document.at_css("main#main-content"), "Missing main landmark in #{file}"
       assert document.at_css('a.skip-link[href="#main-content"]'), "Missing skip link in #{file}"
@@ -262,7 +269,9 @@ class SiteTest < Minitest::Test
   end
 
   def test_generated_assets_stay_within_maintenance_budgets
-    assert_operator File.size(site_file("assets/css/site.css")), :<, 60_000
+    %w[site commercial].each do |presentation|
+      assert_operator File.size(site_file("assets/css/#{presentation}.css")), :<, 60_000
+    end
     assert_operator File.size(site_file("assets/js/site.mjs")), :<, 5_000
     assert_operator File.size(site_file("assets/img/avatar-512.webp")), :<, 100_000
     assert_operator File.size(site_file("assets/img/og-optimized.jpg")), :<, 500_000
@@ -308,7 +317,7 @@ class SiteTest < Minitest::Test
     services = YAML.load_file("_data/services.yml")
     %w[sandbox-ia-locale ia-privee-locale].each do |slug|
       service = services.find { |item| item.fetch("slug") == slug }
-      document = html_for_path("/#{slug}/")
+      document = html_for_path("/#{slug}/", presentation: "minimalist")
       assert_equal service.fetch("theme"), document.at_css("body")["class"]
       assert_equal "/#{slug}/", document.at_css('nav[aria-label="Navigation principale"] a[aria-current="page"]')["href"]
       assert json_ld_for("/#{slug}/").any? { |item| item["@type"] == "Service" }
@@ -335,7 +344,7 @@ class SiteTest < Minitest::Test
   end
 
   def test_homepage_has_a_direct_overview_without_marketing_sections
-    document = html_for_path("/")
+    document = html_for_path("/", presentation: "minimalist")
     assert_equal "Accueil", document.at_css("h1").text.strip
     assert_empty document.css(".hero, .page-hero, .card, .price-card, .engineering-map")
     assert_empty document.css('main a[href="/diagnostic-ia/"]')
@@ -351,7 +360,7 @@ class SiteTest < Minitest::Test
   end
 
   def test_repositioning_is_clear_and_specialist_pages_remain_accessible
-    document = html_for_path("/")
+    document = html_for_path("/", presentation: "minimalist")
     assert_includes document.at_css("title").text, "Ingénieur Informatique & Architecte IA"
     assert_includes document.at_css("main").text, "Sobres, utiles, maintenables."
     assert_includes document.at_css("main").text, "Ingénieur Informatique & Architecte IA"
@@ -378,6 +387,24 @@ class SiteTest < Minitest::Test
     end
     assert_includes document.at_css("main").text, "En construction"
     refute document.at_css("main").text.match?(/client|résultat chiffré/)
+  end
+
+  def test_two_presentations_keep_one_active_homepage_and_common_routes
+    commercial = html_for_path("/")
+    minimalist = html_for_path("/", presentation: "minimalist")
+    assert_equal "De l’idée métier à la solution logicielle complète.", commercial.at_css("h1").text.strip
+    assert_equal "Accueil", minimalist.at_css("h1").text.strip
+    %w[commercial minimalist].each do |presentation|
+      public_paths.each do |path|
+        document = html_for_path(path, presentation: presentation)
+        assert_equal 1, document.css("h1").size, "Multiple headings in #{presentation}: #{path}"
+        ids = document.css("[id]").map { |node| node["id"] }
+        assert_equal ids.uniq, ids, "Duplicate live IDs in #{presentation}: #{path}"
+        assert_equal "#{SITE_ORIGIN}#{path}", document.at_css('link[rel="canonical"]')["href"]
+      end
+    end
+    assert commercial.at_css('[data-presentation-select] option[value="commercial"]')
+    assert_equal "not all", commercial.at_css('[data-presentation-styles="minimalist"]')["media"]
   end
 
   def test_robots_references_the_generated_sitemap

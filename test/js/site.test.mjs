@@ -120,3 +120,17 @@ test('configured booking locations track even when analytics loads after mountin
   links.forEach((link) => link.emit('click'));
   assert.deepEqual(events.filter(([name]) => name === 'booking_calendar_clicked').map(([, properties]) => properties.location), allowedLocations);
 });
+
+test('remounting after presentation switches tracks a booking click only once', () => {
+  const link = { ...eventTarget(), dataset: { bookingLocation: 'homepage' } };
+  let registrations = 0;
+  const add = link.addEventListener;
+  link.addEventListener = (...args) => { registrations++; add(...args); };
+  const events = [];
+  const options = { documentRef: { querySelectorAll: () => [link] }, allowedLocations, umami: { track: (...event) => events.push(event) } };
+  mountBookingTracking(options);
+  mountBookingTracking(options);
+  assert.equal(registrations, 1);
+  link.emit('click');
+  assert.equal(events.length, 1);
+});

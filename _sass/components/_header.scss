@@ -30,21 +30,7 @@
   color: var(--link);
   text-decoration: underline;
 }
-.theme-switcher {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-soft);
-  font-size: 0.85rem;
-}
-.theme-switcher select {
-  min-height: 36px;
-  padding: 0.3rem 0.4rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
-  background: var(--bg);
-  color: var(--ink);
-}
+
 .menu-btn {
   display: none;
   min-height: 42px;
@@ -188,14 +174,9 @@
   .brand {
     font-size: 1.15rem;
   }
-  .theme-switcher {
-    margin-left: auto;
-  }
-  .theme-switcher > span {
-    display: none;
-  }
+
   .menu-btn {
-    margin-left: 0;
+    margin-left: auto;
     order: 1;
   }
   .header-links {

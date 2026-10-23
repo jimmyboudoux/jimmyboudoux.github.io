@@ -1,0 +1,22 @@
+---
+---
+
+// The import order preserves the former cascade while keeping each concern local.
+@import 'base/breakpoints';
+@import 'commercial/base/foundation';
+@import 'commercial/components/header';
+@import 'commercial/components/cards';
+@import 'commercial/components/content';
+@import 'commercial/components/contact';
+@import 'commercial/components/footer';
+@import 'commercial/base/accessibility';
+@import 'commercial/pages/home-pricing';
+@import 'commercial/pages/portal';
+@import 'commercial/pages/formations';
+@import 'commercial/pages/diagnostic-hero';
+@import 'commercial/pages/diagnostic-support';
+@import 'commercial/pages/diagnostic-form';
+@import 'commercial/pages/sandbox-ia-locale';
+@import 'commercial/base/utilities';
+
+@import 'components/appearance';

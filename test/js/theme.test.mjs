@@ -4,18 +4,38 @@ import vm from 'node:vm';
 import test from 'node:test';
 
 const source = fs.readFileSync(new URL('../../assets/js/theme.js', import.meta.url), 'utf8');
-
-function fixture({ saved = null, dark = true, blocked = false } = {}) {
+function eventTarget(extra = {}) {
+  const listeners = new Map();
+  return { ...extra, addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: (name) => listeners.delete(name),
+    emit: (name) => listeners.get(name)?.(), focus() {} };
+}
+function fixture({ presentation, color, dark = true, blocked = false } = {}) {
   const root = { dataset: {} };
   const meta = { setAttribute(name, value) { this[name] = value; } };
-  const switcher = { hidden: true };
-  const select = { addEventListener(name, listener) { this.change = listener; } };
-  const system = { matches: dark, addEventListener(name, listener) { this.change = listener; } };
-  const store = new Map(saved ? [['jboudoux-color-theme', saved]] : []);
+  const selector = eventTarget();
+  const colorSelector = eventTarget();
+  const control = { hidden: true };
+  const controls = { hidden: true };
+  const status = { textContent: '' };
+  const system = eventTarget({ matches: dark });
+  const store = new Map();
+  if (presentation) store.set('jboudoux-presentation', presentation);
+  if (color) store.set('jboudoux-color-theme', color);
+  const styles = Object.fromEntries(['commercial', 'minimalist'].map((name) => [name,
+    eventTarget({ dataset: { presentationStyles: name }, sheet: {} })]));
+  const hosts = Object.fromEntries(['header', 'footer', 'home'].map((name) => [name, {
+    childNodes: [{ name: `commercial-${name}` }],
+    replaceChildren(...nodes) { this.childNodes = nodes; }
+  }]));
+  const templates = Object.fromEntries(['header', 'footer', 'home'].map((name) => [name, {
+    content: { cloneNode: () => ({ childNodes: [{ name: `minimalist-${name}` }] }) }
+  }]));
   let ready;
+  const events = [];
   vm.runInNewContext(source, {
+    Event: class { constructor(type) { this.type = type; } },
     window: {
-      matchMedia: () => system,
+      matchMedia: () => system, setTimeout, clearTimeout,
       localStorage: {
         getItem(key) { if (blocked) throw new Error('Blocked'); return store.get(key); },
         setItem(key, value) { if (blocked) throw new Error('Blocked'); store.set(key, value); }
@@ -23,55 +43,107 @@ function fixture({ saved = null, dark = true, blocked = false } = {}) {
     },
     document: {
       documentElement: root,
-      querySelector(selector) {
-        if (selector === '[data-theme-select]') return select;
-        if (selector === '[data-theme-switcher]') return switcher;
+      querySelectorAll: () => Object.values(styles),
+      querySelector(query) {
+        if (query === '[data-presentation-select]') return selector;
+        if (query === '[data-theme-select]') return colorSelector;
+        if (query === '[data-theme-switcher]') return control;
+        if (query === '[data-appearance-controls]') return controls;
+        if (query === '[data-appearance-status]') return status;
+        if (query === '[data-home-content]') return hosts.home;
+        const region = query.match(/data-(header|footer)-host|data-region="(header|footer|home)"/);
+        if (region) return region[1] ? hosts[region[1]] : templates[region[2]];
         return meta;
       },
+      dispatchEvent: (event) => events.push(event.type),
       addEventListener(name, listener) { ready = listener; }
     }
   });
-  return { root, meta, switcher, select, system, store, ready: () => ready() };
+  return { root, meta, selector, colorSelector, control, controls, status, styles, hosts, system, store, events, ready: () => ready(),
+    async change(value) { selector.value = value; await selector.emit('change'); },
+    changeColor(value) { colorSelector.value = value; colorSelector.emit('change'); } };
 }
 
-test('a saved light theme overrides a dark computer before the page is displayed and persists across pages', () => {
-  const page = fixture({ saved: 'light' });
+test('first visit is commercial and light, even on a dark computer with a saved color preference', async () => {
+  const page = fixture({ color: 'dark' });
+  assert.equal(page.root.dataset.presentation, 'commercial');
   assert.equal(page.root.dataset.colorTheme, 'light');
-  assert.equal(page.meta.content, '#f7f8fa');
-  assert.equal(page.switcher.hidden, true);
-  page.ready();
-  assert.equal(page.select.value, 'light');
-  assert.equal(page.switcher.hidden, false);
-  page.select.value = 'dark';
-  page.select.change();
-  assert.equal(page.root.dataset.colorTheme, 'dark');
-  assert.equal(page.meta.content, '#141617');
-  const nextPage = fixture({ saved: page.store.get('jboudoux-color-theme'), dark: false });
-  assert.equal(nextPage.root.dataset.colorTheme, 'dark');
+  assert.equal(page.styles.commercial.media, 'all');
+  assert.equal(page.styles.minimalist.media, 'not all');
+  await page.ready();
+  assert.equal(page.selector.value, 'commercial');
+  assert.equal(page.control.hidden, true);
+  assert.equal(page.controls.hidden, false);
 });
 
-test('system mode follows the computer, while an explicit preference stays fixed', () => {
-  const page = fixture({ saved: 'invalid' });
-  page.ready();
-  assert.equal(page.select.value, 'system');
+test('commercial and minimal home nodes are restored without cloning them repeatedly', async () => {
+  const page = fixture();
+  const original = page.hosts.home.childNodes[0];
+  await page.ready();
+  await page.change('minimalist');
+  const minimal = page.hosts.home.childNodes[0];
+  assert.equal(minimal.name, 'minimalist-home');
+  assert.equal(page.control.hidden, false);
   assert.equal(page.root.dataset.colorTheme, 'dark');
+  page.changeColor('light');
+  await page.change('commercial');
+  assert.equal(page.hosts.home.childNodes[0], original);
+  assert.equal(page.root.dataset.colorTheme, 'light');
+  assert.equal(page.control.hidden, true);
+  await page.change('minimalist');
+  assert.equal(page.hosts.home.childNodes[0], minimal);
+  assert.equal(page.root.dataset.colorTheme, 'light');
+  const next = fixture({ presentation: page.store.get('jboudoux-presentation'), color: page.store.get('jboudoux-color-theme') });
+  await next.ready();
+  assert.equal(next.root.dataset.presentation, 'minimalist');
+  assert.equal(next.root.dataset.colorTheme, 'light');
+});
+
+test('minimalist defaults to system and follows system changes only when requested', async () => {
+  const page = fixture({ presentation: 'minimalist' });
+  await page.ready();
+  assert.equal(page.colorSelector.value, 'system');
   page.system.matches = false;
-  page.system.change();
+  page.system.emit('change');
   assert.equal(page.root.dataset.colorTheme, 'light');
-  page.select.value = 'light';
-  page.select.change();
-  page.system.matches = true;
-  page.system.change();
-  assert.equal(page.root.dataset.colorTheme, 'light');
-  page.select.value = 'system';
-  page.select.change();
+  page.changeColor('dark');
+  page.system.emit('change');
   assert.equal(page.root.dataset.colorTheme, 'dark');
+  await page.change('commercial');
+  page.system.matches = true;
+  page.system.emit('change');
+  assert.equal(page.root.dataset.colorTheme, 'light');
 });
 
-test('switching themes still works when browser storage is blocked', () => {
+test('blocked storage does not prevent changing presentation or color', async () => {
   const page = fixture({ blocked: true });
-  page.ready();
-  page.select.value = 'light';
-  assert.doesNotThrow(() => page.select.change());
+  await page.ready();
+  await page.change('minimalist');
+  page.changeColor('light');
+  assert.equal(page.root.dataset.presentation, 'minimalist');
   assert.equal(page.root.dataset.colorTheme, 'light');
+});
+
+test('failed stylesheet loading preserves the active presentation and saved preference', async () => {
+  const page = fixture();
+  await page.ready();
+  page.styles.minimalist.sheet = null;
+  const changing = page.change('minimalist');
+  page.styles.minimalist.emit('error');
+  await changing;
+  assert.equal(page.root.dataset.presentation, 'commercial');
+  assert.equal(page.selector.value, 'commercial');
+  assert.equal(page.store.get('jboudoux-presentation'), undefined);
+  assert.match(page.status.textContent, /Impossible de charger/);
+});
+
+test('failed saved presentation falls back to commercial on startup', async () => {
+  const page = fixture({ presentation: 'minimalist' });
+  page.styles.minimalist.sheet = null;
+  const starting = page.ready();
+  page.styles.minimalist.emit('error');
+  await starting;
+  assert.equal(page.root.dataset.presentation, 'commercial');
+  assert.equal(page.root.dataset.colorTheme, 'light');
+  assert.equal(page.controls.hidden, false);
 });

@@ -14,9 +14,26 @@ module SiteTestHelper
     File.join(SITE_DIR, path)
   end
 
-  def html_for_path(path)
+  def html_for_path(path, presentation: "commercial")
     relative_path = path == "/" ? "index.html" : File.join(path.delete_prefix("/"), "index.html")
-    Nokogiri::HTML5(File.read(site_file(relative_path)))
+    presentation_document(File.read(site_file(relative_path)), presentation: presentation)
+  end
+
+  # Model the active DOM: template descendants are inert in the browser.
+  def presentation_document(html, presentation: "commercial")
+    document = Nokogiri::HTML5(html)
+    if presentation == "minimalist"
+      %w[header footer home].each do |region|
+        host = document.at_css(region == "home" ? "[data-home-content]" : "[data-#{region}-host]")
+        template = document.at_css("template[data-region='#{region}']")
+        host.inner_html = template.inner_html if host && template
+      end
+    else
+      document.at_css(".site-sidebar")&.remove
+    end
+    document.css("template").remove
+    document.at_css("html")["data-presentation"] = presentation
+    document
   end
 
   def public_paths

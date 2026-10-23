@@ -1,0 +1,103 @@
+/* This small shared layer also provides the no-JavaScript commercial fallback. */
+[hidden] {
+  display: none !important;
+}
+.appearance-controls {
+  width: min(calc(100% - 40px), var(--container));
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  color: var(--text-soft);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+}
+.appearance-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.appearance-controls select {
+  min-height: 38px;
+  max-width: 100%;
+  padding: 5px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+.appearance-status {
+  flex-basis: 100%;
+  text-align: right;
+}
+.appearance-status:empty {
+  display: none;
+}
+:root[data-presentation='commercial'] {
+  color-scheme: light;
+  [data-header-host] {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  &:not(.presentation-enhanced) .navbar {
+    flex-wrap: wrap;
+  }
+  &:not(.presentation-enhanced) .menu-btn {
+    display: none;
+  }
+  .site-sidebar {
+    display: none;
+  }
+  .page-location {
+    width: min(calc(100% - 40px), var(--container));
+    margin: 16px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-soft);
+  }
+  [data-home-content] {
+    min-width: 0;
+  }
+  &:not(.presentation-enhanced) .nav-links {
+    display: flex;
+    position: static;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+:root[data-presentation='minimalist'] {
+  .appearance-controls {
+    width: calc(100% - 44px);
+  }
+  &:not([data-presentation-ready]) [data-header-host],
+  &:not([data-presentation-ready]) [data-footer-host],
+  &:not([data-presentation-ready]) [data-home-content] {
+    visibility: hidden;
+  }
+}
+:root[data-home-page='true'][data-presentation='commercial'] .page-location {
+  display: none;
+}
+@media (max-width: 520px) {
+  .appearance-controls {
+    width: calc(100% - 28px);
+    justify-content: flex-start;
+    gap: 8px 12px;
+  }
+  .appearance-controls label {
+    gap: 5px;
+  }
+  .appearance-controls select {
+    min-height: 42px;
+  }
+  :root[data-presentation='minimalist'] .appearance-controls {
+    width: calc(100% - 24px);
+  }
+}

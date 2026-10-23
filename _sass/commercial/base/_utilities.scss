@@ -1,0 +1,24 @@
+/* Small reusable spacing utilities for CSP-safe markup. */
+.mt-075 {
+  margin-top: 0.75rem;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+.mt-125 {
+  margin-top: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
