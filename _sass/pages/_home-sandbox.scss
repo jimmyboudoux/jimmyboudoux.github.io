@@ -1,0 +1,30 @@
+// Shared by both presentations; use their existing palettes and typography.
+.home-sandbox {
+  margin: 1.5rem 0;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--accent-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
+.home-sandbox .lead {
+  max-width: 85ch;
+}
+.home-sandbox__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.home-sandbox__benefits p {
+  margin-top: 0.5rem;
+}
+.home-sandbox__price {
+  margin-top: 1rem;
+  color: var(--ink);
+  font-weight: 650;
+}
+@media (max-width: $breakpoint-form) {
+  .home-sandbox__benefits {
+    grid-template-columns: 1fr;
+  }
+}

@@ -33,22 +33,22 @@ formations:
 
 sandbox:
 - question: Qu’est-ce qu’un modèle open-weight ?
-  answer: Un modèle open-weight met ses paramètres entraînés à disposition afin qu’il puisse être exécuté sur une infrastructure
-    choisie par l’utilisateur. Les droits exacts d’utilisation dépendent de la licence du modèle.
+  answer: Un modèle open-weight met ses paramètres entraînés à disposition afin qu’il puisse être exécuté sur une infrastructure choisie par l’utilisateur. Je vérifie les licences et conditions d’utilisation des modèles sélectionnés.
+- question: Que comprend le forfait de départ ?
+  answer: Le forfait comprend le cadrage, la sélection des modèles, jusqu’à __max_configurations__ configurations, les scénarios, les tests encadrés, les mesures, les explications techniques, les sessions accompagnées, l’accès API sécurisé aux modèles pendant la durée de l’expérimentation et une synthèse finale concise. Les profils d’expérimentation sont facturés séparément du forfait d’accompagnement. L’interface de chat hébergée, la formation approfondie et le rapport approfondi sont proposés en option.
 - question: Peut-on tester plusieurs modèles ?
-  answer: Oui. Jusqu’à __max_configurations__ configurations principales peuvent être sélectionnées afin de comparer différentes
-    tailles de modèles, architectures et spécialisations.
+  answer: Oui. Le forfait inclut jusqu’à __max_configurations__ configurations. Les campagnes plus larges sont proposées dans le configurateur. Une configuration définit un modèle, sa version, sa quantification, son contexte et ses paramètres d’exécution ; deux réglages d’un modèle peuvent donc compter pour deux configurations.
 - question: Peut-on comparer CPU et GPU ?
-  answer: Oui. Certains scénarios peuvent être exécutés sur différentes plateformes afin d’observer l’impact du matériel sur
-    la vitesse, la latence et la mémoire nécessaire.
+  answer: Oui, sur un périmètre de tests planifié. Le laboratoire comprend Apple Silicon, un CPU AMD avec mémoire importante et des GPU NVIDIA. Vous pouvez cocher un ou plusieurs profils Lite, Standard et Premium. Leurs montants s’ajoutent au forfait d’accompagnement ; le pack des trois profils bénéficie de la remise affichée dans le configurateur, uniquement sur les profils. La compatibilité des modèles est validée après étude ; les VRAM et les performances de deux GPU ne s’additionnent pas automatiquement.
+- question: Est-ce une location de matériel ?
+  answer: Non. Vous achetez mon expertise d’architecte IA, la préparation des essais, l’utilisation de mon laboratoire et l’analyse des résultats. Les machines sont mes moyens d’exécution, sans réservation exclusive ni accès client à leur administration.
 - question: Peut-on utiliser nos propres documents ?
-  answer: Oui pour des documents adaptés au POC. Par défaut, l’environnement est destiné à des données synthétiques ou publiques.
-    L’utilisation de données confidentielles ou sensibles nécessite un cadrage spécifique.
+  answer: Oui pour des documents adaptés au POC. Les données sont publiques, synthétiques ou anonymisées par défaut. Les données confidentielles, sensibles et personnelles réelles nécessitent un cadrage approprié avant toute utilisation.
 - question: Est-ce une infrastructure de production ?
-  answer: Non. La sandbox est un environnement temporaire de test, de benchmark et d’aide à la décision.
+  answer: Non. La sandbox est un environnement temporaire de test, de benchmark et d’aide à la décision. Aucun SLA de production ni disponibilité permanente ne sont garantis. Les accès sécurisés, utilisateurs et volumes sont convenus au préalable.
 - question: Peut-on connecter une application au modèle ?
-  answer: Oui. Un accès API peut être prévu afin de connecter un script, un prototype, un agent ou une application pendant
-    le POC.
+  answer: Oui. L’accès API sécurisé aux modèles sélectionnés est inclus pendant l’expérimentation pour connecter vos outils ou votre propre instance. Les utilisateurs, volumes et conditions d’accès sont convenus au préalable. Une interface de chat hébergée est disponible en option. La création d’un connecteur ou d’un agent spécifique est chiffrée sur devis séparé.
+- question: Comment demander un devis ou prolonger l’expérimentation ?
+  answer: Le configurateur prépare un e-mail avec vos choix et vos coordonnées ; vous vérifiez le message puis l’envoyez. Le récapitulatif peut aussi être copié. Les tarifs sont indicatifs et confirmés après cadrage, sans commande ni paiement. Une prolongation sans nouvelle campagne est sur devis selon les accès et prestations maintenus.
 - question: Ollama ou llama.cpp sont-ils utilisés ?
-  answer: Ils peuvent faire partie des outils retenus selon les modèles, le matériel et les besoins du test. Le choix du modèle
-    et de l’environnement dépend du POC.
+  answer: Ils peuvent faire partie des outils retenus selon les modèles, le matériel et les besoins du test. Le choix du modèle et de l’environnement dépend du POC.

@@ -3,10 +3,12 @@
     <a class="brand" href="{{ '/' | relative_url }}" aria-label="Accueil — {{ site.person_name | escape }}"
       >jboudoux.fr</a
     >
-    {% assign tariff_current = false %}{% assign contact_current = false %} {% if page.url == '/tarifs/' %}{% assign
-    tariff_current = 'page' %}{% endif %} {% if page.url == '/contact/' %}{% assign contact_current = 'page' %}{% endif
-    %}
+    {% assign local_ai_current = false %}{% if page.url == '/sandbox-ia-locale/' %}{% assign local_ai_current = 'page'
+    %}{% endif %} {% assign tariff_current = false %}{% assign contact_current = false %} {% if page.url == '/tarifs/'
+    %}{% assign tariff_current = 'page' %}{% endif %} {% if page.url == '/contact/' %}{% assign contact_current = 'page'
+    %}{% endif %}
     <nav class="header-links" aria-label="Accès rapides">
+      <a href="{{ '/sandbox-ia-locale/' | relative_url }}" aria-current="{{ local_ai_current }}">IA locale</a>
       <a href="{{ '/tarifs/' | relative_url }}" aria-current="{{ tariff_current }}">Tarifs</a>
       <a href="{{ '/#approche' | relative_url }}">Méthode</a>
       <a href="{{ '/contact/' | relative_url }}" aria-current="{{ contact_current }}">Contact</a>

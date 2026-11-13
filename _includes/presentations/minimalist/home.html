@@ -1,12 +1,14 @@
 <div class="home-overview">
   <div class="home-heading">
-    <h1>Accueil</h1>
-    <p class="home-subtitle">Applications métier, automatisation, IA locale et data. Sobres, utiles, maintenables.</p>
+    <h1>{{ site.person_name | escape }}</h1>
+    <p class="home-subtitle">{{ site.professional_title | escape }}</p>
   </div>
   <p class="home-intro">
-    J’accompagne les entreprises dans la conception et la mise en œuvre de solutions logicielles sur mesure, avec une
-    approche pragmatique et orientée résultats.
+    <strong>Des solutions logicielles utiles, conçues pour durer.</strong><br />
+    J’accompagne les entreprises dans leurs projets d’applications métier, d’automatisation et d’IA, du cadrage à la
+    mise en production.
   </p>
+  {% include home-sandbox.html %}
   <div class="overview-primary">
     <section class="info-panel" id="services" aria-labelledby="services-title">
       <h2 id="services-title">Ce que je fais</h2>
@@ -114,9 +116,7 @@
         <li>{% include icon.html name="check" %}Sobriété technique</li>
         <li>{% include icon.html name="check" %}Orientation métier</li>
       </ul>
-      <p class="panel-note">
-        <a href="{{ '/about/' | relative_url }}">{{ site.person_name }}</a><br />{{ site.professional_title | escape }}
-      </p>
+      <p class="panel-note"><a href="{{ '/about/' | relative_url }}">Découvrir mon parcours</a></p>
     </section>
   </div>
   {% if site.portfolio_enabled %}

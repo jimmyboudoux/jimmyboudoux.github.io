@@ -78,9 +78,11 @@ class SiteTest < Minitest::Test
     assert_includes sandbox.text, "environnement temporaire de test, de benchmark et d’aide à la décision"
     assert_includes sandbox.text, "données confidentielles"
     assert_includes sandbox.text, "#{formatted_amount(YAML.load_file("_data/pricing.yml").dig("sandbox", "amount"))} € HT"
-    assert_includes sandbox.text, "+#{formatted_amount(YAML.load_file("_data/pricing.yml").dig("sandbox", "hardware", "amount"))} € HT"
-    extension = YAML.load_file("_data/pricing.yml").dig("sandbox", "extension")
-    assert_includes sandbox.text, "+#{formatted_amount(extension.fetch("amount"))} € HT / #{extension.fetch("period_days")} jours"
+    sandbox_pricing = YAML.load_file("_data/pricing.yml").fetch("sandbox")
+    assert_includes sandbox.text, "+#{formatted_amount(sandbox_pricing.fetch("hardware")[1].fetch("supplement"))} € HT"
+    assert_includes sandbox.text, sandbox_pricing.dig("extension", "description")
+    refute_includes sandbox.text, "5 configurations principales"
+    refute_includes sandbox.text, "650 € HT"
 
     %w[/services/ /ai-engineering/ /tarifs/].each do |path|
       assert html_for_path(path).css('a[href="/sandbox-ia-locale/"]').any?, "Missing sandbox link from #{path}"
@@ -201,7 +203,8 @@ class SiteTest < Minitest::Test
         expected = path.start_with?("/formations/") ? "/formations/" : path
         source = File.read(path == "/" ? "index.html" : ".#{path}index.html")
         metadata = YAML.safe_load(source.split("---", 3)[1])
-        if presentation == "commercial" && (metadata["service"] || metadata["formation"] || path == "/formations/")
+        direct_navigation = YAML.load_file("_data/navigation.yml").any? { |item| item["href"] == path }
+        if presentation == "commercial" && !direct_navigation && (metadata["service"] || metadata["formation"] || path == "/formations/")
           expected = "/services/"
         end
         linked = document.at_css("nav[aria-label='Navigation principale'] a[href='#{expected}']")
@@ -345,7 +348,7 @@ class SiteTest < Minitest::Test
 
   def test_homepage_has_a_direct_overview_without_marketing_sections
     document = html_for_path("/", presentation: "minimalist")
-    assert_equal "Accueil", document.at_css("h1").text.strip
+    assert_equal "Jimmy Boudoux", document.at_css("h1").text.strip
     assert_empty document.css(".hero, .page-hero, .card, .price-card, .engineering-map")
     assert_empty document.css('main a[href="/diagnostic-ia/"]')
     assert_equal 6, document.css(".offer-table tr").size
@@ -362,10 +365,10 @@ class SiteTest < Minitest::Test
   def test_repositioning_is_clear_and_specialist_pages_remain_accessible
     document = html_for_path("/", presentation: "minimalist")
     assert_includes document.at_css("title").text, "Ingénieur Informatique & Architecte IA"
-    assert_includes document.at_css("main").text, "Sobres, utiles, maintenables."
+    assert_includes document.at_css("main").text, "du cadrage à la"
     assert_includes document.at_css("main").text, "Ingénieur Informatique & Architecte IA"
     assert_equal ["Cadrer", "Concevoir", "Développer", "Mettre en production"], document.css("#approche strong").map(&:text)
-    assert_equal ["Tarifs", "Méthode", "Contact"], document.css(".header-links a").map { |node| node.text.strip }
+    assert_equal ["IA locale", "Tarifs", "Méthode", "Contact"], document.css(".header-links a").map { |node| node.text.strip }
     %w[ai-engineering sandbox-ia-locale ia-privee-locale software-rescue data-reporting ai-finops ai-adoption formations fractional-lead].each do |slug|
       assert document.at_css("nav[aria-label='Navigation principale'] a[href='/#{slug}/']"), "Missing navigation: #{slug}"
       assert html_for_path("/services/").at_css("main a[href='/#{slug}/']"), "Missing specialist link: #{slug}"
@@ -393,7 +396,7 @@ class SiteTest < Minitest::Test
     commercial = html_for_path("/")
     minimalist = html_for_path("/", presentation: "minimalist")
     assert_equal "De l’idée métier à la solution logicielle complète.", commercial.at_css("h1").text.strip
-    assert_equal "Accueil", minimalist.at_css("h1").text.strip
+    assert_equal "Jimmy Boudoux", minimalist.at_css("h1").text.strip
     %w[commercial minimalist].each do |presentation|
       public_paths.each do |path|
         document = html_for_path(path, presentation: presentation)
@@ -404,7 +407,13 @@ class SiteTest < Minitest::Test
       end
     end
     assert commercial.at_css('[data-presentation-select] option[value="commercial"]')
+    assert_nil commercial.at_css('[data-presentation-styles="commercial"]')["media"]
     assert_equal "not all", commercial.at_css('[data-presentation-styles="minimalist"]')["media"]
+    initial = Nokogiri::HTML5(File.read(site_file("index.html")))
+    assert_equal "commercial", initial.at_css("html")["data-presentation"]
+    assert initial.at_css("[data-home-content] > .hero")
+    assert_equal "Vue commerciale — démarche et interventions", initial.at_css('[data-presentation-select] option[value="commercial"]').text
+    assert_equal "Vue pragmatique — offres, tarifs et contact", initial.at_css('[data-presentation-select] option[value="minimalist"]').text
   end
 
   def test_robots_references_the_generated_sitemap

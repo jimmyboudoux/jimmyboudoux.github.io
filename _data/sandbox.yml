@@ -1,0 +1,36 @@
+objectives:
+  - id: discover
+    label: Découvrir le fonctionnement des IA locales
+  - id: models
+    label: Comparer plusieurs modèles
+  - id: hardware
+    label: Comparer les performances de différentes architectures CPU/GPU
+  - id: usecases
+    label: Tester mes propres cas d’usage
+  - id: documents
+    label: Expérimenter l’analyse documentaire, l’OCR ou les contextes longs
+  - id: code
+    label: Tester la génération et l’analyse de code
+  - id: integration
+    label: Connecter les modèles à une application interne
+  - id: investment
+    label: Évaluer les besoins matériels avant un investissement
+profiles:
+  - id: lite
+    label: Profil Lite
+    focus: Découverte et modèles légers
+    description: Explorer les usages texte, code et petits documents avec des modèles compacts. Un premier repère pour comprendre les contraintes mémoire et les limites d’une configuration légère.
+  - id: standard
+    label: Profil Standard
+    focus: Expérimentation polyvalente
+    description: Étudier des modèles et contextes plus exigeants, avec davantage de mémoire et une bande passante adaptée aux comparaisons d’usages courants.
+  - id: premium
+    label: Profil Premium
+    focus: Modèles exigeants et accélération GPU
+    description: Explorer les besoins de mémoire système importants et l’accélération GPU, selon la compatibilité des modèles et moteurs. Les possibilités multi-GPU sont validées au cadrage, sans addition automatique des VRAM ni des performances.
+included:
+  - Cadrage initial et sélection des modèles selon le besoin
+  - Préparation des scénarios et exécution des tests encadrés
+  - Mesures de performance et explications techniques
+  - Synthèse finale concise
+  - Accès API sécurisé aux modèles sélectionnés pendant la durée de l’expérimentation, avec utilisateurs et volumes convenus

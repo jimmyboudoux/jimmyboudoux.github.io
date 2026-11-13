@@ -76,11 +76,6 @@
   .appearance-controls {
     width: calc(100% - 44px);
   }
-  &:not([data-presentation-ready]) [data-header-host],
-  &:not([data-presentation-ready]) [data-footer-host],
-  &:not([data-presentation-ready]) [data-home-content] {
-    visibility: hidden;
-  }
 }
 :root[data-home-page='true'][data-presentation='commercial'] .page-location {
   display: none;

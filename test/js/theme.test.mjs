@@ -10,7 +10,7 @@ function eventTarget(extra = {}) {
     emit: (name) => listeners.get(name)?.(), focus() {} };
 }
 function fixture({ presentation, color, dark = true, blocked = false } = {}) {
-  const root = { dataset: {} };
+  const root = { dataset: { presentation: 'commercial' } };
   const meta = { setAttribute(name, value) { this[name] = value; } };
   const selector = eventTarget();
   const colorSelector = eventTarget();
@@ -64,7 +64,7 @@ function fixture({ presentation, color, dark = true, blocked = false } = {}) {
     changeColor(value) { colorSelector.value = value; colorSelector.emit('change'); } };
 }
 
-test('first visit is commercial and light, even on a dark computer with a saved color preference', async () => {
+test('first visit defaults to the commercial view, including when a dark color preference was saved', async () => {
   const page = fixture({ color: 'dark' });
   assert.equal(page.root.dataset.presentation, 'commercial');
   assert.equal(page.root.dataset.colorTheme, 'light');
@@ -76,27 +76,24 @@ test('first visit is commercial and light, even on a dark computer with a saved 
   assert.equal(page.controls.hidden, false);
 });
 
-test('commercial and minimal home nodes are restored without cloning them repeatedly', async () => {
+test('both views restore the same DOM nodes and preserve an existing pragmatic preference', async () => {
   const page = fixture();
   const original = page.hosts.home.childNodes[0];
   await page.ready();
   await page.change('minimalist');
-  const minimal = page.hosts.home.childNodes[0];
-  assert.equal(minimal.name, 'minimalist-home');
+  const pragmatic = page.hosts.home.childNodes[0];
+  assert.equal(pragmatic.name, 'minimalist-home');
   assert.equal(page.control.hidden, false);
-  assert.equal(page.root.dataset.colorTheme, 'dark');
-  page.changeColor('light');
+  page.changeColor('dark');
   await page.change('commercial');
   assert.equal(page.hosts.home.childNodes[0], original);
-  assert.equal(page.root.dataset.colorTheme, 'light');
   assert.equal(page.control.hidden, true);
   await page.change('minimalist');
-  assert.equal(page.hosts.home.childNodes[0], minimal);
-  assert.equal(page.root.dataset.colorTheme, 'light');
+  assert.equal(page.hosts.home.childNodes[0], pragmatic);
   const next = fixture({ presentation: page.store.get('jboudoux-presentation'), color: page.store.get('jboudoux-color-theme') });
   await next.ready();
   assert.equal(next.root.dataset.presentation, 'minimalist');
-  assert.equal(next.root.dataset.colorTheme, 'light');
+  assert.equal(next.root.dataset.colorTheme, 'dark');
 });
 
 test('minimalist defaults to system and follows system changes only when requested', async () => {
@@ -125,25 +122,25 @@ test('blocked storage does not prevent changing presentation or color', async ()
 });
 
 test('failed stylesheet loading preserves the active presentation and saved preference', async () => {
-  const page = fixture();
+  const page = fixture({ presentation: 'minimalist' });
   await page.ready();
-  page.styles.minimalist.sheet = null;
-  const changing = page.change('minimalist');
-  page.styles.minimalist.emit('error');
+  page.styles.commercial.sheet = null;
+  const changing = page.change('commercial');
+  page.styles.commercial.emit('error');
   await changing;
-  assert.equal(page.root.dataset.presentation, 'commercial');
-  assert.equal(page.selector.value, 'commercial');
-  assert.equal(page.store.get('jboudoux-presentation'), undefined);
+  assert.equal(page.root.dataset.presentation, 'minimalist');
+  assert.equal(page.selector.value, 'minimalist');
+  assert.equal(page.store.get('jboudoux-presentation'), 'minimalist');
   assert.match(page.status.textContent, /Impossible de charger/);
 });
 
-test('failed saved presentation falls back to commercial on startup', async () => {
-  const page = fixture({ presentation: 'minimalist' });
-  page.styles.minimalist.sheet = null;
+test('failed commercial stylesheet falls back to the pragmatic view on startup', async () => {
+  const page = fixture({ presentation: 'commercial' });
+  page.styles.commercial.sheet = null;
   const starting = page.ready();
-  page.styles.minimalist.emit('error');
+  page.styles.commercial.emit('error');
   await starting;
-  assert.equal(page.root.dataset.presentation, 'commercial');
-  assert.equal(page.root.dataset.colorTheme, 'light');
+  assert.equal(page.root.dataset.presentation, 'minimalist');
+  assert.equal(page.root.dataset.colorTheme, 'dark');
   assert.equal(page.controls.hidden, false);
 });

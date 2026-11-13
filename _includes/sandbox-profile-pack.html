@@ -1,0 +1,8 @@
+{%- assign profile_sum = 0 -%} {%- for profile in site.data.pricing.sandbox.hardware -%} {%- assign profile_sum =
+profile_sum | plus: profile.supplement -%} {%- endfor -%} {%- assign remaining_percent = 100 | minus:
+site.data.pricing.sandbox.hardware_pack_discount_percent -%} {%- assign pack_cents = profile_sum | times:
+remaining_percent | round -%} {%- assign pack_euros = pack_cents | divided_by: 100 -%} {%- assign pack_decimals =
+pack_cents | modulo: 100 -%} Pack complet des profils : {{ site.data.pricing.sandbox.hardware_pack_discount_percent }} %
+de remise, soit {% include format-amount.html amount=pack_euros %}{% if pack_decimals > 0 %},{% if pack_decimals < 10
+%}0{% endif %}{{ pack_decimals }}{% endif %} € HT pour {{ site.data.pricing.sandbox.duration_days }} jours, en
+supplément du forfait d’accompagnement. La remise porte uniquement sur les profils.

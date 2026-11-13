@@ -33,6 +33,7 @@ asset_version: "20261023-minimalist"
 markdown: kramdown
 permalink: pretty
 exclude:
+  - QCM_20261113160740.md
   - README.md
   - AUDIT_ARCHITECTURE_jboudouxfr.md
   - todo_refactoring.md

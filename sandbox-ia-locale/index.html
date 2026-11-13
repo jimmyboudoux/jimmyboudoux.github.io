@@ -1,11 +1,15 @@
 ---
 layout: default
-title: 'Sandbox IA locale : tester des modèles open source & open-weight'
-description: 'Testez et comparez des modèles IA open source et open-weight : qualité, vitesse, CPU/GPU, contexte long, OCR, code et besoins matériels.'
+title: 'Sandbox IA locale : expérimentation, benchmark et configurateur'
+description: 'Testez un LLM en local avant d’investir. Laboratoire accompagné, comparaison modèles IA et CPU/GPU. Configurez votre POC IA locale avec un budget estimatif immédiat.'
 service: sandbox-ia-locale
 breadcrumb_parent: Expertises
 breadcrumb_parent_url: /services/
 faq: sandbox
+extra_css:
+  - /assets/css/sandbox.css
+extra_modules:
+  - /assets/js/sandbox/index.mjs
 ---
 
 <section class="page-hero {% include page-theme.html %} sandbox-hero">
@@ -13,15 +17,25 @@ faq: sandbox
     <span class="eyebrow">POC · Benchmark · IA locale · Open-weight</span>
     <h1>Testez une IA locale avant d’investir</h1>
     <p class="lead">
-      Comparez des modèles open source et open-weight sur vos cas d’usage. Mesurez la qualité des réponses, la vitesse
-      et les besoins CPU/GPU pour choisir une infrastructure adaptée.
+      Testez et comprenez les capacités de l’IA locale avant d’investir dans votre infrastructure. Je sélectionne et
+      configure les modèles, prépare les comparaisons et vous aide à interpréter les résultats, avec mon laboratoire
+      personnel et mon expertise d’architecte IA à Poitiers.
     </p>
     <div class="actions">
-      {% include booking-link.html label=site.project_cta_label class="btn" location="sandbox_ia_locale" %}
+      <a class="btn" href="#configurateur">Configurer mon expérimentation IA locale</a>
       <a class="btn btn--ghost" href="#configurations">Découvrir les tests possibles</a>
     </div>
   </div>
+  <div class="container narrow">
+    <p class="sandbox-note">
+      Une prestation de conseil, d’expérimentation et d’analyse, avec démonstration accompagnée dès {% include
+      sandbox-starting-price.html without_prefix=true %} pour {{ site.data.pricing.sandbox.duration_days }} jours. Vous
+      explorez l’IA locale sans acheter de matériel ni construire votre environnement de test.
+    </p>
+  </div>
 </section>
+
+{% include sandbox-configurator.html %}
 
 <section class="section section--surface" id="tests">
   <div class="container">
@@ -71,12 +85,13 @@ faq: sandbox
 <section class="section sandbox-configurations" id="configurations">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations à comparer</span>
+      <span class="eyebrow">Comprendre les familles de modèles</span>
       <h2>Plusieurs configurations, un même cas d’usage</h2>
       <p>
-        Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations principales peuvent être préparées.
-        Les modèles exacts sont sélectionnés selon vos usages, les modèles disponibles, leurs licences et leur
-        compatibilité technique.
+        Le forfait comprend jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations principales.
+        Choisissez séparément vos profils d’expérimentation et, si nécessaire, davantage de configurations dans le
+        configurateur. Les exemples ci-dessous illustrent des familles possibles, sans imposer de toutes les tester. Les
+        modèles sont choisis selon vos usages, leurs licences et leur compatibilité technique.
       </p>
     </div>
     <div class="sandbox-config-grid">
@@ -124,8 +139,9 @@ faq: sandbox
         <strong>matériel</strong> correspond aux ressources CPU, GPU et mémoire qui font tourner cette configuration.
       </p>
       <p>
-        Les configurations peuvent varier selon le CPU ou GPU, la quantité de mémoire, la quantification du modèle, le
-        contexte court ou long, la version et taille du modèle, ainsi que l’architecture Dense ou MoE.
+        Les configurations permettent de comparer quantifications, contexte court ou long, versions et tailles de
+        modèles, ainsi que les architectures Dense ou MoE. Les profils CPU/GPU sont choisis séparément pour la campagne
+        de comparaison, sous réserve de compatibilité.
       </p>
       <p class="sandbox-note">Les différentes configurations ne sont pas nécessairement disponibles simultanément.</p>
     </div>
@@ -170,15 +186,17 @@ faq: sandbox
       <article class="card card--tinted theme-engineering">
         <h3>Interface conversationnelle</h3>
         <p>
-          Une interface web permet de sélectionner une configuration, discuter avec les modèles, envoyer des documents
-          et comparer leurs résultats.
+          Les sessions accompagnées sont incluses. En option, je prépare et administre une interface de chat temporaire
+          pour tester les modèles dans un navigateur, selon les conditions d’utilisation convenues.
         </p>
       </article>
       <article class="card">
         <h3>API</h3>
         <p>
-          Une API peut permettre aux équipes techniques de connecter scripts, prototypes, applications ou agents aux
-          modèles testés pendant le POC.
+          L’accès API sécurisé aux modèles sélectionnés est inclus pendant les {{
+          site.data.pricing.sandbox.duration_days }} jours. Vous pouvez connecter votre propre interface, votre propre
+          instance, vos scripts ou applications aux modèles préparés pour le POC, dans les limites convenues. La
+          création d’un connecteur ou d’un agent spécifique fait l’objet d’un devis séparé.
         </p>
       </article>
     </div>
@@ -237,35 +255,34 @@ faq: sandbox
 <section class="section section--surface" id="materiel">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Option benchmark matériel</span>
-      <h2>Quel matériel faut-il réellement&nbsp;?</h2>
+      <span class="eyebrow">Les moyens techniques de votre expérimentation</span>
+      <h2>Un laboratoire déjà équipé, des comparaisons expliquées</h2>
       <p>
-        Un même modèle peut se comporter très différemment selon le CPU, le GPU, la mémoire disponible et la taille du
-        contexte. Certains scénarios peuvent être rejoués sur plusieurs plateformes pour mesurer l’impact réel du
-        matériel.
+        Mes machines personnelles permettent d’étudier CPU vs GPU pour LLM, NVIDIA CUDA vs Apple Silicon, mémoire
+        unifiée vs RAM et VRAM, capacité et bande passante mémoire. Un serveur d’administration orchestre les services.
       </p>
     </div>
-    <div class="sandbox-hardware">
+    <div class="sandbox-lab-grid">
+      {% for profile in site.data.sandbox.profiles %}
       <article class="card">
-        <h3>CPU / mémoire</h3>
-        <p>Configuration A <span aria-hidden="true">↔</span> Configuration B</p>
+        <h3>{{ profile.label }}</h3>
+        <p><strong>{{ profile.focus }}</strong></p>
+        <p>{{ profile.description }}</p>
       </article>
-      <article class="card">
-        <h3>GPU</h3>
-        <p>Configuration A <span aria-hidden="true">↔</span> Configuration B</p>
-      </article>
-    </div>
-    <div class="sandbox-hardware-results">
-      <h3>Mesures comparées</h3>
-      <div class="pills">
-        <span class="pill">Latence</span><span class="pill">Délai avant premier token</span
-        ><span class="pill">Tokens/seconde</span><span class="pill">Contextes différents</span
-        ><span class="pill">Mémoire nécessaire</span><span class="pill">Limites rencontrées</span>
-      </div>
+      {% endfor %}
     </div>
     <p class="sandbox-note">
-      Ce benchmark oriente une décision ; il ne constitue pas le dimensionnement définitif d’une infrastructure de
-      production.
+      La capacité mémoire ne suffit pas à prévoir la vitesse. Nous comparons aussi Dense et MoE, modèles légers ou plus
+      importants, quantifications et tailles de contexte. Toutes les configurations ne fonctionnent pas sur toutes les
+      machines ; leur compatibilité est validée après étude.
+    </p>
+    <p class="sandbox-note">
+      Les essais multi-GPU dépendent des possibilités techniques du modèle et du moteur d’inférence ; aucune addition
+      automatique des VRAM ou des performances n’est promise.
+    </p>
+    <p class="sandbox-note">
+      Les machines servent à exécuter mes prestations. Ce benchmark éclaire une décision ; il ne remplace pas le
+      dimensionnement définitif d’une infrastructure IA locale de production.
     </p>
   </div>
 </section>
@@ -303,8 +320,8 @@ faq: sandbox
     </div>
     <div class="sandbox-privacy">
       <p>
-        Par défaut, les tests sont réalisés avec des données synthétiques, des documents publics ou des jeux de données
-        spécifiquement préparés pour le POC.
+        Par défaut, les tests utilisent des données publiques, synthétiques ou anonymisées. Je vérifie les licences et
+        conditions d’utilisation des modèles sélectionnés.
       </p>
       <p>
         <strong
@@ -312,42 +329,72 @@ faq: sandbox
           identifiants et informations sensibles nécessitent un cadre spécifique avant toute utilisation.</strong
         >
       </p>
+      <p>
+        Aucun accès direct du client à l’administration des machines. Les accès sont sécurisés, avec des utilisateurs et
+        volumes d’utilisation définis au préalable. Aucune ressource matérielle n’est réservée exclusivement au client.
+      </p>
+      <p>
+        Environnement d’expérimentation, non destiné à la production : pas de disponibilité permanente garantie ni de
+        SLA de production.
+      </p>
     </div>
   </div>
 </section>
 
 <section class="section sandbox-offer" id="offre">
-  <div class="container split">
-    <div>
-      <span class="eyebrow">Une offre cadrée</span>
-      <h2>Sandbox IA locale — {{ site.data.pricing.sandbox.duration_days }} jours</h2>
-      <p class="sandbox-price">{% include price.html offer=site.data.pricing.sandbox %}</p>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Expertise, essais et analyse</span>
+      <h2>Le forfait d’accompagnement et ses options</h2>
+      <p class="sandbox-price">
+        {% include price.html offer=site.data.pricing.sandbox without_prefix=true %} pour {{
+        site.data.pricing.sandbox.duration_days }} jours
+      </p>
       <p>
-        Le périmètre est confirmé selon les usages, les modèles disponibles, leurs licences et la compatibilité
-        technique.
+        Les profils d’expérimentation s’ajoutent au forfait. {% include sandbox-starting-price.html %} au total avec le
+        profil Lite.
+      </p>
+      <p>
+        Les {{ site.data.pricing.sandbox.duration_days }} jours correspondent à une période d’expérimentation
+        accompagnée : cadrage et préparation, modèles configurés, tests et mesures, sessions d’explication, accès API
+        sécurisé selon les conditions convenues et synthèse finale. Les accès ne sont pas limités aux démonstrations,
+        mais restent encadrés par le périmètre de tests, les utilisateurs et les volumes définis.
+      </p>
+      <p>
+        Vous rémunérez une prestation d’architecte IA : sélection et configuration des modèles, utilisation du
+        laboratoire, tests comparatifs et explication des résultats. Le périmètre et les tarifs sont confirmés après
+        étude.
       </p>
     </div>
-    <div class="card">
-      <h3>Comprend</h3>
-      <ul class="feature-list">
-        <li>Cadrage du benchmark et préparation des scénarios</li>
-        <li>Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations principales</li>
-        <li>Environnement pendant {{ site.data.pricing.sandbox.duration_days }} jours</li>
-        <li>Interface conversationnelle</li>
-        <li>Accès API selon le besoin</li>
-        <li>Métriques techniques</li>
-        <li>Accompagnement à la prise en main</li>
-        <li>Synthèse finale</li>
-      </ul>
-      <h3 class="portal-heading">Options</h3>
-      <p>
-        <strong>Benchmark matériel&nbsp;: {% include price.html offer=site.data.pricing.sandbox.hardware %}.</strong>
-        Comparaison de profils CPU/mémoire et GPU sur des scénarios identiques.
-      </p>
-      <p>
-        <strong>Prolongation&nbsp;: {% include price.html offer=site.data.pricing.sandbox.extension %}.</strong>
-        {% include sandbox-extension-scope.html %}
-      </p>
+    <div class="split">
+      <div class="card">
+        <h3>Inclus dans le forfait</h3>
+        <ul class="feature-list">
+          {% for item in site.data.sandbox.included %}
+          <li>{{ item }}</li>
+          {% endfor %}
+          <li>
+            Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations ; profils d’expérimentation
+            facturés séparément
+          </li>
+          <li>Démonstration accompagnée dans les sessions organisées</li>
+        </ul>
+        <h3 class="portal-heading">{{ site.data.pricing.sandbox.extension.label }}</h3>
+        <p>{% include sandbox-extension-scope.html %}</p>
+      </div>
+      <div class="card">
+        <h3>Options indicatives</h3>
+        {% assign categories = 'configurations,hardware,interfaces,extras' | split: ',' %} {% for category in categories
+        %}
+        <ul class="feature-list">
+          {% for option in site.data.pricing.sandbox[category] %}{% unless option.supplement == 0 %}
+          <li>{{ option.label }} : {% include sandbox-option-price.html option=option %}</li>
+          {% endunless %}{% endfor %}
+        </ul>
+        {% endfor %}
+        <p>{% include sandbox-profile-pack.html %}</p>
+        <a class="card-link" href="#configurateur">Composer et chiffrer mon expérimentation →</a>
+      </div>
     </div>
   </div>
 </section>

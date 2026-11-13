@@ -1,0 +1,251 @@
+{% assign sandbox_offer = site.data.pricing.sandbox %}
+<section class="section sandbox-builder" id="configurateur" aria-labelledby="configurator-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Sans compte · Budget immédiat · Aucun engagement</span>
+      <h2 id="configurator-title">Composez votre expérimentation IA locale</h2>
+      <p>
+        Le forfait d’accompagnement est de {% include price.html offer=sandbox_offer without_prefix=true %} pour {{
+        sandbox_offer.duration_days }} jours, auquel s’ajoutent les profils choisis ci-dessous. Choisissez les
+        comparaisons et l’accompagnement utiles à votre décision. Cette période comprend le cadrage, la préparation des
+        modèles et scénarios, les tests encadrés, les mesures et explications, l’accès API sécurisé et une synthèse
+        finale. Vous pouvez utiliser l’API avec vos outils pendant la période convenue, selon les utilisateurs, volumes
+        et conditions d’accès définis ensemble.
+      </p>
+    </div>
+    <p data-sandbox-fallback>
+      Le calcul interactif nécessite JavaScript. Retrouvez le forfait et les options <a href="#offre">ci-dessous</a>,
+      puis <a href="mailto:{{ site.email }}">contactez-moi par e-mail</a> pour composer votre expérimentation.
+    </p>
+    <form
+      hidden
+      data-sandbox-form
+      data-pricing="{{ sandbox_offer | jsonify | escape }}"
+      data-catalog="{{ site.data.sandbox | jsonify | escape }}"
+      data-contact-email="{{ site.email | escape }}"
+    >
+      <p class="sandbox-note"><a href="#sandbox-summary">Voir mon récapitulatif et mon budget</a></p>
+      <div class="sandbox-builder__layout">
+        <div class="sandbox-builder__steps">
+          <fieldset class="sandbox-step">
+            <legend>A · Vos objectifs</legend>
+            <p id="objectives-help">
+              Plusieurs choix possibles. Ils orientent la prestation sans supplément automatique.
+            </p>
+            <div class="sandbox-choices" aria-describedby="objectives-help">
+              {% for objective in site.data.sandbox.objectives %}
+              <label class="sandbox-choice"
+                ><input type="checkbox" name="objectives" value="{{ objective.id }}" /><span
+                  >{{ objective.label }}</span
+                ></label
+              >
+              {% endfor %}
+            </div>
+            <p class="sandbox-context-note" data-integration-hint hidden>
+              L’accès API sécurisé aux modèles est inclus pendant l’expérimentation pour connecter vos outils ou votre
+              propre instance. La création de connecteurs ou d’agents spécifiques fait l’objet d’un devis séparé.
+            </p>
+          </fieldset>
+          <fieldset class="sandbox-step">
+            <legend>B · Configurations de modèles</legend>
+            <p id="configurations-help">
+              Une configuration = un modèle, une version, une quantification, une taille de contexte et des paramètres
+              d’exécution définis. Deux réglages d’un même modèle peuvent constituer deux configurations. Vous pouvez
+              essayer des modèles de texte, de code, d’image/vision, d’OCR ou d’analyse documentaire, selon vos
+              objectifs et leur compatibilité avec les profils choisis.
+            </p>
+            <div class="sandbox-choices" aria-describedby="configurations-help">
+              {% for option in sandbox_offer.configurations %}
+              <label class="sandbox-choice"
+                ><input
+                  type="radio"
+                  name="configurations"
+                  value="{{ option.id }}"
+                  {%
+                  if
+                  forloop.first
+                  %}checked{%
+                  endif
+                  %}
+                /><span
+                  ><strong>{{ option.label }}</strong
+                  ><span class="sandbox-choice__price"
+                    >{% include sandbox-option-price.html option=option %}</span
+                  ></span
+                ></label
+              >
+              {% endfor %}
+            </div>
+          </fieldset>
+          <fieldset class="sandbox-step">
+            <legend>C · Vos profils d’expérimentation</legend>
+            <p id="profiles-help">
+              Cochez un ou plusieurs profils selon les comparaisons souhaitées. Leurs montants s’ajoutent au forfait
+              d’accompagnement pour {{ sandbox_offer.duration_days }} jours. Les campagnes sont planifiées sur un
+              périmètre défini ; les machines ne sont pas mises à disposition en permanence.
+            </p>
+            <div class="sandbox-choices" aria-describedby="profiles-help">
+              {% for option in sandbox_offer.hardware %} {% assign profile = site.data.sandbox.profiles | where: 'id',
+              option.id | first %}
+              <label class="sandbox-choice"
+                ><input
+                  type="checkbox"
+                  name="profiles"
+                  value="{{ option.id }}"
+                  {%
+                  if
+                  forloop.first
+                  %}checked{%
+                  endif
+                  %}
+                /><span
+                  ><strong>{{ option.label }}</strong><span>{{ profile.focus }}</span
+                  ><span class="sandbox-choice__price"
+                    >{% include sandbox-option-price.html option=option %} / {{ sandbox_offer.duration_days }}
+                    jours</span
+                  ><span class="sandbox-choice__detail">{{ profile.description }}</span></span
+                ></label
+              >
+              {% endfor %}
+            </div>
+            <p class="sandbox-context-note">{% include sandbox-profile-pack.html %}</p>
+            <label class="sandbox-choice"
+              ><input type="checkbox" name="advised" /><span
+                >Je souhaite être conseillé pour choisir mes profils</span
+              ></label
+            >
+            <p class="sandbox-note">
+              Les configurations exactes et leur compatibilité sont validées après étude. La sélection décrit le
+              périmètre des essais, sans réservation exclusive de matériel.
+            </p>
+          </fieldset>
+          <fieldset class="sandbox-step">
+            <legend>D · Interface et intégration</legend>
+            <p id="interface-help">
+              L’accès API sécurisé est inclus pendant les {{ sandbox_offer.duration_days }} jours : connectez vos outils
+              ou votre propre instance aux modèles préparés pour votre expérimentation. Vous pouvez ajouter une
+              interface de chat hébergée si vous préférez utiliser un navigateur. Les utilisateurs, volumes et
+              conditions d’accès sont définis au préalable.
+            </p>
+            <div class="sandbox-choices" aria-describedby="interface-help">
+              {% for option in sandbox_offer.interfaces %}
+              <label class="sandbox-choice"
+                ><input
+                  type="radio"
+                  name="interface"
+                  value="{{ option.id }}"
+                  {%
+                  if
+                  forloop.first
+                  %}checked{%
+                  endif
+                  %}
+                /><span
+                  ><strong>{{ option.label }}</strong
+                  ><span class="sandbox-choice__price">{% include sandbox-option-price.html option=option %}</span
+                  ><span class="sandbox-choice__detail">{{ option.description }}</span></span
+                ></label
+              >
+              {% endfor %}
+            </div>
+            <p class="sandbox-note">Pas d’accès illimité ni de disponibilité 24 h/24 garantie.</p>
+          </fieldset>
+          <fieldset class="sandbox-step">
+            <legend>E · Formation et livrables</legend>
+            <p>Les explications techniques et la synthèse finale concise sont déjà incluses.</p>
+            <div class="sandbox-choices">
+              {% for option in sandbox_offer.extras %}
+              <label class="sandbox-choice"
+                ><input type="checkbox" name="extras" value="{{ option.id }}" /><span
+                  ><strong>{{ option.label }}</strong
+                  ><span class="sandbox-choice__price">{% include sandbox-option-price.html option=option %}</span
+                  ><span class="sandbox-choice__detail">{{ option.description }}</span></span
+                ></label
+              >
+              {% endfor %}
+            </div>
+          </fieldset>
+          <fieldset class="sandbox-step" id="sandbox-contact">
+            <legend>F · Votre demande de devis</legend>
+            <p>
+              Votre messagerie s’ouvrira avec le récapitulatif et vos coordonnées. Vérifiez le message puis envoyez-le
+              pour me transmettre votre demande.
+            </p>
+            <div class="sandbox-contact-fields">
+              <label for="sandbox-name"
+                >Nom et prénom <span>(requis)</span
+                ><input id="sandbox-name" name="prospect" autocomplete="name" maxlength="120" required
+              /></label>
+              <label for="sandbox-company"
+                >Entreprise <span>(requis)</span
+                ><input id="sandbox-company" name="company" autocomplete="organization" maxlength="160" required
+              /></label>
+              <label for="sandbox-email"
+                >Adresse e-mail <span>(requise)</span
+                ><input id="sandbox-email" name="email" type="email" autocomplete="email" maxlength="254" required
+              /></label>
+              <label for="sandbox-comment"
+                >Commentaire <span>(facultatif)</span
+                ><textarea
+                  id="sandbox-comment"
+                  name="comment"
+                  rows="3"
+                  maxlength="1200"
+                  aria-describedby="sandbox-data-help"
+                ></textarea>
+              </label>
+            </div>
+            <p id="sandbox-data-help" class="sandbox-note">
+              Évitez les informations sensibles. Les champs restent dans cette page jusqu’à votre action de contact ou
+              de copie ; aucune sauvegarde locale ni transmission à l’outil d’analyse.
+              <a href="{{ '/politique-confidentialite/' | relative_url }}">Confidentialité</a>.
+            </p>
+            <div class="actions"><button class="btn" type="submit">Recevoir mon devis personnalisé</button></div>
+            <p class="sandbox-note">
+              Ce n’est ni une commande ni un paiement. Tarifs indicatifs, confirmés après validation du périmètre.
+            </p>
+            <p role="status" data-contact-status></p>
+          </fieldset>
+        </div>
+        <aside class="sandbox-summary" id="sandbox-summary" tabindex="0" aria-labelledby="sandbox-summary-title">
+          <h3 id="sandbox-summary-title">Votre expérimentation</h3>
+          <p>Budget estimatif pour {{ sandbox_offer.duration_days }} jours</p>
+          <div class="sandbox-total" role="status" aria-atomic="true">
+            <strong data-total>{% include sandbox-starting-price.html without_prefix=true %}</strong
+            ><span data-total-note>Tarifs indicatifs à confirmer après cadrage.</span>
+          </div>
+          <dl data-costs class="sandbox-costs"></dl>
+          <div data-custom-scope class="sandbox-context-note" hidden></div>
+          <h4>Prestations incluses</h4>
+          <ul class="sandbox-included">
+            {% for item in site.data.sandbox.included %}
+            <li>{{ item }}</li>
+            {% endfor %}
+            <li>
+              Jusqu’à {{ sandbox_offer.max_configurations }} configurations et sessions accompagnées ; profils
+              d’expérimentation facturés séparément
+            </li>
+          </ul>
+          <p data-objectives-summary></p>
+          <p data-profiles-summary></p>
+          <a class="btn btn--ghost" href="#sandbox-contact">Compléter ma demande</a>
+          <details class="sandbox-export">
+            <summary>Récapitulatif à copier</summary>
+            <label for="sandbox-recap">Configuration et coordonnées saisies</label
+            ><textarea id="sandbox-recap" data-recap readonly rows="12" spellcheck="false"></textarea>
+          </details>
+          <div class="actions">
+            <button class="btn btn--ghost" type="button" data-copy>Copier le récapitulatif</button
+            ><button class="sandbox-reset" type="reset">Réinitialiser</button>
+          </div>
+          <p role="status" data-copy-status></p>
+          <p class="sandbox-note">
+            Si votre messagerie ne s’ouvre pas, copiez le récapitulatif et écrivez à
+            <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Vous pouvez aussi utiliser la
+            <a href="{{ '/contact/' | relative_url }}">page de contact</a>.
+          </p>
+        </aside>
+      </div>
+    </form>
+  </div>
+</section>

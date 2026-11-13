@@ -1,0 +1,4 @@
+{%- assign cheapest_profile = site.data.pricing.sandbox.hardware | sort: 'supplement' | first -%} {%- assign
+sandbox_starting_amount = site.data.pricing.sandbox.amount | plus: cheapest_profile.supplement -%} {%- unless
+include.without_prefix -%}À partir de {% endunless -%} {%- include format-amount.html amount=sandbox_starting_amount %}
+€ HT

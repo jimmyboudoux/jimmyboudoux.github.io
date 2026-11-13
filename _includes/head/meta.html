@@ -41,4 +41,7 @@ page_description | replace: '__person_name__', site.person_name %}
   media="not all"
   data-presentation-styles="minimalist"
 />
+{% for stylesheet in page.extra_css %}
+<link rel="stylesheet" href="{{ stylesheet | relative_url }}?v={{ asset_revision }}" />
+{% endfor %}
 <script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ asset_revision }}"></script>

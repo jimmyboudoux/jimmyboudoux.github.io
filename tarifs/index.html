@@ -153,38 +153,80 @@ faq: false
 <section class="section section--surface" id="sandbox-ia-locale">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Benchmark &amp; aide à la décision</span>
+      <span class="eyebrow">Laboratoire d’expérimentation · Expertise et analyse</span>
       <h2>Sandbox IA locale</h2>
       <p>
-        Une expérimentation de {{ site.data.pricing.sandbox.duration_days }} jours pour comparer des modèles open-weight
-        sur des cas d’usage représentatifs.
+        Testez et comprenez les capacités de l’IA locale avant d’investir dans votre infrastructure. Une prestation
+        accompagnée de {{ site.data.pricing.sandbox.duration_days }} jours, utilisant mon laboratoire personnel.
       </p>
     </div>
     <div class="cards cards--3">
       <article class="card card--tinted theme-engineering">
-        <span class="card-tag">Sandbox IA locale — {{ site.data.pricing.sandbox.duration_days }} jours</span>
-        <h3>{% include price.html offer=site.data.pricing.sandbox %}</h3>
+        <span class="card-tag">Forfait d’accompagnement · {{ site.data.pricing.sandbox.duration_days }} jours</span>
+        <h3>{% include price.html offer=site.data.pricing.sandbox without_prefix=true %}</h3>
         <p>
-          Cadrage du benchmark, préparation des scénarios et jusqu’à {{ site.data.pricing.sandbox.max_configurations }}
-          configurations principales.
+          Profils d’expérimentation en supplément. {% include sandbox-starting-price.html %} au total avec le profil
+          Lite.
         </p>
         <ul class="feature-list">
-          <li>Environnement temporaire pendant {{ site.data.pricing.sandbox.duration_days }} jours</li>
-          <li>Interface conversationnelle et accès API selon le besoin</li>
-          <li>Métriques techniques, prise en main et synthèse finale</li>
+          {% for item in site.data.sandbox.included %}
+          <li>{{ item }}</li>
+          {% endfor %}
+          <li>
+            Jusqu’à {{ site.data.pricing.sandbox.max_configurations }} configurations ; profils d’expérimentation
+            facturés séparément
+          </li>
+          <li>Démonstration accompagnée dans les sessions organisées</li>
         </ul>
+        <p>
+          Une configuration définit un modèle, sa version, sa quantification, son contexte et ses paramètres
+          d’exécution.
+        </p>
         <a class="card-link" href="{{ '/sandbox-ia-locale/' | relative_url }}">Voir le détail de l’offre →</a>
       </article>
       <article class="card">
-        <span class="card-tag">Option benchmark matériel</span>
-        <h3>{% include price.html offer=site.data.pricing.sandbox.hardware %}</h3>
-        <p>Comparaison de plusieurs profils CPU/mémoire et GPU sur une sélection de scénarios identiques.</p>
+        <h3>Profils et configurations</h3>
+        <ul class="feature-list">
+          {% for option in site.data.pricing.sandbox.configurations %}{% unless forloop.first %}
+          <li>{{ option.label }} : {% include sandbox-option-price.html option=option %}</li>
+          {% endunless %}{% endfor %}
+        </ul>
+        <ul class="feature-list">
+          {% for option in site.data.pricing.sandbox.hardware %}
+          <li>{{ option.label }} : {% include sandbox-option-price.html option=option %}</li>
+          {% endfor %}
+        </ul>
+        <p>
+          {% include sandbox-profile-pack.html %} Essais planifiés sur un périmètre défini ; compatibilité validée après
+          étude.
+        </p>
       </article>
       <article class="card">
-        <span class="card-tag">Prolongation</span>
-        <h3>{% include price.html offer=site.data.pricing.sandbox.extension %}</h3>
+        <h3>Accès et accompagnement</h3>
+        <ul class="feature-list">
+          {% for option in site.data.pricing.sandbox.interfaces %}{% unless forloop.first %}
+          <li>{{ option.label }} : {% include sandbox-option-price.html option=option %}</li>
+          {% endunless %}{% endfor %}{% for option in site.data.pricing.sandbox.extras %}
+          <li>{{ option.label }} : {% include sandbox-option-price.html option=option %}</li>
+          {% endfor %}
+        </ul>
+        <p>
+          L’accès API aux modèles sélectionnés est inclus pendant les {{ site.data.pricing.sandbox.duration_days }}
+          jours. Seule l’interface de chat hébergée ajoute un supplément. Les connecteurs et agents spécifiques sont sur
+          devis séparé. La formation approfondie comprend deux sessions de 1h30.
+        </p>
+        <h4>{{ site.data.pricing.sandbox.extension.label }}</h4>
         <p>{% include sandbox-extension-scope.html %}</p>
       </article>
+    </div>
+    <p class="sandbox-note">
+      Tarifs indicatifs HT à confirmer après cadrage. Accès temporaires sécurisés, utilisateurs et volumes convenus,
+      sans disponibilité permanente garantie, SLA de production ni ressources exclusivement réservées.
+    </p>
+    <div class="actions">
+      <a class="btn" href="{{ '/sandbox-ia-locale/' | relative_url }}#configurateur"
+        >Configurer mon expérimentation IA locale</a
+      >
     </div>
   </div>
 </section>

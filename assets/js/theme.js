@@ -1,6 +1,7 @@
 // Both stylesheets precede this blocking script: restore the choice before painting.
 (() => {
   const root = document.documentElement;
+  const initialPresentation = root.dataset.presentation;
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
   const styles = Object.fromEntries([...document.querySelectorAll('[data-presentation-styles]')]
     .map((link) => [link.dataset.presentationStyles, link]));
@@ -58,11 +59,11 @@
     const controls = document.querySelector('[data-appearance-controls]');
     const status = document.querySelector('[data-appearance-status]');
     if (!selector || !colorSelector || !controls) return;
-    let mountedPresentation = 'commercial';
+    let mountedPresentation = initialPresentation;
     const regions = ['header', 'footer', 'home'].map((region) => {
       const host = document.querySelector(region === 'home' ? '[data-home-content]' : `[data-${region}-host]`);
       const template = document.querySelector(`template[data-region="${region}"]`);
-      return host && template ? { host, template, cache: new Map([['commercial', [...host.childNodes]]]) } : null;
+      return host && template ? { host, template, cache: new Map([[initialPresentation, [...host.childNodes]]]) } : null;
     }).filter(Boolean);
     const mountPresentation = (next) => {
       if (next !== mountedPresentation) {
@@ -84,8 +85,8 @@
       await waitForStyles(presentation);
       mountPresentation(presentation);
     } catch {
-      mountPresentation('commercial');
-      status.textContent = 'Cette présentation est indisponible. La version commerciale reste affichée.';
+      mountPresentation('minimalist');
+      status.textContent = 'Cette présentation est indisponible. La vue pragmatique reste affichée.';
     }
     controls.hidden = false;
     selector.addEventListener('change', async () => {

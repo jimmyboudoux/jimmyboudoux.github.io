@@ -22,15 +22,14 @@ module SiteTestHelper
   # Model the active DOM: template descendants are inert in the browser.
   def presentation_document(html, presentation: "commercial")
     document = Nokogiri::HTML5(html)
-    if presentation == "minimalist"
+    if presentation != document.at_css("html")["data-presentation"]
       %w[header footer home].each do |region|
         host = document.at_css(region == "home" ? "[data-home-content]" : "[data-#{region}-host]")
         template = document.at_css("template[data-region='#{region}']")
         host.inner_html = template.inner_html if host && template
       end
-    else
-      document.at_css(".site-sidebar")&.remove
     end
+    document.at_css(".site-sidebar")&.remove if presentation == "commercial"
     document.css("template").remove
     document.at_css("html")["data-presentation"] = presentation
     document

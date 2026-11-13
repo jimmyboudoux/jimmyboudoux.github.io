@@ -1,0 +1,40 @@
+<section class="home-sandbox" aria-labelledby="home-sandbox-title">
+  <div class="container">
+    <span class="eyebrow">Un laboratoire personnel · Une expérimentation accompagnée</span>
+    <h2 id="home-sandbox-title">L’IA locale, testée avant d’être déployée.</h2>
+    <p class="lead">
+      Et si vous pouviez comparer plusieurs modèles d’intelligence artificielle sur différentes architectures, mesurer
+      leurs performances réelles et comprendre leurs limites avant d’acheter du matériel ?
+    </p>
+    <div class="home-sandbox__benefits">
+      <div>
+        <h3>Expérimenter</h3>
+        <p>Tester des modèles open-weight sur des cas d’usage représentatifs.</p>
+      </div>
+      <div>
+        <h3>Comparer</h3>
+        <p>
+          Mesurer les différences de qualité, de vitesse et de besoins matériels entre CPU, GPU NVIDIA et Apple Silicon.
+        </p>
+      </div>
+      <div>
+        <h3>Décider</h3>
+        <p>Bénéficier de mon analyse et de recommandations techniques pour identifier une solution adaptée.</p>
+      </div>
+    </div>
+    <p>
+      Je dispose du laboratoire : Apple Silicon, CPU AMD avec mémoire importante et GPU NVIDIA. Nous étudions leurs
+      capacités et bandes passantes mémoire ; je prépare les essais, vous accompagne et analyse personnellement les
+      résultats.
+    </p>
+    <p class="home-sandbox__price">
+      {% include sandbox-starting-price.html %} pour {{ site.data.pricing.sandbox.duration_days }} jours · Conseil et
+      tests encadrés.
+    </p>
+    <div class="actions">
+      <a class="btn" href="{{ '/sandbox-ia-locale/' | relative_url }}#configurateur"
+        >Configurer mon expérimentation IA locale</a
+      >
+    </div>
+  </div>
+</section>

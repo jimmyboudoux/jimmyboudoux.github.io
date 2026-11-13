@@ -1,0 +1,3 @@
+{%- if include.option.custom -%} Sur devis {%- elsif include.option.supplement == 0 -%} Inclus {%- else -%} +{% include
+format-amount.html amount=include.option.supplement %} € HT{% if include.option.monthly %} / mois{% endif %} {%- endif
+-%}

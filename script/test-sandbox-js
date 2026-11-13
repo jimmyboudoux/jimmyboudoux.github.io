@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Load the real Jekyll data using the Ruby standard library, with no JS YAML dependency.
+SANDBOX_TEST_DATA="$(ruby -ryaml -rjson -e 'puts JSON.generate({pricing: YAML.load_file("_data/pricing.yml")["sandbox"], catalog: YAML.load_file("_data/sandbox.yml")})')"
+export SANDBOX_TEST_DATA
+node test/js/sandbox.test.mjs
+node test/js/sandbox-dom.test.mjs

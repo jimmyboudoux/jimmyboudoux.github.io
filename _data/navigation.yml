@@ -1,5 +1,7 @@
 - label: Services
   href: /services/
+- label: IA locale
+  href: /sandbox-ia-locale/
 - label: Réalisations
   href: /realisations/
   feature: portfolio_enabled

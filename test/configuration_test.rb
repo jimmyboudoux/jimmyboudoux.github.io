@@ -29,8 +29,7 @@ class ConfigurationTest < Minitest::Test
     end
     engagement = YAML.load_file("_data/engagement.yml")
     [engagement.fetch("booking_minutes"), engagement.fetch("training_access_days"), *engagement.fetch("diagnostic").values,
-     pricing.dig("sandbox", "duration_days"), pricing.dig("sandbox", "max_configurations"),
-     pricing.dig("sandbox", "extension", "period_days"), pricing.dig("sandbox", "extension", "additional_configurations")].each do |value|
+     pricing.dig("sandbox", "duration_days"), pricing.dig("sandbox", "max_configurations")].each do |value|
       assert_kind_of Integer, value
       assert_operator value, :>, 0
     end
@@ -73,10 +72,10 @@ class ConfigurationTest < Minitest::Test
         data.fetch("sandbox")["amount"] = 2780
         data.fetch("sandbox")["duration_days"] = 45
         data.fetch("sandbox")["max_configurations"] = 7
-        data.dig("sandbox", "hardware")["amount"] = 730
-        data.dig("sandbox", "extension")["amount"] = 890
-        data.dig("sandbox", "extension")["period_days"] = 60
-        data.dig("sandbox", "extension")["additional_configurations"] = 2
+        data.dig("sandbox", "configurations", 0)["label"] = "Jusqu’à 7 configurations"
+        data.dig("sandbox", "hardware", 1)["supplement"] = 1730
+        data.dig("sandbox", "interfaces", 1)["supplement"] = 615
+        data.dig("sandbox", "extras", 0)["supplement"] = 915
         data.dig("audit", "ranges", "targeted")["amount"] = 2910
         data.dig("fractional", "light")["amount"] = 1100
       end
@@ -119,18 +118,25 @@ class ConfigurationTest < Minitest::Test
       assert_equal config.dig("socials", "linkedin", "url"), page.call("/about/").at_css('main a[rel~="me"]')["href"]
       %w[/sandbox-ia-locale/ /tarifs/].each do |path|
         text = page.call(path).text.gsub(/\s+/, " ")
-        ["À partir de 2 780 € HT", "+730 € HT", "+890 € HT / 60 jours", "45 jours", "7 configurations", "2 configurations pertinentes"].each do |value|
+        ["2 780 € HT", "À partir de 2 880 € HT", "+1 730 € HT", "+615 € HT / mois", "+915 € HT", "45 jours", "7 configurations", "Sur devis selon les accès et prestations maintenus"].each do |value|
           assert_includes text, value, "Configuration not propagated to #{path}"
         end
         refute_includes text, "2 400 € HT"
       end
+      runtime_pricing = JSON.parse(page.call("/sandbox-ia-locale/").at_css("[data-sandbox-form]")["data-pricing"])
+      assert_equal 2780, runtime_pricing.fetch("amount")
+      assert_equal 1730, runtime_pricing.fetch("hardware")[1].fetch("supplement")
+      assert_equal 615, runtime_pricing.fetch("interfaces")[1].fetch("supplement")
+      assert_equal 915, runtime_pricing.fetch("extras")[0].fetch("supplement")
+      faq = page.call("/sandbox-ia-locale/").css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }.find { |item| item["@type"] == "FAQPage" }
+      assert_includes faq.fetch("mainEntity").to_s, "7 configurations"
       %w[/tarifs/ /formations/ /formations/ai-literacy/].each do |path|
         assert_includes page.call(path).text.gsub(/\s+/, " "), "735 € HT"
         refute_includes page.call(path).text, "650 € HT"
       end
       %w[/ /services/ /tarifs/].each do |path|
         assert_includes page.call(path).text.gsub(/\s+/, " "), "1 230 € HT"
-        refute_includes page.call(path).text, "900 € HT"
+        refute_includes page.call(path).css(".price-list").text, "900 € HT"
       end
       %w[/ /tarifs/].each do |path|
         assert_includes page.call(path).text.gsub(/\s+/, " "), "1 780 € HT"

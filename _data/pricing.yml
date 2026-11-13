@@ -78,14 +78,47 @@ sandbox:
   amount: 2400
   prefix: 'À partir de '
   duration_days: 30
-  max_configurations: 5
+  max_configurations: 2
+  configurations:
+    - id: base
+      label: Jusqu’à 2 configurations
+      supplement: 0
+    - id: four
+      label: Jusqu’à 4 configurations
+      supplement: 800
+    - id: six
+      label: Jusqu’à 6 configurations
+      supplement: 1500
+  hardware_pack_discount_percent: 10
   hardware:
-    label: Benchmark matériel
-    amount: 600
-    prefix: +
+    - id: lite
+      label: Profil Lite
+      supplement: 100
+    - id: standard
+      label: Profil Standard
+      supplement: 180
+    - id: premium
+      label: Profil Premium
+      supplement: 500
+  interfaces:
+    - id: api
+      label: Votre propre interface ou instance via API
+      supplement: 0
+      description: Un accès API sécurisé aux modèles sélectionnés est inclus pendant la durée de l’expérimentation. Connectez vos outils ou votre propre instance, dans les limites d’utilisation convenues.
+    - id: hosted
+      label: Interface de chat hébergée
+      supplement: 200
+      monthly: true
+      description: Je prépare et administre une interface de chat temporaire utilisable dans votre navigateur. L’accès API reste inclus. La création d’un connecteur ou d’un agent spécifique fait l’objet d’un devis séparé.
+  extras:
+    - id: training
+      label: Formation et accompagnement approfondis
+      supplement: 900
+      description: Deux sessions de 1h30 sur les modèles, moteurs d’inférence, quantifications, performances, API, contraintes mémoire ou futur déploiement interne.
+    - id: report
+      label: Rapport comparatif approfondi
+      supplement: 700
+      description: Analyse détaillée avec recommandations d’architecture et de dimensionnement. La synthèse concise reste incluse dans le forfait.
   extension:
-    label: Prolongation
-    amount: 650
-    prefix: +
-    period_days: 30
-    additional_configurations: 1
+    label: Prolongation sans nouvelle campagne de tests
+    description: Sur devis selon les accès et prestations maintenus.
