@@ -40,3 +40,6 @@ test-*.txt
 !assets/vendor/
 !assets/vendor/altcha/
 !assets/vendor/altcha/**
+
+/AUDIT_ARCHITECTURE_jboudouxfr.md
+/QCM_*.md
