@@ -46,7 +46,7 @@ Les seuls événements Umami ajoutés sont `sandbox_configurator_viewed`, `sandb
 
 Le navigateur de contrôle est indisponible dans cette session. Les styles adaptatifs et la structure sémantique ont été contrôlés, mais **le rendu visuel et la navigation réelle au clavier sur mobile et ordinateur restent à vérifier dans un navigateur avant publication**. Les tests DOM ne remplacent pas cette vérification. Aucun e-mail réel n’a été envoyé.
 
-Pour relire localement : `bundle exec jekyll serve`, puis ouvrir `/`, `/sandbox-ia-locale/#configurateur` et `/tarifs/#sandbox-ia-locale` dans les vues Pragmatique et Commerciale. Vérifier notamment le récapitulatif sur petit écran, les ancrages sous l’en-tête, le pack complet et le mode « être conseillé » et la copie du récapitulatif.
+Pour relire localement : `bundle exec jekyll serve`, puis ouvrir `/`, `/sandbox-ia-locale/#configurateur` et `/tarifs/#sandbox-ia-locale` dans les modes Essentiel et Visuel. Vérifier notamment le récapitulatif sur petit écran, les ancrages sous l’en-tête, le pack complet et le mode « être conseillé » et la copie du récapitulatif.
 
 ## Ajustements du 13 novembre
 
@@ -56,4 +56,4 @@ La réponse au `QCM_20261113160740.md` a été intégrée : profils Lite 100 €
 
 ## Présentation par défaut et publication
 
-Les libellés publics sont « Vue commerciale » et « Vue pragmatique ». La vue commerciale est la présentation initiale du HTML et le défaut JavaScript pour une première visite. Les préférences déjà mémorisées restent prioritaires. Les identifiants internes sont conservés pour assurer cette continuité. La publication utilise la configuration GitHub Pages existante : branche `main`, racine du dépôt, domaine `jboudoux.fr`.
+Les libellés publics sont « Visuel » et « Essentiel ». Le mode Visuel est la présentation initiale du HTML et le défaut JavaScript pour une première visite. Les préférences déjà mémorisées restent prioritaires. Les identifiants internes sont conservés pour assurer cette continuité. La publication utilise la configuration GitHub Pages existante : branche `main`, racine du dépôt, domaine `jboudoux.fr`.

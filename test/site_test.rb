@@ -412,8 +412,8 @@ class SiteTest < Minitest::Test
     initial = Nokogiri::HTML5(File.read(site_file("index.html")))
     assert_equal "commercial", initial.at_css("html")["data-presentation"]
     assert initial.at_css("[data-home-content] > .hero")
-    assert_equal "Vue commerciale — démarche et interventions", initial.at_css('[data-presentation-select] option[value="commercial"]').text
-    assert_equal "Vue pragmatique — offres, tarifs et contact", initial.at_css('[data-presentation-select] option[value="minimalist"]').text
+    assert_equal "Visuel", initial.at_css('[data-presentation-select] option[value="commercial"]').text
+    assert_equal "Essentiel", initial.at_css('[data-presentation-select] option[value="minimalist"]').text
   end
 
   def test_robots_references_the_generated_sitemap

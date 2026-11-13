@@ -86,7 +86,7 @@
       mountPresentation(presentation);
     } catch {
       mountPresentation('minimalist');
-      status.textContent = 'Cette présentation est indisponible. La vue pragmatique reste affichée.';
+      status.textContent = 'Cette présentation est indisponible. Le mode Essentiel reste affiché.';
     }
     controls.hidden = false;
     selector.addEventListener('change', async () => {

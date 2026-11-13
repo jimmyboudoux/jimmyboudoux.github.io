@@ -16,7 +16,7 @@ La prévisualisation est disponible sur l'adresse affichée par Jekyll, généra
 
 ## Deux présentations du site
 
-Le sélecteur « Présentation » propose **Vue commerciale** et **Vue pragmatique**. La vue commerciale est affichée par défaut lors d’une première visite, y compris sans JavaScript : elle présente l’accueil développé, la navigation haute et les couleurs claires. La vue pragmatique propose une synthèse d’accueil, la navigation latérale et les couleurs Système / Clair / Sombre. Un choix déjà mémorisé dans le navigateur reste prioritaire sur le défaut. Les choix de présentation et de couleur sont conservés indépendamment.
+Le sélecteur « Présentation » propose **Visuel** et **Essentiel**. Le mode Visuel est affiché par défaut lors d’une première visite, y compris sans JavaScript : il présente l’accueil développé, la navigation haute et les couleurs claires. Le mode Essentiel propose une synthèse d’accueil, la navigation latérale et les couleurs Système / Clair / Sombre. Un choix déjà mémorisé dans le navigateur reste prioritaire sur le défaut. Les choix de présentation et de couleur sont conservés indépendamment.
 
 Les pages et leurs URLs restent communes. Le changement se fait sans recharger la page ni remplacer les formulaires. Lancer `bundle exec jekyll serve` pour essayer les deux présentations localement. Voir le [fonctionnement et les vérifications](docs/presentations.md) et le [plan initial de la refonte minimaliste](docs/plan-ui-minimalist.md).
 

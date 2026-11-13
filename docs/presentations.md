@@ -1,11 +1,11 @@
-# Vue commerciale et vue pragmatique
+# Modes Visuel et Essentiel
 
 ## Choix et valeurs par défaut
 
 | Présentation | Première visite | Couleurs | Accueil |
 |---|---|---|---|
-| Vue commerciale (`commercial`) | Oui | Clair uniquement | Version détaillée de `main` |
-| Vue pragmatique (`minimalist`) | Sur sélection ou choix déjà mémorisé | Système par défaut, ou Clair / Sombre | Synthèse avec offres, tarifs, méthode et contact |
+| Visuel (`commercial`) | Oui | Clair uniquement | Version détaillée de `main` |
+| Essentiel (`minimalist`) | Sur sélection ou choix déjà mémorisé | Système par défaut, ou Clair / Sombre | Synthèse avec offres, tarifs, méthode et contact |
 
 Le sélecteur « Présentation » est commun à toutes les pages. La préférence est mémorisée sous `jboudoux-presentation` ; le choix de couleur du minimaliste conserve la clé existante `jboudoux-color-theme`. Revenir au commercial garde en mémoire la couleur minimaliste pour le prochain passage.
 
@@ -16,13 +16,13 @@ Le changement conserve l’URL, la page intérieure, les saisies et l’étape d
 - `assets/css/commercial.scss` importe les styles d’origine conservés dans `_sass/commercial/` ; `assets/css/site.scss` importe les styles minimalistes. Les seuils responsive sont partagés. Seules des anciennes règles sans élément correspondant ont été retirées du CSS commercial pour conserver le budget de taille existant.
 - `_sass/components/_appearance.scss` fournit les contrôles communs et les règles du cadre selon la présentation.
 - `_includes/presentations/commercial/` contient l’accueil, l’en-tête et le pied de page commerciaux. L’accueil minimaliste est dans `_includes/presentations/minimalist/` ; son en-tête et son pied de page restent dans les includes existants.
-- Le layout sert la vue commerciale par défaut, y compris sans JavaScript. Les gabarits alternatifs sont dans des éléments `template`, inertes et extérieurs au contenu principal. `assets/js/theme.js` les active et conserve les nœuds de chaque présentation en mémoire.
+- Le layout sert le mode Visuel par défaut, y compris sans JavaScript. Les gabarits alternatifs sont dans des éléments `template`, inertes et extérieurs au contenu principal. `assets/js/theme.js` les active et conserve les nœuds de chaque présentation en mémoire.
 - Les pages intérieures restent dans leurs sources actuelles. Services, formations, prix, identité et coordonnées continuent à provenir des mêmes données et de la même configuration.
 - `assets/js/site.mjs` raccorde les menus et le suivi des réservations lors des échanges d’en-tête ou d’accueil. Le suivi utilise chaque lien une seule fois.
 
-Les deux feuilles sont disponibles dans le document, mais une seule utilise `media="all"`. Lors d’un changement, la feuille cible doit être chargée avant de remplacer la présentation et de mémoriser le choix. En cas d’échec, la présentation courante reste utilisable et un message invite à réessayer. Une préférence initiale indisponible revient à la vue pragmatique.
+Les deux feuilles sont disponibles dans le document, mais une seule utilise `media="all"`. Lors d’un changement, la feuille cible doit être chargée avant de remplacer la présentation et de mémoriser le choix. En cas d’échec, la présentation courante reste utilisable et un message invite à réessayer. Une préférence initiale indisponible revient au mode Essentiel.
 
-Sans JavaScript, la vue commerciale reste accessible avec sa navigation visible, et les sélecteurs sont masqués. Si le stockage local est bloqué, les sélecteurs fonctionnent sur la page courante. La couleur du minimaliste suit les changements du système uniquement en mode Système.
+Sans JavaScript, le mode Visuel reste accessible avec sa navigation visible, et les sélecteurs sont masqués. Si le stockage local est bloqué, les sélecteurs fonctionnent sur la page courante. La couleur du minimaliste suit les changements du système uniquement en mode Système.
 
 ## Vérifications
 
@@ -39,4 +39,4 @@ Sans JavaScript, la vue commerciale reste accessible avec sa navigation visible,
 bundle exec jekyll serve
 ```
 
-Choisir la présentation dans la barre située sous l’en-tête. La préférence mémorisée reste prioritaire sur la vue commerciale par défaut. Les identifiants internes `commercial` et `minimalist` restent stables pour préserver les préférences existantes.
+Choisir la présentation dans la barre située sous l’en-tête. La préférence mémorisée reste prioritaire sur le mode Visuel par défaut. Les identifiants internes `commercial` et `minimalist` restent stables pour préserver les préférences existantes.
