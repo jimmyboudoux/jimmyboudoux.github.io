@@ -6,7 +6,7 @@
     "test:js": "node test/js/diagnostic.test.mjs && node test/js/site.test.mjs && node test/js/theme.test.mjs && bash script/test-sandbox-js"
   },
   "devDependencies": {
-    "@shopify/prettier-plugin-liquid": "1.11.0",
+    "@shopify/prettier-plugin-liquid": "1.11.4",
     "prettier": "3.9.6"
   }
 }
